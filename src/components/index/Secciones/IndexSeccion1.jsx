@@ -11,6 +11,12 @@ const HomeSeccion1 = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [anim, setAnim] = useState("fadeInUp");
+  const [stats, setStats] = useState({
+    reports: 0,
+    satisfaction: 0,
+    responseTime: 0,
+    coverage: 0
+  });
 
   const heroSlides = [
     {
@@ -33,6 +39,20 @@ const HomeSeccion1 = () => {
     }
   ];
 
+  // Animación de contadores para métricas
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStats({
+        reports: 15420,
+        satisfaction: 94,
+        responseTime: 2.5,
+        coverage: 98
+      });
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setAnim("fadeOutUp");
@@ -40,7 +60,7 @@ const HomeSeccion1 = () => {
         setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
         setAnim("fadeInUp");
       }, 500);
-    }, 4000);
+    }, 5000); // Cambiado a 5 segundos para mayor profesionalismo
 
     return () => clearInterval(timer);
   }, [heroSlides.length]);
@@ -57,6 +77,18 @@ const HomeSeccion1 = () => {
     </svg>
   );
 
+  const SecurityShield = () => (
+    <svg className={styles.securityIcon} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+    </svg>
+  );
+
+  const GovernmentIcon = () => (
+    <svg className={styles.governmentIcon} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M2,21H22V19H20V7.5L12,2L4,7.5V19H2V21M16,13H18V17H16V13M10,13H12V17H10V13M6,13H8V17H6V13M14,13V17H16V13H14M12,13V17H10V13H12M8,13V17H6V13H8Z"/>
+    </svg>
+  );
+
   return (
     <section id="hero" className={styles.heroSection}>
       {/* Video de fondo */}
@@ -67,9 +99,32 @@ const HomeSeccion1 = () => {
         <div className={styles.videoOverlay}></div>
       </div>
 
+      {/* Partículas flotantes sutiles */}
+      <div className={styles.particles}>
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i} 
+            className={styles.particle}
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${20 + Math.random() * 10}s`
+            }}
+          >
+            {i % 4 === 0 ? '💡' : i % 4 === 1 ? '🏛️' : i % 4 === 2 ? '📊' : '🔒'}
+          </div>
+        ))}
+      </div>
+
       {/* Contenido principal */}
       <div className={styles.heroContainer}>
         <div className={`${styles.heroContent} ${styles[anim]}`}>
+          {/* Badge gubernamental */}
+          <div className={styles.governmentBadge}>
+            <GovernmentIcon />
+            <span>{ingles ? "Official Government Solution" : "Solución Oficial del Gobierno"}</span>
+          </div>
+
           <div className={styles.heroIcon}>
             {heroSlides[currentSlide].icon}
           </div>
@@ -86,7 +141,47 @@ const HomeSeccion1 = () => {
             {t.hero.description}
           </p>
 
-          {/* Botones de descarga */}
+          {/* Métricas de confianza */}
+          <div className={styles.statsGrid}>
+            <div className={styles.statItem}>
+              <div className={styles.statNumber}>{stats.reports.toLocaleString()}+</div>
+              <div className={styles.statLabel}>
+                {ingles ? "Reports Processed" : "Reportes Procesados"}
+              </div>
+            </div>
+            <div className={styles.statItem}>
+              <div className={styles.statNumber}>{stats.satisfaction}%</div>
+              <div className={styles.statLabel}>
+                {ingles ? "Citizen Satisfaction" : "Satisfacción Ciudadana"}
+              </div>
+            </div>
+            <div className={styles.statItem}>
+              <div className={styles.statNumber}>{stats.responseTime}h</div>
+              <div className={styles.statLabel}>
+                {ingles ? "Avg Response Time" : "Tiempo Promedio"}
+              </div>
+            </div>
+            <div className={styles.statItem}>
+              <div className={styles.statNumber}>{stats.coverage}%</div>
+              <div className={styles.statLabel}>
+                {ingles ? "City Coverage" : "Cobertura Ciudad"}
+              </div>
+            </div>
+          </div>
+
+          {/* Certificaciones/Sellos de seguridad */}
+          <div className={styles.certifications}>
+            <div className={styles.certItem}>
+              <SecurityShield />
+              <span>{ingles ? "Secure & Encrypted" : "Seguro y Encriptado"}</span>
+            </div>
+            <div className={styles.certItem}>
+              <GovernmentIcon />
+              <span>{ingles ? "Government Certified" : "Certificado Gubernamental"}</span>
+            </div>
+          </div>
+
+          {/* Botones de descarga mejorados */}
           <div className={styles.downloadButtons}>
             <a 
               href={appConfig.playStoreUrl} 
@@ -100,6 +195,9 @@ const HomeSeccion1 = () => {
                   {ingles ? "Get it on" : "Descárgala en"}
                 </span>
                 <span className={styles.storeName}>Google Play</span>
+              </div>
+              <div className={styles.newBadge}>
+                {ingles ? "Free" : "Gratis"}
               </div>
             </a>
             <a 
@@ -115,33 +213,62 @@ const HomeSeccion1 = () => {
                 </span>
                 <span className={styles.storeName}>App Store</span>
               </div>
+              <div className={styles.newBadge}>
+                {ingles ? "Free" : "Gratis"}
+              </div>
             </a>
           </div>
 
-          {/* Botón secundario */}
-          <button className={styles.secondaryBtn}>
-            {t.hero.ctaSecondary}
-          </button>
+          {/* Call to action profesional */}
+          <div className={styles.ctaContainer}>
+            <button className={styles.primaryCta}>
+              {ingles ? "Request Demo for Your Municipality" : "Solicitar Demo para tu Municipio"}
+            </button>
+            <button className={styles.secondaryBtn}>
+              {t.hero.ctaSecondary}
+            </button>
+          </div>
         </div>
 
-        {/* Demo interactiva del teléfono */}
-        <DemoApp />
+        {/* Demo interactiva del teléfono mejorada */}
+        <div className={styles.demoContainer}>
+          <div className={styles.demoHeader}>
+            <h3>{ingles ? "See it in action" : "Míralo en acción"}</h3>
+            <p>{ingles ? "Interactive demo of the citizen app" : "Demo interactiva de la app ciudadana"}</p>
+          </div>
+          <DemoApp />
+          <div className={styles.demoFeatures}>
+            <div className={styles.demoFeature}>
+              <span className={styles.featureIcon}>📱</span>
+              <span>{ingles ? "Real-time reporting" : "Reportes en tiempo real"}</span>
+            </div>
+            <div className={styles.demoFeature}>
+              <span className={styles.featureIcon}>🔔</span>
+              <span>{ingles ? "Instant notifications" : "Notificaciones instantáneas"}</span>
+            </div>
+            <div className={styles.demoFeature}>
+              <span className={styles.featureIcon}>📊</span>
+              <span>{ingles ? "Progress tracking" : "Seguimiento de progreso"}</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Indicadores de slides */}
+      {/* Indicadores de slides mejorados */}
       <div className={styles.slideIndicators}>
-        {heroSlides.map((_, index) => (
+        {heroSlides.map((slide, index) => (
           <button
             key={index}
             className={`${styles.indicator} ${
               index === currentSlide ? styles.active : ''
             }`}
             onClick={() => setCurrentSlide(index)}
+            aria-label={`${ingles ? 'Slide' : 'Diapositiva'} ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator profesional */}
       <div className={styles.scrollIndicator}>
         <span className={styles.scrollText}>
           {t.hero.scrollText}

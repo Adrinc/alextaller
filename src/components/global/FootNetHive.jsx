@@ -145,7 +145,7 @@ const FootNetHive = () => {
         <div className={styles.grid}>
           <div className={styles.logoSection}>
             <div className={styles.logoContainer}>
-              <img src="/logo_nh_b.png" alt="Ojo Ciudadano" className={styles.logo} />
+              <img src="/favicon.png" alt="Ojo Ciudadano" className={styles.logo} />
               <h3 className={styles.appName}>Ojo Ciudadano</h3>
               <span className={styles.appTagline}>
                 {ingles ? "Your voice counts" : "Tu voz cuenta"}

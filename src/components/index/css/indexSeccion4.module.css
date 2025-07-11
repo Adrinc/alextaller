@@ -1,6 +1,7 @@
+/* Sección Cómo Funciona - Profesional y Empresarial */
 .section {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, #F3F4F6 0%, #FFFFFF 50%, #F3F4F6 100%);
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #FAFBFC 0%, #FFFFFF 50%, #F8FAFC 100%);
   position: relative;
   overflow: hidden;
 }
@@ -12,58 +13,114 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235B2B33' fill-opacity='0.02'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  background: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235B2B33' fill-opacity='0.02'%3E%3Cpath d='M25 0L25 25L50 25L50 50L25 50L25 25L0 25L0 0L25 0Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
   z-index: 0;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
   position: relative;
   z-index: 1;
 }
 
+/* Header profesional */
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(91, 43, 51, 0.1);
+  border: 1px solid rgba(91, 43, 51, 0.2);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #5B2B33;
+}
+
+.badgeIcon {
+  width: 18px;
+  height: 18px;
+  color: #5B2B33;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: #5B2B33;
-  margin-bottom: 1rem;
-  position: relative;
+  color: #1F2937;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
 }
 
 .title::after {
   content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
   width: 120px;
   height: 4px;
   background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 100%);
+  margin: 1.5rem auto 0;
   border-radius: 2px;
 }
 
 .subtitle {
   font-size: 1.25rem;
-  color: #8A8A8A;
-  max-width: 600px;
-  margin: 0 auto;
+  color: #6B7280;
+  max-width: 700px;
+  margin: 0 auto 2rem;
   line-height: 1.6;
 }
 
+/* Estadísticas del proceso */
+.processStats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.statCard {
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E5E7EB;
+  min-width: 120px;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #5B2B33;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #5B2B33 0%, #C4B68C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Contenedor de pasos mejorado */
 .stepsContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
-  margin-bottom: 5rem;
+  margin-bottom: 6rem;
+  width: 100vw;
   flex-wrap: wrap;
+ 
 }
 
 .stepWrapper {
@@ -75,19 +132,22 @@
 .stepCard {
   background: #FFFFFF;
   border-radius: 24px;
-  padding: 2rem;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 8px 30px rgba(91, 43, 51, 0.1);
-  border: 2px solid transparent;
+  padding: 2.5rem;
+  width: 320px;
+  height: 400px; /* Altura fija para todas las tarjetas */
+  text-align: left;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E5E7EB;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .stepCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(91, 43, 51, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
   border-color: #5B2B33;
 }
 
@@ -104,259 +164,674 @@
 .stepNumber {
   position: absolute;
   top: -15px;
-  right: 15px;
-  width: 40px;
-  height: 40px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
   background: linear-gradient(135deg, #5B2B33 0%, #4A232B 100%);
-  color: white;
+  color: #FFFFFF;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 1.125rem;
-  box-shadow: 0 4px 15px rgba(91, 43, 51, 0.3);
+  box-shadow: 0 6px 20px rgba(91, 43, 51, 0.3);
+  border: 3px solid #FFFFFF;
 }
 
-.stepIcon {
-  font-size: 3rem;
-  margin: 1.5rem 0 1rem;
-  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+.stepIconContainer {
   width: 80px;
   height: 80px;
+  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 2rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.stepTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
+.stepIconSvg {
+  width: 32px;
+  height: 32px;
   color: #5B2B33;
-  margin-bottom: 0.75rem;
+}
+
+.stepContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 1rem;
   line-height: 1.3;
 }
 
 .stepDescription {
-  color: #8A8A8A;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  color: #6B7280;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: auto; /* Empuja el contenido hacia abajo */
+  flex: 1;
 }
 
+.stepDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem; /* Separación consistente desde la descripción */
+}
+
+.stepTechnical,
+.stepTime {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.techIcon,
+.timeIcon {
+  font-size: 1rem;
+}
+
+/* Conectores mejorados */
 .stepConnector {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 2rem;
 }
 
 .connectorLine {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 100%);
-  border-radius: 1px;
-}
-
-.connectorArrow {
-  font-size: 1.5rem;
-  color: #5B2B33;
-  font-weight: bold;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-/* Visualización del workflow */
-.workflowVisualization {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
-  border-radius: 24px;
-  padding: 3rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #E5E7EB;
-}
-
-.phoneDemo {
-  display: flex;
-  justify-content: center;
-}
-
-.phoneMockup {
-  width: 180px;
-  height: 360px;
-  background: #5B2B33;
-  border-radius: 30px;
-  padding: 15px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-.phoneMockup::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
   width: 80px;
-  height: 4px;
-  background: #4A232B;
+  height: 3px;
+  background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 100%);
   border-radius: 2px;
 }
 
-.phoneScreen {
-  width: 100%;
-  height: 100%;
+.connectorArrow {
+  width: 24px;
+  height: 24px;
+  color: #5B2B33;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Demostración del proceso */
+.processDemo {
   background: #FFFFFF;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 1rem;
+  border-radius: 24px;
+  padding: 4rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E5E7EB;
+  margin-bottom: 6rem;
 }
 
-.demoStep1 {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.categoryGrid {
+.demoContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  width: 100%;
+  gap: 4rem;
+  align-items: start;
 }
 
-.categoryItem {
-  background: #F3F4F6;
-  border-radius: 12px;
-  padding: 1rem;
-  font-size: 1.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
+.demoTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-.categoryItem:hover {
-  background: #5B2B33;
-  transform: scale(1.05);
+.demoDescription {
+  font-size: 1.125rem;
+  color: #6B7280;
+  line-height: 1.7;
+  margin-bottom: 2rem;
 }
 
-.flowArrow {
-  font-size: 3rem;
-  animation: bounce 1.5s ease-in-out infinite;
-  color: #C4B68C;
-}
-
-.resultDemo {
+.processFeatures {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.reportCard {
-  background: #FFFFFF;
-  border-radius: 16px;
-  padding: 1.5rem;
-  width: 280px;
-  box-shadow: 0 8px 25px rgba(91, 43, 51, 0.1);
-  border: 1px solid #E5E7EB;
-}
-
-.reportHeader {
+.processFeature {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #F3F4F6;
+  gap: 1rem;
+  padding: 1rem;
+  background: #F9FAFB;
+  border-radius: 12px;
+  border-left: 4px solid #5B2B33;
 }
 
-.reportId {
-  font-weight: 600;
+.featureIcon {
+  width: 24px;
+  height: 24px;
   color: #5B2B33;
+  flex-shrink: 0;
+}
+
+.processFeature span {
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Imagen de demostración */
+.demoVisual {
+  position: relative;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #9CA3AF;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholderContent {
+  text-align: center;
+  padding: 2rem;
+  color: #6B7280;
+}
+
+.placeholderIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  color: #9CA3AF;
+}
+
+.placeholderContent h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.placeholderContent p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Overlay de demostración */
+.demoOverlay {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.overlayCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 200px;
+}
+
+.overlayHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #374151;
   font-size: 0.875rem;
 }
 
-.reportStatus {
-  background: linear-gradient(135deg, #C4B68C 0%, #8A8A8A 100%);
-  color: #5B2B33;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
+.statusIndicator {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.reportContent {
+.overlayMetrics {
   display: flex;
   gap: 1rem;
-  align-items: flex-start;
 }
 
-.reportIcon {
-  font-size: 2rem;
-  background: linear-gradient(135deg, #5B2B33 0%, #4A232B 100%);
-  padding: 0.75rem;
-  border-radius: 12px;
-  color: white;
+.metric {
   text-align: center;
-  min-width: 50px;
 }
 
-.reportDetails h4 {
-  font-weight: 600;
+.metric strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: #5B2B33;
   margin-bottom: 0.25rem;
+}
+
+.metric span {
+  font-size: 0.75rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Beneficios del proceso */
+.processBenefits {
+  text-align: center;
+}
+
+.benefitsTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 3rem;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.benefitCard {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E5E7EB;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.benefitCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: #5B2B33;
+}
+
+.benefitIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.benefitCard h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 1rem;
+}
+
+.benefitCard p {
+  color: #6B7280;
+  line-height: 1.6;
   font-size: 1rem;
 }
 
-.reportDetails p {
-  color: #8A8A8A;
-  font-size: 0.875rem;
-  margin-bottom: 0.75rem;
-}
-
-.progressBar {
-  width: 100%;
-  height: 6px;
-  background: #F3F4F6;
-  border-radius: 3px;
+/* Beneficios del proceso - Versión profesional y gubernamental */
+.processBenefits {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-radius: 24px;
+  padding: 5rem 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E5E7EB;
+  position: relative;
   overflow: hidden;
 }
 
-.progress {
-  width: 60%;
+.processBenefits::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 50%, #1F2937 100%);
+}
+
+/* Header de beneficios institucional */
+.benefitsHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.benefitsIntro {
+  margin-bottom: 3rem;
+}
+
+.benefitsBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, rgba(91, 43, 51, 0.1) 0%, rgba(196, 182, 140, 0.1) 100%);
+  border: 2px solid rgba(91, 43, 51, 0.2);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #5B2B33;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.benefitsBadgeIcon {
+  width: 24px;
+  height: 24px;
+  color: #5B2B33;
+}
+
+.benefitsTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #1F2937;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #1F2937 0%, #5B2B33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.benefitsSubtitle {
+  font-size: 1.25rem;
+  color: #4B5563;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Sección de credenciales y certificaciones */
+.credentialsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+}
+
+.credentialItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border-left: 4px solid #5B2B33;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.credentialItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-left-color: #C4B68C;
+}
+
+.credentialIcon {
+  width: 32px;
+  height: 32px;
+  color: #5B2B33;
+  flex-shrink: 0;
+}
+
+.credentialText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.credentialText strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.credentialText span {
+  font-size: 0.875rem;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+/* Grid de beneficios empresariales */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.benefitCard {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E5E7EB;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
   height: 100%;
-  background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
-  border-radius: 3px;
-  animation: progressFill 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Animaciones */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+.benefitCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.benefitCard:hover::before {
+  transform: scaleX(1);
 }
 
-@keyframes progressFill {
-  0% { width: 30%; }
-  50% { width: 60%; }
-  100% { width: 30%; }
+.benefitCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(91, 43, 51, 0.15);
+  border-color: #5B2B33;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Header de cada beneficio */
+.benefitHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.benefitIconContainer {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #5B2B33 0%, #4A232B 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(91, 43, 51, 0.2);
+  flex-shrink: 0;
+}
+
+.benefitIcon {
+  width: 28px;
+  height: 28px;
+  color: #FFFFFF;
+}
+
+.benefitTitleSection {
+  flex: 1;
+}
+
+.benefitTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.benefitCategory {
+  display: inline-block;
+  background: rgba(91, 43, 51, 0.1);
+  color: #5B2B33;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.benefitDescription {
+  color: #4B5563;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.benefitFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature {
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+  padding-left: 0.5rem;
+  border-left: 2px solid #E5E7EB;
+  transition: all 0.3s ease;
+}
+
+.benefitCard:hover .feature {
+  border-left-color: #5B2B33;
+  color: #1F2937;
+}
+
+/* Métricas de rendimiento institucional */
+.performanceMetrics {
+  background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+  border-radius: 20px;
+  padding: 4rem;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.performanceMetrics::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.02'%3E%3Cpath d='M30 0L30 30L60 30L60 60L30 60L30 30L0 30L0 0L30 0Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  z-index: 0;
+}
+
+.metricsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.metricsTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.metricsSubtitle {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.metricCard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.metricCard:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.metricValue {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #C4B68C;
+  margin-bottom: 1rem;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.metricLabel {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.metricContext {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Responsive profesional */
+@media (max-width: 1024px) {
   .stepsContainer {
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    gap: 3rem;
   }
 
   .stepWrapper {
@@ -369,25 +844,93 @@
   }
 
   .connectorLine {
-    width: 40px;
+    width: 60px;
   }
 
-  .connectorArrow {
-    transform: rotate(90deg);
+  .demoContent {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
-  .workflowVisualization {
-    flex-direction: column;
+  .processStats {
     gap: 2rem;
-    padding: 2rem;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .credentialsSection {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .performanceMetrics {
+    padding: 3rem 2rem;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
   }
 
   .title {
     font-size: 2.5rem;
   }
 
+  .subtitle {
+    font-size: 1.125rem;
+  }
+
+  .processStats {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
   .stepCard {
-    width: 280px;
+    width: 100%;
+    max-width: 350px;
+    height: 380px; /* Altura ligeramente menor en móviles */
+    padding: 2rem;
+  }
+
+  .stepConnector {
+    display: none;
+  }
+
+  .processDemo {
+    padding: 2rem;
+  }
+
+  .demoTitle {
+    font-size: 2rem;
+  }
+
+  .benefitsTitle {
+    font-size: 2rem;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .overlayMetrics {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .headerBadge {
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
   }
 }
 
@@ -401,17 +944,55 @@
   }
 
   .stepCard {
-    width: 100%;
-    max-width: 280px;
+    height: 360px; /* Altura aún menor para pantallas muy pequeñas */
+    padding: 1.5rem;
   }
 
-  .phoneMockup {
-    width: 160px;
-    height: 320px;
+  .imagePlaceholder {
+    height: 300px;
   }
 
-  .reportCard {
-    width: 100%;
-    max-width: 280px;
+  .overlayCard {
+    padding: 1rem;
+    min-width: 160px;
+  }
+
+  .benefitsTitle {
+    font-size: 1.875rem;
+  }
+
+  .credentialItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .benefitCard {
+    padding: 1.5rem;
+  }
+
+  .benefitTitle {
+    font-size: 1.25rem;
+  }
+
+  .performanceMetrics {
+    padding: 1.5rem 1rem;
+  }
+
+  .metricsTitle {
+    font-size: 1.75rem;
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .metricValue {
+    font-size: 2rem;
+  }
+
+  .metricLabel {
+    font-size: 1rem;
   }
 }
