@@ -1,59 +1,74 @@
 import React from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
+import { translations } from '../../../data/translations';
 import styles from "../css/indexSeccion7.module.css";
 
 const HomeSeccion7 = () => {
   const ingles = useStore(isEnglish);
-
-  const content = {
-    es: {
-      title: "¿Listo para transformar tu gestión de infraestructura?",
-      description: "Únete a las empresas líderes que ya confían en NetHive para gestionar su infraestructura de red de manera eficiente y segura.",
-      primaryButton: "Comenzar prueba gratuita",
-      secondaryButton: "Agendar demo",
-      features: [
-        { icon: "🔒", text: "Configuración en 5 minutos" },
-        { icon: "💡", text: "Soporte 24/7" },
-        { icon: "🚀", text: "Actualizaciones continuas" }
-      ]
-    },
-    en: {
-      title: "Ready to transform your infrastructure management?",
-      description: "Join leading companies already trusting NetHive to efficiently and securely manage their network infrastructure.",
-      primaryButton: "Start free trial",
-      secondaryButton: "Schedule demo",
-      features: [
-        { icon: "🔒", text: "5-minute setup" },
-        { icon: "💡", text: "24/7 Support" },
-        { icon: "🚀", text: "Continuous updates" }
-      ]
-    }
-  };
-
-  const textos = ingles ? content.en : content.es;
+  const t = ingles ? translations.en : translations.es;
 
   return (
-    <section className={styles.section}>
+    <section id="descarga" className={styles.section}>
       <div className={styles.backgroundPattern}></div>
       <div className={styles.container}>
-        <h2 className={styles.title}>{textos.title}</h2>
-        <p className={styles.description}>{textos.description}</p>
+        <h2 className={styles.title}>{t.cta.title}</h2>
+        <h3 className={styles.subtitle}>{t.cta.subtitle}</h3>
+        <p className={styles.description}>{t.cta.description}</p>
+        
         <div className={styles.ctaContainer}>
-          <button className={styles.primaryButton}>
-            {textos.primaryButton}
-          </button>
-          <button className={styles.secondaryButton}>
-            {textos.secondaryButton}
-          </button>
+          <a href="#download" className={styles.primaryButton}>
+            {t.cta.buttons.primary}
+          </a>
+          <a href="#reports" className={styles.secondaryButton}>
+            {t.cta.buttons.secondary}
+          </a>
         </div>
-        <div className={styles.features}>
-          {textos.features.map((feature, index) => (
-            <div key={index} className={styles.feature}>
-              <span className={styles.featureIcon}>{feature.icon}</span>
-              <span className={styles.featureText}>{feature.text}</span>
+        
+        <a href="#contact" className={styles.contactButton}>
+          {t.cta.buttons.contact}
+        </a>
+        
+        <div className={styles.appStatsContainer}>
+          <div className={styles.statItem}>
+            <div className={styles.statNumber}>15k+</div>
+            <div className={styles.statText}>{ingles ? "Active Users" : "Usuarios Activos"}</div>
+          </div>
+          <div className={styles.divider}></div>
+          <div className={styles.statItem}>
+            <div className={styles.statNumber}>72%</div>
+            <div className={styles.statText}>{ingles ? "Problems Solved" : "Problemas Resueltos"}</div>
+          </div>
+          <div className={styles.divider}></div>
+          <div className={styles.statItem}>
+            <div className={styles.statNumber}>250+</div>
+            <div className={styles.statText}>{ingles ? "Neighborhoods" : "Colonias"}</div>
+          </div>
+        </div>
+        
+        <div className={styles.appPreviewsContainer}>
+          <div className={styles.appScreenshotWrapper}>
+            <div className={styles.appScreenshot}>
+              <div className={styles.appInterface}>
+                <div className={styles.appHeader}></div>
+                <div className={styles.appContent}>
+                  <div className={styles.reportItem}></div>
+                  <div className={styles.reportItem}></div>
+                  <div className={styles.reportItem}></div>
+                </div>
+                <div className={styles.appBottomNav}></div>
+              </div>
             </div>
-          ))}
+          </div>
+          <div className={styles.appScreenshotWrapper}>
+            <div className={styles.appScreenshot}>
+              <div className={styles.appInterface}>
+                <div className={styles.appHeader}></div>
+                <div className={styles.appMapContent}></div>
+                <div className={styles.appBottomNav}></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

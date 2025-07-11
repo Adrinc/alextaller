@@ -1,8 +1,8 @@
 .section {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  padding: 8rem 2rem;
-  width: 100vw;
-  color: #f5f7fa;
+  background: linear-gradient(135deg, #5B2B33 0%, #4A232B 100%);
+  padding: 6rem 2rem 8rem;
+  width: 100%;
+  color: #FFFFFF;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -23,7 +23,7 @@
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -32,11 +32,18 @@
 .title {
   font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, #ffffff 0%, #7ae582 100%);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #FFFFFF 0%, #C4B68C 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
 }
 
 .description {
@@ -44,6 +51,9 @@
   margin-bottom: 3rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ctaContainer {
@@ -52,72 +62,307 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
 .primaryButton {
-  background-color: #ffb454;
-  color: #22292f;
+  background-color: #C4B68C;
+  color: #5B2B33;
   padding: 1rem 2.5rem;
   border-radius: 8px;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(196, 182, 140, 0.3);
 }
 
 .secondaryButton {
   background-color: transparent;
-  color: #ffffff;
-  padding: 1rem 2.5rem;
+  color: #FFFFFF;
+  padding: 0.95rem 2.45rem;
   border-radius: 8px;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  border: 2px solid #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
-.primaryButton:hover,
+.primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(196, 182, 140, 0.4);
+  background-color: #8A8A8A;
+}
+
 .secondaryButton:hover {
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
 }
 
-.features {
+.contactButton {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.contactButton:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.appStatsContainer {
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  margin-top: 4rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 4rem auto;
+  max-width: 800px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
 }
 
-.feature {
+.statItem {
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.statText {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.appPreviewsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.appScreenshotWrapper {
+  position: relative;
+}
+
+.appScreenshotWrapper:first-child {
+  transform: perspective(800px) rotateY(-15deg) translateY(-20px);
+}
+
+.appScreenshotWrapper:last-child {
+  transform: perspective(800px) rotateY(15deg) translateY(-20px);
+}
+
+.appScreenshot {
+  width: 280px;
+  height: 580px;
+  background-color: #5B2B33;
+  border-radius: 36px;
+  padding: 8px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.appInterface {
+  width: 100%;
+  height: 100%;
+  background-color: #F3F4F6;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.appHeader {
+  height: 60px;
+  background-color: #5B2B33;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  padding: 0 20px;
+  position: relative;
 }
 
-.featureIcon {
-  color: #7ae582;
-  font-size: 1.5rem;
+.appHeader::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 6px;
+  background-color: rgba(196, 182, 140, 0.3);
+  border-radius: 10px;
 }
 
-.featureText {
-  color: #ffffff;
-  font-size: 1rem;
+.appContent {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.reportItem {
+  height: 100px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.reportItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: #C4B68C;
+  border-radius: 3px 0 0 3px;
+}
+
+.reportItem:nth-child(2)::before {
+  background-color: #FACC15;
+}
+
+.reportItem:nth-child(3)::before {
+  background-color: #EF4444;
+}
+
+.appMapContent {
+  flex: 1;
+  background-color: #E5E7EB;
+  position: relative;
+}
+
+.appMapContent::before, .appMapContent::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.appMapContent::before {
+  background-color: #EF4444;
+  top: 30%;
+  left: 40%;
+  box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.2);
+}
+
+.appMapContent::after {
+  background-color: #C4B68C;
+  bottom: 25%;
+  right: 30%;
+  box-shadow: 0 0 0 5px rgba(196, 182, 140, 0.2);
+}
+
+.appBottomNav {
+  height: 60px;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E5E7EB;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.appBottomNav::before, .appBottomNav::after {
+  content: '';
+  width: 30px;
+  height: 4px;
+  background-color: #D1D5DB;
+  border-radius: 2px;
+}
+
+.appBottomNav::after {
+  width: 20px;
+}
+
+@media (max-width: 1024px) {
+  .appPreviewsContainer {
+    gap: 1rem;
+  }
+  
+  .appScreenshot {
+    width: 220px;
+    height: 450px;
+  }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 6rem 1rem;
+    padding: 5rem 1.5rem;
   }
-
+  
   .title {
     font-size: 2.5rem;
   }
-
-  .features {
+  
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .appStatsContainer {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .divider {
+    width: 80%;
+    height: 1px;
+  }
+  
+  .appPreviewsContainer {
+    flex-direction: column;
     align-items: center;
+  }
+  
+  .appScreenshotWrapper:first-child,
+  .appScreenshotWrapper:last-child {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
   }
 }

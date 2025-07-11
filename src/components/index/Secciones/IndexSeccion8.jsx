@@ -1,32 +1,40 @@
 import React, { useState } from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
+import { translations } from '../../../data/translations';
 import styles from "../css/indexSeccion8.module.css";
 
 const TagIcon = ({ tag }) => {
   switch (tag) {
-    case 'security':
+    case 'usage':
+      return (
+        <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      );
+    case 'privacy':
       return (
         <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
       );
-    case 'support':
+    case 'technical':
       return (
         <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       );
-    case 'integration':
+    case 'emergency':
       return (
         <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
         </svg>
       );
-    case 'migration':
+    case 'account':
       return (
         <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       );
     default:
@@ -37,75 +45,70 @@ const TagIcon = ({ tag }) => {
 const HomeSeccion8 = () => {
   const ingles = useStore(isEnglish);
   const [openIndex, setOpenIndex] = useState(null);
+  const t = ingles ? translations.en : translations.es;
 
-  const content = {
+  const faqContent = {
     es: {
-      title: "Preguntas Frecuentes",
-      subtitle: "Resolvemos tus dudas sobre NetHive",
-      highlight: "Encuentra respuestas detalladas y claras a las preguntas más comunes sobre nuestra plataforma",
       faqs: [
         {
-          question: "¿Qué medidas de seguridad implementa NetHive?",
-          answer: "NetHive implementa múltiples capas de seguridad, incluyendo encriptación de datos end-to-end, autenticación de dos factores, controles de acceso basados en roles, y monitoreo continuo de actividades. Cumplimos con estándares internacionales de seguridad y realizamos auditorías regulares.",
-          tag: "security"
+          question: "¿Los reportes son anónimos?",
+          answer: "Puedes elegir hacer reportes anónimos o con tu información personal. Los reportes identificados reciben seguimiento preferencial y te permiten recibir notificaciones sobre el progreso. La privacidad de tus datos personales está garantizada conforme a las leyes de protección de datos vigentes.",
+          tag: "privacy"
         },
         {
-          question: "¿Cómo funciona el soporte técnico?",
-          answer: "Ofrecemos soporte técnico 24/7 a través de múltiples canales: chat en vivo, correo electrónico y teléfono. Nuestro equipo de expertos está disponible para resolver cualquier incidencia y proporcionar asistencia en tiempo real. Los tiempos de respuesta varían según el plan contratado.",
-          tag: "support"
+          question: "¿Qué pasa si envío un reporte falso?",
+          answer: "Los reportes pasan por un proceso de verificación inicial. Si se determina que un reporte es falso, podrías recibir una advertencia. En casos reiterados de reportes falsos, tu cuenta podría ser suspendida temporalmente. Fomentamos el uso responsable de la plataforma para beneficio de toda la comunidad.",
+          tag: "usage"
         },
         {
-          question: "¿Se puede integrar NetHive con otros sistemas?",
-          answer: "Sí, NetHive ofrece APIs RESTful completas y webhooks que permiten una integración seamless con la mayoría de los sistemas empresariales, incluyendo ERPs, sistemas de tickets, y herramientas de monitoreo. También proporcionamos documentación detallada y soporte para la integración.",
-          tag: "integration"
+          question: "¿Cómo veo el estado de mi reporte?",
+          answer: "Puedes revisar todos tus reportes y su estado actual en la sección 'Mis Reportes' dentro de la aplicación. Allí encontrarás actualizaciones en tiempo real, fotos de la resolución cuando estén disponibles, y comentarios de las autoridades encargadas de atender cada caso.",
+          tag: "technical"
         },
         {
-          question: "¿Cómo se realiza la migración de datos existentes?",
-          answer: "El proceso de migración se realiza en cuatro fases: análisis inicial de datos, mapeo de estructuras, migración en ambiente de pruebas y migración final. Nuestro equipo te acompaña en cada paso para asegurar una transición sin pérdida de información.",
-          tag: "migration"
+          question: "¿Puedo usar la app sin internet?",
+          answer: "Sí, la aplicación está diseñada para funcionar incluso sin conexión a internet. Puedes crear reportes completos con fotos y descripción cuando no tengas señal, y estos se enviarán automáticamente en cuanto recuperes la conexión, sin necesidad de ninguna acción adicional de tu parte.",
+          tag: "technical"
         },
         {
-          question: "¿Cuál es el tiempo de implementación promedio?",
-          answer: "El tiempo de implementación típico es de 2-4 semanas, dependiendo de la complejidad de tu infraestructura y requisitos específicos. Esto incluye la configuración inicial, migración de datos, pruebas y capacitación del personal.",
-          tag: "integration"
+          question: "¿Cómo funciona el botón SOS?",
+          answer: "El botón SOS activa una alerta de emergencia que envía tu ubicación en tiempo real a tus contactos de confianza preconfigurados y a las autoridades locales si así lo has establecido. Puede activarse presionando el botón en la app, sacudiendo el teléfono, presionando tres veces el botón de encendido o desconectando audífonos (si has habilitado estas opciones en la configuración).",
+          tag: "emergency"
         }
       ]
     },
     en: {
-      title: "Frequently Asked Questions",
-      subtitle: "We solve your NetHive questions",
-      highlight: "Find detailed and clear answers to the most common questions about our platform",
       faqs: [
         {
-          question: "What security measures does NetHive implement?",
-          answer: "NetHive implements multiple security layers, including end-to-end data encryption, two-factor authentication, role-based access controls, and continuous activity monitoring. We comply with international security standards and perform regular audits.",
-          tag: "security"
+          question: "Are reports anonymous?",
+          answer: "You can choose to make anonymous reports or include your personal information. Identified reports receive preferential follow-up and allow you to receive notifications about progress. The privacy of your personal data is guaranteed in accordance with current data protection laws.",
+          tag: "privacy"
         },
         {
-          question: "How does technical support work?",
-          answer: "We offer 24/7 technical support through multiple channels: live chat, email, and phone. Our team of experts is available to resolve any incidents and provide real-time assistance. Response times vary according to the contracted plan.",
-          tag: "support"
+          question: "What happens if I send a false report?",
+          answer: "Reports go through an initial verification process. If a report is determined to be false, you may receive a warning. In repeated cases of false reports, your account could be temporarily suspended. We encourage responsible use of the platform for the benefit of the entire community.",
+          tag: "usage"
         },
         {
-          question: "Can NetHive be integrated with other systems?",
-          answer: "Yes, NetHive offers complete RESTful APIs and webhooks that allow seamless integration with most enterprise systems, including ERPs, ticketing systems, and monitoring tools. We also provide detailed documentation and integration support.",
-          tag: "integration"
+          question: "How do I see the status of my report?",
+          answer: "You can check all your reports and their current status in the 'My Reports' section within the app. There you will find real-time updates, resolution photos when available, and comments from the authorities in charge of handling each case.",
+          tag: "technical"
         },
         {
-          question: "How is existing data migration handled?",
-          answer: "The migration process is carried out in four phases: initial data analysis, structure mapping, test environment migration, and final migration. Our team accompanies you every step of the way to ensure a transition without data loss.",
-          tag: "migration"
+          question: "Can I use the app without internet?",
+          answer: "Yes, the application is designed to work even without an internet connection. You can create complete reports with photos and descriptions when you don't have a signal, and these will be sent automatically as soon as you regain connection, without requiring any additional action on your part.",
+          tag: "technical"
         },
         {
-          question: "What is the average implementation time?",
-          answer: "Typical implementation time is 2-4 weeks, depending on your infrastructure complexity and specific requirements. This includes initial setup, data migration, testing, and staff training.",
-          tag: "integration"
+          question: "How does the SOS button work?",
+          answer: "The SOS button activates an emergency alert that sends your real-time location to your pre-configured trusted contacts and to local authorities if you have set it up that way. It can be activated by pressing the button in the app, shaking the phone, pressing the power button three times, or disconnecting headphones (if you have enabled these options in the settings).",
+          tag: "emergency"
         }
       ]
     }
   };
 
-  const textos = ingles ? content.en : content.es;
+  const testimonials = ingles ? t.testimonios.items : t.testimonios.items;
 
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -113,32 +116,60 @@ const HomeSeccion8 = () => {
 
   const getTagClass = (tag) => {
     switch (tag) {
-      case 'security':
+      case 'privacy':
         return styles.tagSecurity;
-      case 'support':
+      case 'usage':
         return styles.tagSupport;
-      case 'integration':
+      case 'technical':
         return styles.tagIntegration;
-      case 'migration':
+      case 'emergency':
         return styles.tagMigration;
+      case 'account':
+        return styles.tagAccount;
       default:
         return '';
     }
   };
 
   return (
-    <section className={styles.section}>
+    <section id="preguntas" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>{textos.title}</h2>
+          <h2 className={styles.title}>{t.faq.title}</h2>
           <p className={styles.subtitle}>
-            <strong>{textos.subtitle}</strong>
+            <strong>{t.faq.subtitle}</strong>
             <br />
-            {textos.highlight}
+            {ingles ? "Find answers to the most common questions about our app" : "Encuentra respuestas a las preguntas más comunes sobre nuestra aplicación"}
           </p>
         </div>
+        
+        {/* Testimonios */}
+        <div className={styles.testimonialsContainer}>
+          <h3 className={styles.testimonialsTitle}>{t.testimonios.title}</h3>
+          <p className={styles.testimonialsSubtitle}>{t.testimonios.subtitle}</p>
+          
+          <div className={styles.testimonialsGrid}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className={styles.testimonialCard}>
+                <div className={styles.testimonialQuote}>"</div>
+                <p className={styles.testimonialText}>{testimonial.text}</p>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.testimonialAvatar}>
+                    {testimonial.author.charAt(0)}
+                  </div>
+                  <div className={styles.testimonialInfo}>
+                    <p className={styles.authorName}>{testimonial.author}</p>
+                    <p className={styles.authorLocation}>{testimonial.location}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Preguntas frecuentes */}
         <div className={styles.faqsGrid}>
-          {textos.faqs.map((faq, index) => (
+          {(ingles ? faqContent.en.faqs : faqContent.es.faqs).map((faq, index) => (
             <div key={index} className={`${styles.faqItem} ${openIndex === index ? styles.faqItemOpen : ''}`}>
               <button 
                 className={styles.faqHeader}
@@ -171,6 +202,19 @@ const HomeSeccion8 = () => {
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Contacto simplificado */}
+        <div className={styles.contactSection}>
+          <h3 className={styles.contactTitle}>
+            {ingles ? "Still have questions?" : "¿Aún tienes preguntas?"}
+          </h3>
+          <p className={styles.contactText}>
+            {ingles ? "Contact our support team and we'll help you" : "Contacta a nuestro equipo de soporte y te ayudaremos"}
+          </p>
+          <a href="/contacto" className={styles.contactButton}>
+            {ingles ? "Contact Support" : "Contactar Soporte"}
+          </a>
         </div>
       </div>
     </section>

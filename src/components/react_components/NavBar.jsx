@@ -9,13 +9,34 @@ import { translations } from "../../data/translations";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentPath, setCurrentPath] = useState("");
+  const [activeSection, setActiveSection] = useState("inicio");
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const country = useStore(selectedCountry);
   const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
-  const textosNavbar = ingles ? translations.en.navbar : translations.es.navbar;
+
+  // Configuración de las secciones de navegación
+  const navSections = {
+    es: [
+      { id: "inicio", name: "Inicio", href: "#hero" },
+      { id: "app", name: "La App", href: "#que-es" },
+      { id: "funciones", name: "Funciones", href: "#caracteristicas" },
+      { id: "reportar", name: "Reportar", href: "#categorias" },
+      { id: "gobierno", name: "Gobierno", href: "#soporte-institucional" },
+      { id: "faq", name: "FAQ", href: "#preguntas" }
+    ],
+    en: [
+      { id: "inicio", name: "Home", href: "#hero" }, // Mismo ID, diferente nombre
+      { id: "app", name: "The App", href: "#que-es" },
+      { id: "funciones", name: "Features", href: "#caracteristicas" },
+      { id: "reportar", name: "Report", href: "#categorias" },
+      { id: "gobierno", name: "Government", href: "#soporte-institucional" },
+      { id: "faq", name: "FAQ", href: "#preguntas" }
+    ]
+  };
+
+  const currentSections = ingles ? navSections.en : navSections.es;
 
   useEffect(() => {
     // Detectar scroll para efectos de navbar
@@ -23,32 +44,42 @@ const NavBar = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 20);
       
+      // Detectar sección activa basada en scroll
+      detectActiveSection();
+      
       if (isOpen) {
         setIsOpen(false);
+      }
+    };
+
+    // Detectar sección activa - usar siempre los mismos selectores
+    const detectActiveSection = () => {
+      const sections = [
+        { id: "inicio", element: document.querySelector('#hero') },
+        { id: "app", element: document.querySelector('#que-es') },
+        { id: "funciones", element: document.querySelector('#caracteristicas') },
+        { id: "reportar", element: document.querySelector('#categorias') },
+        { id: "gobierno", element: document.querySelector('#soporte-institucional') },
+        { id: "faq", element: document.querySelector('#preguntas') }
+      ];
+
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
       }
     };
 
     // Detectar cambios de tamaño de ventana
     const handleResize = () => {
-      // Si la ventana es mayor a 900px y el menú está abierto, cerrarlo
       if (window.innerWidth > 900 && isOpen) {
         setIsOpen(false);
       }
     };
-
-    // Detectar cambios en la URL (navegación)
-    const handleLocationChange = () => {
-      const newPath = window.location.pathname;
-
-      setCurrentPath(newPath);
-      // Cerrar el menú móvil al navegar
-      if (isOpen) {
-        setIsOpen(false);
-      }
-    };
-
-    // Detectar la página actual inicialmente
-    setCurrentPath(window.location.pathname);
 
     // Event listeners
     const handleClickOutside = (event) => {
@@ -61,57 +92,6 @@ const NavBar = () => {
       }
     };
 
-    // Listener para detectar cambios en la URL (popstate para botón atrás/adelante)
-    const handlePopState = () => {
-      handleLocationChange();
-    };
-
-    // Listener personalizado para detectar navegación programática
-    const originalPushState = history.pushState;
-    const originalReplaceState = history.replaceState;
-
-    history.pushState = function() {
-      originalPushState.apply(history, arguments);
-      setTimeout(handleLocationChange, 0); // Defer to next tick
-    };
-
-    history.replaceState = function() {
-      originalReplaceState.apply(history, arguments);
-      setTimeout(handleLocationChange, 0); // Defer to next tick
-    };
-
-    // Listener específico para Astro view transitions
-    const handleAstroBeforeSwap = () => {
-      setTimeout(handleLocationChange, 0);
-    };
-
-    const handleAstroAfterSwap = () => {
-      setTimeout(handleLocationChange, 100); // Dar más tiempo para que Astro complete
-    };
-
-    // Listener para cualquier cambio en el DOM que indique navegación
-    const observer = new MutationObserver(() => {
-      const newPath = window.location.pathname;
-      if (newPath !== currentPath) {
-        handleLocationChange();
-      }
-    });
-
-    // Observar cambios en el title del documento (Astro lo cambia en navegación)
-    observer.observe(document.querySelector('title') || document.head, {
-      childList: true,
-      characterData: true
-    });
-
-    // Polling como fallback para casos edge
-    const pathCheckInterval = setInterval(() => {
-      const newPath = window.location.pathname;
-      if (newPath !== currentPath) {
-
-        handleLocationChange();
-      }
-    }, 100);
-
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('touchstart', handleClickOutside);
@@ -122,31 +102,15 @@ const NavBar = () => {
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
-    window.addEventListener('popstate', handlePopState);
-    
-    // Listeners específicos para Astro
-    document.addEventListener('astro:before-swap', handleAstroBeforeSwap);
-    document.addEventListener('astro:after-swap', handleAstroAfterSwap);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('popstate', handlePopState);
-      document.removeEventListener('astro:before-swap', handleAstroBeforeSwap);
-      document.removeEventListener('astro:after-swap', handleAstroAfterSwap);
       document.body.style.overflow = '';
-      
-      // Limpiar observer y polling
-      observer.disconnect();
-      clearInterval(pathCheckInterval);
-      
-      // Restaurar métodos originales
-      history.pushState = originalPushState;
-      history.replaceState = originalReplaceState;
     };
-  }, [isOpen, currentPath]); // Agregar currentPath como dependencia
+  }, [isOpen]);
 
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
@@ -165,11 +129,26 @@ const NavBar = () => {
     }
   };
 
+  // Función para navegación suave a secciones
+  const scrollToSection = (href, sectionId) => {
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80; // Altura del navbar
+      const elementPosition = element.offsetTop - offset;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+      
+      setActiveSection(sectionId);
+      setIsOpen(false);
+    }
+  };
+
   // Función para verificar si el enlace está activo
-  const isActiveLink = (href) => {
-    if (href === "/" && currentPath === "/") return true;
-    if (href !== "/" && currentPath.startsWith(href)) return true;
-    return false;
+  const isActiveLink = (sectionId) => {
+    return activeSection === sectionId;
   };
 
   return (
@@ -177,9 +156,15 @@ const NavBar = () => {
       {/* Overlay para móvil */}
       {isOpen && <div className={styles.overlay} onClick={toggleMenu} />}
       
-      {/* Logo con efecto de hover mejorado */}
-      <div className={styles.logopic}>
-        <img src="/logo_nh_b.png" alt="NetHive Logo" />
+      {/* Logo con nombre de la app */}
+      <div className={styles.logopic} onClick={() => scrollToSection('#hero', 'inicio')}>
+        <img src="/favicon.png" alt="Ojo Ciudadano Logo" />
+        <div className={styles.logoText}>
+          <span className={styles.appName}>Ojo Ciudadano</span>
+          <span className={styles.appTagline}>
+            {ingles ? "Your voice counts" : "Tu voz cuenta"}
+          </span>
+        </div>
         <div className={styles.logoGlow}></div>
       </div>
 
@@ -214,67 +199,39 @@ const NavBar = () => {
 
       {/* Menú de navegación con indicadores activos */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`} ref={menuRef}>
-        <li className={styles.navItem}>
-          <a 
-            href="/" 
-            className={`${styles.navLink} ${isActiveLink("/") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.inicio}
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a 
-            href="/funcionalidades" 
-            className={`${styles.navLink} ${isActiveLink("/funcionalidades") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.funcionalidades}
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a 
-            href="/precios" 
-            className={`${styles.navLink} ${isActiveLink("/precios") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.precios}
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a 
-            href="/soporte" 
-            className={`${styles.navLink} ${isActiveLink("/soporte") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.soporte}
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a 
-            href="/contacto" 
-            className={`${styles.navLink} ${isActiveLink("/contacto") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.contacto}
-          </a>
-        </li>
+        {currentSections.map((section, index) => (
+          <li key={section.id} className={styles.navItem}>
+            <button 
+              onClick={() => scrollToSection(section.href, section.id)}
+              className={`${styles.navLink} ${isActiveLink(section.id) ? styles.activeLink : ""}`}
+            >
+              {section.name}
+            </button>
+          </li>
+        ))}
         
-        {/* Botón de login separado para móvil */}
-        <li className={`${styles.navItem} ${styles.mobileLoginItem} ${styles.mobileOnly}`}>
-          <a className={`${styles.buyButton} ${styles.mobileLoginButton}`} href="#registrarse">
-            <span className={styles.buttonText}>{textosNavbar.iniciarSesion}</span>
+        {/* Botón de contacto para móvil */}
+        <li className={`${styles.navItem} ${styles.mobileContactItem} ${styles.mobileOnly}`}>
+          <a className={`${styles.contactButton} ${styles.mobileContactButton}`} href="/contacto">
+            <span className={styles.buttonText}>
+              {ingles ? "Contact" : "Contacto"}
+            </span>
             <div className={styles.buttonShine}></div>
           </a>
         </li>
       </ul>
 
-      {/* Grupo de íconos sociales con efectos mejorados */}
+      {/* Grupo de íconos sociales gubernamentales */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.linkedin.com/company/nethive" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-          <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
+        <a href="https://www.facebook.com/MunicipioEnsenada" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <img src="/icons/facebook.svg" alt="Facebook Municipal" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="https://twitter.com/nethive" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-          <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
+        <a href="https://twitter.com/EnsenadaAyto" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <img src="/icons/twitter.svg" alt="Twitter Municipal" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="mailto:info@nethive.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href="mailto:ojociudadano@ensenada.gob.mx" className={styles.socialLink}>
           <img src="/icons/email.svg" alt="Email" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
@@ -282,8 +239,10 @@ const NavBar = () => {
 
       {/* Botón de contacto con efectos premium */}
       <div className={styles.desktopOnly}>
-        <a className={styles.buyButton} href="#registrarse">
-          <span className={styles.buttonText}>{textosNavbar.iniciarSesion}</span>
+        <a className={styles.contactButton} href="/contacto">
+          <span className={styles.buttonText}>
+            {ingles ? "Contact" : "Contacto"}
+          </span>
           <div className={styles.buttonShine}></div>
         </a>
       </div>

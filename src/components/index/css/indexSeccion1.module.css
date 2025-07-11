@@ -1,272 +1,439 @@
-.sections {
+/* Hero Section para Ojo Ciudadano */
+.heroSection {
   position: relative;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 92vh;
-  margin-top: 70px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #5B2B33 0%, #4A232B 50%, #C4B68C 100%);
 }
 
-.videox {
+.videoBackground {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.videoBackground video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-  opacity: 0.7;
-  filter: brightness(0.8) contrast(1.1);
 }
 
-.overlay {
+.videoOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-  z-index: 2;
+  background: rgba(91, 43, 51, 0.2);
+  backdrop-filter: blur(2px);
 }
 
-.textosAnimados {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  width: 90%;
+.heroContainer {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  padding: 3rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.slideIcon {
-  font-size: 6rem;
-  flex-shrink: 0;
-  animation: floatIcon 3s ease-in-out infinite;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
-}
-
-.textContainer {
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
   align-items: center;
-  flex: 1;
-  text-align: center;
 }
 
-.titulo {
-  font-size: 3.5rem;
-  color: #fff;
+.heroContent {
+  color: #FFFFFF;
+}
+
+.heroIcon {
+  font-size: 4rem;
   margin-bottom: 1rem;
-  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.8), 0 1px 0 #009dff;
+  animation: float 3s ease-in-out infinite;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
-  text-align: center;
-  line-height: 1.2;
-  background: linear-gradient(120deg, #fff, #a5f3fc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 2s infinite;
-}
-
-.subtitulo {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 6px 48px #141414, 0 2px 0 #7ae582;
-  letter-spacing: 0.04em;
-  text-align: center;
+  margin-bottom: 1rem;
   line-height: 1.1;
-  padding: 0.2em 0.5em;
-  border-radius: 0.2em;
-  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #C4B68C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.indicators {
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #C4B68C;
+}
+
+.heroDescription {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: #F3F4F6;
+  line-height: 1.6;
+}
+
+.downloadButtons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.indicator {
-  width: 100px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: #5B2B33;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(91, 43, 51, 0.3);
+  min-width: 180px;
+}
+
+.downloadBtn:hover {
+  background: #4A232B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(91, 43, 51, 0.4);
+}
+
+.downloadBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid #FFFFFF;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+}
+
+.downloadBtnSecondary:hover {
+  background: #FFFFFF;
+  color: #5B2B33;
+  transform: translateY(-2px);
+}
+
+.storeIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.storeText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.storeLabel {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.storeName {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.secondaryBtn {
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: #C4B68C;
+  border: 2px solid #C4B68C;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryBtn:hover {
+  background: #C4B68C;
+  color: #5B2B33;
+}
+
+.btnIcon {
+  font-size: 1.25rem;
+}
+
+.phonePreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phoneFrame {
+  width: 280px;
+  height: 560px;
+  background: #5B2B33;
+  border-radius: 40px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
   overflow: hidden;
 }
 
-.indicator.active {
-  background: rgba(255, 255, 255, 0.3);
+.phoneFrame::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 6px;
+  background: #4A232B;
+  border-radius: 3px;
 }
 
-.progress {
+.phoneScreen {
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #2563eb, #7ae582);
-  transition: width 50ms linear;
+  background: #FFFFFF;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
 }
 
-.fadeInUp {
-  opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.appInterface {
+  padding: 2rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.fadeOutUp {
-  opacity: 1;
-  animation: fadeOutUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #F3F4F6;
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 40%) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+.appHeader h3 {
+  color: #5B2B33;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
-@keyframes fadeOutUp {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -80%) scale(0.95);
-  }
+.notificationBadge {
+  background: #EF4444;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-@keyframes floatIcon {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.categoryButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
+.categoryBtn {
+  padding: 1rem;
+  background: #F3F4F6;
+  border-radius: 12px;
+  text-align: center;
+  color: #8A8A8A;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* Estilos para el indicador de scroll */
-.scrollIndicator {
+.categoryBtn:hover {
+  background: #5B2B33;
+  color: white;
+  transform: scale(1.05);
+}
+
+.sosButton {
   position: absolute;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 20;
+  width: 80px;
+  height: 80px;
+  background: #EF4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.slideIndicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #C4B68C;
+  transform: scale(1.2);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  animation: bounce 2s infinite;
+  color: #F3F4F6;
+  z-index: 2;
 }
 
 .scrollText {
-  color: #fff;
-  font-size: 0.9rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.scrollIcon {
-  width: 24px;
-  height: 24px;
-  border: 2px solid #fff;
-  border-radius: 12px;
-  position: relative;
+.scrollArrow {
+  animation: bounce 2s ease-in-out infinite;
 }
 
-.scrollIcon::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  animation: scrollDot 2s infinite;
+/* Animaciones */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-@keyframes scrollDot {
-  0% {
-    top: 4px;
-    opacity: 1;
-  }
-  100% {
-    top: 12px;
+.fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.fadeOutUp {
+  animation: fadeOutUp 0.5s ease-in;
+}
+
+@keyframes fadeInUp {
+  from {
     opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 900px) {
-  .sections {
-    height: 70vh;
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
   }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
 
-  .textosAnimados {
-    flex-direction: column;
+/* Responsive */
+@media (max-width: 768px) {
+  .heroContainer {
+    grid-template-columns: 1fr;
+    text-align: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 0 1rem;
   }
 
-  .slideIcon {
-    font-size: 4rem;
+  .heroTitle {
+    font-size: 2.5rem;
   }
 
-  .titulo {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  .heroSubtitle {
+    font-size: 1.25rem;
   }
 
-  .subtitulo {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+  .downloadButtons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .scrollText {
-    font-size: 0.8rem;
+
+  .downloadBtn,
+  .downloadBtnSecondary {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
-  
-  .scrollIcon {
+
+  .phoneFrame {
+    width: 240px;
+    height: 480px;
+    padding: 15px;
+  }
+
+  .scrollIndicator {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .storeIcon {
     width: 20px;
     height: 20px;
+  }
+
+  .storeLabel {
+    font-size: 0.7rem;
+  }
+
+  .storeName {
+    font-size: 0.9rem;
   }
 }

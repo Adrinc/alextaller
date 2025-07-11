@@ -1,0 +1,451 @@
+/* Estilos para el componente DemoApp */
+.phonePreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.phoneFrame {
+  width: 320px;
+  height: 640px;
+  background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+  border-radius: 40px;
+  padding: 24px;
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 3px #000000,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.phoneFrame::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 8px;
+  background: #000000;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.screenContainer {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.screenContainer.animating {
+  opacity: 0.7;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Pantalla de Onboarding */
+.skipButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #6B7280;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 5;
+  font-weight: 500;
+}
+
+.onboardingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.logoContainer {
+  margin-bottom: 24px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  background: #5B2B33;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(91, 43, 51, 0.3);
+}
+
+.eyeIcon {
+  font-size: 40px;
+  color: white;
+}
+
+.welcomeTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.welcomeSubtitle {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 32px;
+  line-height: 1.5;
+  max-width: 240px;
+}
+
+.dotsIndicator {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D1D5DB;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #5B2B33;
+  width: 20px;
+  border-radius: 4px;
+}
+
+.nextButton {
+  width: 100%;
+  padding: 14px;
+  background: #C4B68C;
+  color: #1F2937;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nextButton:hover {
+  background: #B8AA7A;
+}
+
+/* Pantalla de Login */
+.loginContent {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.appTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.welcomeBack {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 32px;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 280px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputLabel {
+  display: block;
+  font-size: 12px;
+  color: #374151;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  font-size: 16px;
+  z-index: 2;
+  color: #6B7280;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #F9FAFB;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #5B2B33;
+  background: white;
+}
+
+.input::placeholder {
+  color: #9CA3AF;
+  font-size: 12px;
+}
+
+.eyeToggle {
+  position: absolute;
+  right: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2;
+  color: #6B7280;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 14px;
+  background: #C4B68C;
+  color: #1F2937;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.loginButton:hover {
+  background: #B8AA7A;
+}
+
+.registerText {
+  text-align: center;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.registerLink {
+  color: #5B2B33;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Pantalla de Categorías */
+.header {
+  background: #5B2B33;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.notificationIcon {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.categoryCard {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 90px;
+  justify-content: center;
+}
+
+.categoryCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.categoryIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.categoryText {
+  font-size: 10px;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.2;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.bottomNav {
+  display: flex;
+  background: white;
+  border-top: 1px solid #E5E7EB;
+  padding: 8px 0;
+  min-height: 60px;
+}
+
+.navItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 6px;
+  transition: all 0.3s ease;
+}
+
+.navItem.active .navIcon {
+  color: #5B2B33;
+}
+
+.navItem.active .navText {
+  color: #5B2B33;
+}
+
+.navIcon {
+  font-size: 18px;
+  margin-bottom: 2px;
+  color: #9CA3AF;
+}
+
+.navText {
+  font-size: 9px;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+/* Indicadores de pantalla */
+.screenIndicators {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #C4B68C;
+  transform: scale(1.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .phoneFrame {
+    width: 280px;
+    height: 560px;
+    padding: 20px;
+  }
+  
+  .welcomeTitle {
+    font-size: 18px;
+  }
+  
+  .welcomeSubtitle {
+    font-size: 12px;
+  }
+  
+  .categoriesGrid {
+    gap: 10px;
+    padding: 12px;
+  }
+  
+  .categoryCard {
+    padding: 12px 8px;
+    min-height: 80px;
+  }
+  
+  .categoryIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .categoryText {
+    font-size: 9px;
+  }
+}

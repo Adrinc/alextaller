@@ -1,7 +1,7 @@
 .section {
-  background-color: #f5f7fa;
+  background-color: #F3F4F6;
   padding: 6rem 2rem;
-  width: 100vw;
+  width: 100%;
 }
 
 .container {
@@ -16,128 +16,304 @@
 
 .title {
   font-size: 2.5rem;
-  color: #22292f;
+  color: #5B2B33;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.25rem;
-  color: #4a5568;
-  max-width: 600px;
+  color: #8A8A8A;
+  max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-.testimonialGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.contentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
 }
 
-.testimonialCard {
+.textContent {
+  flex: 1;
+  min-width: 300px;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #8A8A8A;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.featureCard {
   background: white;
-  border-radius: 16px;
-  padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(91, 43, 51, 0.05);
   transition: all 0.3s ease;
+  border: 1px solid #E5E7EB;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(91, 43, 51, 0.1);
+  border-color: #5B2B33;
+}
+
+.featureIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  font-size: 1.1rem;
+  color: #5B2B33;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.featureDescription {
+  font-size: 0.95rem;
+  color: #8A8A8A;
+}
+
+.officeIllustration {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+  height: 400px;
+}
+
+.officeBg {
+  background: linear-gradient(135deg, #5B2B33 0%, #4A232B 100%);
+  border-radius: 16px;
+  height: 100%;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 400px; /* Altura mínima para mantener consistencia */
+  box-shadow: 0 10px 25px rgba(91, 43, 51, 0.2);
 }
 
-.testimonialCard::before {
-  content: '"';
+.officeDesk {
   position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: 4rem;
-  color: rgba(37, 99, 235, 0.1);
-  font-family: serif;
-  line-height: 1;
+  background: rgba(255, 255, 255, 0.1);
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
 }
 
-.testimonialCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+.officeDesk:first-child {
+  bottom: 80px;
+  left: 40px;
 }
 
-.testimonialText {
-  font-size: 1.125rem;
-  color: #2d3748;
-  line-height: 1.8;
-  font-style: italic;
-  position: relative;
-  flex: 1; /* Permite que el texto ocupe el espacio disponible */
-  margin-bottom: 1.5rem; /* Espacio consistente antes del clientInfo */
+.officeDesk:nth-child(2) {
+  bottom: 80px;
+  right: 40px;
 }
 
-.clientInfo {
+.computer {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  top: 10px;
+  left: 30px;
+}
+
+.person {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50% 50% 0 0;
+  bottom: 0;
+  left: 50px;
+}
+
+.incomingReports {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.reportBubble {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  padding-top: 1.5rem;
-  margin-top: auto; /* Empuja el clientInfo hacia abajo */
+  justify-content: center;
+  font-size: 1.2rem;
+  animation: floatIn 3s infinite alternate;
 }
 
-.avatarContainer {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
+.reportBubble:nth-child(2) {
+  animation-delay: 0.5s;
 }
 
-.clientImage {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+.reportBubble:nth-child(3) {
+  animation-delay: 1s;
 }
 
-.testimonialCard:hover .clientImage {
-  transform: scale(1.05);
+.reportBubble:nth-child(4) {
+  animation-delay: 1.5s;
 }
 
-.clientDetails {
-  flex: 1;
+@keyframes floatIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.clientName {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #1a202c;
-  margin-bottom: 0.25rem;
+.dashboardScreen {
+  position: absolute;
+  width: 80%;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  top: 150px;
+  left: 10%;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.clientRole {
-  font-size: 0.875rem;
-  color: #4a5568;
-  line-height: 1.4;
+.dashboardHeader {
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
-.rating {
+.dashboardStats {
   display: flex;
-  color: #ffb454;
-  margin-bottom: 1.5rem;
-  font-size: 1.25rem;
+  gap: 5px;
+  margin-bottom: 10px;
 }
 
-.star {
-  margin-right: 0.25rem;
+.dashboardStats::before, .dashboardStats::after {
+  content: '';
+  flex: 1;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.dashboardMap {
+  height: 50px;
+  background: rgba(91, 43, 51, 0.1);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.dashboardTable {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+/* Proceso de gestión de reportes */
+.processSection {
+  margin-top: 4rem;
+  background-color: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(91, 43, 51, 0.05);
+  border: 1px solid #E5E7EB;
+}
+
+.processTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5B2B33;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+
+.processSteps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.processStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+}
+
+.processIcon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #5B2B33;
+  border: 2px solid #C4B68C;
+}
+
+.processContent {
+  text-align: center;
+}
+
+.processContent h4 {
+  color: #5B2B33;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.processContent p {
+  color: #8A8A8A;
+  font-size: 0.9rem;
+}
+
+.processArrow {
+  font-size: 1.5rem;
+  color: #C4B68C;
+  margin: 0 0.5rem;
 }
 
 @media (max-width: 768px) {
   .section {
     padding: 4rem 1rem;
   }
-
-  .testimonialGrid {
-    grid-template-columns: 1fr;
+  
+  .contentContainer {
+    flex-direction: column;
+  }
+  
+  .processSteps {
+    flex-direction: column;
+  }
+  
+  .processArrow {
+    transform: rotate(90deg);
+    margin: 1rem 0;
   }
 }

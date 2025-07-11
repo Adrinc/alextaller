@@ -1,165 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
+import { translations } from '../../../data/translations';
 import styles from "../css/indexSeccion5.module.css";
 
 const HomeSeccion5 = () => {
   const ingles = useStore(isEnglish);
+  const t = ingles ? translations.en : translations.es;
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const content = {
-    es: {
-      title: "Planes y Precios",
-      subtitle: "Elige el plan que mejor se adapte a tus necesidades",
-      plans: [
-        {
-          name: "Starter",
-          price: "$99",
-          period: "/mes",
-          popular: false,
-          features: [
-            "Hasta 100 dispositivos",
-            "1 MDF + 2 IDFs",
-            "Alertas básicas",
-            "Reportes mensuales",
-            "Soporte por email",
-            "1 usuario administrador"
-          ],
-          buttonText: "Comenzar prueba"
-        },
-        {
-          name: "Pro",
-          price: "$299",
-          period: "/mes",
-          popular: true,
-          features: [
-            "Hasta 500 dispositivos",
-            "3 MDFs + 10 IDFs",
-            "Alertas avanzadas",
-            "Reportes personalizados",
-            "Soporte prioritario 24/7",
-            "5 usuarios con roles"
-          ],
-          buttonText: "Prueba gratuita de 14 días"
-        },
-        {
-          name: "Enterprise",
-          price: "Personalizado",
-          period: "",
-          popular: false,
-          features: [
-            "Dispositivos ilimitados",
-            "MDFs + IDFs ilimitados",
-            "Alertas personalizadas",
-            "API completa",
-            "Soporte dedicado",
-            "Usuarios ilimitados"
-          ],
-          buttonText: "Contactar ventas"
-        }
-      ]
-    },
-    en: {
-      title: "Plans & Pricing",
-      subtitle: "Choose the plan that best fits your needs",
-      plans: [
-        {
-          name: "Starter",
-          price: "$99",
-          period: "/month",
-          popular: false,
-          features: [
-            "Up to 100 devices",
-            "1 MDF + 2 IDFs",
-            "Basic alerts",
-            "Monthly reports",
-            "Email support",
-            "1 admin user"
-          ],
-          buttonText: "Start trial"
-        },
-        {
-          name: "Pro",
-          price: "$299",
-          period: "/month",
-          popular: true,
-          features: [
-            "Up to 500 devices",
-            "3 MDFs + 10 IDFs",
-            "Advanced alerts",
-            "Custom reports",
-            "24/7 priority support",
-            "5 users with roles"
-          ],
-          buttonText: "14-day free trial"
-        },
-        {
-          name: "Enterprise",
-          price: "Custom",
-          period: "",
-          popular: false,
-          features: [
-            "Unlimited devices",
-            "Unlimited MDFs + IDFs",
-            "Custom alerts",
-            "Full API access",
-            "Dedicated support",
-            "Unlimited users"
-          ],
-          buttonText: "Contact sales"
-        }
-      ]
-    }
+  const handleCategoryHover = (index) => {
+    setSelectedCategory(index);
   };
 
-  const textos = ingles ? content.en : content.es;
+  const handleCategoryLeave = () => {
+    setSelectedCategory(null);
+  };
 
   return (
-    <section className={styles.section}>
+    <section id="categorias" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div className={styles.decorativeCircle}></div>
-          <h2 className={styles.title}>
-            {textos.title}
-            <span className={styles.glowDot}></span>
-          </h2>
-          <p className={styles.subtitle}>{textos.subtitle}</p>
-          <div className={styles.headerUnderline}></div>
+          <h2 className={styles.title}>{t.categorias.title}</h2>
+          <p className={styles.subtitle}>{t.categorias.subtitle}</p>
         </div>
-        <div className={styles.pricingGrid}>
-          {textos.plans.map((plan, index) => (
+
+        <div className={styles.categoriesGrid}>
+          {t.categorias.items.map((category, index) => (
             <div 
               key={index} 
-              className={`${styles.pricingCard} ${plan.popular ? styles.popular : ''}`}
+              className={`${styles.categoryCard} ${selectedCategory === index ? styles.active : ''}`}
+              onMouseEnter={() => handleCategoryHover(index)}
+              onMouseLeave={handleCategoryLeave}
             >
-              {plan.popular && (
-                <>
-                  <span className={styles.popularBadge}>
-                    {ingles ? "Most popular" : "Más popular"}
-                  </span>
-                  <div className={styles.shine}></div>
-                </>
-              )}
-              <h3 className={styles.planName}>{plan.name}</h3>
-              <div className={styles.price}>
-                {plan.price}
-                <span className={styles.period}>{plan.period}</span>
+              <div className={styles.categoryIcon}>
+                {category.icon}
               </div>
-              <ul className={styles.featuresList}>
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className={styles.featureItem}>
-                    <span className={styles.featureIcon}>✓</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <button 
-                className={`${styles.ctaButton} ${plan.popular ? styles.primary : styles.secondary}`}
-              >
-                {plan.buttonText}
-              </button>
-              {plan.popular && <div className={styles.glow}></div>}
+              <h3 className={styles.categoryTitle}>{category.title}</h3>
+              <p className={styles.categoryDescription}>{category.description}</p>
+              <div className={styles.reportButton}>
+                <span>{ingles ? "Report" : "Reportar"}</span>
+                <svg className={styles.arrowIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Estadísticas de categorías */}
+        <div className={styles.statsSection}>
+          <h3 className={styles.statsTitle}>
+            {ingles ? "Report Statistics" : "Estadísticas de Reportes"}
+          </h3>
+          <div className={styles.statsGrid}>
+            {(ingles ? translations.en.stats.items : translations.es.stats.items).map((stat, index) => (
+              <div key={index} className={styles.statCard}>
+                <div className={styles.statNumber}>{stat.number}</div>
+                <div className={styles.statLabel}>{stat.label}</div>
+                <div className={styles.statDescription}>{stat.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mapa interactivo preview */}
+        <div className={styles.mapPreview}>
+          <h3 className={styles.mapTitle}>
+            {ingles ? "Interactive Incident Map" : "Mapa Interactivo de Incidencias"}
+          </h3>
+          <div className={styles.mapContainer}>
+            <div className={styles.mapMockup}>
+              <div className={styles.mapPin} style={{top: '30%', left: '40%'}}>
+                <span>💡</span>
+              </div>
+              <div className={styles.mapPin} style={{top: '60%', right: '30%'}}>
+                <span>🛣️</span>
+              </div>
+              <div className={styles.mapPin} style={{bottom: '25%', left: '25%'}}>
+                <span>🗑️</span>
+              </div>
+              <div className={styles.mapPin} style={{top: '45%', right: '20%'}}>
+                <span>🚨</span>
+              </div>
+              <div className={styles.mapOverlay}>
+                <div className={styles.mapControls}>
+                  <button className={styles.mapControl}>🔍</button>
+                  <button className={styles.mapControl}>📍</button>
+                  <button className={styles.mapControl}>🗺️</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

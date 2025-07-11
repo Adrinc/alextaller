@@ -1,114 +1,111 @@
 import React from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
+import { translations } from '../../../data/translations';
 import styles from "../css/indexSeccion6.module.css";
 
 const HomeSeccion6 = () => {
   const ingles = useStore(isEnglish);
-
-  const content = {
-    es: {
-      title: "Testimonios y Casos de Éxito",
-      subtitle: "Descubre cómo NetHive está transformando la gestión de infraestructura de red en empresas líderes",
-      testimonials: [
-        {
-          text: "La visibilidad que nos da NetHive ha transformado por completo nuestro control de infraestructura. Hemos reducido el tiempo de respuesta ante incidencias en un 70%.",
-          name: "Carlos Mendoza",
-          role: "Director de TI",
-          company: "TechCorp Solutions",
-          rating: 5,
-          avatar: "/image/testimonials/avatar1.png"
-        },
-        {
-          text: "La implementación de NetHive fue rápida y sin complicaciones. El mapeo visual de conexiones nos ayuda a prevenir problemas antes de que ocurran.",
-          name: "Ana Martínez",
-          role: "Network Manager",
-          company: "Global Networks SA",
-          rating: 5,
-          avatar: "/image/testimonials/avatar2.png"
-        },
-        {
-          text: "Elegimos NetHive por su facilidad de uso y nos quedamos por sus potentes características. El soporte técnico es excepcional.",
-          name: "Roberto Sánchez",
-          role: "CTO",
-          company: "DataCenter Pro",
-          rating: 5,
-          avatar: "/image/testimonials/avatar3.png"
-        }
-      ]
-    },
-    en: {
-      title: "Testimonials and Success Stories",
-      subtitle: "Discover how NetHive is transforming network infrastructure management in leading companies",
-      testimonials: [
-        {
-          text: "The visibility that NetHive gives us has completely transformed our infrastructure control. We've reduced incident response time by 70%.",
-          name: "Charles Miller",
-          role: "IT Director",
-          company: "TechCorp Solutions",
-          rating: 5,
-          avatar: "/image/testimonials/avatar1.png"
-        },
-        {
-          text: "NetHive implementation was quick and hassle-free. The visual connection mapping helps us prevent issues before they occur.",
-          name: "Anna Martinez",
-          role: "Network Manager",
-          company: "Global Networks Inc",
-          rating: 5,
-          avatar: "/image/testimonials/avatar2.png"
-        },
-        {
-          text: "We chose NetHive for its ease of use and stayed for its powerful features. The technical support is exceptional.",
-          name: "Robert Sanders",
-          role: "CTO",
-          company: "DataCenter Pro",
-          rating: 5,
-          avatar: "/image/testimonials/avatar3.png"
-        }
-      ]
-    }
-  };
-
-  const textos = ingles ? content.en : content.es;
-
-  const renderStars = (rating) => {
-    return Array(rating).fill('★').map((star, index) => (
-      <span key={index} className={styles.star}>{star}</span>
-    ));
-  };
+  const t = ingles ? translations.en : translations.es;
 
   return (
-    <section className={styles.section}>
+    <section id="soporte-institucional" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>{textos.title}</h2>
-          <p className={styles.subtitle}>{textos.subtitle}</p>
+          <h2 className={styles.title}>{t.soporteInstitucional.title}</h2>
+          <p className={styles.subtitle}>{t.soporteInstitucional.subtitle}</p>
         </div>
-        <div className={styles.testimonialGrid}>
-          {textos.testimonials.map((testimonial, index) => (
-            <div key={index} className={styles.testimonialCard}>
-              <div className={styles.rating}>
-                {renderStars(testimonial.rating)}
+
+        <div className={styles.contentContainer}>
+          <div className={styles.textContent}>
+            <p className={styles.description}>
+              {t.soporteInstitucional.description}
+            </p>
+
+            <div className={styles.featuresGrid}>
+              {t.soporteInstitucional.features.map((feature, index) => (
+                <div key={index} className={styles.featureCard}>
+                  <div className={styles.featureIcon}>
+                    {feature.icon}
+                  </div>
+                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                  <p className={styles.featureDescription}>{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.officeIllustration}>
+            <div className={styles.officeBg}>
+              <div className={styles.officeDesk}>
+                <div className={styles.computer}></div>
+                <div className={styles.person}></div>
               </div>
-              <p className={styles.testimonialText}>"{testimonial.text}"</p>
-              <div className={styles.clientInfo}>
-                <div className={styles.avatarContainer}>
-                  <img 
-                    src={testimonial.avatar} 
-                    alt={testimonial.name}
-                    className={styles.clientImage}
-                    loading="lazy"
-                  />
-                </div>
-                <div className={styles.clientDetails}>
-                  <h3 className={styles.clientName}>{testimonial.name}</h3>
-                  <p className={styles.clientRole}>
-                    {testimonial.role} - {testimonial.company}
-                  </p>
-                </div>
+              <div className={styles.officeDesk}>
+                <div className={styles.computer}></div>
+                <div className={styles.person}></div>
+              </div>
+              <div className={styles.incomingReports}>
+                <div className={styles.reportBubble}>📍</div>
+                <div className={styles.reportBubble}>🛣️</div>
+                <div className={styles.reportBubble}>💡</div>
+                <div className={styles.reportBubble}>🗑️</div>
+              </div>
+              <div className={styles.dashboardScreen}>
+                <div className={styles.dashboardHeader}></div>
+                <div className={styles.dashboardStats}></div>
+                <div className={styles.dashboardMap}></div>
+                <div className={styles.dashboardTable}></div>
               </div>
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* Proceso de gestión de reportes */}
+        <div className={styles.processSection}>
+          <h3 className={styles.processTitle}>
+            {ingles ? "How we handle your reports" : "Cómo gestionamos tus reportes"}
+          </h3>
+          
+          <div className={styles.processSteps}>
+            <div className={styles.processStep}>
+              <div className={styles.processIcon}>📥</div>
+              <div className={styles.processContent}>
+                <h4>{ingles ? "Reception" : "Recepción"}</h4>
+                <p>{ingles ? "Reports are received in real time" : "Los reportes se reciben en tiempo real"}</p>
+              </div>
+            </div>
+            
+            <div className={styles.processArrow}>→</div>
+            
+            <div className={styles.processStep}>
+              <div className={styles.processIcon}>🔍</div>
+              <div className={styles.processContent}>
+                <h4>{ingles ? "Verification" : "Verificación"}</h4>
+                <p>{ingles ? "An inspector validates the incident" : "Un inspector valida el incidente"}</p>
+              </div>
+            </div>
+            
+            <div className={styles.processArrow}>→</div>
+            
+            <div className={styles.processStep}>
+              <div className={styles.processIcon}>📋</div>
+              <div className={styles.processContent}>
+                <h4>{ingles ? "Assignment" : "Asignación"}</h4>
+                <p>{ingles ? "The case is assigned to the appropriate department" : "El caso se asigna al departamento correspondiente"}</p>
+              </div>
+            </div>
+            
+            <div className={styles.processArrow}>→</div>
+            
+            <div className={styles.processStep}>
+              <div className={styles.processIcon}>✅</div>
+              <div className={styles.processContent}>
+                <h4>{ingles ? "Resolution" : "Resolución"}</h4>
+                <p>{ingles ? "The problem is fixed and documented" : "El problema se resuelve y documenta"}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
