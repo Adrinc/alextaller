@@ -147,7 +147,7 @@ const HomeSeccion4 = () => {
         </div>
 
         {/* Demostración visual del proceso */}
-        <div className={styles.processDemo}>
+     {/*    <div className={styles.processDemo}>
           <div className={styles.demoContent}>
             <div className={styles.demoText}>
               <h3 className={styles.demoTitle}>
@@ -183,7 +183,7 @@ const HomeSeccion4 = () => {
             </div>
 
             <div className={styles.demoVisual}>
-              {/* Placeholder para imagen de demostración */}
+         
               <div className={styles.imagePlaceholder}>
                 <div className={styles.placeholderContent}>
                   <svg className={styles.placeholderIcon} viewBox="0 0 24 24" fill="currentColor">
@@ -194,7 +194,7 @@ const HomeSeccion4 = () => {
                 </div>
               </div>
 
-              {/* Overlay con métricas en tiempo real */}
+           
               <div className={styles.demoOverlay}>
                 <div className={styles.overlayCard}>
                   <div className={styles.overlayHeader}>
@@ -215,7 +215,7 @@ const HomeSeccion4 = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Sección de beneficios del proceso */}
         <div className={styles.processBenefits}>

@@ -94,13 +94,13 @@ const HomeSeccion1 = () => {
       {/* Video de fondo */}
       <div className={styles.videoBackground}>
         <video autoPlay muted loop playsInline>
-          <source src="/videos/mdf1.mp4" type="video/mp4" />
+          <source src="/videos/ojociudadano.mp4" type="video/mp4" />
         </video>
         <div className={styles.videoOverlay}></div>
       </div>
 
       {/* Partículas flotantes sutiles */}
-      <div className={styles.particles}>
+{/*       <div className={styles.particles}>
         {[...Array(20)].map((_, i) => (
           <div 
             key={i} 
@@ -114,7 +114,7 @@ const HomeSeccion1 = () => {
             {i % 4 === 0 ? '💡' : i % 4 === 1 ? '🏛️' : i % 4 === 2 ? '📊' : '🔒'}
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Contenido principal */}
       <div className={styles.heroContainer}>

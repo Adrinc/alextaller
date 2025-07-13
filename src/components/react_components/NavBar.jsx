@@ -131,6 +131,18 @@ const NavBar = () => {
 
   // Función para navegación suave a secciones
   const scrollToSection = (href, sectionId) => {
+    // Verificar si estamos en la página principal
+    const isOnHomePage = window.location.pathname === '/' || window.location.pathname === '/index.astro';
+    
+    if (!isOnHomePage) {
+      // Si no estamos en la página principal, navegar primero a index
+      // y luego hacer scroll a la sección
+      const targetSection = href.replace('#', '');
+      window.location.href = `/?section=${targetSection}`;
+      return;
+    }
+    
+    // Si ya estamos en la página principal, hacer scroll normal
     const element = document.querySelector(href);
     if (element) {
       const offset = 80; // Altura del navbar
@@ -145,6 +157,47 @@ const NavBar = () => {
       setIsOpen(false);
     }
   };
+
+  // Efecto para manejar navegación desde otras páginas
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetSection = urlParams.get('section');
+    
+    if (targetSection) {
+      // Esperar a que la página se cargue completamente
+      const timer = setTimeout(() => {
+        const element = document.querySelector(`#${targetSection}`);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.offsetTop - offset;
+          
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+          
+          // Encontrar el sectionId correspondiente al targetSection
+          const sectionMapping = {
+            'hero': 'inicio',
+            'que-es': 'app',
+            'caracteristicas': 'funciones',
+            'categorias': 'reportar',
+            'soporte-institucional': 'gobierno',
+            'preguntas': 'faq'
+          };
+          
+          const mappedSectionId = sectionMapping[targetSection] || 'inicio';
+          setActiveSection(mappedSectionId);
+          
+          // Limpiar el parámetro de la URL sin recargar la página
+          const newUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, newUrl);
+        }
+      }, 500); // Dar tiempo para que se renderice la página
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Función para verificar si el enlace está activo
   const isActiveLink = (sectionId) => {

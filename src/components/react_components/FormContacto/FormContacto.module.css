@@ -1,20 +1,16 @@
 /* Contenedor principal */
 .container {
-    background: linear-gradient(135deg, 
-        rgba(13, 14, 38, 0.9) 0%, 
-        rgba(124, 6, 235, 0.1) 50%, 
-        rgba(85, 217, 255, 0.1) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
+    background: #5B2B33;
+    backdrop-filter: blur(10px);
+    border: 1px solid #E5E7EB;
+    color: #FFFFFF;
     padding: 3rem 2.5rem;
-    border-radius: 24px;
+    border-radius: 16px;
     max-width: 650px;
     margin: 2rem auto;
     box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 10px 30px rgba(91, 43, 51, 0.2),
+        0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
     animation: slideInUp 0.8s ease-out;
@@ -27,10 +23,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, 
-        transparent 30%, 
-        rgba(124, 6, 235, 0.1) 50%, 
-        transparent 70%);
+    background: linear-gradient(135deg, 
+        rgba(196, 182, 140, 0.05) 0%, 
+        rgba(74, 35, 43, 0.05) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -54,10 +49,7 @@
 /* Título */
 .title {
     font-size: 2.2rem;
-    background: linear-gradient(135deg, #B43BFF, #55D9FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #FFFFFF;
     margin-bottom: 2rem;
     text-align: center;
     font-weight: 700;
@@ -108,10 +100,10 @@
 
 /* Etiqueta del campo */
 .label {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0.8rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: #C4B68C;
     transition: color 0.3s ease;
 }
 
@@ -120,9 +112,9 @@
     display: flex;
     align-items: center;
     position: relative;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    border: 1px solid rgba(85, 217, 255, 0.3);
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 2px solid #E5E7EB;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
@@ -136,7 +128,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
         transparent, 
-        rgba(255, 255, 255, 0.1), 
+        rgba(196, 182, 140, 0.1), 
         transparent);
     transition: left 0.5s ease;
 }
@@ -146,23 +138,23 @@
 }
 
 .inputContainer:focus-within {
-    border-color: #B43BFF;
+    border-color: #C4B68C;
     box-shadow: 
-        0 0 20px rgba(180, 59, 255, 0.3),
-        0 0 0 1px rgba(180, 59, 255, 0.2);
-    background: rgba(180, 59, 255, 0.05);
-    transform: translateY(-2px);
+        0 0 0 3px rgba(196, 182, 140, 0.3),
+        0 4px 15px rgba(196, 182, 140, 0.2);
+    background: #FFFFFF;
+    transform: translateY(-1px);
 }
 
 /* Input y Textarea */
 .input,
 .textarea {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 1rem 1.2rem;
     border: none;
-    border-radius: 16px;
+    border-radius: 12px;
     background: transparent;
-    color: white;
+    color: #5B2B33;
     flex: 1;
     transition: all 0.3s ease;
     font-family: inherit;
@@ -170,13 +162,13 @@
 
 .input::placeholder,
 .textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: #8A8A8A;
     transition: color 0.3s ease;
 }
 
 .input:focus::placeholder,
 .textarea:focus::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: #D1CFCF;
 }
 
 .input:focus,
@@ -192,13 +184,13 @@
 
 /* Botón de envío */
 .submitButton {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    padding: 1.2rem 2rem;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #55D9FF, #B43BFF);
-    color: white;
+    border-radius: 12px;
+    background: #C4B68C;
+    color: #5B2B33;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -214,7 +206,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #B43BFF, #55D9FF);
+    background: #B8AA7A;
     transition: left 0.3s ease;
     z-index: -1;
 }
@@ -224,17 +216,16 @@
 }
 
 .submitButton:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 
-        0 15px 35px rgba(180, 59, 255, 0.4),
-        0 5px 15px rgba(0, 0, 0, 0.3);
+        0 8px 25px rgba(196, 182, 140, 0.4),
+        0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .submitButton:active {
-    transform: translateY(-1px);
+    transform: translateY(0px);
     box-shadow: 
-        0 5px 15px rgba(180, 59, 255, 0.3),
-        0 2px 5px rgba(0, 0, 0, 0.3);
+        0 4px 15px rgba(196, 182, 140, 0.3);
 }
 
 .submitButton.submitting {
@@ -264,28 +255,27 @@
 /* Iconos */
 .icon {
     margin: 0 1rem 0 1.2rem;
-    width: 24px;
-    height: 24px;
-    opacity: 0.8;
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    filter: none;
 }
 
 .inputContainer:focus-within .icon {
     opacity: 1;
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(180, 59, 255, 0.5));
+    transform: scale(1.05);
 }
 
 /* Mensajes de error */
 .error {
-    color: #FF6B6B;
-    font-size: 0.9rem;
+    color: #EF4444;
+    font-size: 0.875rem;
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
-    background: rgba(255, 107, 107, 0.1);
+    background: rgba(239, 68, 68, 0.05);
     border-radius: 8px;
-    border-left: 3px solid #FF6B6B;
+    border-left: 3px solid #EF4444;
     animation: shake 0.5s ease-in-out;
 }
 
@@ -308,36 +298,36 @@
 }
 
 .successMessage {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    color: #22c55e;
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    color: #059669;
 }
 
 .errorMessage {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #DC2626;
 }
 
 .successIcon, .errorIcon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.875rem;
 }
 
 .successIcon {
-    background: rgba(34, 197, 94, 0.2);
-    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    color: #059669;
 }
 
 .errorIcon {
-    background: rgba(239, 68, 68, 0.2);
-    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    color: #DC2626;
 }
 
 @keyframes slideInDown {

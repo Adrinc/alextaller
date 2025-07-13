@@ -21,16 +21,16 @@ const FloatingParticles = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Crear partículas
-    for (let i = 0; i < 50; i++) {
+    // Crear menos partículas más sutiles
+    for (let i = 0; i < 20; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.5 ? 'rgba(180, 59, 255,' : 'rgba(85, 217, 255,'
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        size: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.2 + 0.05,
+        color: Math.random() > 0.5 ? 'rgba(196, 182, 140,' : 'rgba(255, 255, 255,'
       });
     }
 
@@ -49,18 +49,18 @@ const FloatingParticles = () => {
         ctx.fillStyle = particle.color + particle.opacity + ')';
         ctx.fill();
         
-        // Conectar partículas cercanas
+        // Conectar solo partículas muy cercanas con líneas más sutiles
         particles.forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 100) {
+          if (distance < 80) {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(180, 59, 255, ${0.1 * (1 - distance / 100)})`;
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(196, 182, 140, ${0.05 * (1 - distance / 80)})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         });
@@ -91,6 +91,22 @@ const ContactoSeccion = () => {
   return (
     <section id="Contacto" className={styles.section}>
       <FloatingParticles />
+      
+      {/* Elementos decorativos de fondo */}
+      <div className={styles.backgroundShapes}>
+        <div className={styles.shape1}></div>
+        <div className={styles.shape2}></div>
+        <div className={styles.shape3}></div>
+        <div className={styles.shape4}></div>
+        <div className={styles.shape5}></div>
+      </div>
+      
+      {/* Formas geométricas */}
+      <div className={styles.geometricShapes}>
+        <div className={styles.triangle1}></div>
+        <div className={styles.triangle2}></div>
+        <div className={styles.triangle3}></div>
+      </div>
       
       <div className={styles.container}>
         <div className={styles.formColumn}>
@@ -123,13 +139,6 @@ const ContactoSeccion = () => {
       </div>
       
       <div className={styles.esfera} />
-      
-      {/* Elementos decorativos adicionales */}
-      <div className={styles.backgroundShapes}>
-        <div className={styles.shape1}></div>
-        <div className={styles.shape2}></div>
-        <div className={styles.shape3}></div>
-      </div>
     </section>
   );
 };

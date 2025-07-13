@@ -134,15 +134,11 @@ const HomeSeccion2 = () => {
           <div className={styles.imageContent}>
             {/* Placeholder para imagen real */}
             <div className={styles.imageContainer}>
-              <div className={styles.imagePlaceholder}>
-                <div className={styles.placeholderContent}>
-                  <svg className={styles.placeholderIcon} viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19,7H18V6A2,2 0 0,0 16,4H8A2,2 0 0,0 6,6V7H5A3,3 0 0,0 2,10V19A3,3 0 0,0 5,22H19A3,3 0 0,0 22,19V10A3,3 0 0,0 19,7M8,6H16V7H8V6M20,19A1,1 0 0,1 19,20H5A1,1 0 0,1 4,19V10A1,1 0 0,1 5,9H19A1,1 0 0,1 20,10V19M10,11H14A1,1 0 0,1 15,12A1,1 0 0,1 14,13H10A1,1 0 0,1 9,12A1,1 0 0,1 10,11Z"/>
-                  </svg>
-                  <h3>{ingles ? "Official Municipal Platform" : "Plataforma Municipal Oficial"}</h3>
-                  <p>{ingles ? "Image placeholder - Citizens using the app in Ensenada" : "Placeholder de imagen - Ciudadanos usando la app en Ensenada"}</p>
-                </div>
-              </div>
+              <img 
+                src="/image/global/ensenada.jpg" 
+                alt={ingles ? "Ensenada, Baja California - Municipal services" : "Ensenada, Baja California - Servicios municipales"}
+                className={styles.mainImage}
+              />
               
               {/* Overlay con información clave */}
               <div className={styles.imageOverlay}>

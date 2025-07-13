@@ -2,11 +2,76 @@ import React from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
 import { translations } from '../../../data/translations';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import styles from "../css/indexSeccion3.module.css";
 
 const HomeSeccion3 = () => {
   const ingles = useStore(isEnglish);
   const t = ingles ? translations.en : translations.es;
+
+  // Datos para la gráfica de rendimiento del sistema
+  const performanceData = [
+    { 
+      month: ingles ? 'Jan' : 'Ene', 
+      reports: 1250, 
+      resolved: 1180, 
+      responseTime: 2.1 
+    },
+    { 
+      month: ingles ? 'Feb' : 'Feb', 
+      reports: 1680, 
+      resolved: 1620, 
+      responseTime: 1.9 
+    },
+    { 
+      month: ingles ? 'Mar' : 'Mar', 
+      reports: 2100, 
+      resolved: 2010, 
+      responseTime: 2.0 
+    },
+    { 
+      month: ingles ? 'Apr' : 'Abr', 
+      reports: 1890, 
+      resolved: 1850, 
+      responseTime: 1.8 
+    },
+    { 
+      month: ingles ? 'May' : 'May', 
+      reports: 2450, 
+      resolved: 2380, 
+      responseTime: 1.7 
+    },
+    { 
+      month: ingles ? 'Jun' : 'Jun', 
+      reports: 2650, 
+      resolved: 2590, 
+      responseTime: 1.6 
+    }
+  ];
+
+  // Tooltip personalizado para la gráfica
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className={styles.chartTooltip}>
+          <p className={styles.tooltipLabel}>{label}</p>
+          <p className={styles.tooltipReports}>
+            <span className={styles.tooltipIndicator} style={{backgroundColor: '#5B2B33'}}></span>
+            {ingles ? 'Reports:' : 'Reportes:'} {payload[0].value}
+          </p>
+          <p className={styles.tooltipResolved}>
+            <span className={styles.tooltipIndicator} style={{backgroundColor: '#C4B68C'}}></span>
+            {ingles ? 'Resolved:' : 'Resueltos:'} {payload[1].value}
+          </p>
+          <p className={styles.tooltipTime}>
+            <span className={styles.tooltipIndicator} style={{backgroundColor: '#10B981'}}></span>
+            {ingles ? 'Avg Time:' : 'Tiempo Prom:'} {payload[2].value}h
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   const CameraIcon = () => (
     <svg className={styles.iconSvg} viewBox="0 0 24 24" fill="currentColor">
@@ -207,34 +272,85 @@ const HomeSeccion3 = () => {
             </div>
 
             <div className={styles.technicalImage}>
-              <div className={styles.imagePlaceholder}>
-                <div className={styles.placeholderContent}>
-                  <svg className={styles.placeholderIcon} viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z"/>
-                  </svg>
-                  <h4>{ingles ? "System Architecture Diagram" : "Diagrama de Arquitectura del Sistema"}</h4>
-                  <p>{ingles ? "Image placeholder - Technical infrastructure overview" : "Placeholder de imagen - Resumen de infraestructura técnica"}</p>
+              <div className={styles.chartContainer}>
+                <div className={styles.chartHeader}>
+                  <h4 className={styles.chartTitle}>
+                    {ingles ? "System Performance Analytics" : "Análisis de Rendimiento del Sistema"}
+                  </h4>
+                  <div className={styles.chartLegend}>
+                    <div className={styles.legendItem}>
+                      <span className={styles.legendColor} style={{backgroundColor: '#5B2B33'}}></span>
+                      <span>{ingles ? 'Reports' : 'Reportes'}</span>
+                    </div>
+                    <div className={styles.legendItem}>
+                      <span className={styles.legendColor} style={{backgroundColor: '#C4B68C'}}></span>
+                      <span>{ingles ? 'Resolved' : 'Resueltos'}</span>
+                    </div>
+                    <div className={styles.legendItem}>
+                      <span className={styles.legendColor} style={{backgroundColor: '#10B981'}}></span>
+                      <span>{ingles ? 'Response Time (h)' : 'Tiempo Resp. (h)'}</span>
+                    </div>
+                  </div>
                 </div>
+                
+                <ResponsiveContainer width="100%" height={350}>
+                  <AreaChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                    <XAxis 
+                      dataKey="month" 
+                      tick={{ fontSize: 12, fill: '#6B7280' }}
+                      axisLine={{ stroke: '#E5E7EB' }}
+                    />
+                    <YAxis 
+                      tick={{ fontSize: 12, fill: '#6B7280' }}
+                      axisLine={{ stroke: '#E5E7EB' }}
+                    />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Area 
+                      type="monotone" 
+                      dataKey="reports" 
+                      stackId="1"
+                      stroke="#5B2B33" 
+                      fill="#5B2B33"
+                      fillOpacity={0.6}
+                    />
+                    <Area 
+                      type="monotone" 
+                      dataKey="resolved" 
+                      stackId="2"
+                      stroke="#C4B68C" 
+                      fill="#C4B68C"
+                      fillOpacity={0.7}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="responseTime" 
+                      stroke="#10B981"
+                      strokeWidth={3}
+                      dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
               </div>
 
-              {/* Overlay con métricas */}
+              {/* Overlay con métricas actualizadas */}
               <div className={styles.imageOverlay}>
                 <div className={styles.metricCard}>
-                  <div className={styles.metricValue}>2.5s</div>
+                  <div className={styles.metricValue}>1.6h</div>
                   <div className={styles.metricLabel}>
                     {ingles ? "Avg Response Time" : "Tiempo Promedio"}
                   </div>
                 </div>
                 <div className={styles.metricCard}>
-                  <div className={styles.metricValue}>15TB</div>
+                  <div className={styles.metricValue}>97.8%</div>
                   <div className={styles.metricLabel}>
-                    {ingles ? "Data Processed" : "Datos Procesados"}
+                    {ingles ? "Resolution Rate" : "Tasa Resolución"}
                   </div>
                 </div>
                 <div className={styles.metricCard}>
-                  <div className={styles.metricValue}>256</div>
+                  <div className={styles.metricValue}>15.4K</div>
                   <div className={styles.metricLabel}>
-                    {ingles ? "Bit Encryption" : "Encriptación Bit"}
+                    {ingles ? "Total Reports" : "Reportes Totales"}
                   </div>
                 </div>
               </div>
@@ -242,37 +358,7 @@ const HomeSeccion3 = () => {
           </div>
         </div>
 
-        {/* Sección de integraciones */}
-        <div className={styles.integrationsSection}>
-          <h3 className={styles.integrationsTitle}>
-            {ingles ? "Government System Integrations" : "Integraciones con Sistemas Gubernamentales"}
-          </h3>
-          <p className={styles.integrationsDesc}>
-            {ingles 
-              ? "Seamlessly integrates with existing municipal systems and databases for unified operations."
-              : "Se integra perfectamente con sistemas y bases de datos municipales existentes para operaciones unificadas."
-            }
-          </p>
-          
-          <div className={styles.integrationsGrid}>
-            <div className={styles.integrationCard}>
-              <div className={styles.integrationIcon}>🏛️</div>
-              <span>{ingles ? "Municipal ERP" : "ERP Municipal"}</span>
-            </div>
-            <div className={styles.integrationCard}>
-              <div className={styles.integrationIcon}>📋</div>
-              <span>{ingles ? "Work Order System" : "Sistema de Órdenes"}</span>
-            </div>
-            <div className={styles.integrationCard}>
-              <div className={styles.integrationIcon}>🗺️</div>
-              <span>{ingles ? "GIS Mapping" : "Mapeo GIS"}</span>
-            </div>
-            <div className={styles.integrationCard}>
-              <div className={styles.integrationIcon}>📊</div>
-              <span>{ingles ? "Analytics Platform" : "Plataforma Análisis"}</span>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );
