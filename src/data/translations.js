@@ -361,6 +361,61 @@ export const translations = {
       success: "Mensaje enviado correctamente",
       error: "Error al enviar el mensaje"
     },
+    ia: {
+      title: "La IA que entiende lo que ves y sientes",
+      subtitle: "Tecnología avanzada para un análisis más preciso de tus reportes",
+      description: "Nuestra inteligencia artificial analiza tanto las imágenes que capturas como el contenido emocional de tus comentarios, garantizando coherencia y priorizando casos urgentes.",
+      imageAnalysis: {
+        title: "Análisis de Imagen",
+        subtitle: "Reconocimiento automático",
+        detected: "Objeto detectado:",
+        confidence: "Confianza:"
+      },
+      textAnalysis: {
+        title: "Análisis de Texto",
+        subtitle: "Estado emocional",
+        emotion: "Emoción detectada:",
+        urgency: "Nivel de urgencia:"
+      },
+      process: {
+        title: "¿Cómo funciona nuestra IA?",
+        subtitle: "Un proceso inteligente en 4 pasos",
+        steps: [
+          {
+            title: "Reconocimiento Visual",
+            description: "Identifica automáticamente objetos, infraestructura y problemas en tus fotos"
+          },
+          {
+            title: "Análisis Emocional",
+            description: "Detecta el estado emocional y nivel de frustración en tus comentarios"
+          },
+          {
+            title: "Verificación de Coherencia",
+            description: "Confirma que la imagen y el texto correspondan al mismo problema"
+          },
+          {
+            title: "Priorización Inteligente",
+            description: "Asigna prioridad basada en urgencia y evidencia detectada"
+          }
+        ]
+      },
+      trust: {
+        title: "Tecnología que genera confianza",
+        description: "Esta inteligencia artificial ayuda a mejorar la atención ciudadana y priorizar los casos más urgentes, garantizando que cada reporte sea tratado con la seriedad que merece.",
+        features: [
+          "Reducción de reportes falsos en 85%",
+          "Tiempo de respuesta mejorado en 60%",
+          "Mayor precisión en la clasificación"
+        ]
+      },
+      example: {
+        userComment: "Estoy cansado de que nadie arregle este semáforo en la colonia X, es un peligro constante",
+        detected: "Semáforo",
+        emotion: "Frustración alta",
+        confidence: "94%",
+        urgency: "Media-Alta"
+      }
+    },
     // Mantengo algunas secciones para compatibilidad
     contactoSeccion: {
       title: "¡Hablemos!",
@@ -728,6 +783,61 @@ export const translations = {
       placeholder_mensaje: "Write your message here...",
       success: "Message sent successfully",
       error: "Error sending message"
+    },
+    ia: {
+      title: "AI that understands what you see and feel",
+      subtitle: "Advanced technology for more precise analysis of your reports",
+      description: "Our artificial intelligence analyzes both the images you capture and the emotional content of your comments, ensuring coherence and prioritizing urgent cases.",
+      imageAnalysis: {
+        title: "Image Analysis",
+        subtitle: "Automatic recognition",
+        detected: "Object detected:",
+        confidence: "Confidence:"
+      },
+      textAnalysis: {
+        title: "Text Analysis",
+        subtitle: "Emotional state",
+        emotion: "Emotion detected:",
+        urgency: "Urgency level:"
+      },
+      process: {
+        title: "How does our AI work?",
+        subtitle: "An intelligent process in 4 steps",
+        steps: [
+          {
+            title: "Visual Recognition",
+            description: "Automatically identifies objects, infrastructure and problems in your photos"
+          },
+          {
+            title: "Emotional Analysis",
+            description: "Detects emotional state and frustration level in your comments"
+          },
+          {
+            title: "Coherence Verification",
+            description: "Confirms that image and text correspond to the same problem"
+          },
+          {
+            title: "Smart Prioritization",
+            description: "Assigns priority based on urgency and detected evidence"
+          }
+        ]
+      },
+      trust: {
+        title: "Technology that builds trust",
+        description: "This artificial intelligence helps improve citizen service and prioritize the most urgent cases, ensuring that each report is treated with the seriousness it deserves.",
+        features: [
+          "85% reduction in false reports",
+          "60% improved response time",
+          "Greater accuracy in classification"
+        ]
+      },
+      example: {
+        userComment: "I'm tired of no one fixing this traffic light in neighborhood X, it's a constant danger",
+        detected: "Traffic Light",
+        emotion: "High Frustration",
+        confidence: "94%",
+        urgency: "Medium-High"
+      }
     },
     contactoSeccion: {
       title: "Let's talk!",
