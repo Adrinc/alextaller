@@ -409,7 +409,7 @@ export const translations = {
         ]
       },
       example: {
-        userComment: "Llevo semanas reportando este semáforo caído y nadie ha hecho nada. Está justo en una intersección muy transitada de la colonia X, y todos los días representa un riesgo para peatones, ciclistas y conductores. Es increíble que pasen los días y las autoridades sigan sin atenderlo. ¿Qué tiene que pasar para que lo arreglen? ¿Un accidente? Ya estamos hartos de la negligencia.",
+        userComment: "Llevo semanas reportando este semáforo caído y nadie ha hecho nada. Está justo en una intersección muy transitada de la colonia Lomas del Prado, y todos los días representa un riesgo para peatones, ciclistas y conductores. Es increíble que pasen los días y las autoridades sigan sin atenderlo. ¿Qué tiene que pasar para que lo arreglen? ¿Un accidente? Ya estamos hartos de la negligencia.",
         detected: "Semáforo",
         emotion: "Frustración alta",
         confidence: "94%",
@@ -832,7 +832,7 @@ export const translations = {
         ]
       },
       example: {
-        userComment: "I've been reporting this downed traffic light for weeks, and no one has done anything. It's right at a busy intersection in Colonia X, and every day it poses a risk to pedestrians, cyclists, and drivers. It's incredible that days go by and the authorities just keep saying nothing. What has to happen for them to fix it? An accident? We're fed up with the negligence.",
+        userComment: "I've been reporting this downed traffic light for weeks, and no one has done anything. It's right at a busy intersection in the Lomas del Prado neighborhood, and every day it poses a risk to pedestrians, cyclists, and drivers. It's incredible that days go by and the authorities continue to ignore it. What has to happen for them to fix it? An accident? We're fed up with the negligence.",
         detected: "Traffic Light",
         emotion: "High Frustration",
         confidence: "94%",
