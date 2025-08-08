@@ -1128,7 +1128,6 @@
   overflow: hidden;
   height: 280px;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -1160,14 +1159,6 @@
   50% { 
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent 30%, transparent 70%, rgba(218, 165, 32, 0.3));
   }
-}
-
-.processStep:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 0 60px rgba(255, 215, 0, 0.3),
-    0 0 100px rgba(255, 215, 0, 0.1);
 }
 
 .stepIcon {

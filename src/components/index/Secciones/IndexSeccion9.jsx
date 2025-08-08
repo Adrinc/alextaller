@@ -913,239 +913,83 @@ const IndexSeccion9 = () => {
 
           <div className={styles.processSteps}>
             {t.process.steps.map((step, index) => (
-              <motion.div 
+              <div 
                 key={index} 
                 className={styles.processStep}
-                variants={{
-                  hidden: { y: 50, opacity: 0, rotateY: -20 },
-                  visible: { 
-                    y: 0, 
-                    opacity: 1, 
-                    rotateY: 0,
-                    transition: { delay: index * 0.2 }
-                  }
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  boxShadow: "0 25px 50px rgba(91, 43, 51, 0.25)",
-                  background: "linear-gradient(145deg, #FFFFFF, rgba(196,182,140,0.05))"
-                }}
-                animate={{
-                  background: analysisComplete && index <= detectionPhase
-                    ? ["rgba(255,255,255,0.95)", "rgba(196,182,140,0.1)", "rgba(255,255,255,0.95)"]
-                    : "rgba(255,255,255,0.95)"
-                }}
-                transition={{ 
-                  background: { duration: 2, repeat: Infinity },
-                  hover: { duration: 0.3 }
-                }}
               >
-                <motion.div 
-                  className={styles.stepIcon}
-                  animate={{
-                    scale: analysisComplete && index <= detectionPhase ? [1, 1.1, 1] : 1
-                  }}
-                  transition={{ 
-                    scale: { duration: 1, repeat: Infinity }
-                  }}
-                >
+                <div className={styles.stepIcon}>
                   <ProcessIcon step={index} />
-                </motion.div>
-                <motion.div 
-                  className={styles.stepContent}
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1, transition: { delay: index * 0.3 + 0.5 } }
-                  }}
-                >
+                </div>
+                <div className={styles.stepContent}>
                   <h4 className={styles.stepTitle}>{step.title}</h4>
                   <p className={styles.stepDescription}>{step.description}</p>
-                </motion.div>
+                </div>
                 {index < t.process.steps.length - 1 && (
-                  <motion.div 
-                    className={styles.stepConnector}
-                    animate={{
-                      opacity: analysisComplete && index < detectionPhase ? [0.5, 1, 0.5] : 0.7,
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
+                  <div className={styles.stepConnector}>
                     <svg viewBox="0 0 24 24" fill="currentColor">
                       <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
                     </svg>
-                  </motion.div>
+                  </div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
 
-        {/* Sección de confianza con efectos holográficos */}
-        <motion.div 
-          className={styles.trustSection}
-          variants={{
-            hidden: { y: 80, opacity: 0 },
-            visible: { y: 0, opacity: 1 }
-          }}
-          whileHover={{
-            boxShadow: "0 30px 60px rgba(91, 43, 51, 0.2)",
-            background: "linear-gradient(145deg, rgba(255,255,255,0.98), rgba(196,182,140,0.03))"
-          }}
-        >
+        {/* Sección de confianza sin efectos */}
+        <div className={styles.trustSection}>
           <div className={styles.trustContent}>
-            <motion.div 
-              className={styles.trustText}
-              variants={{
-                hidden: { x: -50, opacity: 0 },
-                visible: { x: 0, opacity: 1 }
-              }}
-            >
-              <motion.h3 
-                className={styles.trustTitle}
-                animate={inView ? {
-                  color: ["#5B2B33", "#C4B68C", "#5B2B33"]
-                } : {}}
-                transition={{ duration: 4, repeat: Infinity }}
-              >
+            <div className={styles.trustText}>
+              <h3 className={styles.trustTitle}>
                 {t.trust.title}
-              </motion.h3>
+              </h3>
               <p className={styles.trustDescription}>{t.trust.description}</p>
               
               <div className={styles.trustFeatures}>
                 {t.trust.features.map((feature, index) => (
-                  <motion.div 
+                  <div 
                     key={index} 
                     className={styles.trustFeature}
-                    variants={{
-                      hidden: { x: -30, opacity: 0 },
-                      visible: { x: 0, opacity: 1, transition: { delay: index * 0.1 } }
-                    }}
-                    whileHover={{ 
-                      x: 10,
-                      color: "#5B2B33",
-                      scale: 1.02
-                    }}
                   >
-                    <motion.div 
-                      className={styles.featureIcon}
-                      animate={{
-                        scale: [1, 1.1, 1]
-                      }}
-                      transition={{ 
-                        scale: { duration: 2, repeat: Infinity }
-                      }}
-                    >
+                    <div className={styles.featureIcon}>
                       ✓
-                    </motion.div>
+                    </div>
                     <span>{feature}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className={styles.trustVisual}
-              variants={{
-                hidden: { x: 50, opacity: 0 },
-                visible: { x: 0, opacity: 1 }
-              }}
-            >
+            <div className={styles.trustVisual}>
               <div className={styles.statsGrid}>
-                <motion.div 
-                  className={styles.statCard}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    boxShadow: "0 20px 40px rgba(91, 43, 51, 0.2)"
-                  }}
-                  animate={{
-                    background: [
-                      "rgba(249,250,251,1)",
-                      "rgba(196,182,140,0.05)",
-                      "rgba(249,250,251,1)"
-                    ]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  <motion.div 
-                    className={styles.statNumber}
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      color: ["#5B2B33", "#C4B68C", "#5B2B33"]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
+                <div className={styles.statCard}>
+                  <div className={styles.statNumber}>
                     <CountUp 
                       end={85} 
                       suffix="%" 
                       duration={3}
                       delay={inView ? 1 : 0}
                     />
-                  </motion.div>
+                  </div>
                   <div className={styles.statLabel}>
                     {ingles ? "Accuracy" : "Precisión"}
                   </div>
-                </motion.div>
-                <motion.div 
-                  className={styles.statCard}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    boxShadow: "0 20px 40px rgba(91, 43, 51, 0.2)"
-                  }}
-                  animate={{
-                    background: [
-                      "rgba(249,250,251,1)",
-                      "rgba(16,185,129,0.05)",
-                      "rgba(249,250,251,1)"
-                    ]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-                >
-                  <motion.div 
-                    className={styles.statNumber}
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      color: ["#5B2B33", "#10B981", "#5B2B33"]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-                  >
+                </div>
+                <div className={styles.statCard}>
+                  <div className={styles.statNumber}>
                     <CountUp 
                       end={60} 
                       suffix="%" 
                       duration={3}
                       delay={inView ? 1.5 : 0}
                     />
-                  </motion.div>
+                  </div>
                   <div className={styles.statLabel}>
                     {ingles ? "Faster" : "Más Rápido"}
                   </div>
-                </motion.div>
-                <motion.div 
-                  className={styles.statCard}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    boxShadow: "0 20px 40px rgba(91, 43, 51, 0.2)"
-                  }}
-                  animate={{
-                    background: [
-                      "rgba(249,250,251,1)",
-                      "rgba(245,158,11,0.05)",
-                      "rgba(249,250,251,1)"
-                    ]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                >
-                  <motion.div 
-                    className={styles.statNumber}
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      color: ["#5B2B33", "#F59E0B", "#5B2B33"]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                  >
+                </div>
+                <div className={styles.statCard}>
+                  <div className={styles.statNumber}>
                     <CountUp 
                       end={99.9} 
                       suffix="%" 
@@ -1153,15 +997,15 @@ const IndexSeccion9 = () => {
                       decimals={1}
                       delay={inView ? 2 : 0}
                     />
-                  </motion.div>
+                  </div>
                   <div className={styles.statLabel}>
                     {ingles ? "Uptime" : "Disponibilidad"}
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   );
