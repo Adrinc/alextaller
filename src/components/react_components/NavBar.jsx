@@ -60,6 +60,7 @@ const NavBar = () => {
         { id: "funciones", element: document.querySelector('#caracteristicas') },
         { id: "reportar", element: document.querySelector('#categorias') },
         { id: "gobierno", element: document.querySelector('#soporte-institucional') },
+        { id: "ia", element: document.querySelector('#ia-analisis') },
         { id: "faq", element: document.querySelector('#preguntas') }
       ];
 
@@ -129,6 +130,33 @@ const NavBar = () => {
     }
   };
 
+  // Función para navegar a la sección de IA
+  const scrollToIASection = () => {
+    // Verificar si estamos en la página principal
+    const isOnHomePage = window.location.pathname === '/' || window.location.pathname === '/index.astro';
+    
+    if (!isOnHomePage) {
+      // Si no estamos en la página principal, navegar primero a index
+      window.location.href = '/?section=ia-analisis';
+      return;
+    }
+    
+    // Si ya estamos en la página principal, hacer scroll normal
+    const element = document.querySelector('#ia-analisis');
+    if (element) {
+      const offset = 80; // Altura del navbar
+      const elementPosition = element.offsetTop - offset;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+      
+      setActiveSection('ia');
+      setIsOpen(false);
+    }
+  };
+
   // Función para navegación suave a secciones
   const scrollToSection = (href, sectionId) => {
     // Verificar si estamos en la página principal
@@ -183,6 +211,7 @@ const NavBar = () => {
             'caracteristicas': 'funciones',
             'categorias': 'reportar',
             'soporte-institucional': 'gobierno',
+            'ia-analisis': 'ia',
             'preguntas': 'faq'
           };
           
@@ -238,6 +267,24 @@ const NavBar = () => {
         <div className={styles.switchIndicator}></div>
       </div>
 
+      {/* Botón de IA */}
+      <div className={styles.desktopOnly}>
+        <button 
+          className={`${styles.aiButton} ${isActiveLink('ia') ? styles.activeAI : ""}`}
+          onClick={scrollToIASection}
+          aria-label="Navegar a sección de Inteligencia Artificial"
+        >
+          <div className={styles.aiIcon}>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
+            </svg>
+          </div>
+          <span className={styles.aiText}>IA</span>
+          <div className={styles.aiGlow}></div>
+          <div className={styles.aiPulse}></div>
+        </button>
+      </div>
+
       {/* Ícono de menú hamburguesa animado */}
       <div 
         className={`${styles.hamburger} ${isOpen ? styles.active : ""}`} 
@@ -262,6 +309,21 @@ const NavBar = () => {
             </button>
           </li>
         ))}
+        
+        {/* Botón de IA para móvil */}
+        <li className={`${styles.navItem} ${styles.mobileOnly}`}>
+          <button 
+            onClick={scrollToIASection}
+            className={`${styles.navLink} ${styles.aiNavLink} ${isActiveLink('ia') ? styles.activeLink : ""}`}
+          >
+            <div className={styles.aiIconMobile}>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
+              </svg>
+            </div>
+            IA
+          </button>
+        </li>
         
         {/* Botón de contacto para móvil */}
         <li className={`${styles.navItem} ${styles.mobileContactItem} ${styles.mobileOnly}`}>

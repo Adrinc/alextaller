@@ -485,6 +485,192 @@
   transition: var(--transition-smooth);
 }
 
+/* Botón de IA con efectos tecnológicos */
+.aiButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-wine), var(--secondary-wine));
+  color: var(--text-light);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(91, 43, 51, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.aiButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.aiButton:hover::before {
+  left: 100%;
+}
+
+.aiButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(135deg, var(--secondary-wine), var(--primary-wine));
+  border-color: var(--accent-beige);
+  box-shadow: 
+    0 8px 25px rgba(91, 43, 51, 0.4),
+    0 0 20px rgba(230, 213, 168, 0.3);
+  color: var(--accent-beige);
+}
+
+.aiIcon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.aiIcon svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: var(--transition-smooth);
+}
+
+.aiButton:hover .aiIcon svg {
+  filter: drop-shadow(0 0 8px var(--accent-beige));
+  animation: aiIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes aiIconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.aiText {
+  position: relative;
+  z-index: 2;
+  font-weight: 700;
+  transition: var(--transition-smooth);
+}
+
+.aiGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(230, 213, 168, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: var(--transition-smooth);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aiButton:hover .aiGlow {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.aiPulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--accent-beige), var(--primary-wine), var(--accent-beige));
+  border-radius: 14px;
+  opacity: 0;
+  animation: aiPulse 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes aiPulse {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.02); 
+  }
+}
+
+.aiButton:hover .aiPulse {
+  animation-duration: 1.5s;
+}
+
+/* Estado activo del botón IA */
+.activeAI {
+  background: linear-gradient(135deg, var(--accent-beige), var(--primary-beige)) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--primary-wine) !important;
+  box-shadow: 
+    0 6px 20px rgba(196, 182, 140, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.activeAI .aiText {
+  color: var(--text-dark);
+  font-weight: 800;
+}
+
+.activeAI .aiIcon svg {
+  color: var(--text-dark);
+  filter: drop-shadow(0 2px 4px rgba(91, 43, 51, 0.2));
+}
+
+/* Estilos para IA en menú móvil */
+.aiNavLink {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-wine), var(--secondary-wine));
+  border: 1px solid var(--accent-beige);
+  margin: 0.5rem 0;
+  color: var(--text-light) !important;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.aiNavLink:hover {
+  background: linear-gradient(135deg, var(--secondary-wine), var(--primary-wine));
+  color: var(--accent-beige) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(91, 43, 51, 0.4);
+}
+
+.aiIconMobile {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiIconMobile svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
 /* Botón de contacto premium */
 .contactButton {
   position: relative;
@@ -632,6 +818,63 @@
   /* MOSTRAR elementos móviles */
   .mobileOnly {
     display: block;
+  }
+
+  /* Estilos específicos para el botón IA en móvil */
+  .aiNavLink {
+    background: linear-gradient(135deg, var(--primary-wine), var(--secondary-wine)) !important;
+    border: 2px solid var(--accent-beige) !important;
+    box-shadow: 0 4px 15px rgba(91, 43, 51, 0.3) !important;
+    margin: 1rem auto !important;
+    position: relative;
+    overflow: hidden;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    max-width: 300px !important;
+    text-align: center;
+    font-size: 1.1rem !important;
+    padding: 1rem 1.5rem !important;
+  }
+
+  .aiNavLink::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(230, 213, 168, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+  }
+
+  .aiNavLink:hover::before {
+    left: 100%;
+  }
+
+  .aiIconMobile {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    animation: aiIconMobilePulse 3s ease-in-out infinite;
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  @keyframes aiIconMobilePulse {
+    0%, 100% { 
+      transform: scale(1); 
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    50% { 
+      transform: scale(1.05); 
+      filter: drop-shadow(0 0 8px var(--accent-beige));
+    }
   }
 
   /* MOSTRAR botón de contacto dentro del menú en móvil */
