@@ -361,8 +361,7 @@ const IndexSeccion9 = () => {
                   <motion.div 
                     className={styles.cardIcon}
                     animate={{ 
-                      scale: isAnalyzing ? [1, 1.1, 1] : 1,
-                      rotate: isAnalyzing ? [0, 5, -5, 0] : 0
+                      scale: isAnalyzing ? [1, 1.1, 1] : 1
                     }}
                     transition={{ 
                       duration: 2, 
@@ -659,7 +658,7 @@ const IndexSeccion9 = () => {
                   <motion.div 
                     className={styles.cardIcon}
                     animate={{ 
-                      rotate: isAnalyzing ? [0, 10, -10, 0] : 0 
+                      scale: isAnalyzing ? [1, 1.1, 1] : 1
                     }}
                     transition={{ 
                       duration: 1.5, 
@@ -908,35 +907,7 @@ const IndexSeccion9 = () => {
               visible: { y: 0, opacity: 1 }
             }}
           >
-            <motion.h3 
-              className={styles.processTitle}
-              animate={inView ? {
-                background: [
-                  "linear-gradient(45deg, #5B2B33, #5B2B33)",
-                  "linear-gradient(45deg, #5B2B33, #C4B68C, #5B2B33)",
-                  "linear-gradient(45deg, #5B2B33, #5B2B33)"
-                ]
-              } : {}}
-              style={{
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent"
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              {inView && (
-                <Typewriter
-                  options={{
-                    strings: [t.process.title],
-                    autoStart: true,
-                    loop: false,
-                    delay: 40,
-                    cursor: '',
-                    deleteSpeed: 1000000
-                  }}
-                />
-              )}
-            </motion.h3>
+          
             <p className={styles.processSubtitle}>{t.process.subtitle}</p>
           </motion.div>
 
@@ -973,11 +944,9 @@ const IndexSeccion9 = () => {
                 <motion.div 
                   className={styles.stepIcon}
                   animate={{
-                    rotate: isAnalyzing && index === detectionPhase ? 360 : 0,
                     scale: analysisComplete && index <= detectionPhase ? [1, 1.1, 1] : 1
                   }}
                   transition={{ 
-                    rotate: { duration: 2, repeat: isAnalyzing ? Infinity : 0 },
                     scale: { duration: 1, repeat: Infinity }
                   }}
                 >
@@ -1061,11 +1030,9 @@ const IndexSeccion9 = () => {
                     <motion.div 
                       className={styles.featureIcon}
                       animate={{
-                        rotate: [0, 360],
                         scale: [1, 1.1, 1]
                       }}
                       transition={{ 
-                        rotate: { duration: 8, repeat: Infinity },
                         scale: { duration: 2, repeat: Infinity }
                       }}
                     >
