@@ -19,7 +19,6 @@ const IndexSeccion9 = () => {
   const [neuralConnections, setNeuralConnections] = useState([]);
   
   // Referencias para animaciones
-  const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const controls = useAnimation();
   
