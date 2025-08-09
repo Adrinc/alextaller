@@ -244,18 +244,27 @@ const IndexSeccion9 = () => {
 
                 {/* Nodo Central de IA */}
                 <div className={styles.aiCentralNode}>
-                  <div className={`${styles.aiCore} ${isAnalyzing ? styles.processing : ''}`}>
-                    <div className={styles.aiIcon}>🧠</div>
-                    <div className={styles.aiLabel}>
-                      {ingles ? "AI ENGINE" : "MOTOR IA"}
+                  <div className={styles.robotContainer}>
+                    <div className={styles.energyRings}>
+                      <div className={styles.energyRing}></div>
+                      <div className={styles.energyRing}></div>
+                      <div className={styles.energyRing}></div>
                     </div>
-                    {isAnalyzing && (
-                      <div className={styles.processingIndicator}>
-                        {ingles ? "ANALYZING..." : "ANALIZANDO..."}
-                      </div>
-                    )}
+                    <div className={styles.robotGlow}></div>
+                    <img 
+                      src="/image/global/robot3.png" 
+                      alt="IA Robot Analyzer"
+                      className={`${styles.robotImage} ${isAnalyzing ? styles.processing : ''}`}
+                    />
                   </div>
-                  <div className={styles.aiPulse}></div>
+                  <div className={styles.aiLabel}>
+                    {ingles ? "AI ENGINE" : "MOTOR IA"}
+                  </div>
+                  {isAnalyzing && (
+                    <div className={styles.processingIndicator}>
+                      {ingles ? "ANALYZING..." : "ANALIZANDO..."}
+                    </div>
+                  )}
                 </div>
 
                 {/* Output */}

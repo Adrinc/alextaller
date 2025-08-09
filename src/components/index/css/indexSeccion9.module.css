@@ -227,13 +227,16 @@
 /* Control Center */
 .controlCenter {
   background: #FFFFFF;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(91, 43, 51, 0.1);
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   position: relative;
   overflow: hidden;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .controlCenter::before {
@@ -242,7 +245,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 6px;
   background: linear-gradient(90deg, #5B2B33, #C4B68C, #5B2B33);
 }
 
@@ -250,13 +253,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #E5E7EB;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid #E5E7EB;
 }
 
 .centerTitle {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: #5B2B33;
   letter-spacing: 0.5px;
@@ -266,30 +269,32 @@
 .securityBadge {
   background: linear-gradient(135deg, #10B981, #059669);
   color: #FFFFFF;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 11px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 /* Main Workspace */
 .mainWorkspace {
   display: grid;
-  grid-template-columns: 350px 1fr 350px;
-  gap: 2rem;
+  grid-template-columns: 400px 1fr 400px;
+  gap: 3rem;
   align-items: start;
+  min-height: 700px;
 }
 
 .workspacePanel {
   background: #F9FAFB;
-  border: 1px solid #E5E7EB;
-  border-radius: 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: 16px;
   overflow: hidden;
-  height: 640px;
+  height: 700px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .panelHeader {
@@ -333,13 +338,14 @@
 /* Data Flow Panel */
 .dataFlowPanel {
   background: linear-gradient(135deg, #F9FAFB, #F3F4F6);
-  border: 2px solid #E5E7EB;
-  border-radius: 12px;
-  height: 640px;
+  border: 3px solid #E5E7EB;
+  border-radius: 16px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .dataFlowPanel::before {
@@ -353,16 +359,16 @@
     repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 20px,
-      rgba(91, 43, 51, 0.02) 20px,
-      rgba(91, 43, 51, 0.02) 21px
+      transparent 25px,
+      rgba(91, 43, 51, 0.015) 25px,
+      rgba(91, 43, 51, 0.015) 26px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 20px,
-      rgba(91, 43, 51, 0.02) 20px,
-      rgba(91, 43, 51, 0.02) 21px
+      transparent 25px,
+      rgba(91, 43, 51, 0.015) 25px,
+      rgba(91, 43, 51, 0.015) 26px
     );
   pointer-events: none;
 }
@@ -370,7 +376,7 @@
 .flowHeader {
   background: linear-gradient(135deg, #5B2B33, #4A232B);
   color: #FFFFFF;
-  padding: 12px 16px;
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -379,7 +385,7 @@
 }
 
 .flowTitle {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.5px;
   margin: 0;
@@ -388,15 +394,15 @@
 .throughputInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 10px;
+  gap: 10px;
+  font-size: 11px;
   font-weight: 600;
 }
 
 .throughputValue {
-  background: rgba(196, 182, 140, 0.2);
-  padding: 2px 6px;
-  border-radius: 3px;
+  background: rgba(196, 182, 140, 0.25);
+  padding: 4px 8px;
+  border-radius: 4px;
   font-family: 'Courier New', monospace;
   font-weight: 700;
 }
@@ -407,7 +413,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   position: relative;
   z-index: 2;
 }
@@ -415,65 +421,68 @@
 .flowStep {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   width: 100%;
-  max-width: 200px;
+  max-width: 280px;
 }
 
 .stepNode {
-  width: 80px;
-  height: 60px;
+  width: 90px;
+  height: 70px;
   background: #FFFFFF;
-  border: 2px solid #E5E7EB;
-  border-radius: 8px;
+  border: 3px solid #E5E7EB;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stepNode.active {
   border-color: #C4B68C;
   background: rgba(196, 182, 140, 0.1);
   transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(196, 182, 140, 0.3);
+  box-shadow: 0 6px 20px rgba(196, 182, 140, 0.3);
 }
 
 .nodeIcon {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .nodeLabel {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   color: #5B2B33;
   letter-spacing: 0.3px;
+  text-align: center;
 }
 
 .dataStream {
   flex: 1;
-  height: 4px;
+  height: 6px;
   background: #E5E7EB;
-  margin: 0 12px;
-  border-radius: 2px;
+  margin: 0 15px;
+  border-radius: 3px;
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .streamLine {
   height: 100%;
-  background: linear-gradient(90deg, #C4B68C, #5B2B33);
-  border-radius: 2px;
+  background: linear-gradient(90deg, #C4B68C, #5B2B33, #C4B68C);
+  border-radius: 3px;
   width: 0%;
   transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(196, 182, 140, 0.5);
 }
 
 .streamLine.flowing {
   width: 100%;
-  animation: dataFlow 2s ease-in-out infinite;
+  animation: dataFlow 2.5s ease-in-out infinite;
 }
 
 @keyframes dataFlow {
@@ -484,81 +493,154 @@
 
 .aiCentralNode {
   position: relative;
-  margin: 2rem 0;
-}
-
-.aiCore {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, #5B2B33, #C4B68C);
-  border-radius: 50%;
+  margin: 3rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  box-shadow: 0 8px 24px rgba(91, 43, 51, 0.3);
-  transition: all 0.3s ease;
+}
+
+.robotContainer {
   position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.robotImage {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(91, 43, 51, 0.2));
+  transition: all 0.3s ease;
   z-index: 2;
+  position: relative;
 }
 
-.aiCore.processing {
-  animation: aiProcessing 2s ease-in-out infinite;
+.robotImage.processing {
+  animation: robotProcessing 2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(91, 43, 51, 0.3)) brightness(1.1);
 }
 
-@keyframes aiProcessing {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+@keyframes robotProcessing {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+  }
+  25% { 
+    transform: scale(1.05) rotate(1deg); 
+  }
+  50% { 
+    transform: scale(1.1) rotate(0deg); 
+  }
+  75% { 
+    transform: scale(1.05) rotate(-1deg); 
+  }
 }
 
-.aiIcon {
-  font-size: 40px;
-  margin-bottom: 4px;
-}
-
-.aiLabel {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.processingIndicator {
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: #C4B68C;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 9px;
-  font-weight: 700;
-  white-space: nowrap;
-  animation: processingBlink 1s ease-in-out infinite;
-}
-
-@keyframes processingBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.aiPulse {
+.robotGlow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 140px;
-  height: 140px;
-  border: 2px solid rgba(196, 182, 140, 0.5);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(196, 182, 140, 0.2) 0%, rgba(91, 43, 51, 0.1) 50%, transparent 70%);
   border-radius: 50%;
-  animation: aiPulse 3s ease-in-out infinite;
+  animation: robotGlow 3s ease-in-out infinite;
+  z-index: 1;
 }
 
-@keyframes aiPulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.2; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+@keyframes robotGlow {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2); 
+    opacity: 0.3; 
+  }
+}
+
+.aiLabel {
+  background: linear-gradient(135deg, #5B2B33, #C4B68C);
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(91, 43, 51, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.processingIndicator {
+  background: rgba(0, 0, 0, 0.85);
+  color: #C4B68C;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: processingBlink 1.5s ease-in-out infinite;
+  border: 1px solid rgba(196, 182, 140, 0.3);
+}
+
+@keyframes processingBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.energyRings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.energyRing {
+  position: absolute;
+  border: 2px solid rgba(196, 182, 140, 0.4);
+  border-radius: 50%;
+  animation: energyPulse 4s ease-in-out infinite;
+}
+
+.energyRing:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  animation-delay: 0s;
+}
+
+.energyRing:nth-child(2) {
+  width: 240px;
+  height: 240px;
+  margin: -120px 0 0 -120px;
+  animation-delay: 0.5s;
+}
+
+.energyRing:nth-child(3) {
+  width: 280px;
+  height: 280px;
+  margin: -140px 0 0 -140px;
+  animation-delay: 1s;
+}
+
+@keyframes energyPulse {
+  0% { 
+    transform: translate(-50%, -50%) scale(0.8); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1); 
+    opacity: 0.3; 
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(0.8); 
+    opacity: 0.8; 
+  }
 }
 
 .outputNode {
@@ -909,7 +991,27 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1400px) {
+  .mainWorkspace {
+    grid-template-columns: 380px 1fr 380px;
+    gap: 2.5rem;
+  }
+  
+  .workspacePanel {
+    height: 650px;
+  }
+  
+  .dataFlowPanel {
+    height: 650px;
+  }
+}
+
 @media (max-width: 1200px) {
+  .controlCenter {
+    padding: 2rem;
+    max-width: 100%;
+  }
+  
   .mainWorkspace {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -922,7 +1024,39 @@
   
   .dataFlowPanel {
     height: auto;
-    min-height: 400px;
+    min-height: 450px;
+  }
+  
+  .processingFlow {
+    padding: 2rem 1.5rem;
+  }
+  
+  .robotContainer {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .robotImage {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .energyRing:nth-child(1) {
+    width: 160px;
+    height: 160px;
+    margin: -80px 0 0 -80px;
+  }
+  
+  .energyRing:nth-child(2) {
+    width: 190px;
+    height: 190px;
+    margin: -95px 0 0 -95px;
+  }
+  
+  .energyRing:nth-child(3) {
+    width: 220px;
+    height: 220px;
+    margin: -110px 0 0 -110px;
   }
   
   .officialInfo {
@@ -954,6 +1088,10 @@
     gap: 0.75rem;
   }
   
+  .controlCenter {
+    padding: 1.5rem;
+  }
+  
   .frameworkContent {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -968,20 +1106,52 @@
   }
   
   .centerTitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   .processingFlow {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
   
-  .aiCore {
+  .robotContainer {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .robotImage {
     width: 100px;
     height: 100px;
   }
   
-  .aiIcon {
-    font-size: 32px;
+  .flowStep {
+    max-width: 250px;
+  }
+  
+  .stepNode {
+    width: 75px;
+    height: 60px;
+  }
+  
+  .nodeIcon {
+    font-size: 20px;
+  }
+  
+  .energyRing:nth-child(1) {
+    width: 140px;
+    height: 140px;
+    margin: -70px 0 0 -70px;
+  }
+  
+  .energyRing:nth-child(2) {
+    width: 170px;
+    height: 170px;
+    margin: -85px 0 0 -85px;
+  }
+  
+  .energyRing:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
   }
 }
 
@@ -1021,6 +1191,66 @@
   
   .capabilitiesSection {
     margin-bottom: 2rem;
+  }
+  
+  .processingFlow {
+    padding: 1rem;
+  }
+  
+  .robotContainer {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .robotImage {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .flowStep {
+    max-width: 220px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stepNode {
+    width: 65px;
+    height: 50px;
+  }
+  
+  .nodeIcon {
+    font-size: 18px;
+  }
+  
+  .nodeLabel {
+    font-size: 9px;
+  }
+  
+  .dataStream {
+    height: 4px;
+    margin: 0 10px;
+  }
+  
+  .aiLabel {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+  
+  .energyRing:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+  }
+  
+  .energyRing:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+  }
+  
+  .energyRing:nth-child(3) {
+    width: 180px;
+    height: 180px;
+    margin: -90px 0 0 -90px;
   }
 }
 
