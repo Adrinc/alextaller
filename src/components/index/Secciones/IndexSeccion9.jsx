@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
 import { translations } from '../../../data/translations';
 import styles from "../css/indexSeccion9.module.css";
-import Typewriter from 'typewriter-effect';
-import CountUp from 'react-countup';
-import { motion, useInView, useAnimation } from 'framer-motion';
-import { useInView as useIntersectionObserver } from 'react-intersection-observer';
 
 const IndexSeccion9 = () => {
   const ingles = useStore(isEnglish);
@@ -15,97 +11,38 @@ const IndexSeccion9 = () => {
   const [analysisComplete, setAnalysisComplete] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [detectionPhase, setDetectionPhase] = useState(0);
-  const [matrixCode, setMatrixCode] = useState('');
-  const [neuralConnections, setNeuralConnections] = useState([]);
-  
-  // Referencias para animaciones
-  const titleRef = useRef(null);
-  const controls = useAnimation();
-  
-  // Hook para detectar cuando la sección está en vista
-  const [ref, inView] = useIntersectionObserver({
-    threshold: 0.3,
-    triggerOnce: true
-  });
-  
-  const titleInView = useInView(titleRef, { once: true });
 
-  // Generar código Matrix estilizado
   useEffect(() => {
-    const characters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const generateMatrix = () => {
-      let result = '';
-      for (let i = 0; i < 200; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-        if (i % 20 === 0) result += '\n';
-      }
-      return result;
-    };
-    
-    const interval = setInterval(() => {
-      setMatrixCode(generateMatrix());
-    }, 100);
-    
-    return () => clearInterval(interval);
-  }, []);
-
-  // Generar conexiones neuronales dinámicas
-  useEffect(() => {
-    const generateConnections = () => {
-      const connections = [];
-      for (let i = 0; i < 15; i++) {
-        connections.push({
-          id: i,
-          x1: Math.random() * 100,
-          y1: Math.random() * 100,
-          x2: Math.random() * 100,
-          y2: Math.random() * 100,
-          delay: Math.random() * 3,
-          duration: 2 + Math.random() * 2
-        });
-      }
-      setNeuralConnections(connections);
-    };
-    
-    generateConnections();
-    const interval = setInterval(generateConnections, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Animación principal cuando está en vista
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
+    // Simular análisis de IA cuando aparece en vista
+    const timer = setTimeout(() => {
+      setIsAnalyzing(true);
       
-      // Iniciar análisis de IA
-      const timer = setTimeout(() => {
-        setIsAnalyzing(true);
-        
-        const progressInterval = setInterval(() => {
-          setScanProgress(prev => {
-            if (prev >= 100) {
-              clearInterval(progressInterval);
-              setIsAnalyzing(false);
-              setAnalysisComplete(true);
-              return 100;
-            }
-            return prev + 0.8;
-          });
-        }, 60);
+      // Simular progreso de escaneo más lento y sutil
+      const progressInterval = setInterval(() => {
+        setScanProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(progressInterval);
+            setIsAnalyzing(false);
+            setAnalysisComplete(true);
+            return 100;
+          }
+          return prev + 0.8; // Cambiado de 2 a 0.8 para más lentitud
+        });
+      }, 60); // Cambiado de 40 a 60ms para más suavidad
 
-        const phaseInterval = setInterval(() => {
-          setDetectionPhase(prev => (prev + 1) % 4);
-        }, 800);
+      // Cambiar fases de detección más lento
+      const phaseInterval = setInterval(() => {
+        setDetectionPhase(prev => (prev + 1) % 4);
+      }, 800); // Cambiado de 800 a 1200ms
 
-        return () => {
-          clearInterval(progressInterval);
-          clearInterval(phaseInterval);
-        };
-      }, 1000);
+      return () => {
+        clearInterval(progressInterval);
+        clearInterval(phaseInterval);
+      };
+    }, 1000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [inView, controls]);
+    return () => clearTimeout(timer);
+  }, []);
 
   const ProcessIcon = ({ step }) => {
     const icons = {
@@ -141,781 +78,245 @@ const IndexSeccion9 = () => {
   ];
 
   return (
-    <motion.section 
-      id="ia-analisis" 
-      className={styles.section}
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 1, staggerChildren: 0.2 } }
-      }}
-    >
-      {/* Código Matrix de fondo */}
-      <div className={styles.matrixBackground}>
-        <pre className={styles.matrixCode}>{matrixCode}</pre>
-      </div>
-
-      {/* Red neuronal animada */}
-      <div className={styles.neuralNetwork}>
-        <svg className={styles.networkSvg} viewBox="0 0 100 100">
-          {neuralConnections.map((conn) => (
-            <motion.line
-              key={conn.id}
-              x1={conn.x1}
-              y1={conn.y1}
-              x2={conn.x2}
-              y2={conn.y2}
-              stroke="rgba(196, 182, 140, 0.4)"
-              strokeWidth="0.1"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: [0, 1, 0], 
-                opacity: [0, 0.8, 0] 
-              }}
-              transition={{
-                duration: conn.duration,
-                delay: conn.delay,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-          {/* Nodos neuronales */}
-          {neuralConnections.slice(0, 8).map((node) => (
-            <motion.circle
-              key={`node-${node.id}`}
-              cx={node.x1}
-              cy={node.y1}
-              r="0.5"
-              fill="#C4B68C"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: [0.8, 1.2, 0.8], 
-                opacity: [0.6, 1, 0.6] 
-              }}
-              transition={{
-                duration: 2,
-                delay: node.delay,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </svg>
-      </div>
-
-      {/* Partículas inteligentes */}
+    <section id="ia-analisis" className={styles.section}>
+      {/* Partículas de fondo */}
       <div className={styles.particlesBackground}>
-        {[...Array(25)].map((_, i) => (
-          <motion.div 
-            key={i} 
-            className={styles.particle}
-            initial={{ 
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: 0
-            }}
-            animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: [0, 1, 0],
-              opacity: [0, 0.8, 0]
-            }}
-            transition={{
-              duration: 4 + Math.random() * 6,
-              delay: Math.random() * 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+        {[...Array(20)].map((_, i) => (
+          <div key={i} className={styles.particle} style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${3 + Math.random() * 4}s`
+          }}></div>
         ))}
       </div>
 
       <div className={styles.container}>
-        {/* Header con efectos de typewriter */}
-        <motion.div 
-          className={styles.header}
-          variants={{
-            hidden: { y: 50, opacity: 0 },
-            visible: { y: 0, opacity: 1 }
-          }}
-        >
-          <motion.div 
-            className={styles.headerBadge}
-            whileHover={{ scale: 1.05 }}
-            animate={{ 
-              boxShadow: isAnalyzing 
-                ? "0 0 30px rgba(196, 182, 140, 0.6)" 
-                : "0 0 15px rgba(196, 182, 140, 0.3)" 
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.svg 
-              className={styles.badgeIcon} 
-              viewBox="0 0 24 24" 
-              fill="currentColor"
-            >
+        {/* Header */}
+        <div className={styles.header}>
+          <div className={styles.headerBadge}>
+            <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor">
               <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
-            </motion.svg>
+            </svg>
             <span>{ingles ? "Artificial Intelligence" : "Inteligencia Artificial"}</span>
             <div className={styles.badgePulse}></div>
-          </motion.div>
+          </div>
           
-          <motion.h2 
-            className={styles.title}
-            ref={titleRef}
-            variants={{
-              hidden: { y: 30, opacity: 0 },
-              visible: { y: 0, opacity: 1 }
-            }}
-          >
-            {titleInView && (
-              <Typewriter
-                options={{
-                  strings: [t.title],
-                  autoStart: true,
-                  loop: false,
-                  delay: 50,
-                  deleteSpeed: 50,
-                  cursor: '',
-                  wrapperClassName: styles.typewriterWrapper,
-                  cursorClassName: styles.typewriterCursor,
-                  onInit: (typewriter) => {
-                    typewriter
-                      .typeString(t.title)
-                      .pauseFor(2000)
-                      .callFunction(() => {
-                        // Mantener el texto visible permanentemente
-                        const wrapper = document.querySelector(`.${styles.typewriterWrapper}`);
-                        if (wrapper) {
-                          wrapper.innerHTML = t.title;
-                          wrapper.style.borderRight = 'none';
-                        }
-                      })
-                      .start();
-                  }
-                }}
-              />
-            )}
-          </motion.h2>
-          
-          <motion.p 
-            className={styles.subtitle}
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 }
-            }}
-          >
-            {inView && (
-              <Typewriter
-                options={{
-                  strings: [t.subtitle],
-                  autoStart: true,
-                  loop: false,
-                  delay: 30,
-                  cursor: '',
-                  deleteSpeed: 1000000
-                }}
-              />
-            )}
-          </motion.p>
-          
-          <motion.p 
-            className={styles.description}
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 }
-            }}
-          >
-            {t.description}
-          </motion.p>
-        </motion.div>
+          <h2 className={styles.title}>{t.title}</h2>
+          <p className={styles.subtitle}>{t.subtitle}</p>
+          <p className={styles.description}>{t.description}</p>
+        </div>
 
-        {/* Análisis Comparativo Mejorado */}
-        <motion.div 
-          className={styles.analysisSection}
-          variants={{
-            hidden: { y: 50, opacity: 0 },
-            visible: { y: 0, opacity: 1 }
-          }}
-        >
+        {/* Análisis Comparativo */}
+        <div className={styles.analysisSection}>
           <div className={styles.analysisContainer}>
-            {/* Imagen y análisis visual con efectos holográficos */}
-            <motion.div 
-              className={styles.imageAnalysis}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div 
-                className={styles.analysisCard}
-                style={{
-                  background: isAnalyzing 
-                    ? "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(196,182,140,0.05))"
-                    : "rgba(255,255,255,0.95)"
-                }}
-              >
+            {/* Imagen y análisis visual */}
+            <div className={styles.imageAnalysis}>
+              <div className={styles.analysisCard}>
                 <div className={styles.cardHeader}>
-                  <motion.div 
-                    className={styles.cardIcon}
-                    animate={{ 
-                      scale: isAnalyzing ? [1, 1.1, 1] : 1
-                    }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: isAnalyzing ? Infinity : 0 
-                    }}
-                  >
+                  <div className={styles.cardIcon}>
                     <svg viewBox="0 0 24 24" fill="currentColor">
                       <path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
                       <circle cx="12" cy="13" r="4"/>
                     </svg>
-                  </motion.div>
+                  </div>
                   <div>
                     <h3 className={styles.cardTitle}>{t.imageAnalysis.title}</h3>
                     <p className={styles.cardSubtitle}>{t.imageAnalysis.subtitle}</p>
                   </div>
-                  {/* Indicador de estado mejorado */}
-                  <motion.div 
-                    className={styles.statusIndicator}
-                    animate={{ opacity: [0.7, 1, 0.7] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <motion.div 
-                      className={`${styles.statusDot} ${isAnalyzing ? styles.analyzing : analysisComplete ? styles.complete : ''}`}
-                      animate={{ 
-                        scale: isAnalyzing ? [1, 1.3, 1] : 1,
-                        boxShadow: isAnalyzing 
-                          ? ["0 0 0px rgba(245,158,11,0.8)", "0 0 15px rgba(245,158,11,0.8)", "0 0 0px rgba(245,158,11,0.8)"]
-                          : "0 0 0px rgba(245,158,11,0.8)"
-                      }}
-                      transition={{ duration: 1, repeat: isAnalyzing ? Infinity : 0 }}
-                    />
+                  {/* Indicador de estado */}
+                  <div className={styles.statusIndicator}>
+                    <div className={`${styles.statusDot} ${isAnalyzing ? styles.analyzing : analysisComplete ? styles.complete : ''}`}></div>
                     <span className={styles.statusText}>
                       {isAnalyzing ? (ingles ? "Live" : "En vivo") : analysisComplete ? (ingles ? "Complete" : "Completo") : (ingles ? "Ready" : "Listo")}
                     </span>
-                  </motion.div>
+                  </div>
                 </div>
                 
-                <motion.div 
-                  className={styles.imageContainer}
-                  whileHover={{ 
-                    boxShadow: "0 25px 50px rgba(91, 43, 51, 0.25)" 
-                  }}
-                >
+                <div className={styles.imageContainer}>
                   <img 
                     src="/image/global/semaforo.jpg" 
                     alt={ingles ? "Traffic light analysis" : "Análisis de semáforo"}
                     className={styles.analysisImage}
                   />
                   
-                  {/* Overlay de análisis súper avanzado */}
-                  <motion.div 
-                    className={`${styles.analysisOverlay} ${isAnalyzing ? styles.active : ''} ${analysisComplete ? styles.complete : ''}`}
-                    animate={{ 
-                      background: isAnalyzing 
-                        ? ["rgba(0,0,0,0.2)", "rgba(91,43,51,0.15)", "rgba(0,0,0,0.2)"]
-                        : "rgba(0,0,0,0.3)"
-                    }}
-                    transition={{ duration: 3, repeat: isAnalyzing ? Infinity : 0 }}
-                  >
+                  {/* Overlay de análisis avanzado */}
+                  <div className={`${styles.analysisOverlay} ${isAnalyzing ? styles.active : ''} ${analysisComplete ? styles.complete : ''}`}>
                     
-                    {/* Grid de escaneo holográfico */}
+                    {/* Grid de escaneo */}
                     <div className={styles.scanGrid}>
-                      {[...Array(100)].map((_, i) => (
-                        <motion.div 
-                          key={i} 
-                          className={styles.gridLine}
-                          animate={{ 
-                            opacity: isAnalyzing 
-                              ? [0.1, 0.8, 0.1] 
-                              : 0.3 
-                          }}
-                          transition={{ 
-                            duration: 0.5, 
-                            delay: i * 0.01,
-                            repeat: isAnalyzing ? Infinity : 0 
-                          }}
-                        />
+                      {[...Array(20)].map((_, i) => (
+                        <div key={i} className={styles.gridLine}></div>
                       ))}
                     </div>
 
-                    {/* Línea de escaneo mejorada */}
-                    <motion.div 
-                      className={styles.mainScanLine} 
-                      style={{ top: `${scanProgress}%` }}
-                      animate={{
-                        boxShadow: isAnalyzing 
-                          ? ["0 0 10px #C4B68C", "0 0 30px #C4B68C", "0 0 10px #C4B68C"]
-                          : "0 0 10px #C4B68C"
-                      }}
-                      transition={{ duration: 1, repeat: isAnalyzing ? Infinity : 0 }}
-                    >
+                    {/* Línea de escaneo principal */}
+                    <div className={styles.mainScanLine} style={{ top: `${scanProgress}%` }}>
                       <div className={styles.scanBeam}></div>
-                      {/* Partículas de escaneo */}
-                      {isAnalyzing && [...Array(5)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className={styles.scanParticle}
-                          initial={{ x: 0, opacity: 1 }}
-                          animate={{ 
-                            x: [0, 100, 200, 300, 400],
-                            opacity: [1, 0.8, 0.6, 0.3, 0]
-                          }}
-                          transition={{ 
-                            duration: 2,
-                            delay: i * 0.3,
-                            repeat: Infinity 
-                          }}
-                        />
-                      ))}
-                    </motion.div>
+                    </div>
 
-                    {/* Cajas de detección con efectos futuristas */}
+                    {/* Múltiples cajas de detección */}
                     <div className={styles.detectionBoxes}>
-                      <motion.div 
-                        className={`${styles.detectionBox} ${styles.primary}`}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={analysisComplete ? { 
-                          scale: 1, 
-                          opacity: 1,
-                          borderColor: ["#C4B68C", "#FFFFFF", "#C4B68C"]
-                        } : { scale: 0, opacity: 0 }}
-                        transition={{ 
-                          duration: 0.5,
-                          borderColor: { duration: 2, repeat: Infinity }
-                        }}
-                      >
+                      <div className={`${styles.detectionBox} ${styles.primary}`}>
                         <div className={styles.corners}></div>
                         <div className={styles.targetLines}></div>
-                        <motion.div 
-                          className={styles.detectionLabel}
-                          animate={{ y: [-2, 2, -2] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
+                        <div className={styles.detectionLabel}>
                           {ingles ? "Traffic Light" : "Semáforo"}
-                          <CountUp 
-                            end={95} 
-                            suffix="%" 
-                            duration={2}
-                            delay={1}
-                            className={styles.confidence}
-                          />
-                        </motion.div>
-                      </motion.div>
+                          <span className={styles.confidence}>95%</span>
+                        </div>
+                      </div>
                       
-                      <motion.div 
-                        className={`${styles.detectionBox} ${styles.secondary}`}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={analysisComplete ? { 
-                          scale: 1, 
-                          opacity: 1 
-                        } : { scale: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                      >
+                      <div className={`${styles.detectionBox} ${styles.secondary}`}>
                         <div className={styles.corners}></div>
                         <div className={styles.detectionLabel}>
                           {ingles ? "Street" : "Calle"}
-                          <CountUp 
-                            end={78} 
-                            suffix="%" 
-                            duration={2}
-                            delay={1.3}
-                            className={styles.confidence}
-                          />
+                          <span className={styles.confidence}>78%</span>
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
 
-                    {/* HUD de información futurista */}
-                    <motion.div 
-                      className={styles.hudInfo}
-                      animate={{ opacity: [0.8, 1, 0.8] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
+                    {/* HUD de información */}
+                    <div className={styles.hudInfo}>
                       <div className={styles.hudPanel}>
                         <div className={styles.hudText}>
                           <span className={styles.hudLabel}>{detectionLabels[detectionPhase]}</span>
                           <div className={styles.progressBar}>
-                            <motion.div 
-                              className={styles.progressFill} 
-                              style={{ width: `${scanProgress}%` }}
-                              animate={{
-                                background: isAnalyzing 
-                                  ? ["linear-gradient(90deg, rgba(196, 182, 140, 0.8), rgba(91, 43, 51, 0.8))",
-                                     "linear-gradient(90deg, rgba(91, 43, 51, 0.8), rgba(196, 182, 140, 0.8))",
-                                     "linear-gradient(90deg, rgba(196, 182, 140, 0.8), rgba(91, 43, 51, 0.8))"]
-                                  : "linear-gradient(90deg, rgba(196, 182, 140, 0.8), rgba(91, 43, 51, 0.8))"
-                              }}
-                              transition={{ duration: 2, repeat: isAnalyzing ? Infinity : 0 }}
-                            />
+                            <div className={styles.progressFill} style={{ width: `${scanProgress}%` }}></div>
                           </div>
-                          <span className={styles.hudPercentage}>
-                            <CountUp 
-                              end={scanProgress} 
-                              suffix="%" 
-                              duration={0.1}
-                              preserveValue
-                            />
-                          </span>
+                          <span className={styles.hudPercentage}>{Math.round(scanProgress)}%</span>
                         </div>
                       </div>
                       
-                      {/* Datos en tiempo real con efectos */}
-                      <motion.div 
-                        className={styles.dataStream}
-                        animate={{ 
-                          borderColor: isAnalyzing 
-                            ? ["rgba(196, 182, 140, 0.2)", "rgba(196, 182, 140, 0.6)", "rgba(196, 182, 140, 0.2)"]
-                            : "rgba(196, 182, 140, 0.2)"
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
+                      {/* Datos en tiempo real */}
+                      <div className={styles.dataStream}>
                         <div className={styles.dataPoint}>
                           <span>RES:</span>
                           <span className={styles.dataValue}>1920x1080</span>
                         </div>
                         <div className={styles.dataPoint}>
                           <span>FPS:</span>
-                          <span className={styles.dataValue}>
-                            <CountUp end={30} duration={2} />
-                          </span>
+                          <span className={styles.dataValue}>30</span>
                         </div>
                         <div className={styles.dataPoint}>
                           <span>LAT:</span>
                           <span className={styles.dataValue}>32.5149°</span>
                         </div>
-                        <div className={styles.dataPoint}>
-                          <span>AI:</span>
-                          <span className={styles.dataValue} style={{ color: '#10B981' }}>ACTIVE</span>
-                        </div>
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                {/* Resultados con contadores animados */}
                 <div className={styles.analysisResults}>
-                  <motion.div 
-                    className={styles.resultItem}
-                    whileHover={{ scale: 1.02, backgroundColor: "#F9FAFB" }}
-                  >
+                  <div className={styles.resultItem}>
                     <span className={styles.resultLabel}>{t.imageAnalysis.detected}</span>
                     <span className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}>
                       {t.example.detected}
                     </span>
-                  </motion.div>
-                  <motion.div 
-                    className={styles.resultItem}
-                    whileHover={{ scale: 1.02, backgroundColor: "#F9FAFB" }}
-                  >
+                  </div>
+                  <div className={styles.resultItem}>
                     <span className={styles.resultLabel}>{t.imageAnalysis.confidence}</span>
                     <span className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}>
-                      <CountUp 
-                        end={95} 
-                        suffix="%" 
-                        duration={2}
-                        delay={analysisComplete ? 0.5 : 0}
-                      />
+                      {t.example.confidence}
                     </span>
-                  </motion.div>
-                  <motion.div 
-                    className={styles.resultItem}
-                    whileHover={{ scale: 1.02, backgroundColor: "#F9FAFB" }}
-                  >
+                  </div>
+                  <div className={styles.resultItem}>
                     <span className={styles.resultLabel}>{ingles ? "Processing time:" : "Tiempo de procesamiento:"}</span>
                     <span className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}>
-                      <CountUp 
-                        end={2.3} 
-                        suffix="s" 
-                        duration={2}
-                        decimals={1}
-                        delay={analysisComplete ? 1 : 0}
-                      />
+                      2.3s
                     </span>
-                  </motion.div>
+                  </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            {/* Análisis de texto con efectos avanzados */}
-            <motion.div 
-              className={styles.textAnalysis}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div 
-                className={styles.analysisCard}
-                style={{
-                  background: analysisComplete 
-                    ? "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(16,185,129,0.05))"
-                    : "rgba(255,255,255,0.95)"
-                }}
-              >
+            {/* Análisis de texto */}
+            <div className={styles.textAnalysis}>
+              <div className={styles.analysisCard}>
                 <div className={styles.cardHeader}>
-                  <motion.div 
-                    className={styles.cardIcon}
-                    animate={{ 
-                      scale: isAnalyzing ? [1, 1.1, 1] : 1
-                    }}
-                    transition={{ 
-                      duration: 1.5, 
-                      repeat: isAnalyzing ? Infinity : 0 
-                    }}
-                  >
+                  <div className={styles.cardIcon}>
                     <svg viewBox="0 0 24 24" fill="currentColor">
                       <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
                     </svg>
-                  </motion.div>
+                  </div>
                   <div>
                     <h3 className={styles.cardTitle}>{t.textAnalysis.title}</h3>
                     <p className={styles.cardSubtitle}>{t.textAnalysis.subtitle}</p>
                   </div>
-                  {/* Indicador de sentimiento mejorado */}
-                  <motion.div 
-                    className={styles.sentimentIndicator}
-                    animate={{ 
-                      scale: analysisComplete ? [1, 1.05, 1] : 1 
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
+                  {/* Indicador de sentimiento */}
+                  <div className={styles.sentimentIndicator}>
                     <div className={`${styles.sentimentBar} ${analysisComplete ? styles.complete : ''}`}>
-                      <motion.div 
-                        className={styles.sentimentFill}
-                        initial={{ width: "0%" }}
-                        animate={{ 
-                          width: analysisComplete ? "75%" : "0%",
-                          background: analysisComplete 
-                            ? ["linear-gradient(90deg, #EF4444, #F59E0B, #10B981)", 
-                               "linear-gradient(90deg, #F59E0B, #EF4444, #10B981)",
-                               "linear-gradient(90deg, #EF4444, #F59E0B, #10B981)"]
-                            : "linear-gradient(90deg, #EF4444, #F59E0B, #10B981)"
-                        }}
-                        transition={{ 
-                          width: { duration: 2, delay: 1 },
-                          background: { duration: 3, repeat: Infinity }
-                        }}
-                      />
+                      <div className={styles.sentimentFill}></div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className={styles.textContainer}>
-                  <motion.div 
-                    className={styles.userComment}
-                    whileHover={{ 
-                      borderLeftColor: "#5B2B33",
-                      boxShadow: "0 10px 25px rgba(91, 43, 51, 0.15)"
-                    }}
-                  >
+                  <div className={styles.userComment}>
                     <div className={styles.commentHeader}>
-                      <motion.div 
-                        className={styles.userAvatar}
-                        animate={{ 
-                          rotate: [0, 5, -5, 0] 
-                        }}
-                        transition={{ duration: 4, repeat: Infinity }}
-                      >
-                        👤
-                      </motion.div>
+                      <div className={styles.userAvatar}>👤</div>
                       <span>{ingles ? "User comment:" : "Comentario del usuario:"}</span>
                       <div className={styles.textMetrics}>
-                        <span className={styles.wordCount}>
-                          <CountUp 
-                            end={12} 
-                            suffix=" palabras" 
-                            duration={2}
-                            delay={analysisComplete ? 0.5 : 0}
-                          />
-                        </span>
+                        <span className={styles.wordCount}>12 palabras</span>
                       </div>
                     </div>
-                    <motion.p 
-                      className={styles.commentText}
-                      animate={analysisComplete ? {
-                        color: ["#374151", "#EF4444", "#374151"]
-                      } : {}}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
-                      {analysisComplete ? (
-                        <Typewriter
-                          options={{
-                            strings: [t.example.userComment],
-                            autoStart: true,
-                            loop: false,
-                            delay: 30,
-                            cursor: '',
-                            deleteSpeed: 1000000
-                          }}
-                        />
-                      ) : (
-                        t.example.userComment
-                      )}
-                    </motion.p>
-                  </motion.div>
+                    <p className={styles.commentText}>{t.example.userComment}</p>
+                  </div>
 
-                  {/* Indicadores de análisis emocional súper avanzados */}
-                  <motion.div 
-                    className={styles.emotionIndicators}
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                  >
+                  {/* Indicadores de análisis emocional */}
+                  <div className={styles.emotionIndicators}>
                     <div className={styles.emotionGraph}>
-                      <motion.div 
-                        className={styles.emotionBar}
-                        whileHover={{ scale: 1.02 }}
-                      >
+                      <div className={styles.emotionBar}>
                         <span className={styles.emotionLabel}>{ingles ? "Frustration" : "Frustración"}</span>
                         <div className={styles.emotionLevel}>
-                          <motion.div 
-                            className={`${styles.levelFill} ${analysisComplete ? styles.visible : ''}`}
-                            initial={{ width: "0%" }}
-                            animate={{ 
-                              width: analysisComplete ? "75%" : "0%",
-                              background: [
-                                "linear-gradient(90deg, #C4B68C, #5B2B33)",
-                                "linear-gradient(90deg, #EF4444, #F59E0B)",
-                                "linear-gradient(90deg, #C4B68C, #5B2B33)"
-                              ]
-                            }}
-                            transition={{ 
-                              width: { duration: 2, delay: 1.5 },
-                              background: { duration: 4, repeat: Infinity }
-                            }}
-                          />
+                          <div className={`${styles.levelFill} ${analysisComplete ? styles.visible : ''}`} style={{ width: '75%' }}></div>
                         </div>
-                        <span className={styles.emotionValue}>
-                          <CountUp 
-                            end={75} 
-                            suffix="%" 
-                            duration={2}
-                            delay={analysisComplete ? 2 : 0}
-                          />
-                        </span>
-                      </motion.div>
-                      <motion.div 
-                        className={styles.emotionBar}
-                        whileHover={{ scale: 1.02 }}
-                      >
+                        <span className={styles.emotionValue}>75%</span>
+                      </div>
+                      <div className={styles.emotionBar}>
                         <span className={styles.emotionLabel}>{ingles ? "Urgency" : "Urgencia"}</span>
                         <div className={styles.emotionLevel}>
-                          <motion.div 
-                            className={`${styles.levelFill} ${analysisComplete ? styles.visible : ''}`}
-                            initial={{ width: "0%" }}
-                            animate={{ 
-                              width: analysisComplete ? "85%" : "0%",
-                              background: [
-                                "linear-gradient(90deg, #C4B68C, #5B2B33)",
-                                "linear-gradient(90deg, #F59E0B, #EF4444)",
-                                "linear-gradient(90deg, #C4B68C, #5B2B33)"
-                              ]
-                            }}
-                            transition={{ 
-                              width: { duration: 2, delay: 2 },
-                              background: { duration: 4, repeat: Infinity }
-                            }}
-                          />
+                          <div className={`${styles.levelFill} ${analysisComplete ? styles.visible : ''}`} style={{ width: '85%' }}></div>
                         </div>
-                        <span className={styles.emotionValue}>
-                          <CountUp 
-                            end={85} 
-                            suffix="%" 
-                            duration={2}
-                            delay={analysisComplete ? 2.5 : 0}
-                          />
-                        </span>
-                      </motion.div>
+                        <span className={styles.emotionValue}>85%</span>
+                      </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
-                {/* Resultados con efectos holográficos */}
                 <div className={styles.analysisResults}>
-                  <motion.div 
-                    className={styles.resultItem}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      backgroundColor: "#F3F4F6",
-                      borderColor: "#C4B68C"
-                    }}
-                  >
+                  <div className={styles.resultItem}>
                     <span className={styles.resultLabel}>{t.textAnalysis.emotion}</span>
-                    <motion.span 
-                      className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}
-                      animate={analysisComplete ? {
-                        color: ["#5B2B33", "#EF4444", "#5B2B33"]
-                      } : {}}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
+                    <span className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}>
                       {t.example.emotion}
-                    </motion.span>
-                  </motion.div>
-                  <motion.div 
-                    className={styles.resultItem}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      backgroundColor: "#F3F4F6",
-                      borderColor: "#C4B68C"
-                    }}
-                  >
+                    </span>
+                  </div>
+                  <div className={styles.resultItem}>
                     <span className={styles.resultLabel}>{t.textAnalysis.urgency}</span>
                     <span className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}>
                       {t.example.urgency}
                     </span>
-                  </motion.div>
-                  <motion.div 
-                    className={styles.resultItem}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      backgroundColor: "#F3F4F6",
-                      borderColor: "#C4B68C"
-                    }}
-                  >
+                  </div>
+                  <div className={styles.resultItem}>
                     <span className={styles.resultLabel}>{ingles ? "Sentiment:" : "Sentimiento:"}</span>
-                    <motion.span 
-                      className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}
-                      animate={analysisComplete ? {
-                        color: ["#5B2B33", "#EF4444", "#5B2B33"]
-                      } : {}}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
+                    <span className={`${styles.resultValue} ${analysisComplete ? styles.visible : ''}`}>
                       {ingles ? "Negative" : "Negativo"}
-                    </motion.span>
-                  </motion.div>
+                    </span>
+                  </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Proceso de IA con efectos espectaculares */}
-        <motion.div 
-          className={styles.processSection}
-          variants={{
-            hidden: { y: 100, opacity: 0 },
-            visible: { y: 0, opacity: 1 }
-          }}
-        >
-          <motion.div 
-            className={styles.processHeader}
-            variants={{
-              hidden: { y: 50, opacity: 0 },
-              visible: { y: 0, opacity: 1 }
-            }}
-          >
-          
+        {/* Proceso de IA */}
+        <div className={styles.processSection}>
+          <div className={styles.processHeader}>
+            <h3 className={styles.processTitle}>{t.process.title}</h3>
             <p className={styles.processSubtitle}>{t.process.subtitle}</p>
-          </motion.div>
+          </div>
 
           <div className={styles.processSteps}>
             {t.process.steps.map((step, index) => (
-              <div 
-                key={index} 
-                className={styles.processStep}
-              >
+              <div key={index} className={styles.processStep}>
                 <div className={styles.stepIcon}>
                   <ProcessIcon step={index} />
                 </div>
@@ -933,26 +334,19 @@ const IndexSeccion9 = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Sección de confianza sin efectos */}
+        {/* Sección de confianza */}
         <div className={styles.trustSection}>
           <div className={styles.trustContent}>
             <div className={styles.trustText}>
-              <h3 className={styles.trustTitle}>
-                {t.trust.title}
-              </h3>
+              <h3 className={styles.trustTitle}>{t.trust.title}</h3>
               <p className={styles.trustDescription}>{t.trust.description}</p>
               
               <div className={styles.trustFeatures}>
                 {t.trust.features.map((feature, index) => (
-                  <div 
-                    key={index} 
-                    className={styles.trustFeature}
-                  >
-                    <div className={styles.featureIcon}>
-                      ✓
-                    </div>
+                  <div key={index} className={styles.trustFeature}>
+                    <div className={styles.featureIcon}>✓</div>
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -962,41 +356,19 @@ const IndexSeccion9 = () => {
             <div className={styles.trustVisual}>
               <div className={styles.statsGrid}>
                 <div className={styles.statCard}>
-                  <div className={styles.statNumber}>
-                    <CountUp 
-                      end={85} 
-                      suffix="%" 
-                      duration={3}
-                      delay={inView ? 1 : 0}
-                    />
-                  </div>
+                  <div className={styles.statNumber}>85%</div>
                   <div className={styles.statLabel}>
                     {ingles ? "Accuracy" : "Precisión"}
                   </div>
                 </div>
                 <div className={styles.statCard}>
-                  <div className={styles.statNumber}>
-                    <CountUp 
-                      end={60} 
-                      suffix="%" 
-                      duration={3}
-                      delay={inView ? 1.5 : 0}
-                    />
-                  </div>
+                  <div className={styles.statNumber}>60%</div>
                   <div className={styles.statLabel}>
                     {ingles ? "Faster" : "Más Rápido"}
                   </div>
                 </div>
                 <div className={styles.statCard}>
-                  <div className={styles.statNumber}>
-                    <CountUp 
-                      end={99.9} 
-                      suffix="%" 
-                      duration={3}
-                      decimals={1}
-                      delay={inView ? 2 : 0}
-                    />
-                  </div>
+                  <div className={styles.statNumber}>99.9%</div>
                   <div className={styles.statLabel}>
                     {ingles ? "Uptime" : "Disponibilidad"}
                   </div>
@@ -1006,7 +378,7 @@ const IndexSeccion9 = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
