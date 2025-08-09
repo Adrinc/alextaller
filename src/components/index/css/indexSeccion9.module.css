@@ -44,8 +44,9 @@
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1600px;
   width: 100%;
+  min-height: 30vh;
   z-index: 2;
   position: relative;
 }
@@ -234,7 +235,7 @@
   margin-bottom: 5rem;
   position: relative;
   overflow: hidden;
-  max-width: 1600px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -462,33 +463,311 @@
 
 .dataStream {
   flex: 1;
-  height: 6px;
-  background: #E5E7EB;
+  height: 8px;
+  background: linear-gradient(90deg, #E5E7EB, #D1D5DB, #E5E7EB);
   margin: 0 15px;
-  border-radius: 3px;
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D1D5DB;
+}
+
+.dataStream::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    rgba(196, 182, 140, 0.1) 2px,
+    transparent 4px
+  );
+  animation: streamPattern 2s linear infinite;
+}
+
+@keyframes streamPattern {
+  0% { transform: translateX(-4px); }
+  100% { transform: translateX(4px); }
 }
 
 .streamLine {
   height: 100%;
-  background: linear-gradient(90deg, #C4B68C, #5B2B33, #C4B68C);
-  border-radius: 3px;
+  background: linear-gradient(
+    90deg, 
+    #C4B68C 0%, 
+    #5B2B33 25%, 
+    #C4B68C 50%, 
+    #5B2B33 75%, 
+    #C4B68C 100%
+  );
+  border-radius: 4px;
   width: 0%;
-  transition: width 0.5s ease;
-  box-shadow: 0 0 10px rgba(196, 182, 140, 0.5);
+  transition: width 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 10px rgba(196, 182, 140, 0.6),
+    0 0 20px rgba(91, 43, 51, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  animation: continuousFlow 8s ease-in-out infinite;
+}
+
+@keyframes continuousFlow {
+  0% { 
+    width: 0%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
+  }
+  25% { 
+    width: 60%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 50%, #C4B68C 100%);
+  }
+  50% { 
+    width: 100%; 
+    background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 50%, #5B2B33 100%);
+  }
+  75% { 
+    width: 40%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
+  }
+  100% { 
+    width: 0%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
+  }
+}
+
+.streamLine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: streamGlint 2s ease-in-out infinite;
+}
+
+@keyframes streamGlint {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
 
 .streamLine.flowing {
   width: 100%;
-  animation: dataFlow 2.5s ease-in-out infinite;
+  animation: dataFlow 3s ease-in-out infinite, continuousFlow 8s ease-in-out infinite;
+}
+
+.streamLine.flowing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(196, 182, 140, 0.8),
+    #FFFFFF
+  );
+  border-radius: 0 4px 4px 0;
+  animation: streamHead 3s ease-in-out infinite;
+}
+
+@keyframes streamHead {
+  0%, 100% { opacity: 0; transform: translateX(0); }
+  10%, 90% { opacity: 1; }
+  50% { transform: translateX(-5px); }
 }
 
 @keyframes dataFlow {
-  0% { width: 0%; }
-  50% { width: 100%; }
-  100% { width: 0%; }
+  0% { 
+    width: 0%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
+  }
+  25% { 
+    width: 40%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 50%, #C4B68C 100%);
+  }
+  50% { 
+    width: 100%; 
+    background: linear-gradient(90deg, #5B2B33 0%, #C4B68C 50%, #5B2B33 100%);
+  }
+  75% { 
+    width: 60%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
+  }
+  100% { 
+    width: 0%; 
+    background: linear-gradient(90deg, #C4B68C 0%, #5B2B33 100%);
+  }
+}
+
+/* Efectos adicionales para cuando hay datos */
+.dataStream.active {
+  animation: streamPulse 3s ease-in-out infinite;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 8px rgba(196, 182, 140, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dataStream.active::before {
+  animation: streamPattern 1.5s linear infinite, particleFlow 4s ease-in-out infinite;
+}
+
+@keyframes streamPulse {
+  0%, 100% { 
+    background: linear-gradient(90deg, #E5E7EB, #D1D5DB, #E5E7EB);
+  }
+  50% { 
+    background: linear-gradient(90deg, #F3F4F6, #E5E7EB, #F3F4F6);
+  }
+}
+
+@keyframes particleFlow {
+  0% { opacity: 0.3; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+/* Asegurar que el patrón siempre esté animado */
+.dataStream::before {
+  animation: streamPattern 2s linear infinite !important;
+}
+
+/* Variaciones de velocidad y delay para diferentes tipos de datos */
+.flowStep:nth-child(1) .streamLine {
+  animation: continuousFlow 7s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.flowStep:nth-child(1) .streamLine.flowing {
+  animation: dataFlow 2.5s ease-in-out infinite, continuousFlow 7s ease-in-out infinite;
+  animation-delay: 0s, 0s;
+}
+
+.flowStep:nth-child(2) .streamLine {
+  animation: continuousFlow 9s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.flowStep:nth-child(2) .streamLine.flowing {
+  animation: dataFlow 3.5s ease-in-out infinite, continuousFlow 9s ease-in-out infinite;
+  animation-delay: 0.3s, 1s;
+}
+
+.flowStep:nth-child(3) .streamLine {
+  animation: continuousFlow 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.flowStep:nth-child(3) .streamLine.flowing {
+  animation: dataFlow 2.8s ease-in-out infinite, continuousFlow 8s ease-in-out infinite;
+  animation-delay: 0.6s, 2s;
+}
+
+.flowStep:nth-child(4) .streamLine {
+  animation: continuousFlow 6.5s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.flowStep:nth-child(4) .streamLine.flowing {
+  animation: dataFlow 2.2s ease-in-out infinite, continuousFlow 6.5s ease-in-out infinite;
+  animation-delay: 0.9s, 3s;
+}
+
+/* Efectos de conexión entre nodos */
+.stepNode.active {
+  border-color: #C4B68C;
+  background: rgba(196, 182, 140, 0.15);
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(196, 182, 140, 0.3),
+    0 0 15px rgba(91, 43, 51, 0.2);
+  position: relative;
+}
+
+.stepNode.active::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #C4B68C, #5B2B33, #C4B68C);
+  border-radius: 12px;
+  z-index: -1;
+  animation: nodePulse 2s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+/* Efectos de flujo de datos mejorados */
+.dataStream.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #C4B68C, #5B2B33);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px rgba(196, 182, 140, 0.8);
+  animation: dataPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dataPulse {
+  0% { left: -6px; opacity: 0; transform: translateY(-50%) scale(0.5); }
+  20% { opacity: 1; transform: translateY(-50%) scale(1); }
+  80% { opacity: 1; }
+  100% { left: calc(100% + 6px); opacity: 0; transform: translateY(-50%) scale(0.5); }
+}
+
+/* Indicadores de velocidad */
+.dataStream.active::before {
+  animation: streamPattern 0.8s linear infinite, particleFlow 3s ease-in-out infinite;
+}
+
+/* Efecto de red neuronal */
+.processingFlow.active {
+  position: relative;
+}
+
+.processingFlow.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(196, 182, 140, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(91, 43, 51, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px, 30px 30px;
+  animation: neuralNetwork 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes neuralNetwork {
+  0% { background-position: 0px 0px, 0px 0px; }
+  100% { background-position: 40px 40px, 30px 30px; }
 }
 
 .aiCentralNode {
@@ -507,6 +786,68 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.robotContainer:hover .robotTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-10px);
+
+}
+
+.robotTooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0%;
+  transform: translateX(-50%) translateY(-5px);
+  background: linear-gradient(135deg, #5B2B33, #4A232B);
+  color: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: normal;
+  max-width: 200px;
+  min-width: 160px;
+  text-align: center;
+  line-height: 1.3;
+  box-shadow: 
+    0 8px 20px rgba(91, 43, 51, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(196, 182, 140, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.robotTooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top-color: #5B2B33;
+  border-bottom: none;
+}
+
+.robotTooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: rgba(196, 182, 140, 0.8);
+  border-bottom: none;
+  margin-top: -2px;
 }
 
 .robotImage {
@@ -1019,7 +1360,9 @@
   
   .workspacePanel {
     height: auto;
-    max-height: 500px;
+    min-height: 520px;
+    max-height: none;
+    overflow: visible;
   }
   
   .dataFlowPanel {
@@ -1039,6 +1382,15 @@
   .robotImage {
     width: 120px;
     height: 120px;
+  }
+  
+  .robotTooltip {
+    font-size: 11px;
+    padding: 10px 14px;
+    white-space: normal;
+    max-width: 180px;
+    min-width: 140px;
+    line-height: 1.4;
   }
   
   .energyRing:nth-child(1) {
@@ -1068,6 +1420,7 @@
 @media (max-width: 768px) {
   .section {
     padding: 60px 15px;
+    overflow-x: visible;
   }
   
   .title {
@@ -1090,6 +1443,21 @@
   
   .controlCenter {
     padding: 1.5rem;
+    overflow-x: auto;
+  }
+  
+  .mainWorkspace {
+    gap: 1.5rem;
+  }
+  
+  .workspacePanel {
+    min-height: 480px;
+    padding: 1rem;
+  }
+  
+  .panelContent {
+    padding: 12px;
+    overflow: visible;
   }
   
   .frameworkContent {
@@ -1158,6 +1526,7 @@
 @media (max-width: 480px) {
   .section {
     padding: 40px 10px;
+    overflow-x: visible;
   }
   
   .title {
@@ -1175,6 +1544,24 @@
   
   .controlCenter {
     padding: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .mainWorkspace {
+    gap: 1rem;
+  }
+  
+  .workspacePanel {
+    min-height: 420px;
+    padding: 0.75rem;
+  }
+  
+  .panelContent {
+    padding: 8px;
+  }
+  
+  .panelHeader {
+    padding: 8px 12px;
   }
   
   .metricsGrid {
@@ -1205,6 +1592,27 @@
   .robotImage {
     width: 80px;
     height: 80px;
+  }
+  
+  .robotTooltip {
+    font-size: 10px;
+    padding: 8px 12px;
+    white-space: normal;
+    max-width: 160px;
+    min-width: 120px;
+    bottom: 110%;
+    line-height: 1.4;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  
+  .robotTooltip::before {
+    border-width: 6px;
+  }
+  
+  .robotTooltip::after {
+    border-width: 4px;
+    margin-top: -2px;
   }
   
   .flowStep {

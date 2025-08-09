@@ -38,7 +38,7 @@ const SmartphoneDemo = ({ isEnglish = false }) => {
         }
         return prev + 1;
       });
-    }, 3000);
+    }, 5000); // Cambiado de 3000 a 5000ms para ser más lento
 
     return () => clearInterval(interval);
   }, []);
@@ -196,7 +196,11 @@ const SmartphoneDemo = ({ isEnglish = false }) => {
 
       <div className={styles.processingContent}>
         <div className={styles.aiLogo}>
-          <div className={styles.aiIcon}>🧠</div>
+          <img 
+            src="/image/global/robot3.png" 
+            alt="AI Robot"
+            className={`${styles.robotIcon} ${isAnalyzing ? styles.processing : ''}`}
+          />
           <div className={styles.aiPulse}></div>
         </div>
 

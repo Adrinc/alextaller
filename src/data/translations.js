@@ -365,6 +365,7 @@ export const translations = {
       title: "La IA que entiende lo que ves y sientes",
       subtitle: "Tecnología avanzada para un análisis más preciso de tus reportes",
       description: "Nuestra inteligencia artificial analiza tanto las imágenes que capturas como el contenido emocional de tus comentarios, garantizando coherencia y priorizando casos urgentes.",
+      robotTooltip: "Procesamos datos de diferentes archivos",
       imageAnalysis: {
         title: "Análisis de Imagen",
         subtitle: "Reconocimiento automático",
@@ -788,6 +789,7 @@ export const translations = {
       title: "AI that understands what you see and feel",
       subtitle: "Advanced technology for more precise analysis of your reports",
       description: "Our artificial intelligence analyzes both the images you capture and the emotional content of your comments, ensuring coherence and prioritizing urgent cases.",
+      robotTooltip: "We process data from different files",
       imageAnalysis: {
         title: "Image Analysis",
         subtitle: "Automatic recognition",

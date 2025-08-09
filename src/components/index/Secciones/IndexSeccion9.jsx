@@ -19,8 +19,8 @@ const IndexSeccion9 = () => {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Simular análisis de IA
-    const timer = setTimeout(() => {
+    // Ciclo continuo de análisis de IA
+    const startAnalysisCycle = () => {
       setIsAnalyzing(true);
       
       setTimeout(() => {
@@ -30,41 +30,22 @@ const IndexSeccion9 = () => {
         // Reiniciar después de un tiempo
         setTimeout(() => {
           setAnalysisComplete(false);
-        }, 5000);
-      }, 8000);
-    }, 2000);
+          // Reiniciar el ciclo después de una pausa
+          setTimeout(startAnalysisCycle, 3000);
+        }, 4000);
+      }, 6000);
+    };
+
+    // Iniciar el primer ciclo después de un delay inicial
+    const initialTimer = setTimeout(startAnalysisCycle, 2000);
 
     return () => {
       clearInterval(clockInterval);
-      clearTimeout(timer);
+      clearTimeout(initialTimer);
     };
   }, []);
 
-  const ProcessIcon = ({ step }) => {
-    const icons = {
-      0: (
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"/>
-        </svg>
-      ),
-      1: (
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
-        </svg>
-      ),
-      2: (
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12,1A11,11 0 0,0 1,12A11,11 0 0,0 12,23A11,11 0 0,0 23,12A11,11 0 0,0 12,1M12,3A9,9 0 0,1 21,12A9,9 0 0,1 12,21A9,9 0 0,1 3,12A9,9 0 0,1 12,3M8,12A4,4 0 0,1 12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12Z"/>
-        </svg>
-      ),
-      3: (
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.46,13.97L5.82,21L12,17.27Z"/>
-        </svg>
-      )
-    };
-    return icons[step];
-  };
+ 
 
   const formatTime = (date) => {
     return date.toLocaleTimeString('es-MX', { 
@@ -193,7 +174,7 @@ const IndexSeccion9 = () => {
                 </div>
               </div>
 
-              <div className={styles.processingFlow}>
+              <div className={`${styles.processingFlow} ${isAnalyzing ? styles.active : ''}`}>
                 <div className={styles.flowStep}>
                   <div className={`${styles.stepNode} ${isAnalyzing ? styles.active : ''}`}>
                     <div className={styles.nodeIcon}>📷</div>
@@ -201,7 +182,7 @@ const IndexSeccion9 = () => {
                       {ingles ? "IMAGE" : "IMAGEN"}
                     </div>
                   </div>
-                  <div className={styles.dataStream}>
+                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
                     <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
                   </div>
                 </div>
@@ -213,7 +194,7 @@ const IndexSeccion9 = () => {
                       {ingles ? "VIDEO" : "VIDEO"}
                     </div>
                   </div>
-                  <div className={styles.dataStream}>
+                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
                     <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
                   </div>
                 </div>
@@ -225,7 +206,7 @@ const IndexSeccion9 = () => {
                       {ingles ? "DOCUMENTS" : "DOCUMENTOS"}
                     </div>
                   </div>
-                  <div className={styles.dataStream}>
+                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
                     <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
                   </div>
                 </div>
@@ -237,7 +218,7 @@ const IndexSeccion9 = () => {
                       {ingles ? "TEXT" : "TEXTO"}
                     </div>
                   </div>
-                  <div className={styles.dataStream}>
+                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
                     <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
                   </div>
                 </div>
@@ -256,6 +237,9 @@ const IndexSeccion9 = () => {
                       alt="IA Robot Analyzer"
                       className={`${styles.robotImage} ${isAnalyzing ? styles.processing : ''}`}
                     />
+                    <div className={styles.robotTooltip}>
+                      {ingles ? translations.en.ia.robotTooltip : translations.es.ia.robotTooltip}
+                    </div>
                   </div>
                   <div className={styles.aiLabel}>
                     {ingles ? "AI ENGINE" : "MOTOR IA"}
