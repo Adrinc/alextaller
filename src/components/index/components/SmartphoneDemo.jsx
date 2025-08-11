@@ -157,7 +157,11 @@ const SmartphoneDemo = ({ isEnglish = false }) => {
       </div>
 
       <div className={styles.mapContainer}>
-        <div className={styles.mapBackground}></div>
+        <img 
+          src="/image/global/maplg.jpg" 
+          alt="Google Maps"
+          className={styles.mapImage}
+        />
         <div className={styles.locationMarker}>📍</div>
         <div className={styles.accuracyCircle}></div>
       </div>
@@ -167,8 +171,8 @@ const SmartphoneDemo = ({ isEnglish = false }) => {
           {isEnglish ? "Detected Address:" : "Dirección Detectada:"}
         </div>
         <div className={styles.addressText}>
-          Av. Reforma #1234<br />
-          Col. Centro, C.P. 22000<br />
+          Av. Zapata #1234<br />
+          Zona Río, C.P. 22000<br />
           Tijuana, Baja California
         </div>
         <div className={styles.accuracyInfo}>

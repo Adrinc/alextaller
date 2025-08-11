@@ -162,7 +162,7 @@
   background: rgba(91, 43, 51, 0.05);
   border: 1px solid rgba(91, 43, 51, 0.1);
   border-radius: 12px;
-  max-width: 700px;
+  max-width: 850px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -284,7 +284,7 @@
   grid-template-columns: 400px 1fr 400px;
   gap: 3rem;
   align-items: start;
-  min-height: 700px;
+  min-height: 850px;
 }
 
 .workspacePanel {
@@ -292,7 +292,7 @@
   border: 2px solid #E5E7EB;
   border-radius: 16px;
   overflow: hidden;
-  height: 700px;
+  height: 850px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -341,7 +341,7 @@
   background: linear-gradient(135deg, #F9FAFB, #F3F4F6);
   border: 3px solid #E5E7EB;
   border-radius: 16px;
-  min-height: 520px;
+  height: 850px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -412,9 +412,10 @@
 .simpleFlow {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  height: auto;
+  gap: 2rem;
+  padding: 2rem;
+  height: calc(100% - 60px);
+  justify-content: space-between;
 }
 
 /* Sección de Input */
@@ -522,7 +523,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .carouselContainer {
@@ -557,16 +560,17 @@
   background: linear-gradient(135deg, #FFFFFF, #F9FAFB);
   border: 3px solid #5B2B33;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   box-shadow: 0 8px 20px rgba(91, 43, 51, 0.2);
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
+  min-height: 300px;
 }
 
 .aiEngineBox::before {
@@ -583,27 +587,30 @@
   background: #FFFFFF;
   border: 2px solid #E5E7EB;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
+  min-height: 300px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  justify-content: center;
 }
 
 .resultCard {
   background: #FFFFFF;
   border: 2px solid #E5E7EB;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
+  min-height: 300px;
 }
 
 .resultCard.complete {
