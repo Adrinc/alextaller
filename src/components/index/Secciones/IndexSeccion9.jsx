@@ -12,38 +12,70 @@ const IndexSeccion9 = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisComplete, setAnalysisComplete] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentMessage, setCurrentMessage] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0); // 0: Motor IA, 1: Estado IA, 2: Resultados
+
+  // Mensajes automáticos para el robot
+  const processingMessages = {
+    es: [
+      "Procesando imágenes JPG, PNG, WEBP...",
+      "Analizando videos MP4, AVI, MOV...", 
+      "Revisando documentos PDF, DOCX...",
+      "Procesando audio MP3, WAV, M4A...",
+      "Detectando contenido visual...",
+      "Identificando patrones...",
+      "Procesamiento en tiempo real...",
+      "Verificando metadatos..."
+    ],
+    en: [
+      "Processing JPG, PNG, WEBP images...",
+      "Analyzing MP4, AVI, MOV videos...",
+      "Reviewing PDF, DOCX documents...", 
+      "Processing MP3, WAV, M4A audio...",
+      "Detecting visual content...",
+      "Identifying patterns...",
+      "Real-time processing...",
+      "Verifying metadata..."
+    ]
+  };
 
   useEffect(() => {
-    // Actualizar reloj cada segundo
-    const clockInterval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+    // Reloj
+    const clockInterval = setInterval(() => setCurrentTime(new Date()), 1000);
 
-    // Ciclo continuo de análisis de IA
-    const startAnalysisCycle = () => {
-      setIsAnalyzing(true);
-      
-      setTimeout(() => {
-        setIsAnalyzing(false);
-        setAnalysisComplete(true);
-        
-        // Reiniciar después de un tiempo
-        setTimeout(() => {
-          setAnalysisComplete(false);
-          // Reiniciar el ciclo después de una pausa
-          setTimeout(startAnalysisCycle, 3000);
-        }, 4000);
-      }, 6000);
-    };
+    // Mensajes del robot
+    const messageInterval = setInterval(() => {
+      setShowMessage(true);
+      setTimeout(() => setCurrentMessage(prev => (prev + 1) % processingMessages.es.length), 100);
+      setTimeout(() => setShowMessage(false), 3000);
+    }, 5000);
 
-    // Iniciar el primer ciclo después de un delay inicial
-    const initialTimer = setTimeout(startAnalysisCycle, 2000);
+    // Carrusel de 3 pasos
+    const carouselInterval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % 3);
+    }, 5000);
 
     return () => {
       clearInterval(clockInterval);
-      clearTimeout(initialTimer);
+      clearInterval(messageInterval);
+      clearInterval(carouselInterval);
     };
   }, []);
+
+  // Reflejar el estado de análisis según el slide actual
+  useEffect(() => {
+    if (currentSlide === 0) {
+      setIsAnalyzing(true);
+      setAnalysisComplete(false);
+    } else if (currentSlide === 1) {
+      setIsAnalyzing(true);
+      setAnalysisComplete(false);
+    } else {
+      setIsAnalyzing(false);
+      setAnalysisComplete(true);
+    }
+  }, [currentSlide]);
 
  
 
@@ -73,7 +105,7 @@ const IndexSeccion9 = () => {
           <div className={styles.institutionalBadge}>
             <div className={styles.governmentSeal}>
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,2L13.09,8.26L22,9L14.32,14.18L17,22L12,18.27L7,22L9.68,14.18L2,9L10.91,8.26L12,2Z"/>
+                <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
               </svg>
             </div>
             <div className={styles.badgeContent}>
@@ -162,7 +194,7 @@ const IndexSeccion9 = () => {
               </div>
             </div>
 
-            {/* Panel Central - Flujo de Datos */}
+            {/* Panel Central - Flujo simple + Carrusel */}
             <div className={styles.dataFlowPanel}>
               <div className={styles.flowHeader}>
                 <h4 className={styles.flowTitle}>
@@ -173,96 +205,162 @@ const IndexSeccion9 = () => {
                   <span className={styles.throughputValue}>3.2 req/s</span>
                 </div>
               </div>
-
-              <div className={`${styles.processingFlow} ${isAnalyzing ? styles.active : ''}`}>
-                <div className={styles.flowStep}>
-                  <div className={`${styles.stepNode} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={styles.nodeIcon}>📷</div>
-                    <div className={styles.nodeLabel}>
-                      {ingles ? "IMAGE" : "IMAGEN"}
-                    </div>
-                  </div>
-                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
-                  </div>
-                </div>
-
-                <div className={styles.flowStep}>
-                  <div className={`${styles.stepNode} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={styles.nodeIcon}>🎥</div>
-                    <div className={styles.nodeLabel}>
-                      {ingles ? "VIDEO" : "VIDEO"}
-                    </div>
-                  </div>
-                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
-                  </div>
-                </div>
-
-                <div className={styles.flowStep}>
-                  <div className={`${styles.stepNode} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={styles.nodeIcon}>📄</div>
-                    <div className={styles.nodeLabel}>
-                      {ingles ? "DOCUMENTS" : "DOCUMENTOS"}
-                    </div>
-                  </div>
-                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
-                  </div>
-                </div>
-
-                <div className={styles.flowStep}>
-                  <div className={`${styles.stepNode} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={styles.nodeIcon}>📝</div>
-                    <div className={styles.nodeLabel}>
-                      {ingles ? "TEXT" : "TEXTO"}
-                    </div>
-                  </div>
-                  <div className={`${styles.dataStream} ${isAnalyzing ? styles.active : ''}`}>
-                    <div className={`${styles.streamLine} ${isAnalyzing ? styles.flowing : ''}`}></div>
-                  </div>
-                </div>
-
-                {/* Nodo Central de IA */}
-                <div className={styles.aiCentralNode}>
-                  <div className={styles.robotContainer}>
-                    <div className={styles.energyRings}>
-                      <div className={styles.energyRing}></div>
-                      <div className={styles.energyRing}></div>
-                      <div className={styles.energyRing}></div>
-                    </div>
-                    <div className={styles.robotGlow}></div>
-                    <img 
-                      src="/image/global/robot3.png" 
-                      alt="IA Robot Analyzer"
-                      className={`${styles.robotImage} ${isAnalyzing ? styles.processing : ''}`}
-                    />
-                    <div className={styles.robotTooltip}>
-                      {ingles ? translations.en.ia.robotTooltip : translations.es.ia.robotTooltip}
-                    </div>
-                  </div>
-                  <div className={styles.aiLabel}>
-                    {ingles ? "AI ENGINE" : "MOTOR IA"}
-                  </div>
-                  {isAnalyzing && (
-                    <div className={styles.processingIndicator}>
-                      {ingles ? "ANALYZING..." : "ANALIZANDO..."}
-                    </div>
-                  )}
-                </div>
-
-                {/* Output */}
-                <div className={styles.outputNode}>
-                  <div className={`${styles.resultNode} ${analysisComplete ? styles.complete : ''}`}>
-                    <div className={styles.resultIcon}>📊</div>
-                    <div className={styles.resultLabel}>
-                      {ingles ? "RESULTS" : "RESULTADOS"}
-                    </div>
-                    {analysisComplete && (
-                      <div className={styles.completionBadge}>
-                        ✓ {ingles ? "COMPLETE" : "COMPLETO"}
+              <div className={styles.simpleFlow}>
+                {/* Fuentes de entrada con barras individuales */}
+                <div className={styles.inputSection}>
+                  <h5 className={styles.sectionTitle}>
+                    {ingles ? "INPUT SOURCES" : "FUENTES DE ENTRADA"}
+                  </h5>
+                  <div className={styles.inputGrid}>
+                    <div className={`${styles.inputNode} ${isAnalyzing ? styles.active : ''}`}>
+                      <div className={styles.inputIcon}>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                          <path d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z"/>
+                        </svg>
                       </div>
-                    )}
+                      <div className={styles.inputLabel}>{ingles ? "IMAGES" : "IMÁGENES"}</div>
+                      <div className={styles.inputFormats}>JPG • PNG • WEBP</div>
+                      <div className={styles.individualProgressBar}>
+                        <div className={`${styles.individualProgressFill} ${isAnalyzing ? styles.animating : ''}`} 
+                             style={{ animationDelay: '0s' }}></div>
+                      </div>
+                    </div>
+                    <div className={`${styles.inputNode} ${isAnalyzing ? styles.active : ''}`}>
+                      <div className={styles.inputIcon}>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                          <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
+                        </svg>
+                      </div>
+                      <div className={styles.inputLabel}>{ingles ? "VIDEOS" : "VIDEOS"}</div>
+                      <div className={styles.inputFormats}>MP4 • AVI • MOV</div>
+                      <div className={styles.individualProgressBar}>
+                        <div className={`${styles.individualProgressFill} ${isAnalyzing ? styles.animating : ''}`}
+                             style={{ animationDelay: '0.5s' }}></div>
+                      </div>
+                    </div>
+                    <div className={`${styles.inputNode} ${isAnalyzing ? styles.active : ''}`}>
+                      <div className={styles.inputIcon}>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                          <path d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/>
+                        </svg>
+                      </div>
+                      <div className={styles.inputLabel}>{ingles ? "DOCUMENTS" : "DOCUMENTOS"}</div>
+                      <div className={styles.inputFormats}>PDF • DOCX • XLS</div>
+                      <div className={styles.individualProgressBar}>
+                        <div className={`${styles.individualProgressFill} ${isAnalyzing ? styles.animating : ''}`}
+                             style={{ animationDelay: '1s' }}></div>
+                      </div>
+                    </div>
+                    <div className={`${styles.inputNode} ${isAnalyzing ? styles.active : ''}`}>
+                      <div className={styles.inputIcon}>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                          <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/>
+                        </svg>
+                      </div>
+                      <div className={styles.inputLabel}>AUDIO</div>
+                      <div className={styles.inputFormats}>MP3 • WAV • M4A</div>
+                      <div className={styles.individualProgressBar}>
+                        <div className={`${styles.individualProgressFill} ${isAnalyzing ? styles.animating : ''}`}
+                             style={{ animationDelay: '1.5s' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Carrusel de 3 etapas centrado */}
+                <div className={styles.carousel}>
+                  <div className={styles.carouselContainer}>
+                    <div className={styles.carouselViewport}>
+                      <div
+                        className={styles.carouselTrack}
+                        style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
+                      >
+                        {/* Slide 1 - Motor IA */}
+                        <div className={styles.carouselSlide}>
+                          <div className={styles.aiEngineBox}>
+                            <div className={styles.aiEngineHeader}>
+                              <span className={styles.aiEngineTitle}>
+                                {ingles ? "AI ENGINE" : "MOTOR IA"}
+                              </span>
+                              <div className={styles.aiEngineStatus}>
+                                <div className={`${styles.statusDot} ${currentSlide === 0 ? styles.active : ''}`}></div>
+                                <span>{ingles ? "ONLINE" : "EN LÍNEA"}</span>
+                              </div>
+                            </div>
+                            <div className={styles.robotSection}>
+                              <div className={styles.robotContainer}>
+                                <div className={styles.energyRings}>
+                                  <div className={styles.energyRing}></div>
+                                  <div className={styles.energyRing}></div>
+                                  <div className={styles.energyRing}></div>
+                                </div>
+                                <img
+                                  src="/image/global/robot3.png"
+                                  alt="IA Robot Analyzer"
+                                  className={`${styles.robotImage} ${currentSlide === 0 ? styles.processing : ''}`}
+                                />
+                              </div>
+                            </div>
+                            <div className={styles.processingStatus}>
+                              <div className={styles.processingText}>
+                                {ingles ? "ANALYZING..." : "ANALIZANDO..."}
+                              </div>
+                              <div className={styles.processingBar}>
+                                <div className={styles.processingFill}></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Slide 2 - Estado IA */}
+                        <div className={styles.carouselSlide}>
+                          <div className={styles.statusCard}>
+                            <div className={styles.statusHeader}>
+                              <div className={styles.statusIcon}>
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                                  <path d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/>
+                                </svg>
+                              </div>
+                              <div className={styles.statusTitle}>
+                                {ingles ? "AI STATUS" : "ESTADO IA"}
+                              </div>
+                            </div>
+                            <div className={styles.statusBody}>
+                              {ingles ? "Reviewing document, checking sections and metadata..." : "Revisando documento, verificando secciones y metadatos..."}
+                            </div>
+                            <div className={styles.processingBar}>
+                              <div className={styles.processingFill}></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Slide 3 - Resultados */}
+                        <div className={styles.carouselSlide}>
+                          <div className={`${styles.resultCard} ${currentSlide === 2 ? styles.complete : ''}`}>
+                            <div className={styles.resultIcon}>
+                              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                                <path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z"/>
+                              </svg>
+                            </div>
+                            <div className={styles.resultContent}>
+                              <div className={styles.resultTitle}>
+                                {ingles ? "STATISTICAL ANALYSIS" : "ANÁLISIS ESTADÍSTICO"}
+                              </div>
+                              <div className={styles.resultStatus}>
+                                {currentSlide === 2 ? (ingles ? "✓ COMPLETE" : "✓ COMPLETO") : (ingles ? "PENDING..." : "PENDIENTE...")}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Dots del carrusel */}
+                  <div className={styles.carouselDots}>
+                    {[0,1,2].map(i => (
+                      <span key={i} className={`${styles.dot} ${currentSlide === i ? styles.active : ''}`}></span>
+                    ))}
                   </div>
                 </div>
               </div>
