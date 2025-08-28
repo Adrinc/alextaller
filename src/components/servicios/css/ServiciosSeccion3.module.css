@@ -1,0 +1,429 @@
+/* Servicios Section 3 - Diagnóstico Computarizado */
+.diagnosticsSection {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #e91e63;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #424242;
+  margin-bottom: 20px;
+}
+
+.sectionDescription {
+  font-size: 1.2rem;
+  color: #666666;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.diagnosticsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Equipment Showcase */
+.equipmentShowcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.equipmentImage {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.equipmentImage img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.equipmentImage:hover img {
+  transform: scale(1.05);
+}
+
+.techBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.equipmentInfo h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 15px;
+}
+
+.equipmentInfo p {
+  font-size: 1.1rem;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.techFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.techFeature {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #e91e63;
+}
+
+.techIcon {
+  font-size: 2rem;
+  min-width: 40px;
+}
+
+.techFeature h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 4px;
+}
+
+.techFeature p {
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 0;
+}
+
+/* Services Grid */
+.servicesGrid {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.gridTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.serviceCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.serviceCard {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.serviceCard:hover {
+  border-color: #e91e63;
+  background: #fce4ec;
+  transform: translateY(-5px);
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.serviceCard h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #424242;
+  line-height: 1.4;
+}
+
+/* Pricing Section */
+.pricingSection {
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  padding: 50px 40px;
+  border-radius: 20px;
+  color: white;
+}
+
+.pricingTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.priceCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  color: #212121;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.priceCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.priceCard.featured {
+  transform: scale(1.05);
+  border: 3px solid #ff5722;
+}
+
+.priceCard.featured:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff5722;
+  color: white;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cardHeader h5 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e91e63;
+  margin-bottom: 5px;
+}
+
+.duration {
+  font-size: 0.9rem;
+  color: #666666;
+  font-weight: 500;
+}
+
+.cardFeatures {
+  margin-bottom: 25px;
+}
+
+.feature {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  color: #424242;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.feature:last-child {
+  border-bottom: none;
+}
+
+.cardButton {
+  width: 100%;
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cardButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.ctaSection h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 15px;
+}
+
+.ctaSection p {
+  font-size: 1.1rem;
+  color: #666666;
+  margin-bottom: 30px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
+}
+
+.secondaryCta {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryCta:hover {
+  background: #128c7e;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .equipmentShowcase {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .sectionTitle {
+    font-size: 2.4rem;
+  }
+  
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .priceCard.featured {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .diagnosticsSection {
+    padding: 60px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .diagnosticsContent {
+    gap: 60px;
+  }
+  
+  .equipmentShowcase,
+  .servicesGrid,
+  .pricingSection,
+  .ctaSection {
+    padding: 30px 20px;
+  }
+  
+  .serviceCards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .serviceCards {
+    grid-template-columns: 1fr;
+  }
+}

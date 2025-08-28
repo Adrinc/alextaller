@@ -20,19 +20,19 @@ const NavBar = () => {
   const navSections = {
     es: [
       { id: "inicio", name: "Inicio", href: "#hero" },
-      { id: "app", name: "La App", href: "#que-es" },
-      { id: "funciones", name: "Funciones", href: "#caracteristicas" },
-      { id: "reportar", name: "Reportar", href: "#categorias" },
-      { id: "gobierno", name: "Gobierno", href: "#soporte-institucional" },
-      { id: "faq", name: "FAQ", href: "#preguntas" }
+      { id: "servicios", name: "Servicios", href: "#servicios" },
+      { id: "promociones", name: "Promociones", href: "#promociones" },
+      { id: "citas", name: "Citas", href: "/citas" },
+      { id: "sucursales", name: "Sucursales", href: "/sucursales" },
+      { id: "nosotros", name: "Nosotros", href: "/nosotros" }
     ],
     en: [
-      { id: "inicio", name: "Home", href: "#hero" }, // Mismo ID, diferente nombre
-      { id: "app", name: "The App", href: "#que-es" },
-      { id: "funciones", name: "Features", href: "#caracteristicas" },
-      { id: "reportar", name: "Report", href: "#categorias" },
-      { id: "gobierno", name: "Government", href: "#soporte-institucional" },
-      { id: "faq", name: "FAQ", href: "#preguntas" }
+      { id: "inicio", name: "Home", href: "#hero" },
+      { id: "servicios", name: "Services", href: "#servicios" },
+      { id: "promociones", name: "Promotions", href: "#promociones" },
+      { id: "citas", name: "Appointments", href: "/citas" },
+      { id: "sucursales", name: "Branches", href: "/sucursales" },
+      { id: "nosotros", name: "About Us", href: "/nosotros" }
     ]
   };
 

@@ -1,6 +1,7 @@
 // src/data/signals.jsx
 import { createContext, useContext, useState, useEffect } from "react";
 import { translations } from "./translations";
+import { translationsIndex } from "./translationsIndex";
 import { isEnglish } from "./variables";
 
 const LangContext = createContext();
@@ -13,6 +14,7 @@ export const LangProvider = ({ children }) => {
   const [lang, setLang] = useState(browserLang);
 
   const t = translations[lang] || translations.es;
+  const tIndex = translationsIndex[lang] || translationsIndex.es;
 
   const changeLang = (newLang) => {
     setLang(newLang);
@@ -25,7 +27,7 @@ export const LangProvider = ({ children }) => {
   }, [lang]);
 
   return (
-    <LangContext.Provider value={{ lang, t, changeLang }}>
+    <LangContext.Provider value={{ lang, t, tIndex, changeLang }}>
       {children}
     </LangContext.Provider>
   );

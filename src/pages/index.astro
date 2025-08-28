@@ -1,43 +1,31 @@
 ---
 import LayoutBasic from '../layouts/LayoutBasic.astro';
 
-import IndexSeccion1 from '../components/index/Secciones/IndexSeccion1.jsx';
-import IndexSeccion2 from '../components/index/Secciones/IndexSeccion2.jsx';
-import IndexSeccion3 from '../components/index/Secciones/IndexSeccion3.jsx';
-import IndexSeccion4 from '../components/index/Secciones/IndexSeccion4.jsx';
-import IndexSeccion5 from '../components/index/Secciones/IndexSeccion5.jsx';
-import IndexSeccion6 from '../components/index/Secciones/IndexSeccion6.jsx';
-import IndexSeccion7 from '../components/index/Secciones/IndexSeccion7.jsx';
-import IndexSeccion8 from '../components/index/Secciones/IndexSeccion8.jsx';
-import IndexSeccion9 from '../components/index/Secciones/IndexSeccion9.jsx';
+import IndexSeccion1 from '../components/index/Secciones/IndexSeccion1.jsx'; // Hero Section
+import IndexSeccion2 from '../components/index/Secciones/IndexSeccion2.jsx'; // Servicios destacados
+import IndexSeccion3 from '../components/index/Secciones/IndexSeccion3.jsx'; // Promociones activas
+import IndexSeccion4 from '../components/index/Secciones/IndexSeccion4.jsx'; // Beneficios diferenciales
+import IndexSeccion5 from '../components/index/Secciones/IndexSeccion5.jsx'; // Testimonios/reseñas
+import IndexSeccion6 from '../components/index/Secciones/IndexSeccion6.jsx'; // Mapa de ubicación
 ---
 
-<LayoutBasic title="Ojo Ciudadano - Tu voz cuenta, mejora tu ciudad" showFooter={true}>
-    <!-- Hero Section - Portada con llamado a la acción -->
+<LayoutBasic title="Alex Taller Mecánico - Tu auto en las mejores manos" showFooter={true}>
+    <!-- Hero Section con video de fondo -->
     <IndexSeccion1 transition:persist client:only/>
     
-    <!-- ¿Qué es Ojo Ciudadano? -->
+    <!-- Servicios destacados (cards con íconos) -->
     <IndexSeccion2 transition:persist client:only/>
     
-    <!-- Características principales -->
+    <!-- Promociones activas (grid) -->
     <IndexSeccion3 transition:persist client:only/>
     
-    <!-- Cómo funciona (Workflow) -->
+    <!-- Beneficios diferenciales -->
     <IndexSeccion4 transition:persist client:only/>
     
-    <!-- Categorías de reporte -->
+    <!-- Testimonios/reseñas -->
     <IndexSeccion5 transition:persist client:only/>
     
-    <!-- Soporte institucional -->
+    <!-- Mapa de ubicación rápida -->
     <IndexSeccion6 transition:persist client:only/>
-    
-    <!-- IA que entiende lo que ves y dices -->
-    <IndexSeccion9 transition:persist client:only/>
-    
-    <!-- Llamado a la acción fuerte (CTA) -->
-    <IndexSeccion7 transition:persist client:only/>
-    
-    <!-- Testimonios/FAQ/Contacto -->
-    <IndexSeccion8 transition:persist client:only/>
 </LayoutBasic>
 

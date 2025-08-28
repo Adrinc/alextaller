@@ -1,0 +1,497 @@
+/* Servicios Section 4 - Pintura y Estética */
+.aestheticsSection {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Section */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #e91e63;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #424242;
+  margin-bottom: 20px;
+}
+
+.sectionDescription {
+  font-size: 1.2rem;
+  color: #666666;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Services Overview */
+.servicesOverview {
+  margin-bottom: 80px;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.serviceCard {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.serviceCard:hover {
+  border-color: #e91e63;
+  background: #fce4ec;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(233, 30, 99, 0.15);
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.serviceTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.serviceDescription {
+  font-size: 0.95rem;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* Gallery Section */
+.gallerySection {
+  margin-bottom: 80px;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.galleryTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #212121;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.beforeAfterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+.beforeAfterCard h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e91e63;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.imageComparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.beforeImage,
+.afterImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.beforeImage img,
+.afterImage img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.beforeAfterCard:hover .beforeImage img,
+.beforeAfterCard:hover .afterImage img {
+  transform: scale(1.05);
+}
+
+.imageLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  text-align: center;
+  padding: 15px 10px 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Process Timeline */
+.processSection {
+  margin-bottom: 80px;
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  padding: 60px 40px;
+  border-radius: 20px;
+  color: white;
+}
+
+.processTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.timelineIcon {
+  width: 60px;
+  height: 60px;
+  background: #ff5722;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+}
+
+.timelineContent h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.timelineContent p {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* Pricing Section */
+.pricingSection {
+  margin-bottom: 80px;
+}
+
+.pricingTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #212121;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.priceCard {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.priceCard:hover {
+  border-color: #e91e63;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(233, 30, 99, 0.15);
+}
+
+.priceCard.featured {
+  border-color: #e91e63;
+  transform: scale(1.05);
+}
+
+.priceCard.featured:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff5722;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.cardHeader {
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  padding: 30px 25px;
+  text-align: center;
+}
+
+.cardHeader .serviceIcon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.cardHeader h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.duration {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.cardFeatures {
+  padding: 30px 25px;
+}
+
+.feature {
+  padding: 10px 0;
+  font-size: 0.95rem;
+  color: #424242;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.feature:last-child {
+  border-bottom: none;
+}
+
+.selectButton {
+  width: 100%;
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  border: none;
+  padding: 15px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.selectButton:hover {
+  background: linear-gradient(135deg, #ad1457, #880e4f);
+}
+
+/* Contact Section */
+.contactSection {
+  background: #ffffff;
+  padding: 0;
+}
+
+.contactCard {
+  background: linear-gradient(135deg, #212121, #424242);
+  color: white;
+  padding: 50px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.contactCard h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.contactCard p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.contactButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.whatsappButton {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whatsappButton:hover {
+  background: #128c7e;
+  transform: translateY(-2px);
+}
+
+.scheduleButton {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scheduleButton:hover {
+  background: #f4511e;
+  transform: translateY(-2px);
+}
+
+.guaranteeInfo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.guaranteeItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.guaranteeIcon {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .sectionTitle {
+    font-size: 2.4rem;
+  }
+  
+  .beforeAfterGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .priceCard.featured {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .aestheticsSection {
+    padding: 60px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .servicesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallerySection,
+  .processSection,
+  .contactCard {
+    padding: 40px 25px;
+  }
+  
+  .contactButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .whatsappButton,
+  .scheduleButton {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .beforeAfterGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .beforeAfterCard {
+    grid-template-columns: 1fr;
+  }
+  
+  .imageComparison {
+    grid-template-columns: 1fr;
+  }
+  
+  .guaranteeInfo {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

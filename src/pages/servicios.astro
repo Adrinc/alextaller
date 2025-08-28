@@ -1,0 +1,161 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+
+import ServiciosSeccion1 from '../components/servicios/ServiciosSeccion1.jsx';
+import ServiciosSeccion2 from '../components/servicios/ServiciosSeccion2.jsx';
+import ServiciosSeccion3 from '../components/servicios/ServiciosSeccion3.jsx';
+import ServiciosSeccion4 from '../components/servicios/ServiciosSeccion4.jsx';
+---
+
+<LayoutBasic title="Servicios Automotrices - Alex Taller Mecánico" showFooter={true}>
+    <!-- Mantenimiento preventivo -->
+    <ServiciosSeccion1 client:load />
+    
+    <!-- Reparaciones mecánicas -->
+    <ServiciosSeccion2 client:load />
+    
+    <!-- Diagnósticos computarizados -->
+    <ServiciosSeccion3 client:load />
+    
+    <!-- Pintura/estética automotriz -->
+    <ServiciosSeccion4 client:load />
+</LayoutBasic>
+    
+    <div style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+            
+            <!-- Mantenimiento Preventivo -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
+                <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Mantenimiento Preventivo</h3>
+                <p style="color: #424242; margin-bottom: 1.5rem;">
+                    Servicios programados para prevenir fallas y extender la vida útil de tu vehículo.
+                </p>
+                <ul style="text-align: left; color: #424242; margin-bottom: 2rem;">
+                    <li>Cambio de aceite y filtros</li>
+                    <li>Revisión de 25 puntos</li>
+                    <li>Diagnóstico computarizado</li>
+                    <li>Revisión de frenos</li>
+                    <li>Afinación del motor</li>
+                </ul>
+                <div style="margin-bottom: 1rem; font-size: 1.2rem; color: #e91e63; font-weight: bold;">
+                    Desde $899 MXN
+                </div>
+                <button onclick="window.location.href='/citas'" style="width: 100%; background: linear-gradient(135deg, #e91e63, #f06292); color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Agendar Servicio
+                </button>
+            </div>
+
+            <!-- Reparaciones Mecánicas -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">⚙️</div>
+                <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Reparaciones Mecánicas</h3>
+                <p style="color: #424242; margin-bottom: 1.5rem;">
+                    Reparaciones especializadas con repuestos de calidad y garantía.
+                </p>
+                <ul style="text-align: left; color: #424242; margin-bottom: 2rem;">
+                    <li>Reparación de motor</li>
+                    <li>Sistema de transmisión</li>
+                    <li>Sistema de frenos</li>
+                    <li>Suspensión y dirección</li>
+                    <li>Sistema de escape</li>
+                </ul>
+                <div style="margin-bottom: 1rem; font-size: 1.2rem; color: #e91e63; font-weight: bold;">
+                    Desde $1,299 MXN
+                </div>
+                <button onclick="window.location.href='/citas'" style="width: 100%; background: linear-gradient(135deg, #e91e63, #f06292); color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Agendar Servicio
+                </button>
+            </div>
+
+            <!-- Diagnóstico Computarizado -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Diagnóstico Computarizado</h3>
+                <p style="color: #424242; margin-bottom: 1.5rem;">
+                    Tecnología avanzada para detectar fallas con precisión.
+                </p>
+                <ul style="text-align: left; color: #424242; margin-bottom: 2rem;">
+                    <li>Escáner automotriz</li>
+                    <li>Análisis de gases de escape</li>
+                    <li>Revisión del sistema eléctrico</li>
+                    <li>Códigos de error</li>
+                    <li>Reporte detallado</li>
+                </ul>
+                <div style="margin-bottom: 1rem; font-size: 1.2rem; color: #e91e63; font-weight: bold;">
+                    Desde $299 MXN
+                </div>
+                <button onclick="window.location.href='/citas'" style="width: 100%; background: linear-gradient(135deg, #e91e63, #f06292); color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Agendar Servicio
+                </button>
+            </div>
+
+            <!-- Pintura y Estética -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🎨</div>
+                <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Pintura y Estética</h3>
+                <p style="color: #424242; margin-bottom: 1.5rem;">
+                    Servicios de pintura y detallado para mantener tu auto como nuevo.
+                </p>
+                <ul style="text-align: left; color: #424242; margin-bottom: 2rem;">
+                    <li>Pintura completa</li>
+                    <li>Retoque de rayones</li>
+                    <li>Encerado y pulido</li>
+                    <li>Lavado detallado</li>
+                    <li>Protección de pintura</li>
+                </ul>
+                <div style="margin-bottom: 1rem; font-size: 1.2rem; color: #e91e63; font-weight: bold;">
+                    Desde $2,999 MXN
+                </div>
+                <button onclick="window.location.href='/citas'" style="width: 100%; background: linear-gradient(135deg, #e91e63, #f06292); color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Agendar Servicio
+                </button>
+            </div>
+
+            <!-- Sistema Eléctrico -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Sistema Eléctrico</h3>
+                <p style="color: #424242; margin-bottom: 1.5rem;">
+                    Reparación y mantenimiento del sistema eléctrico de tu vehículo.
+                </p>
+                <ul style="text-align: left; color: #424242; margin-bottom: 2rem;">
+                    <li>Batería y alternador</li>
+                    <li>Sistema de luces</li>
+                    <li>Computadoras automotrices</li>
+                    <li>Sistema de arranque</li>
+                    <li>Instalación de accesorios</li>
+                </ul>
+                <div style="margin-bottom: 1rem; font-size: 1.2rem; color: #e91e63; font-weight: bold;">
+                    Desde $599 MXN
+                </div>
+                <button onclick="window.location.href='/citas'" style="width: 100%; background: linear-gradient(135deg, #e91e63, #f06292); color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Agendar Servicio
+                </button>
+            </div>
+
+            <!-- Aire Acondicionado -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">❄️</div>
+                <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Aire Acondicionado</h3>
+                <p style="color: #424242; margin-bottom: 1.5rem;">
+                    Mantenimiento y reparación del sistema de climatización.
+                </p>
+                <ul style="text-align: left; color: #424242; margin-bottom: 2rem;">
+                    <li>Carga de gas refrigerante</li>
+                    <li>Limpieza de ductos</li>
+                    <li>Cambio de filtros</li>
+                    <li>Reparación de compresor</li>
+                    <li>Sistema de calefacción</li>
+                </ul>
+                <div style="margin-bottom: 1rem; font-size: 1.2rem; color: #e91e63; font-weight: bold;">
+                    Desde $799 MXN
+                </div>
+                <button onclick="window.location.href='/citas'" style="width: 100%; background: linear-gradient(135deg, #e91e63, #f06292); color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Agendar Servicio
+                </button>
+            </div>
+
+        </div>
+    </div>
+</LayoutBasic>
