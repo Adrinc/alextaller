@@ -16,23 +16,23 @@ const NavBar = () => {
   const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
 
-  // Configuración de las secciones de navegación
+  // Configuración de las secciones de navegación para Alex Taller Mecánico
   const navSections = {
     es: [
       { id: "inicio", name: "Inicio", href: "#hero" },
       { id: "servicios", name: "Servicios", href: "#servicios" },
-      { id: "promociones", name: "Promociones", href: "#promociones" },
-      { id: "citas", name: "Citas", href: "/citas" },
-      { id: "sucursales", name: "Sucursales", href: "/sucursales" },
-      { id: "nosotros", name: "Nosotros", href: "/nosotros" }
+      { id: "beneficios", name: "Beneficios", href: "#beneficios" },
+      { id: "testimonios", name: "Testimonios", href: "#testimonios" },
+      { id: "ubicacion", name: "Ubicación", href: "#ubicacion" },
+      { id: "contacto", name: "Contacto", href: "#contacto" }
     ],
     en: [
       { id: "inicio", name: "Home", href: "#hero" },
       { id: "servicios", name: "Services", href: "#servicios" },
-      { id: "promociones", name: "Promotions", href: "#promociones" },
-      { id: "citas", name: "Appointments", href: "/citas" },
-      { id: "sucursales", name: "Branches", href: "/sucursales" },
-      { id: "nosotros", name: "About Us", href: "/nosotros" }
+      { id: "beneficios", name: "Benefits", href: "#beneficios" },
+      { id: "testimonios", name: "Testimonials", href: "#testimonios" },
+      { id: "ubicacion", name: "Location", href: "#ubicacion" },
+      { id: "contacto", name: "Contact", href: "#contacto" }
     ]
   };
 
@@ -52,16 +52,15 @@ const NavBar = () => {
       }
     };
 
-    // Detectar sección activa - usar siempre los mismos selectores
+    // Detectar sección activa - usar selectores para Alex Taller Mecánico
     const detectActiveSection = () => {
       const sections = [
         { id: "inicio", element: document.querySelector('#hero') },
-        { id: "app", element: document.querySelector('#que-es') },
-        { id: "funciones", element: document.querySelector('#caracteristicas') },
-        { id: "reportar", element: document.querySelector('#categorias') },
-        { id: "gobierno", element: document.querySelector('#soporte-institucional') },
-        { id: "ia", element: document.querySelector('#ia-analisis') },
-        { id: "faq", element: document.querySelector('#preguntas') }
+        { id: "servicios", element: document.querySelector('#servicios') },
+        { id: "beneficios", element: document.querySelector('#beneficios') },
+        { id: "testimonios", element: document.querySelector('#testimonios') },
+        { id: "ubicacion", element: document.querySelector('#ubicacion') },
+        { id: "contacto", element: document.querySelector('#contacto') }
       ];
 
       const scrollPosition = window.scrollY + 100;
@@ -130,34 +129,7 @@ const NavBar = () => {
     }
   };
 
-  // Función para navegar a la sección de IA
-  const scrollToIASection = () => {
-    // Verificar si estamos en la página principal
-    const isOnHomePage = window.location.pathname === '/' || window.location.pathname === '/index.astro';
-    
-    if (!isOnHomePage) {
-      // Si no estamos en la página principal, navegar primero a index
-      window.location.href = '/?section=ia-analisis';
-      return;
-    }
-    
-    // Si ya estamos en la página principal, hacer scroll normal
-    const element = document.querySelector('#ia-analisis');
-    if (element) {
-      const offset = 80; // Altura del navbar
-      const elementPosition = element.offsetTop - offset;
-      
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
-      
-      setActiveSection('ia');
-      setIsOpen(false);
-    }
-  };
-
-  // Función para navegación suave a secciones
+  // Función para navegar a una sección específica
   const scrollToSection = (href, sectionId) => {
     // Verificar si estamos en la página principal
     const isOnHomePage = window.location.pathname === '/' || window.location.pathname === '/index.astro';
@@ -204,15 +176,14 @@ const NavBar = () => {
             behavior: 'smooth'
           });
           
-          // Encontrar el sectionId correspondiente al targetSection
+          // Encontrar el sectionId correspondiente al targetSection para Alex Taller
           const sectionMapping = {
             'hero': 'inicio',
-            'que-es': 'app',
-            'caracteristicas': 'funciones',
-            'categorias': 'reportar',
-            'soporte-institucional': 'gobierno',
-            'ia-analisis': 'ia',
-            'preguntas': 'faq'
+            'servicios': 'servicios',
+            'beneficios': 'beneficios',
+            'testimonios': 'testimonios',
+            'ubicacion': 'ubicacion',
+            'contacto': 'contacto'
           };
           
           const mappedSectionId = sectionMapping[targetSection] || 'inicio';
@@ -238,13 +209,13 @@ const NavBar = () => {
       {/* Overlay para móvil */}
       {isOpen && <div className={styles.overlay} onClick={toggleMenu} />}
       
-      {/* Logo con nombre de la app */}
+      {/* Logo con nombre de Alex Taller Mecánico */}
       <div className={styles.logopic} onClick={() => scrollToSection('#hero', 'inicio')}>
-        <img src="/favicon.png" alt="Ojo Ciudadano Logo" />
+        <img src="/favicon.png" alt="Alex Taller Mecánico Logo" />
         <div className={styles.logoText}>
-          <span className={styles.appName}>Ojo Ciudadano</span>
+          <span className={styles.appName}>Alex Taller</span>
           <span className={styles.appTagline}>
-            {ingles ? "Your voice counts" : "Tu voz cuenta"}
+            {ingles ? "Professional Service" : "Servicio Profesional"}
           </span>
         </div>
         <div className={styles.logoGlow}></div>
@@ -265,24 +236,6 @@ const NavBar = () => {
           <img src="/icons/icon_usa.webp" alt="USA" className={styles.switchIcon} />
         </div>
         <div className={styles.switchIndicator}></div>
-      </div>
-
-      {/* Botón de IA */}
-      <div className={styles.desktopOnly}>
-        <button 
-          className={`${styles.aiButton} ${isActiveLink('ia') ? styles.activeAI : ""}`}
-          onClick={scrollToIASection}
-          aria-label="Navegar a sección de Inteligencia Artificial"
-        >
-          <div className={styles.aiIcon}>
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
-            </svg>
-          </div>
-          <span className={styles.aiText}>IA</span>
-          <div className={styles.aiGlow}></div>
-          <div className={styles.aiPulse}></div>
-        </button>
       </div>
 
       {/* Ícono de menú hamburguesa animado */}
@@ -310,54 +263,40 @@ const NavBar = () => {
           </li>
         ))}
         
-        {/* Botón de IA para móvil */}
-        <li className={`${styles.navItem} ${styles.mobileOnly}`}>
-          <button 
-            onClick={scrollToIASection}
-            className={`${styles.navLink} ${styles.aiNavLink} ${isActiveLink('ia') ? styles.activeLink : ""}`}
-          >
-            <div className={styles.aiIconMobile}>
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
-              </svg>
-            </div>
-            IA
-          </button>
-        </li>
-        
         {/* Botón de contacto para móvil */}
         <li className={`${styles.navItem} ${styles.mobileContactItem} ${styles.mobileOnly}`}>
-          <a className={`${styles.contactButton} ${styles.mobileContactButton}`} href="/contacto">
+          <a className={`${styles.contactButton} ${styles.mobileContactButton}`} href="tel:+526641234567">
             <span className={styles.buttonText}>
-              {ingles ? "Contact" : "Contacto"}
+              {ingles ? "Call Now" : "Llamar Ahora"}
             </span>
             <div className={styles.buttonShine}></div>
           </a>
         </li>
       </ul>
 
-      {/* Grupo de íconos sociales gubernamentales */}
+      {/* Grupo de íconos sociales del taller */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.facebook.com/MunicipioEnsenada" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-          <img src="/icons/facebook.svg" alt="Facebook Municipal" className={styles.icon} />
+        <a href="https://www.facebook.com/AlexTallerMecanico" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <img src="/icons/facebook.svg" alt="Facebook Alex Taller" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="https://twitter.com/EnsenadaAyto" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-          <img src="/icons/twitter.svg" alt="Twitter Municipal" className={styles.icon} />
+        <a href="https://www.instagram.com/alextaller" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <img src="/icons/insta.svg" alt="Instagram Alex Taller" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="mailto:ojociudadano@ensenada.gob.mx" className={styles.socialLink}>
-          <img src="/icons/email.svg" alt="Email" className={styles.icon} />
+        <a href="tel:+526641234567" className={styles.socialLink}>
+          <img src="/icons/phone.svg" alt="Teléfono" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
       </div>
 
-      {/* Botón de contacto con efectos premium */}
+      {/* Botón de contacto/cita con efectos premium */}
       <div className={styles.desktopOnly}>
-        <a className={styles.contactButton} href="/contacto">
+        <a className={styles.contactButton} href="tel:+526641234567">
           <span className={styles.buttonText}>
-            {ingles ? "Contact" : "Contacto"}
+            {ingles ? "Call Now" : "Llamar Ahora"}
           </span>
+          <span className={styles.buttonIcon}>📞</span>
           <div className={styles.buttonShine}></div>
         </a>
       </div>

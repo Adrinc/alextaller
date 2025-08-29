@@ -15,107 +15,107 @@ const FootNetHive = () => {
 
   const content = {
     es: {
-      description: "Ojo Ciudadano es la aplicación oficial del municipio de Ensenada para fortalecer la participación ciudadana y mejorar los servicios públicos a través de reportes rápidos y seguimiento en tiempo real.",
+      description: "Especialistas en mantenimiento, prevención y mecánica automotriz. Somos de los mejores talleres en Tijuana ven y visítanos ¨Te esperamos¨.",
       contact: {
         title: "Contacto",
-        address: "Av. Diamante 1180, Zona Centro",
-        city: "Ensenada, Baja California, México",
-        email: "ojociudadano@ensenada.gob.mx",
-        phone: "+52 (646) 172-3000"
+        address: "Calle Salvador Alvarado 4645EL",
+        city: "Tijuana, México",
+        email: "talleralex@gmail.com",
+        phone: "+52 (664) 630-4093"
       },
       links: {
         app: {
-          title: "Aplicación",
+          title: "Servicios",
           items: [
-            { text: "Descargar App", url: "#download" },
-            { text: "Cómo Funciona", url: "#como-funciona" },
-            { text: "Categorías", url: "#categorias" },
-            { text: "Reportar Problema", url: "#reportar" }
+            { text: "Mantenimiento Preventivo", url: "#mantenimiento" },
+            { text: "Mecánica General", url: "#mecanica" },
+            { text: "Diagnóstico", url: "#diagnostico" },
+            { text: "Reparaciones", url: "#reparaciones" }
           ]
         },
         ciudadano: {
-          title: "Ciudadano",
+          title: "Especialidades",
           items: [
-            { text: "Mis Reportes", url: "#mis-reportes" },
-            { text: "Estado del Reporte", url: "#estado" },
-            { text: "Mapa de Incidencias", url: "#mapa" },
-            { text: "Emergencias SOS", url: "#sos" }
+            { text: "Motor", url: "#motor" },
+            { text: "Transmisión", url: "#transmision" },
+            { text: "Frenos", url: "#frenos" },
+            { text: "Suspensión", url: "#suspension" }
           ]
         },
         municipal: {
-          title: "Gobierno",
+          title: "Taller",
           items: [
-            { text: "Portal Municipal", url: "https://ensenada.gob.mx" },
-            { text: "Transparencia", url: "#transparencia" },
-            { text: "Estadísticas", url: "#estadisticas" },
-            { text: "Panel Administrativo", url: "#admin" }
+            { text: "Sobre Nosotros", url: "#about" },
+            { text: "Ubicación", url: "#ubicacion" },
+            { text: "Horarios", url: "#horarios" },
+            { text: "Garantía", url: "#garantia" }
           ]
         },
         legal: {
           title: "Legal",
           items: [
-            { text: "Términos de Uso", url: "#terminos" },
+            { text: "Términos de Servicio", url: "#terminos" },
             { text: "Política de Privacidad", url: "#privacidad" },
-            { text: "Aviso de Privacidad", url: "#aviso-privacidad" }
+            { text: "Garantías", url: "#garantias" }
           ]
         }
       },
-      copyright: "© 2025 Municipio de Ensenada, Baja California. Todos los derechos reservados.",
+      copyright: "© 2025 Alex Taller Mecánico, Tijuana. Todos los derechos reservados.",
       appStores: {
-        playStore: "Disponible en Google Play",
-        appStore: "Disponible en App Store"
+        playStore: "¡Agenda tu cita!",
+        appStore: "¡Llámanos ahora!"
       }
     },
     en: {
-      description: "Ojo Ciudadano is the official app of the Municipality of Ensenada to strengthen citizen participation and improve public services through quick reports and real-time tracking.",
+      description: "Specialists in automotive maintenance, prevention and mechanics. We are one of the best workshops in Tijuana come and visit us ¨We are waiting for you¨.",
       contact: {
         title: "Contact",
-        address: "1180 Diamante Ave, Downtown",
-        city: "Ensenada, Baja California, Mexico",
-        email: "ojociudadano@ensenada.gob.mx",
-        phone: "+52 (646) 172-3000"
+        address: "Salvador Alvarado 4645EL Street",
+        city: "Tijuana, Mexico",
+        email: "talleralex@gmail.com",
+        phone: "+52 (664) 630-4093"
       },
       links: {
         app: {
-          title: "Application",
+          title: "Services",
           items: [
-            { text: "Download App", url: "#download" },
-            { text: "How It Works", url: "#how-it-works" },
-            { text: "Categories", url: "#categories" },
-            { text: "Report Problem", url: "#report" }
+            { text: "Preventive Maintenance", url: "#maintenance" },
+            { text: "General Mechanics", url: "#mechanics" },
+            { text: "Diagnosis", url: "#diagnosis" },
+            { text: "Repairs", url: "#repairs" }
           ]
         },
         ciudadano: {
-          title: "Citizen",
+          title: "Specialties",
           items: [
-            { text: "My Reports", url: "#my-reports" },
-            { text: "Report Status", url: "#status" },
-            { text: "Incident Map", url: "#map" },
-            { text: "SOS Emergency", url: "#sos" }
+            { text: "Engine", url: "#engine" },
+            { text: "Transmission", url: "#transmission" },
+            { text: "Brakes", url: "#brakes" },
+            { text: "Suspension", url: "#suspension" }
           ]
         },
         municipal: {
-          title: "Government",
+          title: "Workshop",
           items: [
-            { text: "Municipal Portal", url: "https://ensenada.gob.mx" },
-            { text: "Transparency", url: "#transparency" },
-            { text: "Statistics", url: "#statistics" },
-            { text: "Admin Panel", url: "#admin" }
+            { text: "About Us", url: "#about" },
+            { text: "Location", url: "#location" },
+            { text: "Hours", url: "#hours" },
+            { text: "Warranty", url: "#warranty" }
           ]
         },
         legal: {
           title: "Legal",
           items: [
-            { text: "Terms of Use", url: "#terms" },
+            { text: "Terms of Service", url: "#terms" },
             { text: "Privacy Policy", url: "#privacy" },
-            { text: "Privacy Notice", url: "#privacy-notice" }
+            { text: "Warranties", url: "#warranties" }
           ]
         }
       },
-      copyright: "© 2025 Municipality of Ensenada, Baja California. All rights reserved.",
+      copyright: "© 2025 Alex Taller Mecánico, Tijuana. All rights reserved.",
       appStores: {
-        playStore: "Available on Google Play",
-        appStore: "Available on App Store"
+        playStore: "Schedule your appointment!",
+        appStore: "Call us now!"
       }
     }
   };
@@ -145,36 +145,36 @@ const FootNetHive = () => {
         <div className={styles.grid}>
           <div className={styles.logoSection}>
             <div className={styles.logoContainer}>
-              <img src="/favicon.png" alt="Ojo Ciudadano" className={styles.logo} />
-              <h3 className={styles.appName}>Ojo Ciudadano</h3>
+              <img src="/favicon.png" alt="Alex Taller Mecánico" className={styles.logo} />
+              <h3 className={styles.appName}>Alex Taller Mecánico</h3>
               <span className={styles.appTagline}>
-                {ingles ? "Your voice counts" : "Tu voz cuenta"}
+                {ingles ? "Professional Auto Service" : "Servicio Automotriz Profesional"}
               </span>
             </div>
             <p className={styles.companyDescription}>{textos.description}</p>
             
-            {/* App Store Badges */}
+            {/* Action Buttons */}
             <div className={styles.appStores}>
-              <a href="#download-android" className={styles.storeButton}>
+              <a href="tel:+526646304093" className={styles.storeButton}>
                 <svg className={styles.storeIcon} viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                 </svg>
                 <div className={styles.storeText}>
                   <span className={styles.storeLabel}>
-                    {ingles ? "Get it on" : "Descárgala en"}
+                    {ingles ? "Call us" : "Llámanos"}
                   </span>
-                  <span className={styles.storeName}>Google Play</span>
+                  <span className={styles.storeName}>{ingles ? "Call now!" : "¡Llama ahora!"}</span>
                 </div>
               </a>
-              <a href="#download-ios" className={styles.storeButton}>
+              <a href="#contacto" className={styles.storeButton}>
                 <svg className={styles.storeIcon} viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/>
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                 </svg>
                 <div className={styles.storeText}>
                   <span className={styles.storeLabel}>
-                    {ingles ? "Download on the" : "Descargar en"}
+                    {ingles ? "Schedule" : "Agenda"}
                   </span>
-                  <span className={styles.storeName}>App Store</span>
+                  <span className={styles.storeName}>{ingles ? "Appointment" : "tu cita"}</span>
                 </div>
               </a>
             </div>
@@ -249,20 +249,22 @@ const FootNetHive = () => {
         <div className={styles.bottom}>
           <p className={styles.copyright}>{textos.copyright}</p>
           <div className={styles.socialLinks}>
-            <a href="https://facebook.com/MunicipioEnsenada" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/tallermecanicoalex/" target="_blank" rel="noopener noreferrer">
               <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
-            <a href="https://twitter.com/EnsenadaAyto" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/twitter.svg" alt="Twitter" className={styles.socialIcon} />
+            <a href="tel:+526646304093">
+              <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
             </a>
-            <a href="mailto:ojociudadano@ensenada.gob.mx">
+            <a href="mailto:talleralex@gmail.com">
               <img src="/icons/email.svg" alt="Email" className={styles.socialIcon} />
             </a>
-            <a href="https://ensenada.gob.mx" target="_blank" rel="noopener noreferrer">
+            <a href="#ubicacion">
               <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
             </a>
           </div>

@@ -1,10 +1,12 @@
+/* Footer Alex Taller Mecánico - Neumorphic Dark Design */
 .footer {
-  background: linear-gradient(135deg, #5B2B33 0%, #4A232B 100%);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
   padding: 4rem 1rem 2rem;
   color: #f5f7fa;
   width: 100%;
   overflow: hidden;
   position: relative;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -53,7 +55,7 @@
 
 .appTagline {
   font-size: 0.875rem;
-  color: #C4B68C;
+  color: #e91e63;
   font-weight: 500;
   font-style: italic;
 }
@@ -65,39 +67,83 @@
   max-width: 95%;
 }
 
-/* App Store Badges */
+/* Action Buttons - Neumorphic Design */
 .appStores {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin: 1rem 0;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
 .storeButton {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: #FFFFFF;
-  color: #5B2B33;
-  border-radius: 8px;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #1a1a1a;
+  color: #ffffff;
+  border-radius: 16px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  border: 1px solid #E5E7EB;
-  max-width: 200px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  max-width: 240px;
+  position: relative;
+  overflow: hidden;
+  
+  /* Neumorphic Effect */
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.6),
+    -8px -8px 16px rgba(255, 255, 255, 0.05),
+    inset 0 0 0 rgba(233, 30, 99, 0);
+}
+
+.storeButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
+  transition: left 0.6s ease;
 }
 
 .storeButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(196, 182, 140, 0.3);
-  background: #C4B68C;
-  color: #5B2B33;
+  transform: translateY(-4px) scale(1.02);
+  color: #e91e63;
+  border-color: #e91e63;
+  
+  /* Neumorphic Hover Effect */
+  box-shadow: 
+    12px 12px 24px rgba(0, 0, 0, 0.8),
+    -12px -12px 24px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 8px rgba(233, 30, 99, 0.1),
+    0 0 30px rgba(233, 30, 99, 0.3);
+}
+
+.storeButton:hover::before {
+  left: 100%;
+}
+
+.storeButton:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.02),
+    inset 4px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .storeIcon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.2));
+  transition: all 0.3s ease;
+}
+
+.storeButton:hover .storeIcon {
+  filter: drop-shadow(0 4px 8px rgba(233, 30, 99, 0.4));
+  transform: scale(1.1);
 }
 
 .storeText {
@@ -107,15 +153,23 @@
 }
 
 .storeLabel {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 1;
   opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .storeName {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
+  transition: all 0.3s ease;
+}
+
+.storeButton:hover .storeLabel,
+.storeButton:hover .storeName {
+  opacity: 1;
+  text-shadow: 0 2px 4px rgba(233, 30, 99, 0.3);
 }
 
 .contactInfo {
@@ -138,7 +192,7 @@
   width: 18px;
   height: 18px;
   min-width: 18px;
-  color: #C4B68C;
+  color: #e91e63;
   margin-top: 2px;
 }
 
@@ -172,7 +226,8 @@
 }
 
 .link:hover {
-  color: #C4B68C;
+  color: #e91e63;
+  text-shadow: 0 2px 4px rgba(233, 30, 99, 0.3);
 }
 
 .bottom {
@@ -204,38 +259,60 @@
 }
 
 .socialIcon:hover {
-  transform: translateY(-2px);
-  color: #C4B68C;
+  transform: translateY(-2px) scale(1.1);
+  color: #e91e63;
+  filter: drop-shadow(0 4px 8px rgba(233, 30, 99, 0.4));
 }
 
 .scrollToTop {
   position: absolute;
   right: 2rem;
   top: -1.5rem;
-  background: #C4B68C;
+  background: #1a1a1a;
   width: 4rem;
   height: 4rem;
-  border-radius: 16px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 4px 12px rgba(91, 43, 51, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #e91e63;
+  
+  /* Neumorphic Effect */
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.6),
+    -8px -8px 16px rgba(255, 255, 255, 0.05);
 }
 
 .scrollToTop:hover {
-  transform: translateY(-3px);
-  background: #FFFFFF;
-  border-color: #C4B68C;
+  transform: translateY(-6px) scale(1.05);
+  background: #e91e63;
+  border-color: #ffffff;
+  
+  box-shadow: 
+    12px 12px 24px rgba(0, 0, 0, 0.8),
+    -12px -12px 24px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(233, 30, 99, 0.5);
+}
+
+.scrollToTop:active {
+  transform: translateY(-3px) scale(0.95);
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.02);
 }
 
 .scrollToTop svg {
   width: 1.5rem;
   height: 1.5rem;
-  color: #5B2B33;
+  color: #e91e63;
   transition: all 0.3s ease;
+}
+
+.scrollToTop:hover svg {
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
@@ -255,10 +332,12 @@
   .appStores {
     flex-direction: row;
     gap: 1rem;
+    justify-content: center;
   }
 
   .storeButton {
-    max-width: 180px;
+    max-width: 200px;
+    flex: 1;
   }
 }
 
@@ -278,8 +357,9 @@
   }
 
   .storeButton {
-    max-width: 220px;
+    max-width: 280px;
     width: 100%;
+    justify-content: center;
   }
 
   .bottom {
@@ -324,6 +404,10 @@
   }
   
   .scrollToTop:hover {
-    transform: translate(50%, -3px);
+    transform: translateX(50%) translateY(-6px) scale(1.05);
+  }
+  
+  .scrollToTop:active {
+    transform: translateX(50%) translateY(-3px) scale(0.95);
   }
 }
