@@ -1,9 +1,10 @@
-// IndexSeccion2.jsx - Servicios Section
+// IndexSeccion2.jsx - Servicios Section con Neumorphism Claro
 import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
 import { translationsIndex } from '../../../data/translationsIndex';
 import styles from '../css/indexSeccion2.module.css';
+import ServiceCard from '../components/ServiceCard.jsx';
 
 const IndexSeccion2 = () => {
   const ingles = useStore(isEnglish);
@@ -84,50 +85,16 @@ const IndexSeccion2 = () => {
           <p className={styles.subtitle}>{t.services.subtitle}</p>
         </div>
 
-        <div className={`${styles.servicesGrid} ${isVisible ? styles.staggerIn : ''}`}>
+        <div className={styles.servicesGrid}>
           {services.map((service, index) => (
-            <div
+            <ServiceCard
               key={service.id}
-              className={styles.serviceCard}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => handleServiceClick(service.id)}
-            >
-              <div className={styles.cardHeader}>
-                <div className={`${styles.iconContainer} ${styles[service.gradient]}`}>
-                  <span className={styles.icon}>{service.icon}</span>
-                </div>
-                <div className={styles.price}>{service.price}</div>
-              </div>
-              
-              <div className={styles.cardContent}>
-                <h3 className={styles.serviceTitle}>
-                  {t.services[service.id].title}
-                </h3>
-                <p className={styles.serviceDescription}>
-                  {t.services[service.id].description}
-                </p>
-                
-                <ul className={styles.featuresList}>
-                  {t.services[service.id].features.map((feature, idx) => (
-                    <li key={idx} className={styles.featureItem}>
-                      <svg className={styles.checkIcon} viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className={styles.cardFooter}>
-                <button className={styles.scheduleBtn}>
-                  <span>{t.common.schedule}</span>
-                  <svg className={styles.arrowIcon} viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+              service={service}
+              isVisible={isVisible}
+              delay={index * 150}
+              onServiceClick={handleServiceClick}
+              t={t}
+            />
           ))}
         </div>
 

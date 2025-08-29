@@ -1,4 +1,4 @@
-// IndexSeccion1.jsx - Hero Section con video de fondo y mock-up de app
+// IndexSeccion1.jsx - Hero Section con video de fondo y carrusel de textos
 import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
@@ -9,9 +9,37 @@ const IndexSeccion1 = () => {
   const ingles = useStore(isEnglish);
   const t = ingles ? translationsIndex.en : translationsIndex.es;
   const [isVisible, setIsVisible] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  // Textos del carrusel
+  const carouselTexts = [
+    {
+      title: ingles ? "Your Car in the Best Hands" : "Tu Auto en las Mejores Manos",
+      subtitle: ingles ? "Professional automotive service since 2017" : "Servicio automotriz profesional desde 2017"
+    },
+    {
+      title: ingles ? "Advanced Technology" : "Tecnología Avanzada", 
+      subtitle: ingles ? "Computer diagnostics and modern equipment" : "Diagnósticos computarizados y equipo moderno"
+    },
+    {
+      title: ingles ? "Certified Technicians" : "Técnicos Certificados",
+      subtitle: ingles ? "Expert team with proven experience" : "Equipo experto con experiencia comprobada"
+    },
+    {
+      title: ingles ? "Quality Guarantee" : "Garantía de Calidad",
+      subtitle: ingles ? "All our services include warranty" : "Todos nuestros servicios incluyen garantía"
+    }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Carrusel automático cada 4 segundos
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % carouselTexts.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToServices = () => {
@@ -43,14 +71,28 @@ const IndexSeccion1 = () => {
 
       <div className={styles.container}>
         <div className={styles.content}>
-          {/* Contenido principal */}
+          {/* Contenido principal con carrusel */}
           <div className={`${styles.mainContent} ${isVisible ? styles.fadeInUp : ''}`}>
-            <h1 className={styles.title}>
-              {t.hero.title}
-            </h1>
-            <p className={styles.subtitle}>
-              {t.hero.subtitle}
-            </p>
+            
+            {/* Carrusel de textos */}
+            <div className={styles.textCarousel}>
+              {carouselTexts.map((text, index) => (
+                <div
+                  key={index}
+                  className={`${styles.carouselItem} ${
+                    index === currentTextIndex ? styles.active : ''
+                  }`}
+                >
+                  <h1 className={styles.title}>
+                    {text.title}
+                  </h1>
+                  <p className={styles.subtitle}>
+                    {text.subtitle}
+                  </p>
+                </div>
+              ))}
+            </div>
+
             <p className={styles.description}>
               {t.hero.description}
             </p>
@@ -74,68 +116,40 @@ const IndexSeccion1 = () => {
             </div>
           </div>
 
-          {/* Mock-up de la app */}
-          <div className={`${styles.appMockup} ${isVisible ? styles.slideInRight : ''}`}>
-            <div className={styles.phone}>
-              <div className={styles.phoneContent}>
-                <div className={styles.statusBar}>
-                  <div className={styles.time}>9:41</div>
-                  <div className={styles.battery}>
-                    <div className={styles.signal}></div>
-                    <div className={styles.wifi}></div>
-                    <div className={styles.batteryIcon}></div>
-                  </div>
-                </div>
-                
-                <div className={styles.appContent}>
-                  <div className={styles.appHeader}>
-                    <img src="/favicon.png" alt="Alex Taller" className={styles.appLogo} />
-                    <h3 className={styles.appTitle}>Alex Taller</h3>
-                  </div>
-                  
-                  <div className={styles.appFeatures}>
-                    <div className={styles.feature}>
-                      <div className={styles.featureIcon}>📅</div>
-                      <span>Agendar Citas</span>
-                    </div>
-                    <div className={styles.feature}>
-                      <div className={styles.featureIcon}>🔧</div>
-                      <span>Estado del Vehículo</span>
-                    </div>
-                    <div className={styles.feature}>
-                      <div className={styles.featureIcon}>🔔</div>
-                      <span>Notificaciones</span>
-                    </div>
-                    <div className={styles.feature}>
-                      <div className={styles.featureIcon}>📋</div>
-                      <span>Historial</span>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.appointmentCard}>
-                    <div className={styles.cardHeader}>
-                      <h4>Próxima Cita</h4>
-                      <span className={styles.status}>Confirmada</span>
-                    </div>
-                    <div className={styles.cardBody}>
-                      <p>Mantenimiento Preventivo</p>
-                      <p className={styles.date}>25 Ago, 2025 - 10:00 AM</p>
-                    </div>
-                  </div>
-                </div>
+          {/* Estadísticas */}
+          <div className={`${styles.statsContainer} ${isVisible ? styles.slideInRight : ''}`}>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>7+</div>
+              <div className={styles.statLabel}>
+                {ingles ? "Years Experience" : "Años de Experiencia"}
               </div>
             </div>
-            
-            <div className={styles.appInfo}>
-              <h3 className={styles.appInfoTitle}>{t.hero.appTitle}</h3>
-              <p className={styles.appInfoDescription}>{t.hero.appDescription}</p>
-              <div className={styles.storeButtons}>
-                <button className={styles.storeButton}>
-                  <span>Próximamente</span>
-                </button>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>2000+</div>
+              <div className={styles.statLabel}>
+                {ingles ? "Happy Customers" : "Clientes Felices"}
+              </div>
+            </div>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>95%</div>
+              <div className={styles.statLabel}>
+                {ingles ? "Satisfaction Rate" : "Satisfacción"}
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Indicadores del carrusel */}
+        <div className={styles.carouselIndicators}>
+          {carouselTexts.map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.indicator} ${
+                index === currentTextIndex ? styles.active : ''
+              }`}
+              onClick={() => setCurrentTextIndex(index)}
+            />
+          ))}
         </div>
       </div>
 
@@ -144,7 +158,7 @@ const IndexSeccion1 = () => {
         <div className={styles.scrollMouse}>
           <div className={styles.scrollWheel}></div>
         </div>
-        <span>Desliza para ver más</span>
+        <span>{ingles ? "Scroll to see more" : "Desliza para ver más"}</span>
       </div>
     </section>
   );

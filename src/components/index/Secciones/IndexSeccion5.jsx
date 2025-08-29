@@ -1,44 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
-import { currentLanguage } from '../../../data/signals.jsx';
+import { isEnglish } from '../../../data/variables';
 import { translationsIndex } from '../../../data/translationsIndex.js';
 import styles from '../css/indexSeccion5.module.css';
 
 const IndexSeccion5 = () => {
-  const lang = useStore(currentLanguage);
-  const t = translationsIndex[lang];
+  const ingles = useStore(isEnglish);
+  const t = ingles ? translationsIndex.en : translationsIndex.es;
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
     {
       id: 1,
-      name: t.testimonials.testimonials[0].name,
-      role: t.testimonials.testimonials[0].role,
-      avatar: '/public/image/testimonials/avatar1.png',
-      rating: 5,
-      comment: t.testimonials.testimonials[0].comment,
-      service: t.testimonials.testimonials[0].service,
-      date: t.testimonials.testimonials[0].date
+      name: t.testimonials.testimonial1.name,
+      rating: t.testimonials.testimonial1.rating,
+      text: t.testimonials.testimonial1.text,
+      vehicle: t.testimonials.testimonial1.vehicle,
+      avatar: '/image/testimonials/avatar1.png'
     },
     {
       id: 2,
-      name: t.testimonials.testimonials[1].name,
-      role: t.testimonials.testimonials[1].role,
-      avatar: '/public/image/testimonials/avatar2.png',
-      rating: 5,
-      comment: t.testimonials.testimonials[1].comment,
-      service: t.testimonials.testimonials[1].service,
-      date: t.testimonials.testimonials[1].date
+      name: t.testimonials.testimonial2.name,
+      rating: t.testimonials.testimonial2.rating,
+      text: t.testimonials.testimonial2.text,
+      vehicle: t.testimonials.testimonial2.vehicle,
+      avatar: '/image/testimonials/avatar2.png'
     },
     {
       id: 3,
-      name: t.testimonials.testimonials[2].name,
-      role: t.testimonials.testimonials[2].role,
-      avatar: '/public/image/testimonials/avatar3.png',
-      rating: 5,
-      comment: t.testimonials.testimonials[2].comment,
-      service: t.testimonials.testimonials[2].service,
-      date: t.testimonials.testimonials[2].date
+      name: t.testimonials.testimonial3.name,
+      rating: t.testimonials.testimonial3.rating,
+      text: t.testimonials.testimonial3.text,
+      vehicle: t.testimonials.testimonial3.vehicle,
+      avatar: '/image/testimonials/avatar3.png'
     }
   ];
 
@@ -59,19 +53,15 @@ const IndexSeccion5 = () => {
   };
 
   return (
-    <section className={styles.testimonialsSection}>
+    <section className={styles.section} id="testimonios">
       <div className={styles.container}>
         
         {/* Header */}
-        <div className={styles.sectionHeader}>
-          <div className={styles.headerBadge}>
-            <span className={styles.badgeIcon}>💬</span>
-            <span>{t.testimonials.badge}</span>
-          </div>
-          <h2 className={styles.sectionTitle}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>
             {t.testimonials.title}
           </h2>
-          <p className={styles.sectionSubtitle}>
+          <p className={styles.subtitle}>
             {t.testimonials.subtitle}
           </p>
         </div>
@@ -94,15 +84,12 @@ const IndexSeccion5 = () => {
               </div>
               
               <blockquote className={styles.comment}>
-                "{testimonials[currentTestimonial].comment}"
+                "{testimonials[currentTestimonial].text}"
               </blockquote>
 
               <div className={styles.serviceInfo}>
-                <span className={styles.serviceTag}>
-                  {testimonials[currentTestimonial].service}
-                </span>
-                <span className={styles.date}>
-                  {testimonials[currentTestimonial].date}
+                <span className={styles.vehicle}>
+                  {testimonials[currentTestimonial].vehicle}
                 </span>
               </div>
             </div>
@@ -119,9 +106,6 @@ const IndexSeccion5 = () => {
                 <h4 className={styles.authorName}>
                   {testimonials[currentTestimonial].name}
                 </h4>
-                <p className={styles.authorRole}>
-                  {testimonials[currentTestimonial].role}
-                </p>
               </div>
             </div>
           </div>
@@ -137,74 +121,6 @@ const IndexSeccion5 = () => {
               aria-label={`Ver testimonio ${index + 1}`}
             />
           ))}
-        </div>
-
-        {/* Stats Section */}
-        <div className={styles.statsSection}>
-          <div className={styles.statCard}>
-            <div className={styles.statNumber}>500+</div>
-            <div className={styles.statLabel}>{t.testimonials.stats.clients}</div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statNumber}>4.9</div>
-            <div className={styles.statLabel}>{t.testimonials.stats.rating}</div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statNumber}>95%</div>
-            <div className={styles.statLabel}>{t.testimonials.stats.satisfaction}</div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statNumber}>7</div>
-            <div className={styles.statLabel}>{t.testimonials.stats.years}</div>
-          </div>
-        </div>
-
-        {/* All Testimonials Grid */}
-        <div className={styles.allTestimonials}>
-          <h3 className={styles.gridTitle}>{t.testimonials.allReviews}</h3>
-          <div className={styles.testimonialsGrid}>
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={testimonial.id} 
-                className={`${styles.testimonialGridCard} ${index === currentTestimonial ? styles.highlighted : ''}`}
-                onClick={() => setCurrentTestimonial(index)}
-              >
-                <div className={styles.gridCardHeader}>
-                  <div className={styles.gridAvatar}>
-                    <img src={testimonial.avatar} alt={testimonial.name} />
-                  </div>
-                  <div className={styles.gridAuthorInfo}>
-                    <h5>{testimonial.name}</h5>
-                    <p>{testimonial.role}</p>
-                  </div>
-                  <div className={styles.gridRating}>
-                    {renderStars(testimonial.rating)}
-                  </div>
-                </div>
-                <p className={styles.gridComment}>
-                  "{testimonial.comment}"
-                </p>
-                <div className={styles.gridFooter}>
-                  <span className={styles.gridService}>{testimonial.service}</span>
-                  <span className={styles.gridDate}>{testimonial.date}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className={styles.ctaSection}>
-          <h3>{t.testimonials.cta.title}</h3>
-          <p>{t.testimonials.cta.description}</p>
-          <div className={styles.ctaButtons}>
-            <button className={styles.scheduleButton}>
-              {t.testimonials.cta.schedule}
-            </button>
-            <button className={styles.reviewButton}>
-              {t.testimonials.cta.leaveReview}
-            </button>
-          </div>
         </div>
 
       </div>

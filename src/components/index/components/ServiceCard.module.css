@@ -1,0 +1,423 @@
+/* ServiceCard.module.css - Neumorphism Claro Referencia */
+
+.serviceCard {
+  position: relative;
+  background: #f0f0f3;
+  border-radius: 25px;
+  padding: 2.5rem;
+  min-height: 400px;
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  
+  /* Neumorphism claro - ELEVACIÓN (no hundimiento) */
+  box-shadow: 
+    8px 8px 16px rgba(163, 177, 198, 0.4),
+    -8px -8px 16px rgba(255, 255, 255, 0.9);
+  
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.serviceCard.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  
+  /* Más elevación en hover */
+  box-shadow: 
+    12px 12px 24px rgba(163, 177, 198, 0.5),
+    -12px -12px 24px rgba(255, 255, 255, 0.95),
+    0 0 30px rgba(233, 30, 99, 0.1);
+}
+
+/* Header de la tarjeta */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+/* Contenedor del icono con neumorphism */
+.iconContainer {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transition: all 0.3s ease;
+}
+
+.iconBackground {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f3;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  
+  /* Neumorphism en el icono - elevado */
+  box-shadow: 
+    6px 6px 12px rgba(163, 177, 198, 0.4),
+    -6px -6px 12px rgba(255, 255, 255, 0.9);
+  
+  transition: all 0.3s ease;
+}
+
+.iconContainer.iconHover .iconBackground {
+  /* Hundimiento al hover */
+  box-shadow: 
+    inset 6px 6px 12px rgba(163, 177, 198, 0.4),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+  
+  transform: scale(0.95);
+}
+
+.icon {
+  font-size: 2.2rem;
+  filter: drop-shadow(2px 2px 4px rgba(163, 177, 198, 0.3));
+  transition: all 0.3s ease;
+}
+
+.iconGlow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(
+    circle,
+    rgba(233, 30, 99, 0.1) 0%,
+    rgba(233, 30, 99, 0.05) 50%,
+    transparent 70%
+  );
+  border-radius: 25px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.iconContainer:hover .iconGlow {
+  opacity: 1;
+}
+
+/* Tag de precio con neumorphism */
+.priceTag {
+  position: relative;
+  background: #f0f0f3;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 700;
+  color: #e91e63;
+  font-size: 1rem;
+  
+  /* Neumorphism hundido */
+  box-shadow: 
+    inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+  
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+.priceText {
+  position: relative;
+  z-index: 2;
+}
+
+.pricePulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(233, 30, 99, 0.05));
+  animation: pricePulse 3s ease-in-out infinite;
+}
+
+@keyframes pricePulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Contenido de la tarjeta - flex para alinear botón */
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  /* Sin neumorphism - texto normal */
+}
+
+.serviceDescription {
+  font-size: 1rem;
+  color: #546e7a;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Lista de características - flex-grow para ocupar espacio disponible */
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #37474f;
+}
+
+.checkContainer {
+  width: 24px;
+  height: 24px;
+  background: #f0f0f3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+  /* Neumorphism pequeño */
+  box-shadow: 
+    3px 3px 6px rgba(163, 177, 198, 0.4),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
+}
+
+.checkIcon {
+  width: 14px;
+  height: 14px;
+  color: #4caf50;
+}
+
+/* Footer con botón - siempre al final */
+.cardFooter {
+  border-top: 1px solid rgba(163, 177, 198, 0.2);
+  padding-top: 1.5rem;
+  margin-top: auto; /* Esto empuja el footer al final */
+}
+
+.scheduleBtn {
+  position: relative;
+  width: 100%;
+  background: #f0f0f3;
+  border: none;
+  border-radius: 18px;
+  padding: 1.2rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e91e63;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  overflow: hidden;
+  
+  /* Neumorphism en botón - elevado */
+  box-shadow: 
+    6px 6px 12px rgba(163, 177, 198, 0.4),
+    -6px -6px 12px rgba(255, 255, 255, 0.9);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scheduleBtn:hover {
+  color: #ad1457;
+  transform: translateY(-2px);
+  
+  /* Más elevación en hover */
+  box-shadow: 
+    8px 8px 16px rgba(163, 177, 198, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.95);
+}
+
+.scheduleBtn:active {
+  transform: scale(0.95);
+  
+  /* Hundimiento en active */
+  box-shadow: 
+    inset 6px 6px 12px rgba(163, 177, 198, 0.4),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+}
+
+.btnIconContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #f0f0f3;
+  border-radius: 50%;
+  
+  /* Mini neumorphism - elevado */
+  box-shadow: 
+    2px 2px 4px rgba(163, 177, 198, 0.4),
+    -2px -2px 4px rgba(255, 255, 255, 0.9);
+  
+  transition: all 0.3s ease;
+}
+
+.btnHover .btnIconContainer {
+  /* Se hunde en hover del botón */
+  box-shadow: 
+    inset 2px 2px 4px rgba(163, 177, 198, 0.4),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.arrowIcon {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s ease;
+}
+
+.scheduleBtn:hover .arrowIcon {
+  transform: translateX(2px);
+}
+
+.btnRipple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(233, 30, 99, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.scheduleBtn:active .btnRipple {
+  width: 200px;
+  height: 200px;
+}
+
+/* Acentos decorativos */
+.cardAccents .topAccent {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.3), transparent);
+  border-radius: 0 0 3px 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardAccents .sideAccent {
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, rgba(233, 30, 99, 0.2), transparent);
+  border-radius: 0 3px 3px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.serviceCard:hover .topAccent,
+.serviceCard:hover .sideAccent {
+  opacity: 1;
+}
+
+/* Efecto de brillo sutil */
+.shimmerEffect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%) translateY(-100%);
+  transition: transform 0.8s ease;
+}
+
+.shimmerEffect.shimmerActive {
+  transform: translateX(0) translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .serviceCard {
+    padding: 2rem;
+    min-height: 350px;
+  }
+  
+  .iconContainer {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .icon {
+    font-size: 2rem;
+  }
+  
+  .serviceTitle {
+    font-size: 1.4rem;
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceCard {
+    padding: 1.5rem;
+    min-height: 320px;
+  }
+  
+  .iconContainer {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .icon {
+    font-size: 1.8rem;
+  }
+  
+  .serviceTitle {
+    font-size: 1.2rem;
+  }
+  
+  .serviceDescription {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,533 @@
+/* CardComponent.module.css - Neumorphism BRUTAL con Neon Fucsia */
+
+.card {
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 25px;
+  padding: 2.5rem;
+  min-height: 500px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(80px) scale(0.8);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  
+  /* Neumorphism negro brutal */
+  box-shadow: 
+    20px 20px 40px rgba(0, 0, 0, 0.9),
+    -20px -20px 40px rgba(40, 40, 40, 0.1),
+    inset 2px 2px 8px rgba(255, 255, 255, 0.02),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.8);
+  
+  border: 1px solid rgba(233, 30, 99, 0.1);
+}
+
+.card.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    25px 25px 60px rgba(0, 0, 0, 0.95),
+    -25px -25px 60px rgba(50, 50, 50, 0.15),
+    inset 3px 3px 12px rgba(255, 255, 255, 0.03),
+    inset -3px -3px 12px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(233, 30, 99, 0.3);
+  
+  border-color: rgba(233, 30, 99, 0.4);
+}
+
+/* Efecto de neon glow */
+.neonGlow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(233, 30, 99, 0.8) 0%,
+    rgba(255, 20, 147, 0.6) 25%,
+    rgba(199, 21, 133, 0.8) 50%,
+    rgba(233, 30, 99, 0.6) 75%,
+    rgba(255, 20, 147, 0.8) 100%
+  );
+  background-size: 300% 300%;
+  border-radius: 26px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: neonPulse 3s ease-in-out infinite;
+}
+
+.neonGlow.active {
+  opacity: 1;
+}
+
+@keyframes neonPulse {
+  0%, 100% { 
+    background-position: 0% 50%;
+    filter: blur(8px);
+  }
+  50% { 
+    background-position: 100% 50%;
+    filter: blur(12px);
+  }
+}
+
+/* Badge de descuento BRUTAL */
+.discountBadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  z-index: 10;
+  
+  /* Neumorphism en el badge */
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.8),
+    -8px -8px 16px rgba(255, 255, 255, 0.02),
+    0 0 20px rgba(233, 30, 99, 0.6);
+  
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0px) rotate(-15deg); }
+  50% { transform: translateY(-5px) rotate(-10deg); }
+}
+
+.discountText {
+  position: relative;
+  z-index: 2;
+}
+
+.discountPulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Header con icono épico */
+.cardHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.iconContainer {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+}
+
+.icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: #0a0a0a;
+  border-radius: 50%;
+  z-index: 3;
+  
+  /* Neumorphism en el icono */
+  box-shadow: 
+    15px 15px 30px rgba(0, 0, 0, 0.9),
+    -15px -15px 30px rgba(60, 60, 60, 0.1),
+    inset 5px 5px 10px rgba(255, 255, 255, 0.02),
+    inset -5px -5px 10px rgba(0, 0, 0, 0.8);
+  
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.iconGlow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(
+    circle,
+    rgba(233, 30, 99, 0.4) 0%,
+    rgba(255, 20, 147, 0.2) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: 1;
+  animation: iconGlow 2s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.iconRing {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #e91e63, #ff1493, #c2185b) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: subtract;
+  z-index: 2;
+  animation: ringRotate 6s linear infinite;
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Contenido de la tarjeta */
+.cardContent {
+  position: relative;
+  z-index: 5;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff 0%, #e91e63 50%, #ffffff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShimmer 3s ease-in-out infinite;
+}
+
+@keyframes titleShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Pricing ÉPICO */
+.pricing {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.originalPrice {
+  position: relative;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.strikethrough {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e91e63, transparent);
+  animation: strikeAnimation 1s ease-out 0.5s both;
+}
+
+@keyframes strikeAnimation {
+  from { width: 0; left: 50%; }
+  to { width: 100%; left: 0; }
+}
+
+.currentPrice {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.currency {
+  font-size: 1.5rem;
+  color: #e91e63;
+  font-weight: 700;
+}
+
+.amount {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #e91e63;
+  text-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+  animation: priceGlow 2s ease-in-out infinite;
+}
+
+@keyframes priceGlow {
+  0%, 100% { 
+    text-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 30px rgba(233, 30, 99, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+/* Botón con neumorphism BRUTAL */
+.actionBtn {
+  position: relative;
+  width: 100%;
+  background: #0a0a0a;
+  border: none;
+  border-radius: 20px;
+  padding: 1.2rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e91e63;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  
+  /* Neumorphism en el botón */
+  box-shadow: 
+    12px 12px 24px rgba(0, 0, 0, 0.8),
+    -12px -12px 24px rgba(50, 50, 50, 0.1),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.02),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.8);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionBtn:hover {
+  color: #ffffff;
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.9),
+    -8px -8px 16px rgba(60, 60, 60, 0.15),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.03),
+    inset 3px 3px 6px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(233, 30, 99, 0.4);
+  
+  transform: translateY(-2px);
+}
+
+.actionBtn:active {
+  transform: translateY(0);
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.9),
+    -4px -4px 8px rgba(40, 40, 40, 0.1),
+    inset 3px 3px 6px rgba(0, 0, 0, 0.8),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.02);
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+}
+
+.btnGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.btnHover .btnGlow {
+  left: 100%;
+}
+
+.btnRipple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(233, 30, 99, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.actionBtn:active .btnRipple {
+  width: 300px;
+  height: 300px;
+}
+
+/* Indicador de urgencia */
+.urgencyIndicator {
+  text-align: center;
+}
+
+.urgencyBar {
+  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  
+  box-shadow: 
+    inset 2px 2px 4px rgba(0, 0, 0, 0.8),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.02);
+}
+
+.urgencyFill {
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(90deg, #e91e63, #ff1493);
+  border-radius: 3px;
+  animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+@keyframes urgencyPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.urgencyText {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+/* Efectos de partículas */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(233, 30, 99, 0.6);
+  border-radius: 50%;
+  animation: particleFloat 8s linear infinite;
+  animation-delay: var(--delay);
+  left: var(--x);
+  top: var(--y);
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Efecto de brillo */
+.shineEffect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.shineEffect.shine {
+  transform: translateX(100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem;
+    min-height: 450px;
+  }
+  
+  .icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .amount {
+    font-size: 2.4rem;
+  }
+  
+  .actionBtn {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+    min-height: 400px;
+  }
+  
+  .icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .amount {
+    font-size: 2rem;
+  }
+}

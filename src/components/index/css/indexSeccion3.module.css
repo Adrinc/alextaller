@@ -1,39 +1,63 @@
-/* IndexSeccion3.module.css - Promociones Section */
+/* IndexSeccion3.module.css - Promociones NEUMORPHISM ÉPICAS */
+
+
 
 .promotions {
-  padding: 8rem 0;
-  background: linear-gradient(135deg, #212121 0%, #424242 100%);
   position: relative;
+  min-height: 100vh;
+  padding: 8rem 0;
   overflow: hidden;
+  background: #0a0a0a;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(233, 30, 99, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 20, 147, 0.08) 0%, transparent 50%);
 }
 
-.promotions::before {
-  content: '';
+/* Elementos flotantes */
+.floatingElements {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(233, 30, 99, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 87, 34, 0.1) 0%, transparent 50%);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
   pointer-events: none;
 }
 
+.floatingIcon {
+  position: absolute;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.floatingIcon:nth-child(1) { top: 10%; left: 10%; }
+.floatingIcon:nth-child(2) { top: 20%; right: 15%; }
+.floatingIcon:nth-child(3) { top: 60%; left: 5%; }
+.floatingIcon:nth-child(4) { bottom: 30%; right: 10%; }
+.floatingIcon:nth-child(5) { bottom: 10%; left: 20%; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
 .container {
+  position: relative;
+  z-index: 10;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
-  position: relative;
-  z-index: 1;
 }
 
+/* Header épico */
 .header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 6rem;
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header.fadeInUp {
@@ -41,23 +65,240 @@
   transform: translateY(0);
 }
 
-.title {
-  font-size: 3rem;
-  font-weight: 800;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
   color: white;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.badgeIcon {
+  font-size: 1.2rem;
+  animation: iconSpin 3s ease-in-out infinite;
+}
+
+@keyframes iconSpin {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(360deg); }
+}
+
+.title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, 
+    #ffffff 0%,
+    #e91e63 25%,
+    #ff6b6b 50%,
+    #ffd93d 75%,
+    #ffffff 100%);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: textShimmer 3s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 30px rgba(233, 30, 99, 0.5);
+}
+
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .subtitle {
-  font-size: 1.3rem;
-  color: #e8eaed;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Countdown Timer ÉPICO */
+.countdown {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.countdownText {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.timeUnit {
+  text-align: center;
+  background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+  border-radius: 15px;
+  padding: 1rem;
+  min-width: 80px;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+  animation: timerPulse 1s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.timeNumber {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+
+.timeLabel {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.timeSeparator {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Grid simplificado para CardComponent */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-top: 6rem;
+}
+
+/* Efectos de partículas */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(233, 30, 99, 0.6);
+  border-radius: 50%;
+  animation: particleFloat 10s linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  
+  .promotions {
+    padding: 4rem 0;
+  }
+  
+  .timer {
+    gap: 0.5rem;
+  }
+  
+  .timeUnit {
+    min-width: 60px;
+    padding: 0.8rem;
+  }
+  
+  .timeNumber {
+    font-size: 1.8rem;
+  }
+  
+  .countdown {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .timer {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .timeUnit {
+    min-width: 50px;
+    padding: 0.6rem;
+  }
+  
+  .timeNumber {
+    font-size: 1.5rem;
+  }
 }
 
 .promotionsGrid {

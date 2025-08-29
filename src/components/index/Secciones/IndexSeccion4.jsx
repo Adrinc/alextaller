@@ -82,7 +82,7 @@ const IndexSeccion4 = () => {
   return (
     <section 
       ref={sectionRef}
-      className={styles.benefits} 
+      className={styles.section} 
       id="beneficios"
     >
       <div className={styles.container}>
@@ -98,30 +98,30 @@ const IndexSeccion4 = () => {
           </p>
         </div>
 
-        <div className={`${styles.benefitsGrid} ${isVisible ? styles.staggerIn : ''}`}>
+        <div className={`${styles.grid} ${isVisible ? styles.staggerIn : ''}`}>
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className={styles.benefitCard}
+              className={styles.card}
               style={{ 
                 animationDelay: `${index * 0.1}s`,
                 '--accent-color': benefit.color 
               }}
             >
-              <div className={styles.benefitIcon}>
+              <div className={styles.icon}>
                 {benefit.icon}
               </div>
-              <h3 className={styles.benefitTitle}>
+              <h3 className={styles.cardTitle}>
                 {benefit.title}
               </h3>
-              <p className={styles.benefitDescription}>
+              <p className={styles.cardDescription}>
                 {benefit.description}
               </p>
             </div>
           ))}
         </div>
 
-        <div className={`${styles.statsSection} ${isVisible ? styles.fadeInUp : ''}`}>
+        <div className={`${styles.statsGrid} ${isVisible ? styles.fadeInUp : ''}`}>
           <div className={styles.stat}>
             <div className={styles.statNumber}>2,000+</div>
             <div className={styles.statLabel}>
