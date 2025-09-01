@@ -1,0 +1,1019 @@
+:root {  
+  --primary-dark: #0a0a0a;  
+  --secondary-dark: #1a1a1a;  
+  --primary-fuchsia: #e91e63;  
+  --secondary-fuchsia: #ec407a;  
+  --accent-fuchsia: #f06292;  
+  --neon-fuchsia: #ff1744;   
+   /* Sombras neumórficas BRUTALES */  
+   --shadow-neumorphic-brutal:     25px 25px 50px rgba(0, 0, 0, 0.9),    -25px -25px 50px rgba(40, 40, 40, 0.1),    inset 3px 3px 12px rgba(255, 255, 255, 0.02),    inset -3px -3px 12px rgba(0, 0, 0, 0.8);     
+    --shadow-neumorphic-inset:     inset 15px 15px 30px rgba(0, 0, 0, 0.8),    inset -15px -15px 30px rgba(60, 60, 60, 0.1);      
+    --shadow-neumorphic-hover:     30px 30px 80px rgba(0, 0, 0, 0.95),    -30px -30px 80px rgba(80, 80, 80, 0.15),    inset 5px 5px 20px rgba(255, 255, 255, 0.03),    inset -5px -5px 20px rgba(0, 0, 0, 0.9);}/* Sección principal */
+    
+  .section {  
+  position: relative;  
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);  
+  padding: 8rem 0;  
+  overflow: hidden;  
+  min-height: 100vh;
+  width: 100%;
+}
+  /* Efectos de fondo épicos */
+  .backgroundEffects {  position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;  z-index: 1;  pointer-events: none;}.neuralNetwork {  position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;  background-image:     radial-gradient(circle at 20% 20%, rgba(233, 30, 99, 0.1) 0%, transparent 50%),    radial-gradient(circle at 80% 80%, rgba(255, 87, 34, 0.1) 0%, transparent 50%),    radial-gradient(circle at 40% 60%, rgba(76, 175, 80, 0.1) 0%, transparent 50%);  animation: networkPulse 8s ease-in-out infinite;}@keyframes networkPulse {  0%, 100% { opacity: 0.3; }  50% { opacity: 0.7; }}.floatingElements {  position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;}.floatingElement {  position: absolute;  background: radial-gradient(circle, rgba(233, 30, 99, 0.3) 0%, transparent 70%);  border-radius: 50%;  width: var(--size);  height: var(--size);  left: var(--x);  top: var(--y);  animation: floatUp 20s linear infinite;  animation-delay: var(--delay);}@keyframes floatUp {  0% {    transform: translateY(100vh) scale(0);    opacity: 0;  }  10% {    opacity: 1;    transform: scale(1);  }  90% {    opacity: 1;  }  100% {    transform: translateY(-100vh) scale(0);    opacity: 0;  }}.glowOrbs {  position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;}.glowOrb {  position: absolute;  width: 600px;  height: 600px;  background: radial-gradient(circle, var(--color) 0%, transparent 70%);  border-radius: 50%;  filter: blur(150px);  animation: orbMove 25s ease-in-out infinite;}.glowOrb:nth-child(1) {  top: 10%;  left: -20%;  animation-delay: 0s;}.glowOrb:nth-child(2) {  top: 60%;  right: -20%;  animation-delay: 8s;}.glowOrb:nth-child(3) {  bottom: 10%;  left: 30%;  animation-delay: 16s;}@keyframes orbMove {  0%, 100% { transform: translate(0, 0) scale(1); }  25% { transform: translate(100px, -150px) scale(1.2); }  50% { transform: translate(-50px, -100px) scale(0.8); }  75% { transform: translate(150px, 100px) scale(1.1); }}
+  
+  .container {  
+    position: relative;  
+    z-index: 10;  
+    max-width: 2000px;  
+    margin: 0 auto;  
+    padding: 0 2rem;
+
+  }
+    /* Header con animaciones épicas */
+    .header {  
+      text-align: center;  
+      margin-bottom: 8rem;  
+      opacity: 0;  
+      transform: translateY(100px) scale(0.8);  
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .header.headerVisible {  
+      opacity: 1;  
+      transform: translateY(0) scale(1);
+    }
+    /* Sección de proceso BRUTAL */
+    .processSection {  
+      margin-bottom: 6rem;
+    }
+    .processBadge 
+    {  
+      position: 
+      relative;  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 1.5rem;  
+      background: var(--primary-dark);  
+      border: 2px solid rgba(233, 30, 99, 0.3);  
+      border-radius: 50px;  
+      padding: 1.5rem 3rem;  
+      margin-bottom: 4rem;  
+      overflow: hidden;    
+      /* Neumorfismo BRUTAL */  
+      box-shadow: var(--shadow-neumorphic-brutal);   
+       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .processBadge:hover {  transform: translateY(-5px) scale(1.05);
+          border-color: rgba(233, 30, 99, 0.6);
+          box-shadow: var(--shadow-neumorphic-hover);
+      }
+      .badgeGlow {  
+        position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg,     rgba(233, 30, 99, 0.6) 0%,    rgba(255, 87, 34, 0.4) 25%,    rgba(76, 175, 80, 0.6) 50%,    rgba(156, 39, 176, 0.4) 75%,    rgba(233, 30, 99, 0.6) 100%  );
+          background-size: 300% 300%;
+          border-radius: 52px;
+          z-index: -1;
+          animation: badgeGlowRotate 4s ease-in-out infinite;  filter: blur(8px);
+        }
+        @keyframes badgeGlowRotate 
+        {  0%, 100% 
+          { 
+            background-position: 0% 50%; 
+          }  
+          50% 
+          { 
+            background-position: 100% 50%; 
+          }}
+          .badgeIcon {  font-size: 2rem; 
+             filter: drop-shadow(0 0 15px rgba(233, 30, 99, 0.8)); 
+             animation: iconFloat 3s ease-in-out infinite;}@keyframes iconFloat {  0%, 100% { transform: translateY(0px) rotate(0deg); 
+          }  50% { transform: translateY(-5px) rotate(10deg); 
+          }
+        }
+          .badgeText 
+          {  font-size: 1.1rem; 
+             font-weight: 800; 
+             letter-spacing: 3px; 
+             color: #ffffff; 
+             text-transform: uppercase; 
+             text-shadow: 0 0 20px rgba(233, 30, 99, 0.6);}.badgePulse {  position: absolute; 
+             top: 0; 
+             left: 0; 
+             right: 0; 
+             bottom: 0; 
+             background: rgba(233, 30, 99, 0.1); 
+             border-radius: 50px; 
+             animation: badgePulse 3s ease-in-out infinite;}@keyframes badgePulse {  0%, 100% { transform: scale(1); 
+            opacity: 0; 
+          }  50% { transform: scale(1.05); 
+            opacity: 1; 
+          }
+        }
+    
+        .processTitle 
+        {  display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }.titleMain {  font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, #e91e63 50%, #ffffff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShimmer 4s ease-in-out infinite;
+            text-shadow: 0 0 50px rgba(233, 30, 99, 0.3);
+        }.titleSub {  font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: #e91e63;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 30px rgba(233, 30, 99, 0.6);
+        }@keyframes titleShimmer {  0%, 100% { background-position: 0% 50%;
+         }  50% { background-position: 100% 50%;
+         }}.processSubtitle {  font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }/* Proceso NEUMÓRFICO BRUTAL */
+        .processContainer {  
+          position: relative;
+            margin: 4rem 0;
+          
+            width: 100%;
+        }.processSteps {  display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+      /*       max-width: 1200px; */
+            margin: 0 auto;
+        }.processStep {  position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            background: var(--primary-dark);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            cursor: pointer;
+            min-width: 280px;
+            flex: 1;
+            max-width: 300px;
+            overflow: hidden;
+              /* Neumorfismo INICIAL */  box-shadow: var(--shadow-neumorphic-brutal);
+              opacity: 0;
+            transform: translateY(80px) scale(0.8);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }.processStep.stepVisible {  opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: var(--delay);
+        }.processStep:hover {  transform: translateY(-15px) scale(1.05);
+            border-color: var(--step-color);
+            box-shadow: var(--shadow-neumorphic-hover);
+        }.processStep.stepActive {  background: linear-gradient(135deg, rgba(233, 30, 99, 0.1) 0%, rgba(255, 87, 34, 0.1) 100%);
+            border-color: var(--step-color);
+            transform: translateY(-20px) scale(1.1);
+            box-shadow:     var(--shadow-neumorphic-hover),    0 0 50px rgba(233, 30, 99, 0.4);
+        }.processStep.stepCompleted {  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.2) 100%);
+            border-color: rgba(76, 175, 80, 0.4);
+        }/* Efectos del paso */.stepEffects {  position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }.stepGlow {  position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: radial-gradient(circle, var(--step-color) 0%, transparent 70%);
+            border-radius: 35px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: blur(15px);
+        }.processStep:hover .stepGlow,.processStep.stepActive .stepGlow {  opacity: 0.3;
+        }.stepParticles {  position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }.stepParticle {  position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--step-color);
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+            animation-delay: calc(var(--i) * 0.5s);
+            opacity: 0;
+        }.processStep:hover .stepParticle,.processStep.stepActive .stepParticle {  opacity: 1;
+        }@keyframes particleFloat {  0% {    transform: translateY(100%) scale(0);
+              opacity: 0;
+          }  10% {    opacity: 1;
+              transform: scale(1);
+          }  90% {    opacity: 1;
+          }  100% {    transform: translateY(-100%) scale(0);
+              opacity: 0;
+          }}/* Número del paso BRUTAL */.stepNumber {  position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--step-color) 0%, rgba(255, 255, 255, 0.2) 100%);
+            border: 3px solid var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            z-index: 10;
+              box-shadow:     8px 8px 20px rgba(0, 0, 0, 0.8),    -8px -8px 20px rgba(60, 60, 60, 0.1),    0 0 25px var(--step-color);
+              transition: all 0.3s ease;
+        }.processStep.stepActive .stepNumber {  animation: numberPulse 2s ease-in-out infinite;
+            box-shadow:     12px 12px 30px rgba(0, 0, 0, 0.9),    -12px -12px 30px rgba(80, 80, 80, 0.15),    0 0 40px var(--step-color);
+        }@keyframes numberPulse {  0%, 100% { transform: scale(1);
+         }  50% { transform: scale(1.15);
+         }}.numberRing {  position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--step-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: ringRotate 8s linear infinite;
+        }@keyframes ringRotate {  from { transform: rotate(0deg);
+         }  to { transform: rotate(360deg);
+         }}/* Icono del paso */.stepIcon {  position: relative;
+            z-index: 5;
+        }.iconContainer {  position: relative;
+            width: 100px;
+            height: 100px;
+            background: var(--secondary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+              box-shadow: var(--shadow-neumorphic-inset);
+              transition: all 0.4s ease;
+        }.processStep:hover .iconContainer,.processStep.stepActive .iconContainer {  transform: scale(1.1);
+            box-shadow:     var(--shadow-neumorphic-inset),    0 0 30px var(--step-color);
+        }.iconGlow {  position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, var(--step-color) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: blur(20px);
+        }.processStep:hover .iconGlow,.processStep.stepActive .iconGlow {  opacity: 0.6;
+        }/* Contenido del paso */.stepContent {  text-align: center;
+            z-index: 5;
+        }.stepTitle {  font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }.stepDescription {  font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }.stepMeta {  display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }.stepDuration {  display: inline-block;
+            background: rgba(233, 30, 99, 0.2);
+            color: #e91e63;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(233, 30, 99, 0.3);
+        }.stepTools {  font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }/* Conectores neumórficos */.stepConnector {  position: absolute;
+            top: 50%;
+            right: -3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1;
+        }.connectorLine {  position: relative;
+            width: 40px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }.connectorProgress {  position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #e91e63, #ff5722);
+            border-radius: 2px;
+            animation: progressFlow 4s ease-in-out infinite;
+        }@keyframes progressFlow {  0%, 100% { width: 0%;
+         }  50% { width: 100%;
+         }}.connectorArrow {  position: relative;
+            font-size: 1.5rem;
+            color: rgba(233, 30, 99, 0.6);
+            animation: arrowPulse 3s ease-in-out infinite;
+        }@keyframes arrowPulse {  0%, 100% { transform: translateX(0px);
+         }  50% { transform: translateX(8px);
+         }}.arrowGlow {  position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.4) 0%, transparent 70%);
+            filter: blur(8px);
+            opacity: 0;
+            animation: arrowGlowPulse 3s ease-in-out infinite;
+        }@keyframes arrowGlowPulse {  0%, 100% { opacity: 0;
+         }  50% { opacity: 1;
+         }}/* Sección de beneficios BRUTAL */.benefitsSection {  margin-top: 8rem;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }.benefitsSection.benefitsVisible {  opacity: 1;
+            transform: translateY(0);
+        }.benefitsHeader {  text-align: center;
+            margin-bottom: 6rem;
+        }.benefitsBadge {  position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--primary-dark);
+            border: 2px solid rgba(233, 30, 99, 0.3);
+            border-radius: 50px;
+            padding: 1.5rem 3rem;
+            margin-bottom: 4rem;
+            overflow: hidden;
+              box-shadow: var(--shadow-neumorphic-brutal);    
+              transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);}
+              
+        .benefitsTitle {  display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }.titleHighlight {  font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            color: #e91e63;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(233, 30, 99, 0.4);
+        }.benefitsSubtitle {  font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }/* Grid de beneficios ÉPICO */.benefitsGrid {  display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }.benefitCard {  position: relative;
+            background: var(--primary-dark);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 500px;
+              /* Neumorfismo INICIAL */  box-shadow: var(--shadow-neumorphic-brutal);
+              opacity: 0;
+            transform: translateY(80px) scale(0.8);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }.benefitCard.cardVisible {  opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: var(--delay);
+        }.benefitCard:hover {  transform: translateY(-20px) scale(1.02);
+            border-color: var(--card-color);
+            box-shadow:     var(--shadow-neumorphic-hover),    0 0 60px var(--card-glow);
+        }.benefitCard.cardHovered {  transform: translateY(-25px) scale(1.05);
+            border-color: var(--card-color);
+            box-shadow:     var(--shadow-neumorphic-hover),    0 0 80px var(--card-glow);
+        }/* Efectos de la card */.cardEffects {  position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }.cardGlow {  position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: radial-gradient(circle, var(--card-glow) 0%, transparent 70%);
+            border-radius: 35px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            filter: blur(20px);
+        }.benefitCard:hover .cardGlow {  opacity: 0.4;
+        }.cardShine {  position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }.benefitCard:hover .cardShine {  left: 100%;
+        }.cardParticles {  position: absolute;
+            top: 0;
+            left: 0;  width: 100%;  height: 100%;}.cardParticle {  position: absolute;  width: 3px;  height: 3px;  background: var(--card-color);  border-radius: 50%;  animation: cardParticleFloat 8s linear infinite;  animation-delay: var(--particle-delay);  opacity: 0;  left: calc(var(--i) * 12.5%);  top: 100%;}.benefitCard:hover .cardParticle {  opacity: 1;}@keyframes cardParticleFloat {  0% {    transform: translateY(0) scale(0);    opacity: 0;  }  10% {    opacity: 1;    transform: scale(1);  }  90% {    opacity: 1;  }  100% {    transform: translateY(-500px) scale(0);    opacity: 0;  }}/* Imagen de fondo neumórfica */.cardBackground {  position: absolute;  top: 0;  left: 0;  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(0.7) contrast(1.1);
+}
+
+.benefitCard:hover .cardImage {
+  transform: scale(1.15);
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.7) 0%,
+    var(--card-glow) 100%
+  );
+}
+
+/* Contenido principal */
+.cardContent {
+  position: relative;
+  z-index: 3;
+  padding: 3rem 2.5rem 2rem;
+  margin-top: 150px;
+  background: var(--primary-dark);
+  height: calc(100% - 200px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Icono neumórfico BRUTAL */
+.benefitIconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin: -50px auto 2rem;
+  background: var(--secondary-dark);
+  border: 3px solid var(--card-color);
+  border-radius: 50%;
+  z-index: 5;
+  
+  box-shadow: 
+    var(--shadow-neumorphic-brutal),
+    0 0 30px var(--card-glow);
+  
+  transition: all 0.4s ease;
+}
+
+.benefitCard:hover .benefitIconContainer {
+  transform: scale(1.1);
+  box-shadow: 
+    var(--shadow-neumorphic-hover),
+    0 0 50px var(--card-glow);
+}
+
+.iconEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.iconOuterRing {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid var(--card-color);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: iconRingRotate 8s linear infinite;
+}
+
+.iconInnerRing {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 1px solid var(--card-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: iconRingRotate 6s linear infinite reverse;
+}
+
+@keyframes iconRingRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.iconGlow {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: radial-gradient(circle, var(--card-color) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(15px);
+}
+
+.benefitCard:hover .iconGlow {
+  opacity: 0.6;
+}
+
+.benefitIcon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 15px var(--card-color));
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.benefitCard:hover .benefitIcon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 25px var(--card-color));
+}
+
+.benefitTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.benefitDescription {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Estadísticas neumórficas */
+.benefitStats {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+  
+  box-shadow: var(--shadow-neumorphic-inset);
+}
+
+.statsContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statsNumber {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--card-color);
+  text-shadow: 0 0 20px var(--card-glow);
+}
+
+.statsLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.statsGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--card-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(20px);
+}
+
+.benefitCard:hover .statsGlow {
+  opacity: 0.3;
+}
+
+/* Badge de especialidad */
+.specialityBadge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(233, 30, 99, 0.2);
+  color: #e91e63;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(233, 30, 99, 0.3);
+  overflow: hidden;
+  
+  box-shadow: 
+    inset 2px 2px 8px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 8px rgba(255, 255, 255, 0.02);
+}
+
+/* Efectos de hover de la card */
+.hoverEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.hoverGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, 
+    var(--card-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  filter: blur(40px);
+}
+
+.benefitCard:hover .hoverGlow {
+  opacity: 0.2;
+}
+
+.hoverRipple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(233, 30, 99, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.benefitCard:hover .hoverRipple {
+  width: 600px;
+  height: 600px;
+}
+
+/* CTA Section NEUMÓRFICO FINAL */
+.ctaSection {
+  margin-top: 8rem;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaSection.ctaVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctaContainer {
+  position: relative;
+  background: var(--secondary-dark);
+  border: 2px solid rgba(233, 30, 99, 0.3);
+  border-radius: 40px;
+  padding: 5rem 3rem;
+  text-align: center;
+  overflow: hidden;
+  
+  box-shadow: var(--shadow-neumorphic-brutal);
+}
+
+.ctaEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ctaGlow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, 
+    rgba(233, 30, 99, 0.3) 0%,
+    rgba(255, 87, 34, 0.2) 50%,
+    rgba(76, 175, 80, 0.3) 100%
+  );
+  background-size: 300% 300%;
+  border-radius: 45px;
+  animation: ctaGlowMove 6s ease-in-out infinite;
+  filter: blur(25px);
+}
+
+@keyframes ctaGlowMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.ctaParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ctaParticle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #e91e63;
+  border-radius: 50%;
+  animation: ctaParticleFloat 10s linear infinite;
+  animation-delay: var(--particle-delay);
+  left: calc(var(--i) * 8.33%);
+  top: 100%;
+}
+
+@keyframes ctaParticleFloat {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-400px) scale(0);
+    opacity: 0;
+  }
+}
+
+.ctaIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: var(--primary-dark);
+  border: 3px solid #e91e63;
+  border-radius: 50%;
+  margin-bottom: 3rem;
+  font-size: 4rem;
+  z-index: 5;
+  
+  box-shadow: var(--shadow-neumorphic-brutal);
+  
+  animation: ctaIconFloat 4s ease-in-out infinite;
+}
+
+@keyframes ctaIconFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+.ctaIconGlow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: ctaIconGlowPulse 3s ease-in-out infinite;
+  filter: blur(20px);
+}
+
+@keyframes ctaIconGlowPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+.ctaTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  color: #ffffff;
+  z-index: 5;
+  position: relative;
+  text-shadow: 0 0 30px rgba(233, 30, 99, 0.4);
+}
+
+.ctaDescription {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 5;
+  position: relative;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 5;
+  position: relative;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 3rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  min-width: 200px;
+  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaPrimary {
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  color: white;
+  box-shadow: var(--shadow-neumorphic-brutal);
+}
+
+.ctaSecondary {
+  background: var(--primary-dark);
+  color: #e91e63;
+  border: 2px solid #e91e63;
+  box-shadow: var(--shadow-neumorphic-brutal);
+}
+
+.ctaPrimary:hover,
+.ctaSecondary:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: var(--shadow-neumorphic-hover);
+}
+
+.ctaPrimary:active,
+.ctaSecondary:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(15px);
+}
+
+.ctaPrimary:hover .buttonGlow,
+.ctaSecondary:hover .buttonGlow {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .processSteps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .benefitsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+  
+  .stepConnector {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
+  
+  .processSteps {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .processStep {
+    max-width: 100%;
+    min-width: 280px;
+  }
+  
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .benefitCard {
+    min-height: 450px;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .processBadge,
+  .benefitsBadge {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+  
+  .processStep {
+    padding: 2rem 1.5rem;
+    min-width: 240px;
+  }
+  
+  .benefitCard {
+    min-height: 400px;
+  }
+  
+  .cardContent {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+  
+  .ctaContainer {
+    padding: 3rem 2rem;
+  }
+}

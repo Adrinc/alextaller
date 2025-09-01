@@ -119,7 +119,7 @@ const IndexSeccion1 = () => {
           onLoadedData={handleVideoLoad}
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-car-repair-shop-with-various-vehicles-1115-large.mp4" type="video/mp4" />
-          <source src="/videos/ojociudadano.mp4" type="video/mp4" />
+          <source src="/videos/taller.mp4" type="video/mp4" />
         </video>
         <div className={styles.videoOverlay}></div>
       </div>

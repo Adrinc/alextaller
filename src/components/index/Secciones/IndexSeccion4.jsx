@@ -1,9 +1,9 @@
-// IndexSeccion4.jsx - Beneficios Diferenciales ÉPICOS para Alex Taller Mecánico
+// IndexSeccion4_new.jsx - Beneficios Diferenciales NEUMÓRFICOS BRUTALES para Alex Taller Mecánico
 import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
 import { translationsIndex } from '../../../data/translationsIndex';
-import styles from '../css/indexSeccion4.module.css';
+import styles from '../css/indexSeccion4_new.module.css';
 
 const IndexSeccion4 = () => {
   const ingles = useStore(isEnglish);
@@ -11,6 +11,8 @@ const IndexSeccion4 = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [hoveredBenefit, setHoveredBenefit] = useState(null);
+  const [hoveredProcess, setHoveredProcess] = useState(null);
+  const [animationPhase, setAnimationPhase] = useState(0);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -19,10 +21,15 @@ const IndexSeccion4 = () => {
         if (entry.isIntersecting) {
           setIsVisible(true);
           
-          // Auto-progress through steps
+          // Animación secuencial épica
+          setTimeout(() => setAnimationPhase(1), 300);
+          setTimeout(() => setAnimationPhase(2), 800);
+          setTimeout(() => setAnimationPhase(3), 1500);
+          
+          // Auto-progress through steps con efectos
           const stepInterval = setInterval(() => {
             setActiveStep((prev) => (prev + 1) % 4);
-          }, 3000);
+          }, 4000);
 
           return () => clearInterval(stepInterval);
         }
@@ -39,95 +46,115 @@ const IndexSeccion4 = () => {
 
   const benefits = [
     {
-      icon: '🏆',
-      title: ingles ? '30+ Years of Excellence' : '30+ Años de Excelencia',
+      icon: '🔧',
+      title: ingles ? '8+ Years of Excellence' : '8+ Años de Excelencia',
       description: ingles 
-        ? 'Three decades providing quality automotive services with proven expertise and customer satisfaction.'
-        : 'Tres décadas brindando servicios automotrices de calidad con experiencia comprobada y satisfacción del cliente.',
+        ? '8+ Years mastering automotive repair with cutting-edge technology and unmatched expertise in Tijuana.'
+        : '8+ Años dominando la reparación automotriz con tecnología de vanguardia y experiencia inigualable en Tijuana.',
       color: '#e91e63',
       stats: ingles ? '5000+ Cars Serviced' : '5000+ Autos Atendidos',
-      image: 'https://images.unsplash.com/photo-1486415008924-3b24b2e43b0c?w=400&h=300&fit=crop&crop=center'
-    },
-    {
-      icon: '🔧',
-      title: ingles ? 'ASE Certified Technicians' : 'Técnicos Certificados ASE',
-      description: ingles 
-        ? 'Our team is trained and certified in the latest automotive technologies and repair techniques.'
-        : 'Nuestro equipo está capacitado y certificado en las últimas tecnologías automotrices y técnicas de reparación.',
-      color: '#ff5722',
-      stats: ingles ? '8 Certified Technicians' : '8 Técnicos Certificados',
-      image: 'https://images.unsplash.com/photo-1486415008924-3b24b2e43b0c?w=400&h=300&fit=crop&crop=center'
+      speciality: ingles ? 'Master Technicians' : 'Técnicos Maestros',
+      image: '/public/image/global/mecanico.jpg',
+      glow: 'rgba(233, 30, 99, 0.3)'
     },
     {
       icon: '⚡',
-      title: ingles ? 'Same Day Service' : 'Servicio el Mismo Día',
+      title: ingles ? 'Advanced Diagnostic Tools' : 'Herramientas de Diagnóstico Avanzadas',
       description: ingles 
-        ? 'We guarantee quick and efficient service without compromising quality. Most repairs completed same day.'
-        : 'Garantizamos un servicio rápido y eficiente sin comprometer la calidad. La mayoría de reparaciones el mismo día.',
-      color: '#4caf50',
-      stats: ingles ? '95% Same Day Completion' : '95% Terminado el Mismo Día',
-      image: 'https://images.unsplash.com/photo-1469285994282-454ceb49e63c?w=400&h=300&fit=crop&crop=center'
+        ? 'State-of-the-art computerized diagnostic equipment that identifies problems with precision in minutes, not hours.'
+        : 'Equipos de diagnóstico computarizados de última generación que identifican problemas con precisión en minutos, no horas.',
+      color: '#ff5722',
+      stats: ingles ? '99% Accuracy Rate' : '99% Precisión',
+      speciality: ingles ? 'AI-Powered Diagnostics' : 'Diagnóstico con IA',
+      image: '/public/image/global/hr_d1.png',
+      glow: 'rgba(255, 87, 34, 0.3)'
     },
     {
-      icon: '💰',
-      title: ingles ? 'Transparent Fair Pricing' : 'Precios Justos y Transparentes',
+      icon: '🚗',
+      title: ingles ? 'Same Day Service' : 'Servicio el Mismo Día',
       description: ingles 
-        ? 'Competitive prices with transparent quotes and no hidden fees. Free estimates on all major repairs.'
-        : 'Precios competitivos con cotizaciones transparentes y sin costos ocultos. Estimaciones gratuitas en reparaciones mayores.',
-      color: '#ff9800',
-      stats: ingles ? 'Free Estimates' : 'Estimaciones Gratuitas',
-      image: 'https://images.unsplash.com/photo-1441458525716-98a1ce2de1b0?w=400&h=300&fit=crop&crop=center'
+        ? 'Lightning-fast repairs without compromising quality. Most services completed same day with lifetime warranty.'
+        : 'Reparaciones ultrarrápidas sin comprometer la calidad. La mayoría de servicios terminados el mismo día con garantía de por vida.',
+      color: '#4caf50',
+      stats: ingles ? '95% Same Day' : '95% Mismo Día',
+      speciality: ingles ? 'Express Service' : 'Servicio Express',
+      image: '/public/image/global/mismodia.jpg',
+      glow: 'rgba(76, 175, 80, 0.3)'
+    },
+    {
+      icon: '💎',
+      title: ingles ? 'Premium Parts & Warranty' : 'Partes Premium y Garantía',
+      description: ingles 
+        ? 'Only premium OEM and high-performance aftermarket parts with comprehensive 12-month warranty coverage.'
+        : 'Solo partes OEM premium y repuestos de alto rendimiento con cobertura de garantía integral de 12 meses.',
+      color: '#9c27b0',
+      stats: ingles ? '12 Month Warranty' : 'Garantía 12 Meses',
+      speciality: ingles ? 'OEM Quality' : 'Calidad OEM',
+      image: '/public/image/global/premium.jpg',
+      glow: 'rgba(156, 39, 176, 0.3)'
     },
     {
       icon: '🛡️',
-      title: ingles ? 'Comprehensive Warranty' : 'Garantía Integral',
+      title: ingles ? 'Certified Master Technicians' : 'Técnicos Maestros Certificados',
       description: ingles 
-        ? 'All our services include comprehensive warranty for your complete peace of mind and protection.'
-        : 'Todos nuestros servicios incluyen garantía integral para tu tranquilidad total y protección.',
-      color: '#2196f3',
-      stats: ingles ? '12 Month Warranty' : 'Garantía 12 Meses',
-      image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=400&h=300&fit=crop&crop=center'
+        ? 'ASE-certified master technicians trained in latest automotive technologies and manufacturer-specific procedures.'
+        : 'Técnicos maestros certificados ASE entrenados en las últimas tecnologías automotrices y procedimientos específicos del fabricante.',
+      color: '#ff9800',
+      stats: ingles ? '8 ASE Certified' : '8 Certificados ASE',
+      speciality: ingles ? 'Master Level' : 'Nivel Maestro',
+      image: '/public/image/global/grupoti.jpg',
+      glow: 'rgba(255, 152, 0, 0.3)'
     },
     {
       icon: '📱',
-      title: ingles ? 'Real-time Updates' : 'Actualizaciones en Tiempo Real',
+      title: ingles ? 'Digital Service Tracking' : 'Seguimiento Digital del Servicio',
       description: ingles 
-        ? 'Stay informed about your vehicle\'s status through our mobile app and SMS notifications.'
-        : 'Mantente informado del estado de tu vehículo a través de nuestra app móvil y notificaciones SMS.',
-      color: '#9c27b0',
-      stats: ingles ? 'Digital Service Tracking' : 'Seguimiento Digital del Servicio',
-      image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop&crop=center'
+        ? 'Real-time updates on your vehicle status through our mobile app with photo documentation and progress tracking.'
+        : 'Actualizaciones en tiempo real del estado de tu vehículo a través de nuestra app móvil con documentación fotográfica y seguimiento del progreso.',
+      color: '#2196f3',
+      stats: ingles ? 'Real-time Updates' : 'Actualizaciones en Tiempo Real',
+      speciality: ingles ? 'Mobile App' : 'App Móvil',
+      image: '/public/image/global/app_re.jpg',
+      glow: 'rgba(33, 150, 243, 0.3)'
     }
   ];
 
   const processSteps = [
     {
       number: '01',
-      title: ingles ? 'Diagnosis' : 'Diagnóstico',
-      description: ingles ? 'Complete computerized diagnosis' : 'Diagnóstico computarizado completo',
+      title: ingles ? 'DIAGNOSTIC SCAN' : 'ESCANEO DIAGNÓSTICO',
+      description: ingles ? 'Advanced computerized diagnostic scan' : 'Escaneo diagnóstico computarizado avanzado',
       icon: '🔍',
-      duration: '30 min'
+      duration: '15-30 min',
+      tools: ingles ? 'AI-Powered Scanner' : 'Escáner con IA',
+      color: '#e91e63'
     },
     {
       number: '02',
-      title: ingles ? 'Quote' : 'Cotización',
-      description: ingles ? 'Transparent detailed quote' : 'Cotización detallada transparente',
+      title: ingles ? 'DETAILED QUOTE' : 'COTIZACIÓN DETALLADA',
+      description: ingles ? 'Transparent breakdown with photo evidence' : 'Desglose transparente con evidencia fotográfica',
       icon: '📋',
-      duration: '15 min'
+      duration: '10-15 min',
+      tools: ingles ? 'Digital Documentation' : 'Documentación Digital',
+      color: '#ff5722'
     },
     {
       number: '03',
-      title: ingles ? 'Repair' : 'Reparación',
-      description: ingles ? 'Quality repair with original parts' : 'Reparación de calidad con partes originales',
+      title: ingles ? 'EXPERT REPAIR' : 'REPARACIÓN EXPERTA',
+      description: ingles ? 'Premium parts with master technician service' : 'Partes premium con servicio de técnico maestro',
       icon: '🔧',
-      duration: '2-4 hrs'
+      duration: '1-4 hrs',
+      tools: ingles ? 'Professional Tools' : 'Herramientas Profesionales',
+      color: '#4caf50'
     },
     {
       number: '04',
-      title: ingles ? 'Testing' : 'Pruebas',
-      description: ingles ? 'Final testing and quality check' : 'Pruebas finales y control de calidad',
+      title: ingles ? 'QUALITY TEST' : 'PRUEBA DE CALIDAD',
+      description: ingles ? 'Road test and final quality inspection' : 'Prueba de manejo e inspección final de calidad',
       icon: '✅',
-      duration: '30 min'
+      duration: '15-30 min',
+      tools: ingles ? 'Performance Validation' : 'Validación de Rendimiento',
+      color: '#9c27b0'
     }
   ];
 
@@ -137,95 +164,183 @@ const IndexSeccion4 = () => {
       className={styles.section} 
       id="beneficios"
     >
-      {/* Partículas y efectos de fondo */}
+      {/* Efectos de fondo neumórficos */}
       <div className={styles.backgroundEffects}>
-        <div className={styles.gradientOrb} style={{ '--delay': '0s' }}></div>
-        <div className={styles.gradientOrb} style={{ '--delay': '2s' }}></div>
-        <div className={styles.gradientOrb} style={{ '--delay': '4s' }}></div>
+        <div className={styles.neuralNetwork}></div>
+        <div className={styles.floatingElements}>
+          {[...Array(15)].map((_, i) => (
+            <div 
+              key={i} 
+              className={styles.floatingElement}
+              style={{
+                '--delay': `${i * 0.5}s`,
+                '--x': `${Math.random() * 100}%`,
+                '--y': `${Math.random() * 100}%`,
+                '--size': `${Math.random() * 20 + 10}px`
+              }}
+            />
+          ))}
+        </div>
+        <div className={styles.glowOrbs}>
+          <div className={styles.glowOrb} style={{ '--color': '#e91e63' }}></div>
+          <div className={styles.glowOrb} style={{ '--color': '#ff5722' }}></div>
+          <div className={styles.glowOrb} style={{ '--color': '#4caf50' }}></div>
+        </div>
       </div>
 
       <div className={styles.container}>
-        {/* Header con proceso de servicio */}
-        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
+        {/* Header BRUTAL con efectos neumórficos */}
+        <div className={`${styles.header} ${animationPhase >= 1 ? styles.headerVisible : ''}`}>
+          {/* Proceso de Servicio ÉPICO */}
           <div className={styles.processSection}>
             <div className={styles.processBadge}>
+              <div className={styles.badgeGlow}></div>
               <span className={styles.badgeIcon}>⚙️</span>
               <span className={styles.badgeText}>
-                {ingles ? "OUR PROCESS" : "NUESTRO PROCESO"}
+                {ingles ? "PROFESSIONAL PROCESS" : "PROCESO PROFESIONAL"}
               </span>
+              <div className={styles.badgePulse}></div>
             </div>
 
             <h2 className={styles.processTitle}>
-              {ingles ? "How We Work" : "Cómo Trabajamos"}
+              <span className={styles.titleMain}>
+                {ingles ? "Master-Level" : "Nivel Maestro"}
+              </span>
+              <span className={styles.titleSub}>
+                {ingles ? "Automotive Service" : "Servicio Automotriz"}
+              </span>
             </h2>
+            
             <p className={styles.processSubtitle}>
               {ingles 
-                ? "A transparent and efficient 4-step process that guarantees quality results"
-                : "Un proceso transparente y eficiente de 4 pasos que garantiza resultados de calidad"
+                ? "Experience the precision of professional automotive service with cutting-edge technology and master-certified technicians"
+                : "Experimenta la precisión del servicio automotriz profesional con tecnología de vanguardia y técnicos certificados maestros"
               }
             </p>
 
-            {/* Pasos del proceso */}
-            <div className={styles.processSteps}>
-              {processSteps.map((step, index) => (
-                <div 
-                  key={index}
-                  className={`${styles.processStep} ${index === activeStep ? styles.active : ''} ${index < activeStep ? styles.completed : ''}`}
-                  onClick={() => setActiveStep(index)}
-                >
-                  <div className={styles.stepNumber}>{step.number}</div>
-                  <div className={styles.stepIcon}>{step.icon}</div>
-                  <div className={styles.stepContent}>
-                    <h4 className={styles.stepTitle}>{step.title}</h4>
-                    <p className={styles.stepDescription}>{step.description}</p>
-                    <span className={styles.stepDuration}>{step.duration}</span>
-                  </div>
-                  {index < processSteps.length - 1 && (
-                    <div className={styles.stepConnector}>
-                      <div className={styles.connectorLine}></div>
-                      <div className={styles.connectorArrow}>→</div>
+            {/* Proceso NEUMÓRFICO BRUTAL */}
+            <div className={styles.processContainer}>
+              <div className={styles.processSteps}>
+                {processSteps.map((step, index) => (
+                  <div 
+                    key={index}
+                    className={`${styles.processStep} ${index === activeStep ? styles.stepActive : ''} ${index < activeStep ? styles.stepCompleted : ''} ${animationPhase >= 2 ? styles.stepVisible : ''}`}
+                    style={{ 
+                      '--delay': `${index * 200}ms`,
+                      '--step-color': step.color
+                    }}
+                    onMouseEnter={() => setHoveredProcess(index)}
+                    onMouseLeave={() => setHoveredProcess(null)}
+                  >
+                    {/* Efectos neumórficos del paso */}
+                    <div className={styles.stepEffects}>
+                      <div className={styles.stepGlow}></div>
+                      <div className={styles.stepParticles}>
+                        {[...Array(6)].map((_, i) => (
+                          <div key={i} className={styles.stepParticle}></div>
+                        ))}
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
+
+                    <div className={styles.stepNumber}>
+                      <span>{step.number}</span>
+                      <div className={styles.numberRing}></div>
+                    </div>
+
+                    <div className={styles.stepIcon}>
+                      <div className={styles.iconContainer}>
+                        <span>{step.icon}</span>
+                        <div className={styles.iconGlow}></div>
+                      </div>
+                    </div>
+
+                    <div className={styles.stepContent}>
+                      <h4 className={styles.stepTitle}>{step.title}</h4>
+                      <p className={styles.stepDescription}>{step.description}</p>
+                      <div className={styles.stepMeta}>
+                        <span className={styles.stepDuration}>{step.duration}</span>
+                        <span className={styles.stepTools}>{step.tools}</span>
+                      </div>
+                    </div>
+
+                    {/* Conectores neumórficos */}
+                    {index < processSteps.length - 1 && (
+                      <div className={styles.stepConnector}>
+                        <div className={styles.connectorLine}>
+                          <div className={styles.connectorProgress}></div>
+                        </div>
+                        <div className={styles.connectorArrow}>
+                          <span>➤</span>
+                          <div className={styles.arrowGlow}></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Beneficios principales */}
-        <div className={styles.benefitsSection}>
+        {/* Beneficios NEUMÓRFICOS BRUTALES */}
+        <div className={`${styles.benefitsSection} ${animationPhase >= 3 ? styles.benefitsVisible : ''}`}>
           <div className={styles.benefitsHeader}>
             <div className={styles.benefitsBadge}>
+              <div className={styles.badgeGlow}></div>
               <span className={styles.badgeIcon}>🏆</span>
               <span className={styles.badgeText}>
-                {ingles ? "WHY CHOOSE US" : "POR QUÉ ELEGIRNOS"}
+                {ingles ? "COMPETITIVE ADVANTAGES" : "VENTAJAS COMPETITIVAS"}
               </span>
+              <div className={styles.badgePulse}></div>
             </div>
             
             <h2 className={styles.benefitsTitle}>
-              {ingles ? "Alex Auto Shop Advantages" : "Ventajas de Alex Taller Mecánico"}
+              <span className={styles.titleHighlight}>
+                {ingles ? "Why Alex Taller" : "Por Qué Alex Taller"}
+              </span>
+              <span className={styles.titleMain}>
+                {ingles ? "Dominates Tijuana" : "Domina Tijuana"}
+              </span>
             </h2>
+            
             <p className={styles.benefitsSubtitle}>
               {ingles 
-                ? "Discover what makes us the preferred choice for thousands of satisfied customers"
-                : "Descubre lo que nos convierte en la opción preferida de miles de clientes satisfechos"
+                ? "Discover the technological superiority and expertise that makes us the #1 choice for automotive service in Tijuana"
+                : "Descubre la superioridad tecnológica y experiencia que nos convierte en la opción #1 para servicio automotriz en Tijuana"
               }
             </p>
           </div>
 
+          {/* Grid de beneficios ÉPICO */}
           <div className={styles.benefitsGrid}>
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className={`${styles.benefitCard} ${isVisible ? styles.fadeInUp : ''} ${hoveredBenefit === index ? styles.hovered : ''}`}
+                className={`${styles.benefitCard} ${isVisible ? styles.cardVisible : ''} ${hoveredBenefit === index ? styles.cardHovered : ''}`}
                 style={{ 
                   '--delay': `${index * 150}ms`,
-                  '--accent-color': benefit.color 
+                  '--card-color': benefit.color,
+                  '--card-glow': benefit.glow
                 }}
                 onMouseEnter={() => setHoveredBenefit(index)}
                 onMouseLeave={() => setHoveredBenefit(null)}
               >
-                {/* Imagen de fondo */}
+                {/* Efectos neumórficos de la card */}
+                <div className={styles.cardEffects}>
+                  <div className={styles.cardGlow}></div>
+                  <div className={styles.cardShine}></div>
+                  <div className={styles.cardParticles}>
+                    {[...Array(8)].map((_, i) => (
+                      <div 
+                        key={i} 
+                        className={styles.cardParticle}
+                        style={{ '--particle-delay': `${i * 0.2}s` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Imagen de fondo neumórfica */}
                 <div className={styles.cardBackground}>
                   <img 
                     src={benefit.image} 
@@ -235,108 +350,88 @@ const IndexSeccion4 = () => {
                   <div className={styles.cardOverlay}></div>
                 </div>
 
-                {/* Contenido de la card */}
+                {/* Contenido principal */}
                 <div className={styles.cardContent}>
+                  {/* Icono neumórfico BRUTAL */}
                   <div className={styles.benefitIconContainer}>
+                    <div className={styles.iconEffects}>
+                      <div className={styles.iconOuterRing}></div>
+                      <div className={styles.iconInnerRing}></div>
+                      <div className={styles.iconGlow}></div>
+                    </div>
                     <span className={styles.benefitIcon}>{benefit.icon}</span>
-                    <div className={styles.iconRing}></div>
                   </div>
-                  
+
                   <h3 className={styles.benefitTitle}>{benefit.title}</h3>
                   <p className={styles.benefitDescription}>{benefit.description}</p>
-                  
+
+                  {/* Estadísticas neumórficas */}
                   <div className={styles.benefitStats}>
-                    <span className={styles.statsIcon}>📊</span>
-                    <span className={styles.statsText}>{benefit.stats}</span>
+                    <div className={styles.statsContainer}>
+                      <span className={styles.statsNumber}>{benefit.stats}</span>
+                      <span className={styles.statsLabel}>{benefit.speciality}</span>
+                    </div>
+                    <div className={styles.statsGlow}></div>
+                  </div>
+
+                  {/* Badge de especialidad */}
+                  <div className={styles.specialityBadge}>
+                    <span>{benefit.speciality}</span>
+                    <div className={styles.badgeGlow}></div>
                   </div>
                 </div>
 
                 {/* Efectos de hover */}
-                <div className={styles.cardEffects}>
-                  <div className={styles.cardGlow}></div>
-                  <div className={styles.cardShine}></div>
+                <div className={styles.hoverEffects}>
+                  <div className={styles.hoverGlow}></div>
+                  <div className={styles.hoverRipple}></div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Sección de testimonios rápidos */}
-        <div className={`${styles.testimonialsSection} ${isVisible ? styles.fadeInUp : ''}`}>
-          <div className={styles.testimonialsGrid}>
-            <div className={styles.testimonialCard}>
-              <div className={styles.testimonialContent}>
-                <div className={styles.rating}>⭐⭐⭐⭐⭐</div>
-                <p className={styles.testimonialText}>
-                  {ingles 
-                    ? "Excellent service! They fixed my car quickly and at a fair price. Highly recommended!"
-                    : "¡Excelente servicio! Arreglaron mi auto rápido y a precio justo. ¡Muy recomendado!"
-                  }
-                </p>
-                <div className={styles.testimonialAuthor}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" 
-                    alt="Cliente" 
-                    className={styles.authorImage}
+        {/* CTA Section NEUMÓRFICO FINAL */}
+        <div className={`${styles.ctaSection} ${isVisible ? styles.ctaVisible : ''}`}>
+          <div className={styles.ctaContainer}>
+            <div className={styles.ctaEffects}>
+              <div className={styles.ctaGlow}></div>
+              <div className={styles.ctaParticles}>
+                {[...Array(12)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className={styles.ctaParticle}
+                    style={{ '--particle-delay': `${i * 0.3}s` }}
                   />
-                  <div className={styles.authorInfo}>
-                    <span className={styles.authorName}>Carlos Mendoza</span>
-                    <span className={styles.authorDetail}>Honda Civic 2020</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className={styles.testimonialCard}>
-              <div className={styles.testimonialContent}>
-                <div className={styles.rating}>⭐⭐⭐⭐⭐</div>
-                <p className={styles.testimonialText}>
-                  {ingles 
-                    ? "Professional team, transparent pricing, and quality work. I trust them with all my vehicles."
-                    : "Equipo profesional, precios transparentes y trabajo de calidad. Confío en ellos con todos mis vehículos."
-                  }
-                </p>
-                <div className={styles.testimonialAuthor}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" 
-                    alt="Cliente" 
-                    className={styles.authorImage}
-                  />
-                  <div className={styles.authorInfo}>
-                    <span className={styles.authorName}>María García</span>
-                    <span className={styles.authorDetail}>Toyota Camry 2019</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA final */}
-        <div className={`${styles.ctaSection} ${isVisible ? styles.fadeInUp : ''}`}>
-          <div className={styles.ctaContent}>
             <div className={styles.ctaIcon}>
               <span>🚗</span>
+              <div className={styles.ctaIconGlow}></div>
             </div>
-            <h3 className={styles.ctaTitle}>
-              {ingles ? "Ready to Experience the Difference?" : "¿Listo para Experimentar la Diferencia?"}
-            </h3>
+
+            <h2 className={styles.ctaTitle}>
+              {ingles ? "Ready for Master-Level Service?" : "¿Listo para Servicio Nivel Maestro?"}
+            </h2>
+            
             <p className={styles.ctaDescription}>
               {ingles 
-                ? "Join thousands of satisfied customers who trust Alex Auto Shop for their vehicle needs."
-                : "Únete a miles de clientes satisfechos que confían en Alex Taller Mecánico para sus necesidades vehiculares."
+                ? "Join thousands of satisfied customers who trust Alex Taller Mecánico for their automotive needs"
+                : "Únete a miles de clientes satisfechos que confían en Alex Taller Mecánico para sus necesidades automotrices"
               }
             </p>
+
             <div className={styles.ctaButtons}>
               <button className={styles.ctaPrimary}>
-                <span>{ingles ? "Schedule Service" : "Agendar Servicio"}</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <span>{ingles ? "SCHEDULE SERVICE" : "AGENDAR SERVICIO"}</span>
+                <div className={styles.buttonGlow}></div>
               </button>
+              
               <button className={styles.ctaSecondary}>
-                <span>{ingles ? "Call Now" : "Llamar Ahora"}</span>
-                <span className={styles.phoneNumber}>664-630-4093</span>
+                <span>{ingles ? "GET QUOTE" : "OBTENER COTIZACIÓN"}</span>
+                <div className={styles.buttonGlow}></div>
               </button>
             </div>
           </div>
