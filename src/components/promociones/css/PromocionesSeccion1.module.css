@@ -1,0 +1,434 @@
+/* PromocionesSeccion1.module.css - Hero épico con urgencia */
+
+.heroSection {
+  min-height: 50vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.heroSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/image/global/equipment.png') center/cover no-repeat;
+  filter: grayscale(100%) contrast(1.2);
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.9) 0%,
+    rgba(233, 30, 99, 0.1) 30%,
+    rgba(26, 26, 26, 0.95) 70%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.particlesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, #e91e63, transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(90deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+  75% { transform: translateY(-15px) rotate(270deg); }
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.offerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #e91e63, #ff4081);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(233, 30, 99, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+.offerBadge.animate {
+  transform: translateY(0);
+  opacity: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.badgeIcon {
+  font-size: 1.2rem;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.badgeGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff, #e91e63, #ff4081);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.2s;
+}
+
+.heroTitle.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.titleUnderline {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e91e63, #ff4081);
+  border-radius: 2px;
+  transition: all 0.8s ease-out 0.6s;
+  transform: translateX(-50%);
+}
+
+.heroTitle.animate .titleUnderline {
+  width: 200px;
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.4s;
+}
+
+.heroSubtitle.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.countdownWrapper {
+  margin: 3rem 0;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.6s;
+}
+
+.countdownWrapper.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.countdownLabel {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e91e63;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.urgencyMessage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #1a1a1a, #2a1a1a);
+  color: #ff4081;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0;
+  border: 1px solid rgba(233, 30, 99, 0.3);
+  box-shadow: 
+    10px 10px 20px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 8px rgba(233, 30, 99, 0.1);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.8s;
+}
+
+.urgencyMessage.animate {
+  transform: translateY(0);
+  opacity: 1;
+  animation: urgentGlow 2s ease-in-out infinite;
+}
+
+@keyframes urgentGlow {
+  0%, 100% { box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), inset 2px 2px 8px rgba(233, 30, 99, 0.1); }
+  50% { box-shadow: 10px 10px 30px rgba(233, 30, 99, 0.3), inset 2px 2px 8px rgba(233, 30, 99, 0.2); }
+}
+
+.urgencyIcon {
+  font-size: 1.3rem;
+  animation: flicker 1.5s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #e91e63, #ff4081);
+  color: white;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 15px 35px rgba(233, 30, 99, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out 1s;
+}
+
+.ctaButton.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 20px 40px rgba(233, 30, 99, 0.6),
+    0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.buttonText {
+  z-index: 2;
+  position: relative;
+}
+
+.buttonIcon {
+  font-size: 1.3rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.floatingElements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.floatingIcon {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: floatIcon 8s ease-in-out infinite;
+}
+
+.floatingIcon:nth-child(1) { top: 20%; left: 10%; }
+.floatingIcon:nth-child(2) { top: 30%; right: 15%; }
+.floatingIcon:nth-child(3) { bottom: 40%; left: 20%; }
+.floatingIcon:nth-child(4) { bottom: 25%; right: 25%; }
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+  25% { transform: translateY(-20px) rotate(90deg); opacity: 0.6; }
+  50% { transform: translateY(-40px) rotate(180deg); opacity: 0.3; }
+  75% { transform: translateY(-20px) rotate(270deg); opacity: 0.6; }
+}
+
+.bottomWave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.bottomWave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.shapeFill {
+  fill: #0a0a0a;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .heroTitle {
+    font-size: 3rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 45vh;
+  }
+  
+  .contentContainer {
+    padding: 0 1rem;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  
+  .ctaButton {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .offerBadge {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  
+  .ctaButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .urgencyMessage {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .floatingIcon {
+    font-size: 1.5rem;
+  }
+}

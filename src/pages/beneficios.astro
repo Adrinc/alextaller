@@ -1,0 +1,31 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+
+import BeneficiosSeccion1 from '../components/beneficios/secciones/BeneficiosSeccion1.jsx';
+import BeneficiosSeccion2 from '../components/beneficios/secciones/BeneficiosSeccion2.jsx';
+import BeneficiosSeccion3 from '../components/beneficios/secciones/BeneficiosSeccion3.jsx';
+import BeneficiosSeccion4 from '../components/beneficios/secciones/BeneficiosSeccion4.jsx';
+import BeneficiosSeccion5 from '../components/beneficios/secciones/BeneficiosSeccion5.jsx';
+import BeneficiosSeccion6 from '../components/beneficios/secciones/BeneficiosSeccion6.jsx';
+---
+
+<LayoutBasic title="Beneficios Automotrices - Alex Taller Mecánico" showFooter={true}>
+    <!-- Hero Section - Beneficios -->
+    <BeneficiosSeccion1 transition:persist client:load />
+    
+    <!-- Beneficios Principales -->
+    <BeneficiosSeccion2 transition:persist client:load />
+    
+    <!-- Sección Comparativa -->
+    <BeneficiosSeccion3 transition:persist client:load />
+    
+    <!-- Estadísticas / Confianza en números -->
+    <BeneficiosSeccion4 transition:persist client:load />
+    
+    <!-- Testimonios destacados -->
+    <BeneficiosSeccion5 transition:persist client:load />
+    
+    <!-- CTA final y contacto -->
+    <BeneficiosSeccion6 transition:persist client:load />
+</LayoutBasic>
+

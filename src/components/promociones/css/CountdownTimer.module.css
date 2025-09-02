@@ -1,0 +1,157 @@
+/* CountdownTimer.module.css - Timer épico neumórfico */
+
+.countdownContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border-radius: 20px;
+  box-shadow: 
+    20px 20px 40px rgba(0, 0, 0, 0.8),
+    -5px -5px 15px rgba(255, 255, 255, 0.03),
+    inset 2px 2px 8px rgba(233, 30, 99, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdownContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.1), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.countdownGrid {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.timeUnit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 60px;
+}
+
+.timeNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e91e63;
+  text-shadow: 
+    0 0 20px rgba(233, 30, 99, 0.6),
+    0 0 40px rgba(233, 30, 99, 0.3);
+  background: linear-gradient(135deg, #e91e63, #ff4081);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  font-family: 'Inter', monospace;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.timeLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.separator {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e91e63;
+  margin: 0 0.5rem;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.expired {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(145deg, #2a1a1a, #1a0f0f);
+  border-radius: 20px;
+  box-shadow: 
+    20px 20px 40px rgba(0, 0, 0, 0.8),
+    inset 2px 2px 8px rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.expiredText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff4444;
+  text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+  animation: flashWarning 1s ease-in-out infinite;
+}
+
+@keyframes flashWarning {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .countdownContainer {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .countdownGrid {
+    gap: 0.5rem;
+  }
+  
+  .timeNumber {
+    font-size: 2rem;
+  }
+  
+  .timeUnit {
+    min-width: 50px;
+  }
+  
+  .separator {
+    font-size: 1.5rem;
+    margin: 0 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeNumber {
+    font-size: 1.5rem;
+  }
+  
+  .timeLabel {
+    font-size: 0.7rem;
+  }
+  
+  .timeUnit {
+    min-width: 40px;
+  }
+}

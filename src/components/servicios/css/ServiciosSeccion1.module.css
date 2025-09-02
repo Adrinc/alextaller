@@ -1,201 +1,475 @@
-/* Hero Section - Servicios */
+/* ServiciosSeccion1.module.css - Hero ÉPICO con Neumorfismo Extremo */
+
+/* Variables CSS Personalizadas */
 .heroSection {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(135deg, #e91e63, #ad1457);
-  overflow: hidden;
+  --primary-pink: #e91e63;
+  --secondary-pink: #ec407a;
+  --accent-pink: #f06292;
+  --bright-pink: #ff1744;
+  --dark-bg: #0a0a0a;
+  --darker-bg: #1a1a1a;
+  --light-shadow: rgba(255, 255, 255, 0.05);
+  --dark-shadow: rgba(0, 0, 0, 0.8);
+  --glow-color: #e91e63;
 }
 
+/* Hero Principal - 50vh como especificado */
+.heroSection {
+  position: relative;
+  min-height: 50vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+/* Fondo con imagen de mecánico */
 .heroBackground {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../../public/image/global/equipment.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  z-index: 1;
 }
 
-.heroOverlay {
+.backgroundImage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(233, 30, 99, 0.85) 0%,
-    rgba(173, 20, 87, 0.9) 100%
+  background: url('/public/image/global/equipment.png') center/cover no-repeat;
+  opacity: 0.3;
+  filter: grayscale(20%) sepia(10%) hue-rotate(300deg);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(233, 30, 99, 0.1) 0%,
+    rgba(10, 10, 10, 0.7) 50%,
+    rgba(0, 0, 0, 0.9) 100%
   );
 }
 
+/* Efectos de partículas flotantes */
+.particleEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--primary-pink);
+  border-radius: 50%;
+  opacity: 0;
+  animation: float-particle 8s infinite ease-in-out;
+  animation-delay: var(--delay);
+  left: var(--x);
+  top: var(--y);
+  box-shadow: 
+    0 0 10px var(--primary-pink),
+    0 0 20px var(--primary-pink),
+    0 0 30px var(--primary-pink);
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0px) scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-50px) scale(1);
+  }
+}
+
+/* Contenido principal */
 .heroContent {
   position: relative;
-  z-index: 10;
+  z-index: 3;
   width: 100%;
-  padding: 80px 0 60px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  text-align: center;
 }
 
 .heroText {
-  color: white;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.heroText.fadeInUp {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Título principal neumórfico */
 .heroTitle {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.heroSubtitle {
-  font-size: 1.4rem;
-  font-weight: 500;
-  margin-bottom: 15px;
-  opacity: 0.95;
-}
-
-.heroDescription {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 40px;
-  opacity: 0.9;
-}
-
-.heroButtons {
+  margin: 0 0 30px 0;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 900;
+  text-align: center;
+  position: relative;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titleMain {
+  font-size: clamp(3rem, 8vw, 6rem);
+  background: linear-gradient(135deg, #ffffff 0%, #e91e63 50%, #ff1744 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 30px rgba(233, 30, 99, 0.5),
+    0 0 60px rgba(233, 30, 99, 0.3);
+  position: relative;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.titleSub {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #ffffff;
+  text-shadow: 
+    inset 5px 5px 15px rgba(0, 0, 0, 0.6),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(233, 30, 99, 0.4);
+  letter-spacing: 2px;
+}
+
+/* Subtítulo neumórfico */
+.heroSubtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #cccccc;
+  margin: 20px 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Línea divisoria con efecto glow */
+.dividerLine {
+  width: 200px;
+  height: 4px;
+  margin: 30px auto;
+  background: var(--darker-bg);
+  border-radius: 10px;
+  box-shadow: 
+    inset 3px 3px 8px rgba(0, 0, 0, 0.8),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.dividerGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-pink) 50%, 
+    transparent 100%);
+  animation: slide-glow 3s infinite ease-in-out;
+}
+
+@keyframes slide-glow {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+/* Descripción */
+.heroDescription {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #b0b0b0;
+  max-width: 600px;
+  margin: 20px auto 40px;
+  line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Contenedor de estadísticas neumórficas */
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
   flex-wrap: wrap;
 }
 
-.ctaButton {
-  background: #ff5722;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+.statCard {
+  background: var(--darker-bg);
+  padding: 25px 20px;
+  border-radius: 20px;
+  min-width: 150px;
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.8),
+    -8px -8px 20px rgba(255, 255, 255, 0.03),
+    inset 3px 3px 10px rgba(0, 0, 0, 0.4),
+    inset -3px -3px 10px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
 }
 
-.ctaButton:hover {
-  background: #f4511e;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.5);
+.statCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    12px 12px 30px rgba(0, 0, 0, 0.9),
+    -12px -12px 30px rgba(255, 255, 255, 0.05),
+    inset 0 0 20px rgba(233, 30, 99, 0.1);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-pink) 50%, 
+    transparent 100%);
+  transition: left 0.5s ease;
+}
+
+.statCard:hover::before {
+  left: 100%;
+}
+
+.statNumber {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  color: var(--primary-pink);
+  margin-bottom: 8px;
+  text-shadow: 
+    0 0 20px var(--primary-pink),
+    0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: #cccccc;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Botones CTA neumórficos */
+.heroButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  position: relative;
+  padding: 18px 35px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, var(--primary-pink) 0%, var(--bright-pink) 100%);
+  color: white;
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.6),
+    -3px -3px 10px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 8px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .secondaryButton {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 15px 30px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background: var(--darker-bg);
+  color: var(--primary-pink);
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.8),
+    -8px -8px 20px rgba(255, 255, 255, 0.03),
+    inset 3px 3px 10px rgba(0, 0, 0, 0.4),
+    inset -3px -3px 10px rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--primary-pink);
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    12px 12px 30px rgba(0, 0, 0, 0.8),
+    -5px -5px 15px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .secondaryButton:hover {
-  background: white;
-  color: #e91e63;
-}
-
-.heroFeatures {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 25px;
-}
-
-.featureCard {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 25px;
-  text-align: center;
+  transform: translateY(-3px);
+  background: var(--primary-pink);
   color: white;
+  box-shadow: 
+    12px 12px 30px rgba(0, 0, 0, 0.9),
+    -5px -5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transition: left 0.5s ease;
+}
+
+.primaryButton:hover .buttonGlow,
+.secondaryButton:hover .buttonGlow {
+  left: 100%;
+}
+
+/* Indicador de scroll neumórfico */
+.scrollIndicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  text-align: center;
+  animation: bounce-scroll 2s infinite ease-in-out;
+}
+
+.scrollArrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--darker-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  box-shadow: 
+    6px 6px 15px rgba(0, 0, 0, 0.8),
+    -6px -6px 15px rgba(255, 255, 255, 0.03),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.4),
+    inset -2px -2px 8px rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
 
-.featureCard:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
+.scrollArrow:hover {
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.9),
+    -8px -8px 20px rgba(255, 255, 255, 0.05),
+    inset 0 0 15px rgba(233, 30, 99, 0.1);
 }
 
-.featureIcon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  display: block;
+.scrollArrow span {
+  font-size: 1.5rem;
+  color: var(--primary-pink);
+  text-shadow: 0 0 10px var(--primary-pink);
 }
 
-.featureCard h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+.scrollText {
+  font-size: 0.9rem;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 
-.featureCard p {
-  font-size: 0.95rem;
-  opacity: 0.9;
-  line-height: 1.4;
+@keyframes bounce-scroll {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
 }
 
-/* Responsive */
+/* Responsividad extrema */
 @media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
+  .heroSection {
+    min-height: 60vh;
+    padding: 20px 10px;
   }
   
-  .heroTitle {
-    font-size: 2.8rem;
+  .statsContainer {
+    gap: 15px;
   }
   
-  .heroSubtitle {
-    font-size: 1.2rem;
-  }
-  
-  .heroButtons {
-    justify-content: center;
-  }
-  
-  .heroFeatures {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .heroTitle {
-    font-size: 2.2rem;
+  .statCard {
+    min-width: 120px;
+    padding: 20px 15px;
   }
   
   .heroButtons {
     flex-direction: column;
+    gap: 15px;
     align-items: center;
   }
   
-  .ctaButton,
+  .primaryButton,
   .secondaryButton {
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
+  }
+  
+  .dividerLine {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    padding: 20px 15px;
+  }
+  
+  .statsContainer {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .statCard {
+    width: 100%;
+    max-width: 200px;
   }
 }

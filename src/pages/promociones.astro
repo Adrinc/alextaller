@@ -1,0 +1,15 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+import PromocionesSeccion1 from '../components/promociones/Secciones/PromocionesSeccion1.jsx';
+import PromocionesSeccion2 from '../components/promociones/Secciones/PromocionesSeccion2.jsx';
+import PromocionesSeccion3 from '../components/promociones/Secciones/PromocionesSeccion3.jsx';
+import PromocionesSeccion4 from '../components/promociones/Secciones/PromocionesSeccion4.jsx';
+---
+
+<LayoutBasic title="Promociones Exclusivas - Alex Taller Mecánico | Descuentos Únicos" showFooter={true}>
+    <PromocionesSeccion1 transition:persist client:load />
+    <PromocionesSeccion2 transition:persist client:load />
+    <PromocionesSeccion3 transition:persist client:load />
+    <PromocionesSeccion4 transition:persist client:load />
+</LayoutBasic>
+
