@@ -1,0 +1,13 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+import CitasSeccion1 from '../components/citas/Secciones/CitasSeccion1.jsx';
+import CitasSeccion2 from '../components/citas/Secciones/CitasSeccion2.jsx';
+import CitasSeccion3 from '../components/citas/Secciones/CitasSeccion3.jsx';
+---
+
+<LayoutBasic title="Citas Automotrices - Alex Taller Mecánico" showFooter={true}>
+    <CitasSeccion1 transition:persist client:load />
+    <CitasSeccion2 transition:persist client:load />
+    <CitasSeccion3 transition:persist client:load />
+</LayoutBasic>
+

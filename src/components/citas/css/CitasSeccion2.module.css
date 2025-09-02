@@ -1,0 +1,429 @@
+/* CitasSeccion2.module.css - Stepper Section */
+
+.stepperSection {
+  min-height: 100vh;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #121212 0%, #1a1a1a 50%, #121212 100%);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.stepperSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(233, 30, 99, 0.3);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Progress Stepper */
+.progressStepper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+  position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stepItem {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+.stepItem.active .stepCircle {
+  background: linear-gradient(135deg, #e91e63, #ff4081);
+  border-color: #e91e63;
+  box-shadow: 
+    0 0 30px rgba(233, 30, 99, 0.6),
+    0 10px 25px rgba(233, 30, 99, 0.3);
+  transform: scale(1.1);
+}
+
+.stepItem.completed .stepCircle {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  border-color: #4caf50;
+  box-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.4),
+    0 5px 15px rgba(76, 175, 80, 0.2);
+}
+
+.stepItem.pending .stepCircle {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.5),
+    -4px -4px 8px rgba(255, 255, 255, 0.02);
+}
+
+.stepCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+}
+
+.stepIcon {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.checkIcon {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.stepItem.active .stepTitle {
+  color: #e91e63;
+}
+
+.stepItem.completed .stepTitle {
+  color: #4caf50;
+}
+
+.stepDescription {
+  font-size: 0.9rem;
+  color: #999999;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.stepItem.active .stepDescription {
+  color: #cccccc;
+}
+
+.stepConnector {
+  position: absolute;
+  top: 40px;
+  left: calc(50% + 40px);
+  width: calc(100% - 80px);
+  height: 3px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.stepConnector.connectorCompleted {
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+/* Step Content Area */
+.stepContent {
+  background: linear-gradient(145deg, #1e1e1e, #181818);
+  border-radius: 25px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(233, 30, 99, 0.1);
+  box-shadow: 
+    20px 20px 40px rgba(0, 0, 0, 0.7),
+    -10px -10px 20px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  min-height: 600px;
+  max-height: none;
+  width: 100%;
+  max-width: none;
+  position: relative;
+  overflow: auto;
+}
+
+.stepContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e91e63, transparent);
+  opacity: 0.5;
+}
+
+/* Progress Bar */
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: 
+    inset 4px 4px 8px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.02);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #e91e63, #ff4081);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 15px rgba(233, 30, 99, 0.5);
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Step Indicator */
+.stepIndicator {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.currentStep {
+  font-weight: 800;
+  color: #e91e63;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+}
+
+.stepSeparator {
+  color: #666666;
+  font-weight: 300;
+}
+
+.totalSteps {
+  color: #999999;
+  font-weight: 500;
+}
+
+/* Background Effects */
+.backgroundEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.gradientOrb {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.1), transparent 70%);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+.gradientOrb2 {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 64, 129, 0.08), transparent 70%);
+  border-radius: 50%;
+  animation: float 12s ease-in-out infinite reverse;
+  filter: blur(60px);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .progressStepper {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .stepItem {
+    flex-direction: row;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .stepCircle {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
+  }
+  
+  .stepIcon {
+    font-size: 1.5rem;
+  }
+  
+  .checkIcon {
+    font-size: 2rem;
+  }
+  
+  .stepConnector {
+    display: none;
+  }
+  
+  .stepContent {
+    padding: 3rem;
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .stepCircle {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+  }
+  
+  .stepIcon {
+    font-size: 1.2rem;
+  }
+  
+  .checkIcon {
+    font-size: 1.5rem;
+  }
+  
+  .stepTitle {
+    font-size: 1rem;
+  }
+  
+  .stepDescription {
+    font-size: 0.8rem;
+  }
+  
+  .stepContent {
+    padding: 1.5rem;
+    min-height: 500px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepperSection {
+    padding: 4rem 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .stepItem {
+    padding: 0.5rem;
+  }
+  
+  .stepContent {
+    padding: 1rem;
+    min-height: 300px;
+  }
+  
+  .stepIndicator {
+    font-size: 1rem;
+  }
+  
+  .currentStep {
+    font-size: 1.2rem;
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 2000px;
+  }
+  
+  .stepContent {
+    padding: 3rem 4rem;
+    min-height: 600px;
+  }
+  
+  .progressStepper {
+    max-width: 1200px;
+  }
+}

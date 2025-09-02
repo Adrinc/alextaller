@@ -16,23 +16,23 @@ const NavBar = () => {
   const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
 
-  // Configuración de las secciones de navegación para Alex Taller Mecánico
+  // Configuración de navegación por páginas para Alex Taller Mecánico
   const navSections = {
     es: [
-      { id: "inicio", name: "Inicio", href: "#hero" },
-      { id: "servicios", name: "Servicios", href: "#servicios" },
-      { id: "beneficios", name: "Beneficios", href: "#beneficios" },
-      { id: "testimonios", name: "Testimonios", href: "#testimonios" },
-      { id: "ubicacion", name: "Ubicación", href: "#ubicacion" },
-      { id: "contacto", name: "Contacto", href: "#contacto" }
+      { id: "inicio", name: "Inicio", href: "/" },
+      { id: "servicios", name: "Servicios", href: "/servicios" },
+      { id: "promociones", name: "Promociones", href: "/promociones" },
+      { id: "citas", name: "Citas", href: "/citas" },
+      { id: "nosotros", name: "Nosotros", href: "/nosotros" },
+      { id: "contacto", name: "Contacto", href: "/contacto" }
     ],
     en: [
-      { id: "inicio", name: "Home", href: "#hero" },
-      { id: "servicios", name: "Services", href: "#servicios" },
-      { id: "beneficios", name: "Benefits", href: "#beneficios" },
-      { id: "testimonios", name: "Testimonials", href: "#testimonios" },
-      { id: "ubicacion", name: "Location", href: "#ubicacion" },
-      { id: "contacto", name: "Contact", href: "#contacto" }
+      { id: "inicio", name: "Home", href: "/" },
+      { id: "servicios", name: "Services", href: "/servicios" },
+      { id: "promociones", name: "Promotions", href: "/promociones" },
+      { id: "citas", name: "Appointments", href: "/citas" },
+      { id: "nosotros", name: "About Us", href: "/nosotros" },
+      { id: "contacto", name: "Contact", href: "/contacto" }
     ]
   };
 
@@ -44,35 +44,33 @@ const NavBar = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 20);
       
-      // Detectar sección activa basada en scroll
-      detectActiveSection();
-      
       if (isOpen) {
         setIsOpen(false);
       }
     };
 
-    // Detectar sección activa - usar selectores para Alex Taller Mecánico
-    const detectActiveSection = () => {
-      const sections = [
-        { id: "inicio", element: document.querySelector('#hero') },
-        { id: "servicios", element: document.querySelector('#servicios') },
-        { id: "beneficios", element: document.querySelector('#beneficios') },
-        { id: "testimonios", element: document.querySelector('#testimonios') },
-        { id: "ubicacion", element: document.querySelector('#ubicacion') },
-        { id: "contacto", element: document.querySelector('#contacto') }
-      ];
-
-      const scrollPosition = window.scrollY + 100;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section.element && section.element.offsetTop <= scrollPosition) {
-          setActiveSection(section.id);
-          break;
-        }
-      }
+    // Detectar página activa basada en la URL
+    const detectActivePage = () => {
+      if (typeof window === 'undefined') return;
+      
+      const currentPath = window.location.pathname;
+      
+      // Mapear rutas a IDs de sección
+      const routeMapping = {
+        '/': 'inicio',
+        '/servicios': 'servicios',
+        '/promociones': 'promociones',
+        '/citas': 'citas',
+        '/nosotros': 'nosotros',
+        '/contacto': 'contacto'
+      };
+      
+      const activePageId = routeMapping[currentPath] || 'inicio';
+      setActiveSection(activePageId);
     };
+
+    // Detectar página activa al cargar
+    detectActivePage();
 
     // Detectar cambios de tamaño de ventana
     const handleResize = () => {
@@ -129,75 +127,22 @@ const NavBar = () => {
     }
   };
 
-  // Función para navegar a una sección específica
-  const scrollToSection = (href, sectionId) => {
-    // Verificar si estamos en la página principal
-    const isOnHomePage = window.location.pathname === '/' || window.location.pathname === '/index.astro';
+  // Función para navegar a páginas específicas
+  const navigateToPage = (href, sectionId) => {
+    // Cerrar el menú móvil si está abierto
+    setIsOpen(false);
     
-    if (!isOnHomePage) {
-      // Si no estamos en la página principal, navegar primero a index
-      // y luego hacer scroll a la sección
-      const targetSection = href.replace('#', '');
-      window.location.href = `/?section=${targetSection}`;
-      return;
-    }
-    
-    // Si ya estamos en la página principal, hacer scroll normal
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80; // Altura del navbar
-      const elementPosition = element.offsetTop - offset;
+    // Navegar a la página correspondiente
+    if (typeof window !== 'undefined') {
+      // Si es la misma página, no recargar
+      if (window.location.pathname === href) {
+        return;
+      }
       
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
-      
-      setActiveSection(sectionId);
-      setIsOpen(false);
+      // Navegar a la nueva página
+      window.location.href = href;
     }
   };
-
-  // Efecto para manejar navegación desde otras páginas
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const targetSection = urlParams.get('section');
-    
-    if (targetSection) {
-      // Esperar a que la página se cargue completamente
-      const timer = setTimeout(() => {
-        const element = document.querySelector(`#${targetSection}`);
-        if (element) {
-          const offset = 80;
-          const elementPosition = element.offsetTop - offset;
-          
-          window.scrollTo({
-            top: elementPosition,
-            behavior: 'smooth'
-          });
-          
-          // Encontrar el sectionId correspondiente al targetSection para Alex Taller
-          const sectionMapping = {
-            'hero': 'inicio',
-            'servicios': 'servicios',
-            'beneficios': 'beneficios',
-            'testimonios': 'testimonios',
-            'ubicacion': 'ubicacion',
-            'contacto': 'contacto'
-          };
-          
-          const mappedSectionId = sectionMapping[targetSection] || 'inicio';
-          setActiveSection(mappedSectionId);
-          
-          // Limpiar el parámetro de la URL sin recargar la página
-          const newUrl = window.location.pathname;
-          window.history.replaceState({}, document.title, newUrl);
-        }
-      }, 500); // Dar tiempo para que se renderice la página
-      
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   // Función para verificar si el enlace está activo
   const isActiveLink = (sectionId) => {
@@ -210,7 +155,7 @@ const NavBar = () => {
       {isOpen && <div className={styles.overlay} onClick={toggleMenu} />}
       
       {/* Logo con nombre de Alex Taller Mecánico */}
-      <div className={styles.logopic} onClick={() => scrollToSection('#hero', 'inicio')}>
+      <div className={styles.logopic} onClick={() => navigateToPage('/', 'inicio')}>
         <img src="/favicon.png" alt="Alex Taller Mecánico Logo" />
         <div className={styles.logoText}>
           <span className={styles.appName}>Alex Taller</span>
@@ -255,7 +200,7 @@ const NavBar = () => {
         {currentSections.map((section, index) => (
           <li key={section.id} className={styles.navItem}>
             <button 
-              onClick={() => scrollToSection(section.href, section.id)}
+              onClick={() => navigateToPage(section.href, section.id)}
               className={`${styles.navLink} ${isActiveLink(section.id) ? styles.activeLink : ""}`}
             >
               {section.name}
@@ -263,14 +208,17 @@ const NavBar = () => {
           </li>
         ))}
         
-        {/* Botón de contacto para móvil */}
+        {/* Botón de login para móvil */}
         <li className={`${styles.navItem} ${styles.mobileContactItem} ${styles.mobileOnly}`}>
-          <a className={`${styles.contactButton} ${styles.mobileContactButton}`} href="tel:+526641234567">
+          <button 
+            className={`${styles.contactButton} ${styles.mobileContactButton}`} 
+            onClick={() => navigateToPage('/login', 'login')}
+          >
             <span className={styles.buttonText}>
-              {ingles ? "Call Now" : "Llamar Ahora"}
+              {ingles ? "Login" : "Iniciar Sesión"}
             </span>
             <div className={styles.buttonShine}></div>
-          </a>
+          </button>
         </li>
       </ul>
 
@@ -290,15 +238,18 @@ const NavBar = () => {
         </a>
       </div>
 
-      {/* Botón de contacto/cita con efectos premium */}
+      {/* Botón de login con efectos premium */}
       <div className={styles.desktopOnly}>
-        <a className={styles.contactButton} href="tel:+526641234567">
+        <button 
+          className={styles.contactButton} 
+          onClick={() => navigateToPage('/login', 'login')}
+        >
           <span className={styles.buttonText}>
-            {ingles ? "Call Now" : "Llamar Ahora"}
+            {ingles ? "Login" : "Iniciar Sesión"}
           </span>
-          <span className={styles.buttonIcon}>📞</span>
+          <span className={styles.buttonIcon}>�</span>
           <div className={styles.buttonShine}></div>
-        </a>
+        </button>
       </div>
     </nav>
   );

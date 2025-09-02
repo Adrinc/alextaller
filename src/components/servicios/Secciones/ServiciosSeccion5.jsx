@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './css/ServiciosSeccion5.module.css';
+import styles from '../css/ServiciosSeccion5.module.css';
 
 const ServiciosSeccion5 = ({ ingles = false }) => {
   const [currentSlide, setCurrentSlide] = useState(0);

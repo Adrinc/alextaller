@@ -1,0 +1,34 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+import NosotrosSeccion1 from '../components/nosotros/Secciones/NosotrosSeccion1.jsx';
+import NosotrosSeccion2 from '../components/nosotros/Secciones/NosotrosSeccion2.jsx';
+import NosotrosSeccion3 from '../components/nosotros/Secciones/NosotrosSeccion3.jsx';
+import NosotrosSeccion4 from '../components/nosotros/Secciones/NosotrosSeccion4.jsx';
+import NosotrosSeccion5 from '../components/nosotros/Secciones/NosotrosSeccion5.jsx';
+import NosotrosSeccion6 from '../components/nosotros/Secciones/NosotrosSeccion6.jsx';
+---
+
+<LayoutBasic 
+  title="Nosotros - Ojo Ciudadano | Expertos en Reparación Automotriz" 
+  showFooter={true}
+>
+
+    <!-- Hero Section - Sección de presentación épica -->
+    <NosotrosSeccion1 client:load />
+    
+    <!-- Historia Section - Nuestra trayectoria y estadísticas -->
+    <NosotrosSeccion2 client:load />
+    
+    <!-- Valores Section - Grid interactivo de valores corporativos -->
+    <NosotrosSeccion3 client:load />
+    
+    <!-- Equipo Section - Conoce a nuestro equipo profesional -->
+    <NosotrosSeccion4 client:load />
+    
+    <!-- Testimonio Section - Prueba social e institucional -->
+    <NosotrosSeccion5 client:load />
+    
+    <!-- CTA Final Section - Llamada a la acción y contacto -->
+    <NosotrosSeccion6 client:load />
+ 
+</LayoutBasic>

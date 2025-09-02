@@ -1,0 +1,622 @@
+/* NosotrosSeccion3.module.css - Valores Section Styles */
+
+.valoresSection {
+  min-height: 100vh;
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #121212 0%, #1a1a1a 50%, #121212 100%);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.valoresSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(145deg, #e91e63, #ff4081);
+  color: #ffffff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 10px 30px rgba(233, 30, 99, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.tagIcon {
+  font-size: 1.2rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 0 30px rgba(233, 30, 99, 0.3);
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.sectionSubtitle {
+  font-size: 1.3rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+/* Values Grid */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+/* Value Card */
+.valueCard {
+  position: relative;
+  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  border-radius: 25px;
+  padding: 2.5rem;
+  border: 1px solid rgba(233, 30, 99, 0.1);
+  box-shadow: 
+    15px 15px 30px rgba(0, 0, 0, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.02);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out both;
+}
+
+.valueCard:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    20px 25px 50px rgba(0, 0, 0, 0.6),
+    0 15px 40px rgba(233, 30, 99, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.valueCard.hovered {
+  border-color: rgba(233, 30, 99, 0.5);
+}
+
+/* Card Background Effect */
+.cardBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(233, 30, 99, 0.05) 0%,
+    transparent 50%,
+    rgba(255, 64, 129, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 25px;
+}
+
+.valueCard:hover .cardBackground {
+  opacity: 1;
+}
+
+/* Card Glow */
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.1), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: rotateGlow 10s linear infinite;
+}
+
+.valueCard:hover .cardGlow {
+  opacity: 1;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card Content */
+.cardContent {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Icon Container */
+.iconContainer {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valueIcon {
+  font-size: 3rem;
+  z-index: 2;
+  position: relative;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(233, 30, 99, 0.5));
+}
+
+.valueCard:hover .valueIcon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 20px rgba(233, 30, 99, 0.8));
+}
+
+.iconGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.3), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+  filter: blur(15px);
+}
+
+.valueCard:hover .iconGlow {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* Title */
+.valueTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.valueCard:hover .valueTitle {
+  color: #e91e63;
+}
+
+/* Description */
+.valueDescription {
+  font-size: 1rem;
+  color: #cccccc;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Details */
+.valueDetails {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, rgba(233, 30, 99, 0.1), rgba(255, 64, 129, 0.05));
+  border-radius: 15px;
+  padding: 0 1rem;
+  margin-top: 1rem;
+}
+
+.valueCard:hover .valueDetails {
+  opacity: 1;
+  max-height: 100px;
+  padding: 1rem;
+}
+
+.detailsText {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Decorative Elements */
+.decorativeElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cornerDot {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  background: #e91e63;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+}
+
+.valueCard:hover .cornerDot {
+  opacity: 1;
+}
+
+.sideLine {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #e91e63, transparent);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.valueCard:hover .sideLine {
+  opacity: 1;
+  width: 60px;
+}
+
+/* Hover Overlay */
+.hoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.valueCard:hover .hoverOverlay {
+  opacity: 1;
+}
+
+.overlayPattern {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    transparent 30%,
+    rgba(233, 30, 99, 0.03) 50%,
+    transparent 70%);
+  background-size: 20px 20px;
+  animation: patternMove 3s linear infinite;
+}
+
+@keyframes patternMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Bottom Section */
+.bottomSection {
+  margin-top: 4rem;
+}
+
+.ctaCard {
+  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  border-radius: 30px;
+  padding: 3rem;
+  text-align: center;
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  box-shadow: 
+    20px 20px 40px rgba(0, 0, 0, 0.5),
+    -10px -10px 20px rgba(255, 255, 255, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e91e63, transparent);
+}
+
+.ctaIcon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.ctaDescription {
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+}
+
+/* CTA Stats */
+.ctaStats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.ctaStatItem {
+  text-align: center;
+}
+
+.ctaStatNumber {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e91e63;
+  text-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+  line-height: 1;
+}
+
+.ctaStatLabel {
+  display: block;
+  font-size: 0.9rem;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+/* Interactive Background */
+.interactiveBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.followCursor {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.1), transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  filter: blur(30px);
+}
+
+/* Floating Symbols */
+.floatingSymbols {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.floatingSymbol {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  animation: floatSymbol 15s ease-in-out infinite;
+}
+
+@keyframes floatSymbol {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.1;
+  }
+  25% { 
+    transform: translateY(-30px) rotate(90deg);
+    opacity: 0.2;
+  }
+  50% { 
+    transform: translateY(0) rotate(180deg);
+    opacity: 0.1;
+  }
+  75% { 
+    transform: translateY(30px) rotate(270deg);
+    opacity: 0.15;
+  }
+}
+
+/* Background Effects */
+.backgroundEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gradientOrb1, .gradientOrb2, .gradientOrb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.1;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+.gradientOrb1 {
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #e91e63, transparent);
+  animation-delay: 0s;
+}
+
+.gradientOrb2 {
+  bottom: 30%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #ff4081, transparent);
+  animation-delay: 4s;
+}
+
+.gradientOrb3 {
+  top: 60%;
+  left: 60%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #e91e63, transparent);
+  animation-delay: 8s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+  }
+  50% { 
+    transform: translateY(-40px) scale(1.1);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ctaStats {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .valoresSection {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .valueCard {
+    padding: 2rem;
+  }
+
+  .ctaCard {
+    padding: 2rem;
+  }
+
+  .ctaStats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .valueCard {
+    padding: 1.5rem;
+  }
+
+  .iconContainer {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+  }
+
+  .valueIcon {
+    font-size: 2.5rem;
+  }
+
+  .valueTitle {
+    font-size: 1.3rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.5rem;
+  }
+
+  .ctaStatNumber {
+    font-size: 2rem;
+  }
+
+  .floatingSymbols {
+    display: none;
+  }
+}

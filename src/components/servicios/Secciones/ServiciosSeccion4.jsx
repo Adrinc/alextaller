@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables.js';
 import { translationsServicios } from '../../../data/translationsServicios.js';
-import styles from './css/ServiciosSeccion4.module.css';
+import styles from '../css/ServiciosSeccion4.module.css';
 
 const ServiciosSeccion4 = () => {
   const ingles = useStore(isEnglish);

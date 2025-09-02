@@ -1,0 +1,817 @@
+/* CitasSeccion3.module.css - Estilos para la sección de beneficios */
+
+.benefitsSection {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #121212 25%,
+    #1a1a1a 50%,
+    #121212 75%,
+    #0a0a0a 100%
+  );
+  position: relative;
+  padding: 5rem 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.benefitsSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: slideInFromTop 1s ease-out;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #ec407a 50%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(236, 64, 122, 0.3);
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ec407a, transparent);
+  border-radius: 2px;
+  animation: glowLine 2s ease-in-out infinite alternate;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Tab Navigation */
+.tabNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border-radius: 20px;
+  padding: 1rem;
+  border: 1px solid rgba(236, 64, 122, 0.2);
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.4),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.02),
+    0 4px 20px rgba(236, 64, 122, 0.1);
+  animation: slideInFromBottom 1s ease-out 0.2s both;
+}
+
+.tabButton {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border: none;
+  border-radius: 15px;
+  padding: 1.2rem 2rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.4),
+    -6px -6px 12px rgba(255, 255, 255, 0.05);
+}
+
+.tabButton.active {
+  background: linear-gradient(145deg, #e91e63, #c2185b);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(236, 64, 122, 0.4);
+}
+
+.tabButton:hover:not(.active) {
+  background: linear-gradient(145deg, #333333, #222222);
+  transform: translateY(-1px);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.08);
+}
+
+.tabIcon {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.tabButton.active .tabIcon {
+  transform: scale(1.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.tabText {
+  font-weight: 600;
+}
+
+/* Tab Content */
+.tabContent {
+  min-height: 600px;
+  animation: fadeInContent 0.8s ease-out;
+}
+
+/* Benefits Grid */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  animation: slideInFromBottom 1s ease-out 0.4s both;
+}
+
+.benefitCard {
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border-radius: 25px;
+  border: 1px solid rgba(236, 64, 122, 0.2);
+  box-shadow: 
+    inset 12px 12px 24px rgba(0, 0, 0, 0.4),
+    inset -12px -12px 24px rgba(255, 255, 255, 0.02),
+    0 8px 32px rgba(236, 64, 122, 0.1);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  animation: slideUpFade 0.8s ease-out both;
+}
+
+.benefitCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    inset 12px 12px 24px rgba(0, 0, 0, 0.4),
+    inset -12px -12px 24px rgba(255, 255, 255, 0.02),
+    0 20px 60px rgba(236, 64, 122, 0.2);
+  border-color: rgba(236, 64, 122, 0.4);
+}
+
+.benefitHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.benefitIcon {
+  font-size: 3rem;
+  padding: 1rem;
+  background: linear-gradient(145deg, #e91e63, #c2185b);
+  border-radius: 20px;
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.05),
+    0 0 20px rgba(236, 64, 122, 0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+.benefitTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+}
+
+.benefitDescription {
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  opacity: 0.9;
+}
+
+.benefitFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.benefitFeature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.benefitFeature:last-child {
+  border-bottom: none;
+}
+
+.featureIcon {
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.25rem;
+  background: linear-gradient(145deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureText {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.benefitGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(236, 64, 122, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.benefitCard:hover .benefitGlow {
+  opacity: 1;
+}
+
+/* Guarantees Grid */
+.guaranteesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  animation: slideInFromBottom 1s ease-out 0.4s both;
+}
+
+.guaranteeCard {
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border-radius: 25px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  box-shadow: 
+    inset 12px 12px 24px rgba(0, 0, 0, 0.4),
+    inset -12px -12px 24px rgba(255, 255, 255, 0.02),
+    0 8px 32px rgba(76, 175, 80, 0.1);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  animation: slideUpFade 0.8s ease-out both;
+}
+
+.guaranteeCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    inset 12px 12px 24px rgba(0, 0, 0, 0.4),
+    inset -12px -12px 24px rgba(255, 255, 255, 0.02),
+    0 20px 60px rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.5);
+}
+
+.guaranteeIcon {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.guaranteeContent {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.guaranteeTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+.guaranteePeriod {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4caf50;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+.guaranteeDescription {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.guaranteeStamp {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(145deg, #4caf50, #388e3c);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.05);
+  transform: rotate(15deg);
+}
+
+.stampText {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Trust Indicators */
+.trustIndicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 5rem;
+  animation: slideInFromBottom 1s ease-out 0.6s both;
+}
+
+.trustItem {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border-radius: 20px;
+  border: 1px solid rgba(236, 64, 122, 0.2);
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.4),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.02),
+    0 4px 20px rgba(236, 64, 122, 0.1);
+  transition: all 0.3s ease;
+}
+
+.trustItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.4),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.02),
+    0 12px 30px rgba(236, 64, 122, 0.2);
+}
+
+.trustIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.trustValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ec407a;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(236, 64, 122, 0.3);
+}
+
+.trustLabel {
+  font-size: 1rem;
+  color: #cccccc;
+  font-weight: 500;
+}
+
+/* Final CTA Section */
+.finalCTA {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(236, 64, 122, 0.2);
+  animation: slideInFromBottom 1s ease-out 0.8s both;
+}
+
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #ec407a 50%, #ff1744 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(236, 64, 122, 0.3);
+}
+
+.ctaSubtitle {
+  font-size: 1.3rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0 0 3rem 0;
+  opacity: 0.9;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.primaryCTAButton {
+  padding: 1.5rem 3rem;
+  background: linear-gradient(145deg, #e91e63, #c2185b);
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.4),
+    -8px -8px 16px rgba(255, 255, 255, 0.05),
+    0 0 30px rgba(236, 64, 122, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 300px;
+}
+
+.primaryCTAButton:hover {
+  background: linear-gradient(145deg, #ec407a, #e91e63);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    12px 12px 24px rgba(0, 0, 0, 0.5),
+    -12px -12px 24px rgba(255, 255, 255, 0.08),
+    0 0 50px rgba(236, 64, 122, 0.5);
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.primaryCTAButton:hover .buttonGlow {
+  left: 100%;
+}
+
+.secondaryCTAButtons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.secondaryCTAButton {
+  padding: 1rem 2rem;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border: none;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.4),
+    -6px -6px 12px rgba(255, 255, 255, 0.05);
+  min-width: 140px;
+}
+
+.secondaryCTAButton:hover {
+  background: linear-gradient(145deg, #333333, #222222);
+  transform: translateY(-2px);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.08);
+}
+
+.buttonIcon {
+  font-size: 1.2rem;
+}
+
+.buttonText {
+  font-weight: 600;
+}
+
+/* Emergency Contact */
+.emergencyContact {
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.4),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.02),
+    0 4px 20px rgba(255, 193, 7, 0.1);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.emergencyIcon {
+  font-size: 3rem;
+  animation: emergencyPulse 2s ease-in-out infinite;
+}
+
+.emergencyText {
+  flex: 1;
+}
+
+.emergencyTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.emergencyDesc {
+  font-size: 1rem;
+  color: #cccccc;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.emergencyButton {
+  padding: 1rem 2rem;
+  background: linear-gradient(145deg, #ff9800, #f57c00);
+  border: none;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.4),
+    -6px -6px 12px rgba(255, 255, 255, 0.05),
+    0 0 20px rgba(255, 152, 0, 0.3);
+  white-space: nowrap;
+}
+
+.emergencyButton:hover {
+  background: linear-gradient(145deg, #ffb74d, #ff9800);
+  transform: translateY(-2px);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(255, 152, 0, 0.5);
+}
+
+@keyframes emergencyPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Background Effects */
+.backgroundEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floatingElement {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  animation: floatRandom 20s linear infinite;
+}
+
+.floatingElement:nth-child(1) { left: 10%; top: 20%; }
+.floatingElement:nth-child(2) { left: 80%; top: 60%; }
+.floatingElement:nth-child(3) { left: 60%; top: 10%; }
+.floatingElement:nth-child(4) { left: 20%; top: 80%; }
+
+.glowOrb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(236, 64, 122, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 20%;
+  left: -150px;
+  animation: floatGlow 15s ease-in-out infinite;
+}
+
+.glowOrb2 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: 20%;
+  right: -100px;
+  animation: floatGlow 20s ease-in-out infinite reverse;
+}
+
+/* Animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes glowLine {
+  from { box-shadow: 0 0 10px rgba(236, 64, 122, 0.3); }
+  to { box-shadow: 0 0 20px rgba(236, 64, 122, 0.6); }
+}
+
+@keyframes floatRandom {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(100px, -100px) rotate(90deg); }
+  50% { transform: translate(-50px, -200px) rotate(180deg); }
+  75% { transform: translate(-150px, -50px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes floatGlow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(100px, -50px) scale(1.1); }
+  66% { transform: translate(-50px, 100px) scale(0.9); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .benefitsSection {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .tabNavigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tabButton {
+    padding: 1rem 1.5rem;
+  }
+
+  .benefitsGrid,
+  .guaranteesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .benefitCard,
+  .guaranteeCard {
+    padding: 2rem;
+  }
+
+  .trustIndicators {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .trustItem {
+    padding: 1.5rem;
+  }
+
+  .trustValue {
+    font-size: 2rem;
+  }
+
+  .ctaTitle {
+    font-size: 2.5rem;
+  }
+
+  .ctaSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .secondaryCTAButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .emergencyContact {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .emergencyText {
+    text-align: center;
+  }
+}

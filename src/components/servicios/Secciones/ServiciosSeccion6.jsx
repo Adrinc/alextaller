@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './css/ServiciosSeccion6.module.css';
+import styles from '../css/ServiciosSeccion6.module.css';
 
 const ServiciosSeccion6 = ({ ingles = false }) => {
   const [isVisible, setIsVisible] = useState(false);
