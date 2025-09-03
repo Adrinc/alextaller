@@ -59,7 +59,7 @@ const NosotrosSeccion2 = () => {
   useEffect(() => {
     if (statsVisible) {
       const targets = {
-        years: 30,
+        years: 8,
         clients: 15000,
         repairs: 50000,
         guarantee: 100
@@ -167,7 +167,7 @@ const NosotrosSeccion2 = () => {
               {/* Main Historical Image */}
               <div className={styles.mainImage}>
                 <img 
-                  src="/image/global/equipment.png" 
+                  src="/image/global/mecanicosalex.png" 
                   alt="Alex Taller Mecánico - Historia"
                   className={styles.historyImage}
                 />

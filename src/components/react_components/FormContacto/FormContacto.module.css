@@ -1,16 +1,17 @@
 /* Contenedor principal */
 .container {
-    background: #5B2B33;
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     backdrop-filter: blur(10px);
-    border: 1px solid #E5E7EB;
+    border: 1px solid rgba(233, 30, 99, 0.2);
     color: #FFFFFF;
     padding: 3rem 2.5rem;
-    border-radius: 16px;
+    border-radius: 25px;
     max-width: 650px;
     margin: 2rem auto;
     box-shadow: 
-        0 10px 30px rgba(91, 43, 51, 0.2),
-        0 4px 15px rgba(0, 0, 0, 0.1);
+        20px 20px 40px rgba(0, 0, 0, 0.7),
+        -10px -10px 20px rgba(255, 255, 255, 0.02),
+        inset 2px 2px 4px rgba(233, 30, 99, 0.1);
     position: relative;
     overflow: hidden;
     animation: slideInUp 0.8s ease-out;
@@ -24,8 +25,8 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-        rgba(196, 182, 140, 0.05) 0%, 
-        rgba(74, 35, 43, 0.05) 100%);
+        rgba(233, 30, 99, 0.05) 0%, 
+        rgba(255, 64, 129, 0.03) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -103,8 +104,9 @@
     font-size: 1rem;
     margin-bottom: 0.8rem;
     font-weight: 600;
-    color: #C4B68C;
+    color: #ff4081;
     transition: color 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
 }
 
 /* Contenedor del input */
@@ -112,11 +114,14 @@
     display: flex;
     align-items: center;
     position: relative;
-    background: #FFFFFF;
-    border-radius: 12px;
-    border: 2px solid #E5E7EB;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-radius: 15px;
+    border: 2px solid rgba(233, 30, 99, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    box-shadow: 
+        inset 8px 8px 16px rgba(0, 0, 0, 0.5),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.02);
 }
 
 .inputContainer::before {
@@ -128,7 +133,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
         transparent, 
-        rgba(196, 182, 140, 0.1), 
+        rgba(233, 30, 99, 0.1), 
         transparent);
     transition: left 0.5s ease;
 }
@@ -138,11 +143,13 @@
 }
 
 .inputContainer:focus-within {
-    border-color: #C4B68C;
+    border-color: #e91e63;
     box-shadow: 
-        0 0 0 3px rgba(196, 182, 140, 0.3),
-        0 4px 15px rgba(196, 182, 140, 0.2);
-    background: #FFFFFF;
+        0 0 0 3px rgba(233, 30, 99, 0.3),
+        0 4px 15px rgba(233, 30, 99, 0.2),
+        inset 8px 8px 16px rgba(0, 0, 0, 0.5),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.02);
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
     transform: translateY(-1px);
 }
 
@@ -152,9 +159,9 @@
     font-size: 1rem;
     padding: 1rem 1.2rem;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     background: transparent;
-    color: #5B2B33;
+    color: #ffffff;
     flex: 1;
     transition: all 0.3s ease;
     font-family: inherit;
@@ -162,18 +169,19 @@
 
 .input::placeholder,
 .textarea::placeholder {
-    color: #8A8A8A;
+    color: #888888;
     transition: color 0.3s ease;
 }
 
 .input:focus::placeholder,
 .textarea:focus::placeholder {
-    color: #D1CFCF;
+    color: #aaaaaa;
 }
 
 .input:focus,
 .textarea:focus {
     outline: none;
+    color: #ffffff;
 }
 
 .textarea {
@@ -188,15 +196,20 @@
     font-weight: 600;
     padding: 1rem 2rem;
     border: none;
-    border-radius: 12px;
-    background: #C4B68C;
-    color: #5B2B33;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #e91e63, #ff4081);
+    color: #ffffff;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-top: 1rem;
     animation: fadeInUp 0.6s ease-out 0.7s both;
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.5),
+        -4px -4px 8px rgba(255, 255, 255, 0.02),
+        0 0 20px rgba(233, 30, 99, 0.3);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .submitButton::before {
@@ -206,7 +219,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: #B8AA7A;
+    background: linear-gradient(145deg, #ff4081, #e91e63);
     transition: left 0.3s ease;
     z-index: -1;
 }
@@ -216,16 +229,19 @@
 }
 
 .submitButton:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 
-        0 8px 25px rgba(196, 182, 140, 0.4),
-        0 4px 15px rgba(0, 0, 0, 0.1);
+        12px 12px 24px rgba(0, 0, 0, 0.6),
+        -6px -6px 12px rgba(255, 255, 255, 0.03),
+        0 8px 25px rgba(233, 30, 99, 0.4);
 }
 
 .submitButton:active {
-    transform: translateY(0px);
+    transform: translateY(-1px);
     box-shadow: 
-        0 4px 15px rgba(196, 182, 140, 0.3);
+        6px 6px 12px rgba(0, 0, 0, 0.4),
+        -3px -3px 6px rgba(255, 255, 255, 0.02),
+        0 4px 15px rgba(233, 30, 99, 0.3);
 }
 
 .submitButton.submitting {
@@ -237,8 +253,9 @@
 .submitButton.submitting:hover {
     transform: none !important;
     box-shadow: 
-        0 5px 15px rgba(180, 59, 255, 0.2),
-        0 2px 5px rgba(0, 0, 0, 0.2) !important;
+        8px 8px 16px rgba(0, 0, 0, 0.5),
+        -4px -4px 8px rgba(255, 255, 255, 0.02),
+        0 0 20px rgba(233, 30, 99, 0.3) !important;
 }
 
 @keyframes fadeInUp {
@@ -257,14 +274,15 @@
     margin: 0 1rem 0 1.2rem;
     width: 20px;
     height: 20px;
-    opacity: 0.6;
+    opacity: 0.7;
     transition: all 0.3s ease;
-    filter: none;
+    filter: invert(1) brightness(0.8);
 }
 
 .inputContainer:focus-within .icon {
     opacity: 1;
     transform: scale(1.05);
+    filter: invert(1) brightness(1) drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
 }
 
 /* Mensajes de error */

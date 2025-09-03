@@ -109,7 +109,7 @@ const NosotrosSeccion1 = () => {
           {/* Stats Preview */}
           <div className={styles.statsPreview}>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>30+</span>
+              <span className={styles.statNumber}>8+</span>
               <span className={styles.statLabel}>Años</span>
             </div>
             <div className={styles.stat}>

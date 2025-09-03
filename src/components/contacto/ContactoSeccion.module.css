@@ -7,7 +7,7 @@
   min-height: calc(100vh - 80px);
   padding: 40px 20px;
   margin-top: 80px;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F3F4F6 50%, #FFFFFF 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #121212 100%);
   overflow: hidden;
 }
 
@@ -19,9 +19,9 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(91, 43, 51, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(196, 182, 140, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 40% 40%, rgba(91, 43, 51, 0.04) 0%, transparent 30%);
+    radial-gradient(circle at 20% 80%, rgba(233, 30, 99, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255, 64, 129, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(233, 30, 99, 0.06) 0%, transparent 30%);
   pointer-events: none;
 }
 
@@ -33,8 +33,8 @@
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(90deg, rgba(91, 43, 51, 0.02) 1px, transparent 1px),
-    linear-gradient(rgba(91, 43, 51, 0.02) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(233, 30, 99, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(233, 30, 99, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   opacity: 0.3;
   pointer-events: none;
@@ -151,24 +151,26 @@
   margin-bottom: 15px;
   font-weight: 800;
   background: linear-gradient(135deg, 
-    #5B2B33 0%, 
-    #C4B68C 50%, 
-    #5B2B33 100%);
+    #e91e63 0%, 
+    #ff4081 50%, 
+    #e91e63 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  text-shadow: 0 0 30px rgba(233, 30, 99, 0.5);
 }
 
 .description {
   font-size: 2.8rem;
-  color: #5B2B33;
+  color: #ffffff;
   font-weight: 300;
   letter-spacing: 0.02em;
   margin-top: 25px;
   line-height: 1.3;
   max-width: 600px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .esfera {
@@ -179,9 +181,9 @@
   width: 120vw;
   height: 120vh;
   background: radial-gradient(circle at center, 
-    rgba(196, 182, 140, 0.03) 0%, 
-    rgba(91, 43, 51, 0.02) 30%, 
-    rgba(196, 182, 140, 0.01) 60%, 
+    rgba(233, 30, 99, 0.05) 0%, 
+    rgba(255, 64, 129, 0.03) 30%, 
+    rgba(233, 30, 99, 0.02) 60%, 
     transparent 80%);
   z-index: 1;
   pointer-events: none;
@@ -224,12 +226,12 @@
   width: 120%;
   height: 120%;
   background: radial-gradient(circle, 
-    rgba(196, 182, 140, 0.08) 0%, 
-    rgba(196, 182, 140, 0.04) 50%, 
+    rgba(233, 30, 99, 0.15) 0%, 
+    rgba(255, 64, 129, 0.08) 50%, 
     transparent 100%);
   border-radius: 50%;
   z-index: -1;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 /* Elementos decorativos simplificados */
@@ -237,8 +239,11 @@
   position: absolute;
   border-radius: 50%;
   background: linear-gradient(45deg, 
-    rgba(91, 43, 51, 0.05), 
-    rgba(196, 182, 140, 0.04));
+    rgba(233, 30, 99, 0.08), 
+    rgba(255, 64, 129, 0.06));
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.5),
+    inset -4px -4px 8px rgba(233, 30, 99, 0.1);
 }
 
 .circle1 {
@@ -278,9 +283,12 @@
   position: absolute;
   border-radius: 50%;
   background: linear-gradient(135deg, 
-    rgba(91, 43, 51, 0.06), 
-    rgba(196, 182, 140, 0.08));
+    rgba(233, 30, 99, 0.08), 
+    rgba(255, 64, 129, 0.12));
   filter: blur(1px);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(233, 30, 99, 0.1);
 }
 
 .shape1 {
@@ -374,7 +382,7 @@
 .triangle1 {
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-bottom: 52px solid rgba(91, 43, 51, 0.4);
+  border-bottom: 52px solid rgba(233, 30, 99, 0.4);
   top: 25%;
   right: 15%;
   animation: slowSpin 45s linear infinite;
@@ -383,7 +391,7 @@
 .triangle2 {
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-bottom: 35px solid rgba(196, 182, 140, 0.4);
+  border-bottom: 35px solid rgba(255, 64, 129, 0.4);
   bottom: 30%;
   left: 20%;
   animation: slowSpin 35s linear infinite reverse;
@@ -392,7 +400,7 @@
 .triangle3 {
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
-  border-bottom: 43px solid rgba(91, 43, 51, 0.3);
+  border-bottom: 43px solid rgba(233, 30, 99, 0.3);
   top: 70%;
   right: 40%;
   animation: slowSpin 50s linear infinite;

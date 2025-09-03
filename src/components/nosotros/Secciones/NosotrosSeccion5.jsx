@@ -120,7 +120,7 @@ const NosotrosSeccion5 = () => {
           {/* Stats Row */}
           <div className={styles.statsRow}>
             <div className={styles.statItem}>
-              <span className={styles.statNumber}>30+</span>
+              <span className={styles.statNumber}>8+</span>
               <span className={styles.statLabel}>Años de experiencia</span>
             </div>
             <div className={styles.statItem}>

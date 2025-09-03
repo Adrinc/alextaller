@@ -347,19 +347,27 @@ export const translations = {
       ]
     },
     formContacto: {
-      title: "¿Tienes alguna duda o sugerencia?",
-      subtitle: "Contáctanos y te responderemos lo antes posible",
+      title: "¿Necesitas servicio automotriz?",
+      subtitle: "Contáctanos y agenda tu cita en Taller Alex",
       nombre: "Nombre completo",
-      email: "Correo electrónico",
-      telefono: "Teléfono (opcional)",
-      mensaje: "Mensaje",
-      enviar: "Enviar mensaje",
-      placeholder_nombre: "Ej. Juan Pérez",
-      placeholder_email: "Ej. correo@ejemplo.com",
-      placeholder_telefono: "Ej. 5512345678",
-      placeholder_mensaje: "Escribe tu mensaje aquí...",
-      success: "Mensaje enviado correctamente",
-      error: "Error al enviar el mensaje"
+      email: "Correo electrónico", 
+      telefono: "Teléfono",
+      ayuda: "¿En qué podemos ayudarte?",
+      enviar: "Enviar consulta",
+      enviando: "Enviando...",
+      placeholder_nombre: "Ej. Juan Pérez García",
+      placeholder_email: "Ej. juan@email.com",
+      placeholder_telefono: "Ej. 555-123-4567",
+      placeholder_ayuda: "Describe el problema de tu vehículo o el servicio que necesitas...",
+      success: "¡Mensaje enviado correctamente! Te contactaremos pronto.",
+      fail: "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+      error_nombre: "El nombre solo puede contener letras y espacios (máximo 50 caracteres)",
+      error_email: "Por favor, ingresa un correo electrónico válido",
+      error_email_short: "El correo debe tener al menos 4 caracteres antes del @",
+      error_telefono: "El teléfono solo puede contener números (10-15 dígitos)",
+      error_ayuda: "Por favor, describe en qué podemos ayudarte",
+      success: "¡Mensaje enviado correctamente! Te contactaremos pronto.",
+      fail: "Error al enviar el mensaje. Por favor, inténtalo de nuevo."
     },
     ia: {
       title: "La IA que entiende lo que ves y sientes",
@@ -419,8 +427,8 @@ export const translations = {
     },
     // Mantengo algunas secciones para compatibilidad
     contactoSeccion: {
-      title: "¡Hablemos!",
-      description: "Nos encantaría conocerte y descubrir cómo podemos ayudarte con Ojo Ciudadano."
+      title: "Taller Alex",
+      description: "Servicio automotriz profesional y confiable. Tu vehículo en las mejores manos."
     }
   },
   en: {
@@ -771,19 +779,25 @@ export const translations = {
       ]
     },
     formContacto: {
-      title: "Do you have any questions or suggestions?",
-      subtitle: "Contact us and we will respond as soon as possible",
+      title: "Need automotive service?",
+      subtitle: "Contact us and schedule your appointment at Taller Alex",
       nombre: "Full name",
       email: "Email",
-      telefono: "Phone (optional)",
-      mensaje: "Message",
-      enviar: "Send message",
-      placeholder_nombre: "E.g. John Doe",
-      placeholder_email: "E.g. email@example.com",
-      placeholder_telefono: "E.g. 5512345678",
-      placeholder_mensaje: "Write your message here...",
-      success: "Message sent successfully",
-      error: "Error sending message"
+      telefono: "Phone",
+      ayuda: "How can we help you?",
+      enviar: "Send inquiry",
+      enviando: "Sending...",
+      placeholder_nombre: "E.g. John Smith",
+      placeholder_email: "E.g. john@email.com",
+      placeholder_telefono: "E.g. 555-123-4567",
+      placeholder_ayuda: "Describe your vehicle's problem or the service you need...",
+      success: "Message sent successfully! We will contact you soon.",
+      fail: "Error sending message. Please try again.",
+      error_nombre: "Name can only contain letters and spaces (maximum 50 characters)",
+      error_email: "Please enter a valid email address",
+      error_email_short: "Email must have at least 4 characters before @",
+      error_telefono: "Phone can only contain numbers (10-15 digits)",
+      error_ayuda: "Please describe how we can help you"
     },
     ia: {
       title: "AI that understands what you see and feel",
@@ -842,8 +856,8 @@ export const translations = {
       }
     },
     contactoSeccion: {
-      title: "Let's talk!",
-      description: "We would love to meet you and discover how we can help you with Ojo Ciudadano."
+      title: "Taller Alex",
+      description: "Professional and reliable automotive service. Your vehicle in the best hands."
     }
   }
 };

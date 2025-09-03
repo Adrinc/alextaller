@@ -71,7 +71,7 @@ const ServiciosSeccion1 = () => {
             {/* Estadísticas neumórficas */}
             <div className={styles.statsContainer}>
               <div className={styles.statCard}>
-                <div className={styles.statNumber}>30+</div>
+                <div className={styles.statNumber}>8+</div>
                 <div className={styles.statLabel}>
                   {ingles ? "Years Experience" : "Años de Experiencia"}
                 </div>

@@ -151,7 +151,7 @@ const NosotrosSeccion6 = () => {
             </div>
             <div className={styles.trustItem}>
               <span className={styles.trustIcon}>🏆</span>
-              <span className={styles.trustText}>30+ años de experiencia</span>
+              <span className={styles.trustText}>8+ años de experiencia</span>
             </div>
             <div className={styles.trustItem}>
               <span className={styles.trustIcon}>🚗</span>

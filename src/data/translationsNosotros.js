@@ -13,7 +13,7 @@ export const translationsNosotros = {
         paragraph1: "Fundado en 1993 en Tijuana, Alex Taller Mecánico comenzó como un pequeño local familiar con un gran sueño: brindar el mejor servicio automotriz de la región.",
         paragraph2: "Hoy, con más de tres décadas de experiencia, somos un referente en mantenimiento, diagnóstico y reparación automotriz, combinando la tradición familiar con tecnología de punta.",
         paragraph3: "Nuestro compromiso con la excelencia nos ha convertido en la primera opción para miles de familias tijuanenses que confían en nosotros para mantener sus autos en perfectas condiciones.",
-        highlight: "30+ años de experiencia comprobada"
+        highlight: "8+ años de experiencia comprobada"
       },
       stats: {
         years: "8+",
@@ -62,7 +62,7 @@ export const translationsNosotros = {
           id: "confianza",
           icon: "🛡️",
           title: "Confianza",
-          description: "Más de 30 años respaldando cada trabajo con garantía total.",
+          description: "Más de 8 años respaldando cada trabajo con garantía total.",
           details: "La confianza se gana día a día con resultados"
         },
         {
@@ -136,7 +136,7 @@ export const translationsNosotros = {
     },
     cta: {
       title: "Confía en la Experiencia",
-      subtitle: "Un taller con más de 30 años en Tijuana",
+      subtitle: "Un taller con más de 8 años en Tijuana",
       description: "Únete a las miles de familias que ya confían en nosotros para mantener sus autos en perfectas condiciones.",
       button: "Agenda tu cita ahora",
       features: [
@@ -168,7 +168,7 @@ export const translationsNosotros = {
         paragraph1: "Founded in 1993 in Tijuana, Alex Mechanical Shop started as a small family business with a big dream: to provide the best automotive service in the region.",
         paragraph2: "Today, with more than three decades of experience, we are a reference in automotive maintenance, diagnosis and repair, combining family tradition with cutting-edge technology.",
         paragraph3: "Our commitment to excellence has made us the first choice for thousands of Tijuana families who trust us to keep their cars in perfect condition.",
-        highlight: "30+ years of proven experience"
+        highlight: "8+ years of proven experience"
       },
       stats: {
         years: "8+",
@@ -217,7 +217,7 @@ export const translationsNosotros = {
           id: "confianza",
           icon: "🛡️",
           title: "Trust",
-          description: "More than 30 years backing every job with total guarantee.",
+          description: "More than 8 years backing every job with total guarantee.",
           details: "Trust is earned day by day with results"
         },
         {

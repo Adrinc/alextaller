@@ -140,7 +140,7 @@ const NosotrosSeccion3 = () => {
                 <span className={styles.ctaStatLabel}>Confiabilidad</span>
               </div>
               <div className={styles.ctaStatItem}>
-                <span className={styles.ctaStatNumber}>30+</span>
+                <span className={styles.ctaStatNumber}>8+</span>
                 <span className={styles.ctaStatLabel}>Años de experiencia</span>
               </div>
               <div className={styles.ctaStatItem}>
