@@ -16,7 +16,7 @@ export const translationsIndex = {
     // Hero Section
     hero: {
       title: 'Tu Auto en las Mejores Manos',
-      subtitle: 'Más de 7 años brindando servicios automotrices de calidad en Tijuana',
+      subtitle: 'Más de 8 años brindando servicios automotrices de calidad en Tijuana',
       description: 'Mantenimiento preventivo, reparaciones especializadas y diagnósticos computarizados con tecnología de vanguardia.',
       ctaPrimary: 'Agendar Cita',
       ctaSecondary: 'Ver Servicios',

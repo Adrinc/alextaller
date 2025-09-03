@@ -14,48 +14,44 @@ const IndexSeccion1 = () => {
   const [particles, setParticles] = useState([]);
   const videoRef = useRef(null);
 
-  // Textos del carrusel épicos para Alex Taller Mecánico
+  // Textos del carrusel simplificados y más impactantes
   const carouselTexts = [
     {
-      badge: ingles ? "SINCE 1993" : "DESDE 1993",
-      title: ingles ? "Your Car in the Best Hands" : "Tu Auto en las Mejores Manos",
-      subtitle: ingles ? "Over 30 years of automotive excellence in Tijuana" : "Más de 30 años de excelencia automotriz en Tijuana",
-      description: ingles ? "Trusted by thousands of families for quality service and fair prices" : "Confianza de miles de familias por servicio de calidad y precios justos",
+      badge: ingles ? "TRUSTED SINCE 1993" : "CONFIANZA DESDE 1993",
+      title: ingles ? "Your Car Deserves the Best" : "Tu Auto Merece lo Mejor",
+      subtitle: ingles ? "8+ years of automotive excellence in Tijuana" : "8+ años de excelencia automotriz en Tijuana",
       icon: "🏆"
     },
     {
-      badge: ingles ? "TECHNOLOGY" : "TECNOLOGÍA",
-      title: ingles ? "Advanced Computerized Diagnostics" : "Diagnósticos Computarizados Avanzados", 
-      subtitle: ingles ? "State-of-the-art equipment for precise detection" : "Equipos de última generación para detección precisa",
-      description: ingles ? "Professional scanners and modern tools for accurate diagnosis" : "Escáneres profesionales y herramientas modernas para diagnóstico certero",
-      icon: "💻"
+      badge: ingles ? "ADVANCED TECHNOLOGY" : "TECNOLOGÍA AVANZADA",
+      title: ingles ? "Precise Computerized Diagnostics" : "Diagnósticos Computarizados Precisos", 
+      subtitle: ingles ? "State-of-the-art equipment for accurate results" : "Equipos de última generación para resultados exactos",
+      icon: "⚡"
     },
     {
-      badge: ingles ? "CERTIFIED" : "CERTIFICADOS",
-      title: ingles ? "Expert ASE Certified Technicians" : "Técnicos Expertos Certificados ASE",
+      badge: ingles ? "CERTIFIED EXPERTS" : "EXPERTOS CERTIFICADOS",
+      title: ingles ? "ASE Certified Technicians" : "Técnicos Certificados ASE",
       subtitle: ingles ? "Professional team with proven experience" : "Equipo profesional con experiencia comprobada",
-      description: ingles ? "Continuous training and specialization in modern vehicles" : "Capacitación continua y especialización en vehículos modernos",
       icon: "👨‍🔧"
     },
     {
-      badge: ingles ? "GUARANTEE" : "GARANTÍA",
-      title: ingles ? "Quality and Warranty Included" : "Calidad y Garantía Incluida",
-      subtitle: ingles ? "All our services backed by written warranty" : "Todos nuestros servicios respaldados con garantía por escrito",
-      description: ingles ? "Peace of mind with every service and repair performed" : "Tranquilidad total con cada servicio y reparación realizada",
-      icon: "🛡️"
+      badge: ingles ? "QUALITY GUARANTEE" : "GARANTÍA DE CALIDAD",
+      title: ingles ? "100% Satisfaction Guaranteed" : "100% Satisfacción Garantizada",
+      subtitle: ingles ? "All services backed by our written warranty" : "Todos los servicios respaldados con garantía escrita",
+      icon: "✅"
     }
   ];
 
-  // Crear partículas flotantes
+  // Crear partículas flotantes (reducidas)
   useEffect(() => {
     const createParticles = () => {
-      const newParticles = Array.from({ length: 20 }, (_, i) => ({
+      const newParticles = Array.from({ length: 8 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 4 + 2,
-        speed: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.2
+        size: Math.random() * 3 + 1,
+        speed: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.3 + 0.1
       }));
       setParticles(newParticles);
     };
@@ -63,10 +59,10 @@ const IndexSeccion1 = () => {
     createParticles();
     setIsVisible(true);
     
-    // Carrusel automático cada 5 segundos
+    // Carrusel automático cada 4 segundos
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % carouselTexts.length);
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -88,7 +84,7 @@ const IndexSeccion1 = () => {
 
   return (
     <section className={styles.hero} id="hero">
-      {/* Partículas flotantes */}
+      {/* Partículas flotantes sutiles */}
       <div className={styles.particlesContainer}>
         {particles.map((particle) => (
           <div
@@ -100,8 +96,8 @@ const IndexSeccion1 = () => {
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               opacity: particle.opacity,
-              animationDuration: `${particle.speed * 3}s`,
-              animationDelay: `${particle.id * 0.1}s`
+              animationDuration: `${particle.speed * 4}s`,
+              animationDelay: `${particle.id * 0.2}s`
             }}
           />
         ))}
@@ -125,19 +121,13 @@ const IndexSeccion1 = () => {
       </div>
 
       <div className={styles.container}>
+        
+       
+        {/* Contenido principal centrado */}
         <div className={styles.content}>
-          {/* Logo flotante del taller */}
-          <div className={`${styles.logoSection} ${isVisible ? styles.fadeInDown : ''}`}>
-            <div className={styles.logoContainer}>
-              <div className={styles.logoIcon}>🔧</div>
-              <h2 className={styles.logoText}>Alex Taller Mecánico</h2>
-            </div>
-          </div>
-
-          {/* Contenido principal con carrusel épico */}
           <div className={`${styles.mainContent} ${isVisible ? styles.fadeInUp : ''}`}>
             
-            {/* Carrusel de textos épico */}
+            {/* Carrusel de textos simplificado */}
             <div className={styles.textCarousel}>
               {carouselTexts.map((text, index) => (
                 <div
@@ -146,7 +136,7 @@ const IndexSeccion1 = () => {
                     index === currentTextIndex ? styles.active : ''
                   }`}
                 >
-                  {/* Badge épico */}
+                  {/* Badge */}
                   <div className={styles.heroBadge}>
                     <span className={styles.badgeIcon}>{text.icon}</span>
                     <span className={styles.badgeText}>{text.badge}</span>
@@ -158,14 +148,11 @@ const IndexSeccion1 = () => {
                   <p className={styles.subtitle}>
                     {text.subtitle}
                   </p>
-                  <p className={styles.description}>
-                    {text.description}
-                  </p>
                 </div>
               ))}
             </div>
             
-            {/* Botones CTA épicos */}
+            {/* Botones CTA */}
             <div className={styles.ctaButtons}>
               <button 
                 className={styles.ctaPrimary}
@@ -192,60 +179,37 @@ const IndexSeccion1 = () => {
                 </div>
               </button>
             </div>
-
-            {/* Características destacadas */}
-            <div className={styles.featuresRow}>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>⚡</div>
-                <span>{ingles ? "Same Day Service" : "Servicio el Mismo Día"}</span>
-              </div>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>💯</div>
-                <span>{ingles ? "Money Back Guarantee" : "Garantía Total"}</span>
-              </div>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>📱</div>
-                <span>{ingles ? "Real-time Updates" : "Actualizaciones en Vivo"}</span>
-              </div>
-            </div>
           </div>
 
-          {/* Estadísticas épicas */}
+          {/* Estadísticas simplificadas */}
           <div className={`${styles.statsContainer} ${isVisible ? styles.slideInRight : ''}`}>
             <div className={styles.statsGrid}>
               <div className={styles.stat}>
                 <div className={styles.statIcon}>🏆</div>
-                <div className={styles.statNumber}>30+</div>
+                <div className={styles.statNumber}>8+</div>
                 <div className={styles.statLabel}>
-                  {ingles ? "Years Experience" : "Años de Experiencia"}
+                  {ingles ? "Years" : "Años"}
                 </div>
               </div>
               <div className={styles.stat}>
                 <div className={styles.statIcon}>😊</div>
-                <div className={styles.statNumber}>5000+</div>
+                <div className={styles.statNumber}>5K+</div>
                 <div className={styles.statLabel}>
-                  {ingles ? "Happy Customers" : "Clientes Felices"}
+                  {ingles ? "Customers" : "Clientes"}
                 </div>
               </div>
               <div className={styles.stat}>
                 <div className={styles.statIcon}>⭐</div>
                 <div className={styles.statNumber}>4.9</div>
                 <div className={styles.statLabel}>
-                  {ingles ? "Rating Google" : "Rating Google"}
-                </div>
-              </div>
-              <div className={styles.stat}>
-                <div className={styles.statIcon}>🔧</div>
-                <div className={styles.statNumber}>24/7</div>
-                <div className={styles.statLabel}>
-                  {ingles ? "Emergency Service" : "Servicio de Emergencia"}
+                  {ingles ? "Rating" : "Rating"}
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Indicadores del carrusel con iconos */}
+        {/* Indicadores del carrusel */}
         <div className={styles.carouselIndicators}>
           {carouselTexts.map((text, index) => (
             <button
@@ -261,35 +225,15 @@ const IndexSeccion1 = () => {
           ))}
         </div>
 
-        {/* Información de contacto flotante */}
-        <div className={styles.contactFloat}>
-          <div className={styles.contactItem}>
-            <div className={styles.contactIcon}>📞</div>
-            <div className={styles.contactInfo}>
-              <span className={styles.contactLabel}>
-                {ingles ? "Call us now" : "Llámanos ahora"}
-              </span>
-              <span className={styles.contactValue}>664 630 4093</span>
-            </div>
-          </div>
-          <div className={styles.contactItem}>
-            <div className={styles.contactIcon}>📍</div>
-            <div className={styles.contactInfo}>
-              <span className={styles.contactLabel}>
-                {ingles ? "Visit us" : "Visítanos"}
-              </span>
-              <span className={styles.contactValue}>Salvador Alvarado, Tijuana</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Indicador de scroll épico */}
-      <div className={styles.scrollIndicator}>
-        <div className={styles.scrollMouse}>
-          <div className={styles.scrollWheel}></div>
+
+        {/* Indicador de scroll */}
+        <div className={styles.scrollIndicator}>
+          <div className={styles.scrollMouse}>
+            <div className={styles.scrollWheel}></div>
+          </div>
+          <span>{ingles ? "Explore" : "Explora"}</span>
         </div>
-        <span>{ingles ? "Discover our services" : "Descubre nuestros servicios"}</span>
       </div>
     </section>
   );
