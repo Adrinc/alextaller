@@ -1,8 +1,161 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 import { isEnglish } from '../../../data/variables';
 import { translationsIndex } from '../../../data/translationsIndex.js';
 import styles from '../css/indexSeccion6.module.css';
+
+// Importar estilos de Leaflet
+import 'leaflet/dist/leaflet.css';
+
+// Componente de marcador personalizado con hover
+const MarkerWithHover = ({ location, icon, isMain, ingles, handleGetDirections }) => {
+  const markerRef = useRef(null);
+
+  const handleMouseOver = () => {
+    if (markerRef.current) {
+      markerRef.current.openPopup();
+    }
+  };
+
+  const handleMouseOut = () => {
+    if (markerRef.current) {
+      markerRef.current.closePopup();
+    }
+  };
+
+  useEffect(() => {
+    const marker = markerRef.current;
+    if (marker) {
+      const markerElement = marker.getElement();
+      if (markerElement) {
+        markerElement.addEventListener('mouseenter', handleMouseOver);
+        markerElement.addEventListener('mouseleave', handleMouseOut);
+        
+        return () => {
+          markerElement.removeEventListener('mouseenter', handleMouseOver);
+          markerElement.removeEventListener('mouseleave', handleMouseOut);
+        };
+      }
+    }
+  }, []);
+
+  return (
+    <Marker
+      ref={markerRef}
+      position={location.coordinates}
+      icon={icon}
+    >
+      <Popup 
+        className="custom-popup"
+        closeButton={false}
+        autoClose={false}
+        closeOnClick={false}
+        closeOnEscapeKey={false}
+      >
+        <div style={{
+          padding: '1rem',
+          minWidth: '250px',
+          fontFamily: 'inherit',
+          background: 'white',
+          borderRadius: '10px'
+        }}>
+          <h4 style={{
+            color: '#e91e63',
+            fontSize: '1.1rem',
+            fontWeight: '700',
+            marginBottom: '0.5rem',
+            textAlign: 'center'
+          }}>{location.name}</h4>
+          
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.5rem',
+            fontSize: '0.9rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span>📍</span>
+              <span>{location.address}</span>
+            </div>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span>📞</span>
+              <a href={`tel:${location.phone}`} style={{ color: '#e91e63', textDecoration: 'none' }}>
+                {location.phone}
+              </a>
+            </div>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span>🕒</span>
+              <span>{location.hours}</span>
+            </div>
+            
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.5rem',
+              background: '#f8f9fa',
+              padding: '0.5rem',
+              borderRadius: '8px',
+              marginTop: '0.5rem'
+            }}>
+              <span>⭐</span>
+              <span style={{ fontWeight: '600' }}>
+                {location.rating} ({location.reviews} {ingles ? 'reviews' : 'reseñas'})
+              </span>
+            </div>
+            
+            <button 
+              style={{
+                background: 'linear-gradient(135deg, #e91e63, #ff4081)',
+                color: 'white',
+                border: 'none',
+                padding: '0.75rem 1rem',
+                borderRadius: '10px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                marginTop: '0.5rem',
+                fontSize: '0.9rem'
+              }}
+              onClick={() => handleGetDirections(location)}
+            >
+              {ingles ? 'Get Directions' : 'Obtener Direcciones'}
+            </button>
+          </div>
+        </div>
+      </Popup>
+    </Marker>
+  );
+};
+
+// Configurar iconos de Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+});
+
+// Icono personalizado para el taller
+const tallerIcon = L.divIcon({
+  className: 'custom-marker',
+  html: `<div style="
+    background: linear-gradient(135deg, #e91e63, #ff4081);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  ">🔧</div>`,
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
+});
 
 const IndexSeccion6 = () => {
   const ingles = useStore(isEnglish);
@@ -16,13 +169,13 @@ const IndexSeccion6 = () => {
     {
       id: 1,
       name: ingles ? "Alex Auto Shop - Main Location" : "Alex Taller Mecánico - Sucursal Principal",
-      address: t.location.address,
-      coordinates: [32.5027, -117.0093],
-      phone: t.location.phone,
-      hours: t.location.hours,
+      address: ingles ? "123 Revolución Ave, Zona Centro, Tijuana" : "Av. Revolución 123, Zona Centro, Tijuana",
+      coordinates: [32.52812368187568, -117.02895947708643], // Ubicación principal
+      phone: "+52 (664) 123-4567",
+      hours: ingles ? "Mon-Sat: 7AM-7PM" : "Lun-Sáb: 7AM-7PM",
       services: ingles ? 
-        ['Engine Repair', 'Brake Service', 'Oil Change', 'Transmission'] :
-        ['Reparación de Motor', 'Servicio de Frenos', 'Cambio de Aceite', 'Transmisión'],
+        ['Engine Repair', 'Brake Service', 'Oil Change', 'Transmission Repair', 'AC Service', 'Diagnostics'] :
+        ['Reparación de Motor', 'Servicio de Frenos', 'Cambio de Aceite', 'Reparación de Transmisión', 'Aire Acondicionado', 'Diagnósticos'],
       manager: ingles ? 'Alex Rodriguez' : 'Alex Rodríguez',
       rating: 4.9,
       reviews: 250,
@@ -30,14 +183,14 @@ const IndexSeccion6 = () => {
     },
     {
       id: 2,
-      name: ingles ? "Alex Auto Shop - North Branch" : "Alex Taller Mecánico - Sucursal Norte",
-      address: ingles ? "456 North Ave, Tijuana" : "Av. Norte 456, Tijuana",
-      coordinates: [32.5127, -117.0193],
+      name: ingles ? "Alex Auto Shop - Otay Branch" : "Alex Taller Mecánico - Sucursal Otay",
+      address: ingles ? "456 Otay Mesa Blvd, Otay, Tijuana" : "Blvd. Otay Mesa 456, Otay, Tijuana",
+      coordinates: [32.51195124136097, -116.90150690660411], // Segunda ubicación
       phone: "+52 (664) 456-7890",
       hours: ingles ? "Mon-Sat: 8AM-6PM" : "Lun-Sáb: 8AM-6PM",
       services: ingles ? 
-        ['Quick Service', 'Tire Change', 'Battery', 'AC Service'] :
-        ['Servicio Rápido', 'Cambio de Llantas', 'Batería', 'Aire Acondicionado'],
+        ['Quick Service', 'Tire Change', 'Battery', 'Suspension', 'Alignment', 'Inspection'] :
+        ['Servicio Rápido', 'Cambio de Llantas', 'Batería', 'Suspensión', 'Alineación', 'Inspección'],
       manager: ingles ? 'Carlos Martinez' : 'Carlos Martínez',
       rating: 4.8,
       reviews: 180,
@@ -45,17 +198,32 @@ const IndexSeccion6 = () => {
     },
     {
       id: 3,
-      name: ingles ? "Alex Auto Shop - Express" : "Alex Taller Mecánico - Express",
-      address: ingles ? "789 Express Blvd, Tijuana" : "Blvd. Express 789, Tijuana",
-      coordinates: [32.4927, -117.0293],
+      name: ingles ? "Alex Auto Shop - Playas Branch" : "Alex Taller Mecánico - Sucursal Playas",
+      address: ingles ? "789 Playas Blvd, Playas, Tijuana" : "Blvd. Playas 789, Playas, Tijuana",
+      coordinates: [32.48857663935443, -116.88108146338035], // Tercera ubicación
       phone: "+52 (664) 789-0123",
       hours: ingles ? "Daily: 7AM-9PM" : "Diario: 7AM-9PM",
       services: ingles ? 
-        ['Quick Oil Change', 'Inspection', 'Diagnostics', 'Emergency'] :
-        ['Cambio de Aceite Rápido', 'Inspección', 'Diagnósticos', 'Emergencia'],
+        ['24h Emergency', 'Quick Oil Change', 'Roadside Assistance', 'Towing', 'Mobile Service', 'Insurance Claims'] :
+        ['Emergencia 24h', 'Cambio Aceite Rápido', 'Auxilio Vial', 'Grúa', 'Servicio Móvil', 'Seguros'],
       manager: ingles ? 'Maria Gonzalez' : 'María González',
       rating: 4.7,
       reviews: 320,
+      isMain: false
+    },
+    {
+      id: 4,
+      name: ingles ? "Alex Auto Shop - Express" : "Alex Taller Mecánico - Express",
+      address: ingles ? "321 Express Ave, Tijuana" : "Av. Express 321, Tijuana",
+      coordinates: [32.488698397535245, -116.96530936246928], // Cuarta ubicación
+      phone: "+52 (664) 321-0987",
+      hours: ingles ? "Mon-Fri: 6AM-8PM" : "Lun-Vie: 6AM-8PM",
+      services: ingles ? 
+        ['Express Service', 'Quick Repairs', 'Fleet Service', 'Corporate Accounts', 'Warranties', 'Parts Sales'] :
+        ['Servicio Express', 'Reparaciones Rápidas', 'Servicio de Flotillas', 'Cuentas Corporativas', 'Garantías', 'Venta de Refacciones'],
+      manager: ingles ? 'Roberto Silva' : 'Roberto Silva',
+      rating: 4.6,
+      reviews: 195,
       isMain: false
     }
   ];
@@ -146,7 +314,7 @@ const IndexSeccion6 = () => {
             <div className={styles.quickStat}>
               <div className={styles.statIcon}>🏢</div>
               <div className={styles.statInfo}>
-                <div className={styles.statNumber}>3</div>
+                <div className={styles.statNumber}>4</div>
                 <div className={styles.statLabel}>
                   {ingles ? 'Locations' : 'Sucursales'}
                 </div>
@@ -218,24 +386,65 @@ const IndexSeccion6 = () => {
           {/* Map Section */}
           <div className={styles.mapSection}>
             <div className={styles.mapContainer}>
-              <div className={styles.mapPlaceholder}>
-                <div className={styles.mapContent}>
-                  <div className={styles.mapIcon}>🗺️</div>
-                  <h4 className={styles.mapTitle}>
-                    {ingles ? 'Interactive Map' : 'Mapa Interactivo'}
-                  </h4>
-                  <p className={styles.mapDescription}>
-                    {ingles ? 
-                      'Click to open in Google Maps for detailed directions' :
-                      'Haz clic para abrir en Google Maps y obtener direcciones detalladas'
-                    }
-                  </p>
+              <MapContainer
+                center={currentLocation.coordinates}
+                zoom={12}
+                scrollWheelZoom={true}
+                zoomControl={true}
+                attributionControl={false}
+                className={styles.leafletMap}
+                key={`map-${activeLocation}`}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                
+                {/* Marcadores para todas las ubicaciones */}
+                {locations.map((location, index) => (
+                  <MarkerWithHover
+                    key={location.id}
+                    location={location}
+                    icon={location.isMain ? tallerIcon : L.divIcon({
+                      className: 'custom-marker-branch',
+                      html: `<div style="
+                        background: linear-gradient(135deg, #ff4081, #e91e63);
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        box-shadow: 0 0 12px rgba(233, 30, 99, 0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 14px;
+                        color: white;
+                      ">🔧</div>`,
+                      iconSize: [28, 28],
+                      iconAnchor: [14, 14],
+                    })}
+                    isMain={location.isMain}
+                    ingles={ingles}
+                    handleGetDirections={handleGetDirections}
+                  />
+                ))}
+              </MapContainer>
+              
+              {/* Map Overlay Controls */}
+              <div className={styles.mapOverlay}>
+                <div className={styles.mapControls}>
                   <button 
-                    className={styles.mapButton}
+                    className={styles.mapControlButton}
                     onClick={() => handleGetDirections(currentLocation)}
+                    title={ingles ? 'Get Directions' : 'Obtener Direcciones'}
                   >
-                    <span className={styles.buttonIcon}>📍</span>
-                    <span>{ingles ? 'Open Map' : 'Abrir Mapa'}</span>
+                    <span className={styles.controlIcon}>🧭</span>
+                  </button>
+                  <button 
+                    className={styles.mapControlButton}
+                    onClick={() => handleCall(currentLocation.phone)}
+                    title={ingles ? 'Call Now' : 'Llamar Ahora'}
+                  >
+                    <span className={styles.controlIcon}>📞</span>
                   </button>
                 </div>
                 
@@ -243,11 +452,11 @@ const IndexSeccion6 = () => {
                 <div className={styles.coordinateDisplay}>
                   <div className={styles.coordinate}>
                     <span className={styles.coordLabel}>Lat:</span>
-                    <span className={styles.coordValue}>{currentLocation.coordinates[0]}</span>
+                    <span className={styles.coordValue}>{currentLocation.coordinates[0].toFixed(4)}</span>
                   </div>
                   <div className={styles.coordinate}>
                     <span className={styles.coordLabel}>Lng:</span>
-                    <span className={styles.coordValue}>{currentLocation.coordinates[1]}</span>
+                    <span className={styles.coordValue}>{currentLocation.coordinates[1].toFixed(4)}</span>
                   </div>
                 </div>
               </div>

@@ -247,7 +247,8 @@ const NavBar = () => {
           <span className={styles.buttonText}>
             {ingles ? "Login" : "Iniciar Sesión"}
           </span>
-          <span className={styles.buttonIcon}>�</span>
+
+        {/*   <span className={styles.buttonIcon}>🔒</span> */}
           <div className={styles.buttonShine}></div>
         </button>
       </div>
