@@ -54,7 +54,7 @@ const IndexSeccion4 = () => {
       color: '#e91e63',
       stats: ingles ? '5000+ Cars Serviced' : '5000+ Autos Atendidos',
       speciality: ingles ? 'Master Technicians' : 'Técnicos Maestros',
-      image: '/public/image/global/mecanico.jpg',
+      image: '/image/global/mecanico.jpg',
       glow: 'rgba(233, 30, 99, 0.3)'
     },
     {
@@ -66,7 +66,7 @@ const IndexSeccion4 = () => {
       color: '#ff5722',
       stats: ingles ? '99% Accuracy Rate' : '99% Precisión',
       speciality: ingles ? 'AI-Powered Diagnostics' : 'Diagnóstico con IA',
-      image: '/public/image/global/hr_d1.png',
+      image: '/image/global/hr_d1.png',
       glow: 'rgba(255, 87, 34, 0.3)'
     },
     {
@@ -78,7 +78,7 @@ const IndexSeccion4 = () => {
       color: '#4caf50',
       stats: ingles ? '95% Same Day' : '95% Mismo Día',
       speciality: ingles ? 'Express Service' : 'Servicio Express',
-      image: '/public/image/global/mismodia.jpg',
+      image: '/image/global/mismodia.jpg',
       glow: 'rgba(76, 175, 80, 0.3)'
     },
     {
@@ -90,7 +90,7 @@ const IndexSeccion4 = () => {
       color: '#9c27b0',
       stats: ingles ? '12 Month Warranty' : 'Garantía 12 Meses',
       speciality: ingles ? 'OEM Quality' : 'Calidad OEM',
-      image: '/public/image/global/premium.jpg',
+      image: '/image/global/premium.jpg',
       glow: 'rgba(156, 39, 176, 0.3)'
     },
     {
@@ -102,7 +102,7 @@ const IndexSeccion4 = () => {
       color: '#ff9800',
       stats: ingles ? '8 ASE Certified' : '8 Certificados ASE',
       speciality: ingles ? 'Master Level' : 'Nivel Maestro',
-      image: '/public/image/global/grupoti.jpg',
+      image: '/image/global/grupoti.jpg',
       glow: 'rgba(255, 152, 0, 0.3)'
     },
     {
@@ -114,7 +114,7 @@ const IndexSeccion4 = () => {
       color: '#2196f3',
       stats: ingles ? 'Real-time Updates' : 'Actualizaciones en Tiempo Real',
       speciality: ingles ? 'Mobile App' : 'App Móvil',
-      image: '/public/image/global/app_re.jpg',
+      image: '/image/global/app_re.jpg',
       glow: 'rgba(33, 150, 243, 0.3)'
     }
   ];
