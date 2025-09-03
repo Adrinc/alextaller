@@ -1,7 +1,7 @@
 /* CitasSeccion1.module.css - Hero Section */
 
 .heroSection {
-  height: 100vh;
+  height: 65vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -10,6 +10,7 @@
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease-out;
+  margin-top: 75px;
 }
 
 .heroSection.visible {
@@ -24,8 +25,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/image/global/customer_mechanic.jpg') center/cover no-repeat;
-  filter: grayscale(100%) contrast(1.2);
+  background: url('/image/global/citawall1.webp') center/cover no-repeat;
+  filter: grayscale(100%) contrast(1.2) blur(5px);
   z-index: 1;
 }
 
@@ -46,7 +47,8 @@
 
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 85vw;
+  width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
@@ -57,6 +59,7 @@
   align-items: center;
   height: 100%;
   justify-content: center;
+
 }
 
 /* Content */
@@ -92,22 +95,22 @@
 }
 
 .subtitle {
-  font-size: 1.4rem;
-  color: #cccccc;
-  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
   line-height: 1.6;
-  max-width: 600px;
+ 
   margin-left: auto;
   margin-right: auto;
-  font-weight: 300;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgb(255, 0, 166);
 }
 
 /* CTA Button */
 .ctaButton {
   position: relative;
   background: linear-gradient(135deg, #e91e63, #ff4081);
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 1.5rem 3rem;
   border-radius: 25px;
@@ -291,11 +294,12 @@
 }
 
 .scrollText {
-  font-size: 0.9rem;
-  color: #cccccc;
+  font-size: 1.2rem;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
+  text-shadow: 0 2px 8px rgb(255, 0, 166);
 }
 
 @keyframes scrollBounce {

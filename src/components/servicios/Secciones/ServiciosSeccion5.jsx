@@ -10,8 +10,8 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
       id: 1,
       title: ingles ? "Complete Vehicle Restoration" : "Restauración Completa de Vehículo",
       category: ingles ? "Collision Repair" : "Reparación de Colisión",
-      before: "/image/referencias/1.png",
-      after: "/image/referencias/2.png",
+      before: "/image/global/antesdespues/reparacionant.png",
+      after: "/image/global/antesdespues/reparaciondes.png",
       description: ingles 
         ? "Complete restoration of a 2018 sedan after major collision damage. Professional painting and body work."
         : "Restauración completa de sedán 2018 después de daños mayores por colisión. Pintura y hojalatería profesional.",
@@ -24,8 +24,8 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
       id: 2,
       title: ingles ? "Premium Paint Job" : "Pintura Premium",
       category: ingles ? "Aesthetics" : "Estética",
-      before: "/image/referencias/2.png",
-      after: "/image/referencias/3.png",
+      before: "/image/global/antesdespues/pinturaant.png",
+      after: "/image/global/antesdespues/pinturades.png",
       description: ingles 
         ? "Complete color change with premium imported paint. Includes ceramic protection and 5-year warranty."
         : "Cambio completo de color con pintura premium importada. Incluye protección cerámica y garantía de 5 años.",
@@ -38,8 +38,8 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
       id: 3,
       title: ingles ? "Mechanical Engine Repair" : "Reparación Mecánica de Motor",
       category: ingles ? "Mechanics" : "Mecánica",
-      before: "/image/referencias/3.png",
-      after: "/image/referencias/1.png",
+      before: "/image/global/antesdespues/motorant.png",
+      after: "/image/global/antesdespues/motordes.png",
       description: ingles 
         ? "Complete engine overhaul with OEM parts replacement. Includes performance optimization and testing."
         : "Reparación completa de motor con repuestos OEM. Incluye optimización de rendimiento y pruebas.",
@@ -52,8 +52,8 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
       id: 4,
       title: ingles ? "Electrical System Upgrade" : "Actualización Sistema Eléctrico",
       category: ingles ? "Electrical" : "Eléctrico",
-      before: "/image/referencias/1.png",
-      after: "/image/referencias/2.png",
+      before: "/image/global/antesdespues/electant.png",
+      after: "/image/global/antesdespues/electdes.png",
       description: ingles 
         ? "Complete electrical system modernization with advanced diagnostics and component replacement."
         : "Modernización completa del sistema eléctrico con diagnósticos avanzados y reemplazo de componentes.",
@@ -66,8 +66,8 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
       id: 5,
       title: ingles ? "Detail & Protection" : "Detallado y Protección",
       category: ingles ? "Aesthetics" : "Estética",
-      before: "/image/referencias/3.png",
-      after: "/image/referencias/1.png",
+      before: "/image/global/antesdespues/interiorant.png",
+      after: "/image/global/antesdespues/interiordes.png",
       description: ingles 
         ? "Professional detailing service with ceramic coating and interior restoration."
         : "Servicio de detallado profesional con recubrimiento cerámico y restauración de interiores.",
@@ -80,8 +80,8 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
       id: 6,
       title: ingles ? "Suspension & Alignment" : "Suspensión y Alineación",
       category: ingles ? "Mechanics" : "Mecánica",
-      before: "/image/referencias/2.png",
-      after: "/image/referencias/3.png",
+      before: "/image/global/antesdespues/suspensionant.png",
+      after: "/image/global/antesdespues/suspensiondes.png",
       description: ingles 
         ? "Complete suspension system repair with precision alignment and performance testing."
         : "Reparación completa del sistema de suspensión con alineación de precisión y pruebas de rendimiento.",
@@ -111,7 +111,7 @@ const ServiciosSeccion5 = ({ ingles = false }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % trabajosRealizados.length);
-    }, 6000);
+    }, 10000);
 
     return () => clearInterval(timer);
   }, [trabajosRealizados.length]);
