@@ -157,10 +157,10 @@ const CitasSeccion2 = () => {
         {/* Header */}
         <div className={styles.header}>
           <h2 className={styles.title}>
-            Agenda tu cita paso a paso
+            {ingles ? '🚗 Quick & Easy Booking' : '🚗 Agenda Rápido y Fácil'}
           </h2>
           <p className={styles.subtitle}>
-            Sigue estos simples pasos para agendar tu cita
+            {ingles ? 'Professional automotive service in just 4 simple steps' : 'Servicio automotriz profesional en solo 4 pasos simples'}
           </p>
         </div>
 

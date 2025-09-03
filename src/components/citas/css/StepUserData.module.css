@@ -32,10 +32,11 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
   overflow-y: auto;
-  max-height: 400px;
+  max-height: 65vh;
+  padding-right: 0.5rem;
 }
 
 /* Section */
@@ -74,13 +75,86 @@
 /* Input Grid */
 .inputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
 }
 
 .inputColumn {
   display: flex;
   flex-direction: column;
+}
+
+/* VIN Input Styles */
+.vinContainer {
+  position: relative;
+}
+
+.vinInput {
+  padding-right: 1rem !important;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.vinInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #cccccc;
+}
+
+.vinIcon {
+  font-size: 1rem;
+}
+
+.vinText {
+  font-size: 0.8rem;
+  color: #999999;
+}
+
+/* VIN Section */
+.vinSection {
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.8), rgba(15, 15, 15, 0.8));
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(233, 30, 99, 0.1);
+  margin-bottom: 1rem;
+}
+
+.vinDescription {
+  margin-bottom: 1rem;
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.vinDecoded {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: linear-gradient(145deg, rgba(76, 175, 80, 0.1), rgba(56, 142, 60, 0.05));
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 12px;
+}
+
+.vinDecodedHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+}
+
+.vinDecodedIcon {
+  font-size: 1.2rem;
+}
+
+.vinDecodedInfo {
+  font-size: 0.9rem;
+  color: #cccccc;
+  opacity: 0.9;
 }
 
 .inputGroup {

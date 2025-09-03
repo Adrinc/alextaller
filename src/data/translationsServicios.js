@@ -15,7 +15,7 @@ export const translationsServicios = {
     hero: {
       title: 'Servicios Automotrices Especializados',
       subtitle: 'Mantenemos tu vehículo en óptimas condiciones con tecnología de vanguardia',
-      description: 'Más de 7 años de experiencia brindando servicios de calidad con garantía y precios justos'
+      description: 'Más de 8 años de experiencia brindando servicios de calidad con garantía y precios justos'
     },
     
     // Mantenimiento Preventivo
@@ -136,7 +136,7 @@ export const translationsServicios = {
     hero: {
       title: 'Specialized Automotive Services',
       subtitle: 'We keep your vehicle in optimal condition with cutting-edge technology',
-      description: 'Over 7 years of experience providing quality services with warranty and fair prices'
+      description: 'Over 8 years of experience providing quality services with warranty and fair prices'
     },
     
     // Mantenimiento Preventivo

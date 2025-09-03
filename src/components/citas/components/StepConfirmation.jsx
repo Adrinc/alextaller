@@ -58,13 +58,29 @@ const StepConfirmation = ({ appointmentData, onBack, onEdit }) => {
     const phone = "525555555555";
     const services = appointmentData.services.map(s => s.name).join(', ');
     const datetime = appointmentData.datetime?.formatted || '';
+    
+    let vehicleInfo = `${appointmentData.userData.vehicle.brand} ${appointmentData.userData.vehicle.model} ${appointmentData.userData.vehicle.year}`;
+    if (appointmentData.userData.vehicle.color) {
+      vehicleInfo += ` (${appointmentData.userData.vehicle.color})`;
+    }
+    if (appointmentData.userData.vehicle.vin) {
+      vehicleInfo += `\n🔍 VIN: ${appointmentData.userData.vehicle.vin}`;
+    }
+    if (appointmentData.userData.vehicle.plates) {
+      vehicleInfo += `\n� Placas: ${appointmentData.userData.vehicle.plates}`;
+    }
+    
     const message = encodeURIComponent(
-      `¡Hola! Acabo de agendar una cita:\n\n` +
+      `🔧 *CITA ALEX TALLER MECÁNICO* 🔧\n\n` +
+      `� Confirmación: *${confirmationNumber}*\n\n` +
+      `� Cliente: ${appointmentData.userData.personal.fullName}\n` +
+      `📱 Teléfono: ${appointmentData.userData.personal.phone}\n\n` +
       `📅 Fecha: ${datetime}\n` +
       `🔧 Servicios: ${services}\n` +
-      `🚗 Vehículo: ${appointmentData.userData.vehicle.brand} ${appointmentData.userData.vehicle.model}\n` +
-      `📋 Confirmación: ${confirmationNumber}\n\n` +
-      `¿Podrían confirmar mi cita?`
+      `� Vehículo: ${vehicleInfo}\n\n` +
+      `💰 Total estimado: $${calculateEstimatedCost()}\n` +
+      `⏱️ Tiempo estimado: ${calculateEstimatedTime()} min\n\n` +
+      `¿Podrían confirmar mi cita? ✅`
     );
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
@@ -229,6 +245,16 @@ const StepConfirmation = ({ appointmentData, onBack, onEdit }) => {
                 {appointmentData.userData.vehicle.color && (
                   <span className={styles.vehicleColor}>
                     Color: {appointmentData.userData.vehicle.color}
+                  </span>
+                )}
+                {appointmentData.userData.vehicle.vin && (
+                  <span className={styles.vehicleVin}>
+                    VIN: {appointmentData.userData.vehicle.vin}
+                  </span>
+                )}
+                {appointmentData.userData.vehicle.plates && (
+                  <span className={styles.vehiclePlates}>
+                    Placas: {appointmentData.userData.vehicle.plates}
                   </span>
                 )}
               </div>

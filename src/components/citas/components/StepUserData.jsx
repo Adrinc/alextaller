@@ -26,6 +26,8 @@ const StepUserData = ({ userData, onUserDataChange, onNext, onBack, canProceed }
       newErrors[fieldKey] = t.userData.validation.email;
     } else if (field === 'phone' && value && !isValidPhone(value)) {
       newErrors[fieldKey] = t.userData.validation.phone;
+    } else if (field === 'vin' && value && !isValidVIN(value)) {
+      newErrors[fieldKey] = 'VIN debe tener 17 caracteres alfanuméricos';
     } else {
       delete newErrors[fieldKey];
     }
@@ -43,7 +45,63 @@ const StepUserData = ({ userData, onUserDataChange, onNext, onBack, canProceed }
     return phoneRegex.test(phone);
   };
 
+  const isValidVIN = (vin) => {
+    // VIN debe tener exactamente 17 caracteres alfanuméricos (excluyendo I, O, Q)
+    const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/;
+    return vinRegex.test(vin.toUpperCase());
+  };
+
+  const handleVINInput = (value) => {
+    // Auto-complete vehicle info based on VIN
+    const cleanVIN = value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, '');
+    
+    if (cleanVIN.length === 17 && isValidVIN(cleanVIN)) {
+      // Simulate VIN decoding (in real app, you'd call a VIN decode API)
+      const mockVINData = decodeVIN(cleanVIN);
+      
+      setFormData(prev => ({
+        ...prev,
+        vehicle: {
+          ...prev.vehicle,
+          vin: cleanVIN,
+          brand: mockVINData.brand || prev.vehicle.brand,
+          model: mockVINData.model || prev.vehicle.model,
+          year: mockVINData.year || prev.vehicle.year,
+          engine: mockVINData.engine || prev.vehicle.engine
+        }
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        vehicle: {
+          ...prev.vehicle,
+          vin: cleanVIN
+        }
+      }));
+    }
+  };
+
+  const decodeVIN = (vin) => {
+    // Mock VIN decoder - en una app real usarías una API de decodificación VIN
+    const brands = {
+      '1': { brand: 'Chevrolet', model: 'Malibu', year: '2020', engine: '1.5L Turbo' },
+      '2': { brand: 'Ford', model: 'Focus', year: '2019', engine: '2.0L' },
+      '3': { brand: 'Toyota', model: 'Camry', year: '2021', engine: '2.5L' },
+      'J': { brand: 'Honda', model: 'Civic', year: '2020', engine: '1.5L Turbo' },
+      'K': { brand: 'Hyundai', model: 'Elantra', year: '2021', engine: '2.0L' },
+      'W': { brand: 'Volkswagen', model: 'Jetta', year: '2020', engine: '1.4L TSI' }
+    };
+    
+    return brands[vin.charAt(0)] || {};
+  };
+
   const handleInputChange = (section, field, value) => {
+    if (field === 'vin') {
+      handleVINInput(value);
+      validateField(section, field, value);
+      return;
+    }
+
     setFormData(prev => ({
       ...prev,
       [section]: {
@@ -68,16 +126,37 @@ const StepUserData = ({ userData, onUserDataChange, onNext, onBack, canProceed }
             <span className={styles.required}>*</span>
           )}
         </label>
-        <input
-          type={field === 'email' ? 'email' : field === 'year' ? 'number' : 'text'}
-          className={styles.input}
-          placeholder={config.placeholder}
-          value={value}
-          onChange={(e) => handleInputChange(section, field, e.target.value)}
-          onBlur={() => validateField(section, field, value)}
-          min={field === 'year' ? '1950' : undefined}
-          max={field === 'year' ? new Date().getFullYear() + 1 : undefined}
-        />
+        {field === 'vin' ? (
+          <div className={styles.vinContainer}>
+            <input
+              type="text"
+              className={`${styles.input} ${styles.vinInput}`}
+              placeholder={config.placeholder}
+              value={value}
+              onChange={(e) => handleInputChange(section, field, e.target.value)}
+              onBlur={() => validateField(section, field, value)}
+              maxLength="17"
+              style={{ textTransform: 'uppercase' }}
+            />
+            <div className={styles.vinInfo}>
+              <span className={styles.vinIcon}>🔍</span>
+              <span className={styles.vinText}>
+                {value.length}/17 - {value.length === 17 && isValidVIN(value) ? '✅ VIN válido' : 'Ingresa 17 caracteres'}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <input
+            type={field === 'email' ? 'email' : field === 'year' ? 'number' : 'text'}
+            className={styles.input}
+            placeholder={config.placeholder}
+            value={value}
+            onChange={(e) => handleInputChange(section, field, e.target.value)}
+            onBlur={() => validateField(section, field, value)}
+            min={field === 'year' ? '1950' : undefined}
+            max={field === 'year' ? new Date().getFullYear() + 1 : undefined}
+          />
+        )}
         {hasError && (
           <span className={styles.errorMessage}>{hasError}</span>
         )}
@@ -159,6 +238,12 @@ const StepUserData = ({ userData, onUserDataChange, onNext, onBack, canProceed }
             {formData.vehicle.brand && formData.vehicle.model && (
               <div className={styles.summaryItem}>
                 <strong>Vehículo:</strong> {formData.vehicle.brand} {formData.vehicle.model} {formData.vehicle.year}
+                {formData.vehicle.color && ` - ${formData.vehicle.color}`}
+              </div>
+            )}
+            {formData.vehicle.vin && (
+              <div className={styles.summaryItem}>
+                <strong>VIN:</strong> {formData.vehicle.vin}
               </div>
             )}
             {formData.personal.phone && (

@@ -194,7 +194,7 @@ const ServiciosSeccion3 = () => {
           <div className={styles.categoryImage}>
             <div className={styles.imageContainer}>
               <img 
-                src="/public/image/global/equipment.png" 
+                src="/image/global/mismodia.jpg" 
                 alt={serviciosComplementarios[activeCategory].category}
                 className={styles.featuredImage}
               />

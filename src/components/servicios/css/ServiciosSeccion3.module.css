@@ -441,8 +441,8 @@
 
 .infoBadge {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 70px;
+  left: 70px;
   background: var(--card-bg);
   border: 1px solid var(--primary-pink);
   border-radius: 15px;

@@ -28,23 +28,23 @@
 /* Header */
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   text-shadow: 0 0 30px rgba(233, 30, 99, 0.3);
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #cccccc;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* Progress Stepper */
@@ -52,7 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   position: relative;
   max-width: 1000px;
   margin-left: auto;
@@ -169,20 +169,21 @@
 /* Step Content Area */
 .stepContent {
   background: linear-gradient(145deg, #1e1e1e, #181818);
-  border-radius: 25px;
-  padding: 2rem;
+  border-radius: 20px;
+  padding: 1.5rem;
   margin-bottom: 2rem;
   border: 1px solid rgba(233, 30, 99, 0.1);
   box-shadow: 
-    20px 20px 40px rgba(0, 0, 0, 0.7),
-    -10px -10px 20px rgba(255, 255, 255, 0.02);
+    15px 15px 30px rgba(0, 0, 0, 0.7),
+    -8px -8px 16px rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(20px);
-  min-height: 600px;
-  max-height: none;
+  min-height: 200px;
+  max-height: 150vh;
   width: 100%;
   max-width: none;
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .stepContent::before {
@@ -304,7 +305,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .progressStepper {
     flex-direction: column;
     align-items: center;
@@ -338,12 +339,13 @@
   }
   
   .stepContent {
-    padding: 3rem;
-    min-height: 450px;
+    padding: 2rem;
+    min-height: 280px;
+    max-height: 380px;
   }
-}
+} */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
   }
@@ -379,13 +381,13 @@
   }
   
   .stepContent {
-    padding: 1.5rem;
-    min-height: 500px;
-    max-height: none;
+    padding: 1.2rem;
+    min-height: 260px;
+    max-height: 330px;
   }
-}
+} */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .stepperSection {
     padding: 4rem 0;
   }
@@ -399,8 +401,9 @@
   }
   
   .stepContent {
-    padding: 1rem;
-    min-height: 300px;
+    padding: 0.8rem;
+    min-height: 250px;
+    max-height: 320px;
   }
   
   .stepIndicator {
@@ -410,20 +413,22 @@
   .currentStep {
     font-size: 1.2rem;
   }
-}
+} */
 
 /* Large screens optimization */
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
   .container {
     max-width: 2000px;
   }
   
   .stepContent {
-    padding: 3rem 4rem;
-    min-height: 600px;
+    padding: 2rem 2.5rem;
+    min-height: 360px;
+    max-height: 460px;
   }
   
   .progressStepper {
     max-width: 1200px;
   }
 }
+ */

@@ -41,7 +41,7 @@ const ServiciosSeccion4 = () => {
   const ventajasCompetitivas = [
     {
       icon: "🏆",
-      title: ingles ? "30+ Years Experience" : "30+ Años de Experiencia",
+      title: ingles ? "8+ Years Experience" : "8+ Años de Experiencia",
       description: ingles 
         ? "Three decades of automotive excellence and customer satisfaction"
         : "Tres décadas de excelencia automotriz y satisfacción del cliente",

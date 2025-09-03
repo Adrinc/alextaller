@@ -3,7 +3,7 @@ export const translationsNosotros = {
   es: {
     hero: {
       title: "Sobre Nosotros",
-      subtitle: "Más de 30 años de experiencia al servicio de tu auto",
+      subtitle: "Más de 8 años de experiencia al servicio de tu auto",
       description: "Tradición, experiencia y tecnología de punta en cada reparación"
     },
     historia: {
@@ -16,7 +16,7 @@ export const translationsNosotros = {
         highlight: "30+ años de experiencia comprobada"
       },
       stats: {
-        years: "30+",
+        years: "8+",
         yearsLabel: "Años de experiencia",
         clients: "15,000+",
         clientsLabel: "Clientes satisfechos",
@@ -82,7 +82,7 @@ export const translationsNosotros = {
           id: "alejandro",
           name: "Alejandro López",
           role: "Fundador y Director General",
-          experience: "30 años de experiencia",
+          experience: "8 años de experiencia",
           specialty: "Especialista en motores clásicos y modernos",
           description: "Visionario y fundador del taller, con tres décadas perfeccionando el arte de la mecánica automotriz."
         },
@@ -158,7 +158,7 @@ export const translationsNosotros = {
   en: {
     hero: {
       title: "About Us",
-      subtitle: "Over 30 years of experience serving your car",
+      subtitle: "Over 8 years of experience serving your car",
       description: "Tradition, experience and cutting-edge technology in every repair"
     },
     historia: {
@@ -171,7 +171,7 @@ export const translationsNosotros = {
         highlight: "30+ years of proven experience"
       },
       stats: {
-        years: "30+",
+        years: "8+",
         yearsLabel: "Years of experience",
         clients: "15,000+",
         clientsLabel: "Satisfied customers",
@@ -237,7 +237,7 @@ export const translationsNosotros = {
           id: "alejandro",
           name: "Alejandro López",
           role: "Founder and CEO",
-          experience: "30 years of experience",
+          experience: "8 years of experience",
           specialty: "Specialist in classic and modern engines",
           description: "Visionary and founder of the shop, with three decades perfecting the art of automotive mechanics."
         },
@@ -291,7 +291,7 @@ export const translationsNosotros = {
     },
     cta: {
       title: "Trust the Experience",
-      subtitle: "A shop with over 30 years in Tijuana",
+      subtitle: "A shop with over 8 years in Tijuana",
       description: "Join the thousands of families who already trust us to keep their cars in perfect condition.",
       button: "Schedule your appointment now",
       features: [

@@ -26,34 +26,35 @@ export const translationsCitas = {
         {
           id: 1,
           icon: '🔧',
-          title: 'Servicios',
-          description: 'Selecciona los servicios que necesitas'
+          title: 'Servicios Premium',
+          description: 'Elige entre nuestros servicios especializados'
         },
         {
           id: 2,
           icon: '📅',
-          title: 'Fecha & Hora',
-          description: 'Elige el día y horario que prefieras'
+          title: 'Fecha Perfecta',
+          description: 'Encuentra el horario ideal para ti'
         },
         {
           id: 3,
           icon: '👤',
-          title: 'Tus Datos',
-          description: 'Completa información personal y del vehículo'
+          title: 'Datos Seguros',
+          description: 'Información protegida y confidencial'
         },
         {
           id: 4,
           icon: '✅',
           title: 'Confirmación',
-          description: 'Revisa y confirma tu cita'
+          description: '¡Tu cita está casi lista!'
         }
       ]
     },
     
     // Step 1: Services
     services: {
-      title: 'Selecciona los servicios que necesitas',
-      subtitle: 'Puedes elegir uno o más servicios para tu vehículo',
+      title: '🔧 Elige tus Servicios Premium',
+      subtitle: 'Servicios profesionales especializados para mantener tu vehículo en perfectas condiciones. Puedes seleccionar múltiples servicios.',
+      description: 'Nuestros técnicos certificados utilizan equipos de última generación y refacciones originales para garantizar la mejor calidad.',
       categories: [
         {
           id: 'maintenance',
@@ -172,8 +173,9 @@ export const translationsCitas = {
     
     // Step 2: Date & Time
     datetime: {
-      title: 'Selecciona fecha y hora',
-      subtitle: 'Elige el día que mejor te convenga y el horario disponible',
+      title: '📅 Encuentra tu Horario Perfecto',
+      subtitle: 'Horarios flexibles adaptados a tu agenda. Disponibilidad en tiempo real para mayor comodidad.',
+      description: 'Trabajamos de lunes a sábado con horarios extendidos. Reserva el momento que mejor se ajuste a tu rutina.',
       calendar: {
         months: [
           'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -195,8 +197,9 @@ export const translationsCitas = {
     
     // Step 3: User Data
     userData: {
-      title: 'Completa tus datos',
-      subtitle: 'Información necesaria para confirmar tu cita',
+      title: '👤 Datos Seguros y Protegidos',
+      subtitle: 'Tu información está completamente protegida con encriptación de alta seguridad.',
+      description: 'Solo recopilamos lo esencial para brindarte el mejor servicio. Todos tus datos se manejan bajo estrictos protocolos de privacidad.',
       personal: {
         title: 'Datos personales',
         fields: {
@@ -252,8 +255,9 @@ export const translationsCitas = {
     
     // Step 4: Confirmation
     confirmation: {
-      title: 'Confirma tu cita',
-      subtitle: 'Revisa que toda la información sea correcta antes de confirmar',
+      title: '✅ ¡Ya Casi Está Listo!',
+      subtitle: 'Solo falta un paso para confirmar tu cita. Revisa que todo esté perfecto.',
+      description: 'Recibirás confirmación inmediata por email y SMS. Nuestro equipo se preparará especialmente para tu visita.',
       summary: {
         services: 'Servicios seleccionados',
         datetime: 'Fecha y hora',
@@ -324,10 +328,10 @@ export const translationsCitas = {
     // Final CTA
     finalCta: {
       title: 'Confía tu auto a los expertos',
-      subtitle: 'Más de 30 años de experiencia nos respaldan. Tu vehículo estará en las mejores manos.',
+      subtitle: 'Más de 8 años de experiencia nos respaldan. Tu vehículo estará en las mejores manos.',
       button: 'Agendar mi cita ahora',
       stats: {
-        experience: '30+ años de experiencia',
+        experience: '8+ años de experiencia',
         clients: '12,500+ autos atendidos',
         satisfaction: '4.9/5 satisfacción'
       }
@@ -387,34 +391,35 @@ export const translationsCitas = {
         {
           id: 1,
           icon: '🔧',
-          title: 'Services',
-          description: 'Select the services you need'
+          title: 'Premium Services',
+          description: 'Choose from our specialized services'
         },
         {
           id: 2,
           icon: '📅',
-          title: 'Date & Time',
-          description: 'Choose your preferred day and time'
+          title: 'Perfect Time',
+          description: 'Find the ideal schedule for you'
         },
         {
           id: 3,
           icon: '👤',
-          title: 'Your Info',
-          description: 'Complete personal and vehicle information'
+          title: 'Safe Data',
+          description: 'Protected and confidential information'
         },
         {
           id: 4,
           icon: '✅',
           title: 'Confirmation',
-          description: 'Review and confirm your appointment'
+          description: 'Your appointment is almost ready!'
         }
       ]
     },
     
     // Step 1: Services
     services: {
-      title: 'Select the services you need',
-      subtitle: 'You can choose one or more services for your vehicle',
+      title: '🔧 Choose Your Premium Services',
+      subtitle: 'Professional specialized services to keep your vehicle in perfect condition. You can select multiple services.',
+      description: 'Our certified technicians use state-of-the-art equipment and original parts to guarantee the best quality.',
       categories: [
         {
           id: 'maintenance',
@@ -533,8 +538,9 @@ export const translationsCitas = {
     
     // Step 2: Date & Time
     datetime: {
-      title: 'Select date and time',
-      subtitle: 'Choose the day that works best for you and available time',
+      title: '📅 Find Your Perfect Schedule',
+      subtitle: 'Flexible hours adapted to your agenda. Real-time availability for greater convenience.',
+      description: 'We work Monday through Saturday with extended hours. Book the time that best fits your routine.',
       calendar: {
         months: [
           'January', 'February', 'March', 'April', 'May', 'June',
@@ -556,8 +562,9 @@ export const translationsCitas = {
     
     // Step 3: User Data
     userData: {
-      title: 'Complete your information',
-      subtitle: 'Information needed to confirm your appointment',
+      title: '👤 Safe and Protected Data',
+      subtitle: 'Your information is completely protected with high-security encryption.',
+      description: 'We only collect what is essential to provide you with the best service. All your data is handled under strict privacy protocols.',
       personal: {
         title: 'Personal information',
         fields: {
@@ -613,8 +620,9 @@ export const translationsCitas = {
     
     // Step 4: Confirmation
     confirmation: {
-      title: 'Confirm your appointment',
-      subtitle: 'Review that all information is correct before confirming',
+      title: '✅ Almost Ready!',
+      subtitle: 'Just one step left to confirm your appointment. Make sure everything is perfect.',
+      description: 'You will receive immediate confirmation by email and SMS. Our team will prepare specially for your visit.',
       summary: {
         services: 'Selected services',
         datetime: 'Date and time',
@@ -685,10 +693,10 @@ export const translationsCitas = {
     // Final CTA
     finalCta: {
       title: 'Trust your car to the experts',
-      subtitle: 'Over 30 years of experience back us up. Your vehicle will be in the best hands.',
+      subtitle: 'Over 8 years of experience back us up. Your vehicle will be in the best hands.',
       button: 'Schedule my appointment now',
       stats: {
-        experience: '30+ years of experience',
+        experience: '8+ years of experience',
         clients: '12,500+ cars serviced',
         satisfaction: '4.9/5 satisfaction'
       }

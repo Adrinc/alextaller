@@ -36,8 +36,8 @@ const ServiciosSeccion2 = () => {
         ? "Complete engine diagnostics and mechanical repairs with certified technicians"
         : "Diagnóstico completo de motor y reparaciones mecánicas con técnicos certificados",
       features: ingles 
-        ? ["Engine Diagnostics", "Transmission Repair", "Brake System", "Suspension"]
-        : ["Diagnóstico de Motor", "Reparación de Transmisión", "Sistema de Frenos", "Suspensión"],
+        ? ["Engine Diagnostics", "Transmission Repair", "Brake System"]
+        : ["Diagnóstico de Motor", "Reparación de Transmisión", "Sistema de Frenos"],
       price: ingles ? "From $89" : "Desde $1,600",
       popular: true
     },
@@ -48,8 +48,8 @@ const ServiciosSeccion2 = () => {
         ? "Advanced electrical diagnostics and modern vehicle electronics repair"
         : "Diagnóstico eléctrico avanzado y reparación de electrónica automotriz moderna",
       features: ingles 
-        ? ["Battery Testing", "Alternator Repair", "ECU Diagnostics", "Wiring"]
-        : ["Prueba de Batería", "Reparación Alternador", "Diagnóstico ECU", "Cableado"],
+        ? ["Battery Testing", "Alternator Repair", "ECU Diagnostics"]
+        : ["Prueba de Batería", "Reparación Alternador", "Diagnóstico ECU"],
       price: ingles ? "From $65" : "Desde $1,200",
       popular: false
     },
@@ -60,8 +60,8 @@ const ServiciosSeccion2 = () => {
         ? "Engine tuning and performance modifications for maximum efficiency"
         : "Afinación de motor y modificaciones de rendimiento para máxima eficiencia",
       features: ingles 
-        ? ["Engine Tuning", "Performance Chips", "Exhaust Systems", "Cold Air Intake"]
-        : ["Afinación de Motor", "Chips de Rendimiento", "Sistemas de Escape", "Admisión de Aire"],
+        ? ["Engine Tuning", "Performance Chips", "Exhaust Systems"]
+        : ["Afinación de Motor", "Chips de Rendimiento", "Sistemas de Escape"],
       price: ingles ? "From $150" : "Desde $2,800",
       popular: false
     },
@@ -72,8 +72,8 @@ const ServiciosSeccion2 = () => {
         ? "Regular maintenance programs to keep your vehicle in optimal condition"
         : "Programas de mantenimiento regular para mantener tu vehículo en condiciones óptimas",
       features: ingles 
-        ? ["Oil Changes", "Filter Replacement", "Fluid Check", "Multi-point Inspection"]
-        : ["Cambio de Aceite", "Reemplazo de Filtros", "Revisión de Fluidos", "Inspección General"],
+        ? ["Oil Changes", "Filter Replacement", "Fluid Check"]
+        : ["Cambio de Aceite", "Reemplazo de Filtros", "Revisión de Fluidos"],
       price: ingles ? "From $45" : "Desde $800",
       popular: true
     }
