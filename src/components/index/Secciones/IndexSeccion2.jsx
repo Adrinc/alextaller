@@ -50,7 +50,7 @@ const IndexSeccion2 = () => {
       features: t.services.maintenance.features,
       gradient: 'from-blue-600 via-blue-500 to-cyan-500',
       price: 'Desde $899',
-      image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=400&h=300&fit=crop&crop=center',
+      image: '/image/global/mantenimientopre.jfif',
       popularity: '95%',
       estimatedTime: '2-3 horas'
     },
@@ -62,7 +62,7 @@ const IndexSeccion2 = () => {
       features: t.services.repairs.features,
       gradient: 'from-red-600 via-red-500 to-orange-500',
       price: 'Desde $1,299',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&crop=center',
+      image: '/image/global/mecanico2.png',
       popularity: '88%',
       estimatedTime: '3-5 horas'
     },
@@ -74,7 +74,7 @@ const IndexSeccion2 = () => {
       features: t.services.diagnostics.features,
       gradient: 'from-green-600 via-green-500 to-emerald-500',
       price: 'Desde $299',
-      image: 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400&h=300&fit=crop&crop=center',
+      image: '/image/global/grupoti.jpg',
       popularity: '92%',
       estimatedTime: '30-60 min'
     },
@@ -86,7 +86,7 @@ const IndexSeccion2 = () => {
       features: t.services.painting.features,
       gradient: 'from-purple-600 via-purple-500 to-pink-500',
       price: 'Desde $2,999',
-      image: 'https://images.unsplash.com/photo-1632823469455-e8ac2b1ce0c3?w=400&h=300&fit=crop&crop=center',
+      image: '/image/global/pintando1.png',
       popularity: '78%',
       estimatedTime: '1-3 días'
     },
@@ -98,7 +98,7 @@ const IndexSeccion2 = () => {
       features: t.services.electrical.features,
       gradient: 'from-yellow-500 via-orange-500 to-red-500',
       price: 'Desde $599',
-      image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=300&fit=crop&crop=center',
+      image: '/image/global/reparacion.png',
       popularity: '85%',
       estimatedTime: '1-4 horas'
     },
@@ -110,7 +110,7 @@ const IndexSeccion2 = () => {
       features: t.services.airConditioning.features,
       gradient: 'from-cyan-500 via-blue-500 to-indigo-500',
       price: 'Desde $799',
-      image: 'https://images.unsplash.com/photo-1601758123927-4c4d6eeb8d4a?w=400&h=300&fit=crop&crop=center',
+      image: '/image/global/aireacondicionado.png',
       popularity: '89%',
       estimatedTime: '1-2 horas'
     }

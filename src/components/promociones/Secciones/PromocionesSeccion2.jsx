@@ -99,11 +99,17 @@ const PromocionesSeccion2 = () => {
               {/* Image Container */}
               <div className={styles.imageContainer}>
                 <div className={styles.promoImage}>
-                  <div className={styles.imageOverlay}>
-                    <span className={styles.serviceIcon}>
-                      {index === 0 ? '🔧' : index === 1 ? '❄️' : '🎨'}
-                    </span>
-                  </div>
+                  <img 
+                    src={
+                      index === 0 ? '/image/global/antesdespues/motordes.png' :
+                      index === 1 ? '/image/global/aireacondicionado.png' :
+                      '/image/global/pintando1.png'
+                    }
+                    alt={promo.title}
+                    className={styles.promoImageImg}
+                    loading="lazy"
+                  />
+                  <div className={styles.imageOverlay}></div>
                 </div>
                 <div className={styles.imageGlow}></div>
               </div>
