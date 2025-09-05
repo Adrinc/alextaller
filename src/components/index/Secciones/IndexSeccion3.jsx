@@ -109,13 +109,8 @@ export default function IndexSeccion3() {
         ))}
       </div>
 
-      <div className={styles.container}>
-        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
-          <div className={styles.badge}>
-            <span className={styles.badgeIcon}>🔥</span>
-            {$isEnglish ? "LIMITED TIME OFFER" : "OFERTA POR TIEMPO LIMITADO"}
-          </div>
-          
+      <div className={styles.container}>        
+        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>          
           <h2 className={styles.title}>
             {$isEnglish ? "EPIC PROMOTIONS" : "PROMOCIONES ÉPICAS"}
           </h2>
@@ -166,6 +161,20 @@ export default function IndexSeccion3() {
               isEnglish={$isEnglish}
             />
           ))}
+        </div>
+
+        {/* Mensaje limpio debajo de las cards */}
+        <div className={`${styles.offerNotice} ${isVisible ? styles.fadeInUp : ''}`}>
+          <div className={styles.offerIcon}>🔥</div>
+          <h3 className={styles.offerTitle}>
+            {$isEnglish ? "LIMITED TIME OFFER" : "OFERTA POR TIEMPO LIMITADO"}
+          </h3>
+          <p className={styles.offerText}>
+            {$isEnglish 
+              ? "Don't miss these incredible prices! Offer valid until stocks last."
+              : "¡No te pierdas estos precios increíbles! Oferta válida hasta agotar existencias."
+            }
+          </p>
         </div>
       </div>
     </section>

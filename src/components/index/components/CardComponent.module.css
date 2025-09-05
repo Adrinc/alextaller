@@ -80,14 +80,14 @@
 /* Badge de descuento BRUTAL */
 .discountBadge {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 15px;
+  right: 15px;
   background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
   color: white;
-  padding: 0.8rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 50px;
   font-weight: 900;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   z-index: 10;
   
@@ -101,8 +101,8 @@
 }
 
 @keyframes badgeFloat {
-  0%, 100% { transform: translateY(0px) rotate(-15deg); }
-  50% { transform: translateY(-5px) rotate(-10deg); }
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-3px) rotate(-2deg); }
 }
 
 .discountText {
@@ -491,6 +491,13 @@
     min-height: 450px;
   }
   
+  .discountBadge {
+    top: 10px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+  
   .icon {
     width: 80px;
     height: 80px;
@@ -515,6 +522,13 @@
   .card {
     padding: 1.5rem;
     min-height: 400px;
+  }
+  
+  .discountBadge {
+    top: 8px;
+    right: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
   }
   
   .icon {

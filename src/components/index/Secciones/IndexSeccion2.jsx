@@ -113,11 +113,34 @@ const IndexSeccion2 = () => {
       ref={sectionRef}
       className={`${styles.servicesSection} ${isVisible ? styles.visible : ''}`}
     >
+      {/* Elementos flotantes épicos */}
+      <div className={styles.floatingElements}>
+        <div className={styles.floatingIcon} style={{'--delay': '0s'}}>🔧</div>
+        <div className={styles.floatingIcon} style={{'--delay': '1s'}}>⚙️</div>
+        <div className={styles.floatingIcon} style={{'--delay': '2s'}}>🚗</div>
+        <div className={styles.floatingIcon} style={{'--delay': '3s'}}>🎨</div>
+        <div className={styles.floatingIcon} style={{'--delay': '4s'}}>⚡</div>
+      </div>
+
+      {/* Partículas */}
+      <div className={styles.particles}>
+        {[...Array(25)].map((_, i) => (
+          <div 
+            key={i}
+            className={styles.particle}
+            style={{
+              '--delay': `${i * 0.4}s`,
+              left: `${Math.random() * 100}%`
+            }}
+          />
+        ))}
+      </div>
+
       <div className={styles.container}>
-        {/* Header */}
+        {/* Header épico */}
         <div className={styles.header}>
           <div className={styles.sectionBadge}>
-            <span>⭐</span>
+            <span className={styles.badgeIcon}>⭐</span>
             <span>{ingles ? "EXPERT SERVICES" : "SERVICIOS EXPERTOS"}</span>
           </div>
 
@@ -133,23 +156,23 @@ const IndexSeccion2 = () => {
             }
           </p>
 
-          {/* Métricas de confianza */}
+          {/* Métricas de confianza épicas */}
           <div className={styles.trustMetrics}>
-            <div className={styles.metric}>
+            <div className={styles.metric} style={{'--index': 0}}>
               <span className={styles.metricIcon}>🚨</span>
               <div className={styles.metricContent}>
                 <span className={styles.metricNumber}>24/7</span>
                 <span className={styles.metricLabel}>{ingles ? "Emergency" : "Emergencia"}</span>
               </div>
             </div>
-            <div className={styles.metric}>
+            <div className={styles.metric} style={{'--index': 1}}>
               <span className={styles.metricIcon}>🏆</span>
               <div className={styles.metricContent}>
                 <span className={styles.metricNumber}>5000+</span>
                 <span className={styles.metricLabel}>{ingles ? "Cars Serviced" : "Autos Atendidos"}</span>
               </div>
             </div>
-            <div className={styles.metric}>
+            <div className={styles.metric} style={{'--index': 2}}>
               <span className={styles.metricIcon}>✅</span>
               <div className={styles.metricContent}>
                 <span className={styles.metricNumber}>ASE</span>
@@ -201,7 +224,10 @@ const IndexSeccion2 = () => {
                       {service.duration}
                     </div>
                   </div>
+                </div>
 
+                {/* Price Section - Moved for better visibility */}
+                <div className={styles.priceSection}>
                   <div className={styles.servicePrice}>
                     {service.price}
                   </div>
