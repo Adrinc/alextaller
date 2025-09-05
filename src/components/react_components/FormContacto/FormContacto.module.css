@@ -2,7 +2,7 @@
 .container {
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(233, 30, 99, 0.2);
+    border: 2px solid rgba(233, 30, 98, 0.635);
     color: #FFFFFF;
     padding: 3rem 2.5rem;
     border-radius: 25px;
@@ -276,13 +276,14 @@
     height: 20px;
     opacity: 0.7;
     transition: all 0.3s ease;
-    filter: invert(1) brightness(0.8);
+   /*  filter: invert(1) brightness(0.8); */
+    color: #ffffff;
 }
 
 .inputContainer:focus-within .icon {
     opacity: 1;
     transform: scale(1.05);
-    filter: invert(1) brightness(1) drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
+/*     filter: invert(1) brightness(1) drop-shadow(0 0 5px rgb(255, 0, 85)); */
 }
 
 /* Mensajes de error */

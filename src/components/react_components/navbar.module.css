@@ -34,12 +34,12 @@
   --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Navbar principal con neumorfismo y paleta fuchsia */
+/* Navbar principal con neumorfismo y paleta fuchsia - Mejorado con más aire */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem; /* Aumentado el padding vertical y horizontal */
   background: var(--bg-dark);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -50,21 +50,54 @@
   right: 0;
   z-index: 1000;
   border-bottom: 2px solid var(--primary-fuchsia);
-  box-shadow: var(--shadow-neumorphic-outset), var(--shadow-fuchsia-glow);
-  max-height: 80px;
+  box-shadow: var(--shadow-neumorphic-outset), 
+              var(--shadow-fuchsia-glow),
+              0 4px 20px rgba(233, 30, 99, 0.15); /* Sombra/glow inferior añadida */
+  min-height: 90px; /* Aumentado de 80px a 90px para más aire */
   transition: var(--transition-smooth);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  position: relative;
 }
 
-/* Efecto cuando se hace scroll */
+/* Línea degradada en la parte inferior del navbar */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-fuchsia) 25%, 
+    var(--neon-fuchsia) 50%, 
+    var(--primary-fuchsia) 75%, 
+    transparent 100%);
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.navbar.scrolled::after {
+  opacity: 1;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--neon-fuchsia) 20%, 
+    #ff1744 50%, 
+    var(--neon-fuchsia) 80%, 
+    transparent 100%);
+  box-shadow: 0 0 15px rgba(255, 23, 68, 0.5);
+}
+
+/* Efecto cuando se hace scroll - Con más glow degradado */
 .navbar.scrolled {
   background: rgba(15, 15, 15, 0.98);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   box-shadow: var(--shadow-neumorphic-outset), 
               0 0 30px rgba(233, 30, 99, 0.8),
-              var(--shadow-heavy);
+              var(--shadow-heavy),
+              0 8px 25px rgba(255, 23, 68, 0.25); /* Línea/glow degradado mejorado */
   border-bottom-color: var(--neon-fuchsia);
 }
 
@@ -81,20 +114,21 @@
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Logo con neumorfismo para Alex Taller */
+/* Logo con neumorfismo para Alex Taller - Mejorado con más aire */
 .logopic {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem; /* Aumentado de 0.75rem a 1rem para más aire */
   z-index: 2;
   cursor: pointer;
   transition: var(--transition-bounce);
-  padding: 0.75rem 1rem;
-  border-radius: 20px;
+  padding: 1rem 1.25rem; /* Aumentado el padding para más aire */
+  border-radius: 25px; /* Aumentado de 20px a 25px */
   background: var(--bg-neumorphic);
-  box-shadow: var(--shadow-neumorphic-outset);
-  border: 1px solid rgba(233, 30, 99, 0.2);
+  box-shadow: var(--shadow-neumorphic-outset),
+              0 2px 10px rgba(233, 30, 99, 0.1); /* Marco sutil añadido */
+  border: 1px solid rgba(233, 30, 99, 0.3); /* Borde más visible */
 }
 
 .logopic:hover {
@@ -169,10 +203,10 @@
   50% { opacity: 0.6; }
 }
 
-/* Menú de navegación con neumorfismo */
+/* Menú de navegación con neumorfismo - Más espaciado */
 .navMenu {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem; /* Aumentado de 1rem a 1.25rem */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -248,6 +282,101 @@
   font-weight: 700 !important;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.8) !important;
   animation: activePulse 3s ease-in-out infinite !important;
+}
+
+/* CTA especial para botón de CITAS - Versión avanzada */
+.citasButton {
+  --citas-grad-1: var(--secondary-fuchsia);
+  --citas-grad-2: var(--accent-fuchsia);
+  --citas-grad-3: var(--neon-fuchsia);
+  --citas-glow: 0 0 18px rgba(236, 64, 122, 0.55), 0 0 32px rgba(236, 64, 122, 0.35);
+  position: relative;
+  background: linear-gradient(120deg, var(--citas-grad-1), var(--citas-grad-2), var(--citas-grad-3));
+  background-size: 250% 250%;
+  animation: citasGradientMotion 7s ease-in-out infinite;
+  color: var(--text-light) !important;
+  border: 2px solid rgba(236, 64, 122, 0.85) !important;
+  box-shadow: var(--shadow-neumorphic-outset), var(--citas-glow) !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.65) !important;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  isolation: isolate;
+
+  transition: var(--transition-bounce), background-position 1.2s ease;
+}
+
+.citasButton:hover {
+  transform: translateY(-3px) scale(1.04) !important;
+  background-position: 75% 25%;
+  /* hover con gradiente fucsia->violeta premium */
+  background: linear-gradient(90deg, #FF007F 0%, #7D1EFF 100%);
+  box-shadow: var(--shadow-neumorphic-inset), 0 6px 18px rgba(236,64,122,0.48) !important;
+  filter: brightness(1.02);
+}
+
+.citasButton:active {
+  transform: translateY(-1px) scale(0.98) !important;
+  filter: brightness(0.95);
+}
+
+.citasButton:focus-visible,
+.citasButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15), 0 0 0 6px rgba(236,64,122,0.4), var(--citas-glow) !important;
+}
+
+.citasButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%),
+              linear-gradient(100deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  animation: citasInnerPulse 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.citasButton::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 250%;
+  height: 300%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.15) 55%, transparent 100%);
+  transform: rotate(8deg);
+  animation: citasSweep 6s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Contenedor de partículas (opcional) */
+.citasButton .citasParticles { position: absolute; inset:0; pointer-events:none; z-index:3; overflow:hidden; }
+.citasButton .citasParticles span {
+  position: absolute; width:6px; height:6px; border-radius:50%;
+  background: radial-gradient(circle, #fff 0%, rgba(255,255,255,0) 70%);
+  top: calc(var(--y) * 1%); left: calc(var(--x) * 1%);
+  opacity:0; animation: particleFloat calc(3s + var(--d)*1s) linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) scale(0.4); opacity: 0; }
+  10% { opacity: 0.9; }
+  50% { transform: translateY(-14px) scale(1); opacity: 0.7; }
+  90% { opacity: 0; }
+  100% { transform: translateY(-26px) scale(0.2); opacity: 0; }
+}
+
+@keyframes citasGradientMotion { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
+@keyframes citasInnerPulse { 0%,100% { opacity:0.45; } 50% { opacity:0.75; } }
+@keyframes citasSweep { 0% { transform: translateX(0) translateY(0) rotate(8deg); } 100% { transform: translateX(-35%) translateY(-10%) rotate(8deg); } }
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
 }
 
 @keyframes activePulse {
@@ -335,12 +464,6 @@
 }
 
 /* Estado activo del hamburger */
-.hamburger.active {
-  background: var(--bg-neumorphic);
-  border-color: var(--neon-fuchsia);
-  box-shadow: var(--shadow-neumorphic-inset), 
-              0 0 25px rgba(255, 23, 68, 0.8);
-}
 
 .hamburger.active .bar:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
@@ -352,14 +475,78 @@
   transform: scaleX(0);
 }
 
-.hamburger.active .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -7px);
-  background: linear-gradient(90deg, var(--neon-fuchsia), var(--primary-fuchsia));
+/* Brillo diagonal barrido */
+.citasButton::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 250%;
+  height: 300%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.15) 55%, transparent 100%);
+  transform: rotate(8deg);
+  animation: citasSweep 6s linear infinite;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.hamburger.active:hover {
-  transform: scale(1.15) translateY(-3px);
-  animation: activeRotate 2s ease-in-out infinite;
+/* Anillo de pulso exterior */
+.citasButton:focus-visible,
+.citasButton:focus,
+.citasButton.citas-focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15), 0 0 0 6px rgba(236,64,122,0.4), var(--citas-glow) !important;
+}
+
+/* Halo expandible detrás */
+.citasButton:active {
+  transform: translateY(-1px) scale(0.98) !important;
+  filter: brightness(0.95);
+}
+
+/* Partículas decorativas (opcional liviano) */
+.citasButton .citasParticles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.citasButton .citasParticles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #fff 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  top: calc(var(--y) * 1%);
+  left: calc(var(--x) * 1%);
+  opacity: 0;
+  animation: particleFloat calc(3s + var(--d)*1s) linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) scale(0.4); opacity: 0; }
+  10% { opacity: 0.9; }
+  50% { transform: translateY(-14px) scale(1); opacity: 0.7; }
+  90% { opacity: 0; }
+  100% { transform: translateY(-26px) scale(0.2); opacity: 0; }
+}
+
+@keyframes citasGradientMotion {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes citasInnerPulse {
+  0%,100% { opacity: 0.45; }
+  50% { opacity: 0.75; }
+}
+
+@keyframes citasSweep {
+  0% { transform: translateX(0) translateY(0) rotate(8deg); }
+  100% { transform: translateX(-35%) translateY(-10%) rotate(8deg); }
 }
 
 @keyframes activeRotate {
@@ -367,10 +554,10 @@
   50% { transform: scale(1.15) translateY(-3px) rotate(10deg); }
 }
 
-/* Íconos sociales con neumorfismo */
+/* Íconos sociales con neumorfismo - Estilos unificados */
 .socialIconsGroup {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem; /* Más espaciado */
   align-items: center;
 }
 
@@ -379,16 +566,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 15px;
+  width: 48px; /* Ligeramente más grande */
+  height: 48px;
+  border-radius: 18px; /* Más redondeado */
   background: var(--bg-neumorphic);
-  border: 2px solid rgba(233, 30, 99, 0.2);
+  border: 2px solid rgba(233, 30, 99, 0.25); /* Borde más suave */
   transition: var(--transition-bounce);
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  box-shadow: var(--shadow-neumorphic-outset);
+  box-shadow: var(--shadow-neumorphic-outset),
+              0 2px 8px rgba(233, 30, 99, 0.1); /* Sombra sutil */
 }
 
 .socialLink:hover {
@@ -401,16 +589,17 @@
 }
 
 .icon {
-  width: 22px;
-  height: 22px;
-  filter: brightness(0) invert(1);
+  width: 24px; /* Tamaño unificado */
+  height: 24px;
+  filter: brightness(0) invert(1) opacity(0.9); /* Más suave */
   transition: var(--transition-smooth);
   z-index: 2;
 }
 
 .socialLink:hover .icon {
-  filter: brightness(0) saturate(100%) invert(19%) sepia(98%) saturate(2618%) hue-rotate(322deg) brightness(96%) contrast(87%);
+  filter: brightness(0) saturate(100%) invert(19%) sepia(98%) saturate(2618%) hue-rotate(322deg) brightness(96%) contrast(87%) opacity(1);
   animation: iconBounce 0.6s ease-in-out;
+  transform: scale(1.1); /* Efecto unificado */
 }
 
 @keyframes iconBounce {
@@ -512,20 +701,21 @@
   box-shadow: 0 0 10px rgba(233, 30, 99, 0.8);
 }
 
-/* Botón de contacto con neumorfismo premium */
+/* Botón de contacto con neumorfismo premium - Gradiente más suave y balanceado */
 .contactButton {
   position: relative;
-  background: linear-gradient(135deg, var(--primary-fuchsia), var(--secondary-fuchsia));
+  background: linear-gradient(135deg, var(--primary-fuchsia) 0%, var(--secondary-fuchsia) 50%, var(--accent-fuchsia) 100%); /* Gradiente más suave */
   color: var(--text-light);
-  padding: 0.875rem 2rem;
-  border-radius: 20px;
+  padding: 1rem 2.25rem; /* Ligeramente aumentado */
+  border-radius: 25px; /* Más redondeado */
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 1px;
   font-size: 0.95rem;
   transition: var(--transition-bounce);
-  border: 2px solid var(--neon-fuchsia);
-  box-shadow: var(--shadow-neumorphic-outset), var(--shadow-fuchsia-glow);
+  border: 2px solid rgba(233, 30, 99, 0.6); /* Borde más suave */
+  box-shadow: var(--shadow-neumorphic-outset), 
+              0 0 20px rgba(233, 30, 99, 0.4); /* Glow más suave */
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -535,16 +725,16 @@
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* Más suave */
 }
 
 .contactButton:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-3px) scale(1.03); /* Efecto más sutil */
   box-shadow: var(--shadow-neumorphic-inset), 
-              0 0 30px rgba(255, 23, 68, 0.8),
-              0 15px 40px rgba(233, 30, 99, 0.6);
-  background: linear-gradient(135deg, var(--neon-fuchsia), var(--primary-fuchsia));
-  animation: contactPulse 1.5s ease-in-out infinite;
+              0 0 25px rgba(233, 30, 99, 0.6), /* Glow más controlado */
+              0 12px 35px rgba(233, 30, 99, 0.4); /* Sombra más suave */
+  background: linear-gradient(135deg, var(--secondary-fuchsia) 0%, var(--accent-fuchsia) 50%, var(--light-fuchsia) 100%);
+  animation: contactPulse 2s ease-in-out infinite; /* Pulso más lento */
 }
 
 @keyframes contactPulse {
@@ -619,38 +809,59 @@
   display: none;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Contenedor y botones separados para CITAS (CTA destacado) */
+.citasContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 0.75rem; /* separación del menú */
+  z-index: 1001;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.citasDesktopButton {
+  /* ligeramente más pequeño para que no 'flote' demasiado */
+  padding: 0.72rem 1.28rem; /* ~10% menor */
+  border-radius: 20px;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  border: 2px solid rgba(236, 64, 122, 0.7);
+  box-shadow: var(--shadow-neumorphic-outset), 0 0 22px rgba(236, 64, 122, 0.45);
+  transition: var(--transition-bounce);
+  white-space: nowrap;
 }
 
-/* Responsive Design Mejorado con Neumorfismo */
+.citasDesktopButton:hover {
+  transform: translateY(-2.6px) scale(1.02);
+  box-shadow: var(--shadow-neumorphic-inset), 0 6px 18px rgba(236, 64, 122, 0.48);
+  /* gradiente hover premium */
+  background: linear-gradient(90deg, #FF007F 0%, #7D1EFF 100%);
+}
+
+/* Estilos para la versión móvil dentro del menú */
+.mobileCitasItem {
+  display: none; /* se activa via .mobileOnly en media query */
+}
+
+.mobileCitasButton {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  display: block;
+  padding: 0.92rem 1.3rem; /* un poco menos alto */
+  font-size: 1rem;
+  border-radius: 14px;
+  border: 2px solid var(--neon-fuchsia);
+  box-shadow: var(--shadow-neumorphic-outset);
+}
+
+/* Ajustes en responsive: mostrar/ocultar según viewport (ya existen reglas para .desktopOnly/.mobileOnly) */
 @media (max-width: 900px) {
   .navbar {
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem; /* Manteniendo el aire extra */
   }
 
   .navMenu {
     position: fixed;
-    top: 80px;
+    top: 90px; /* Ajustado al nuevo alto del navbar */
     left: 0;
     right: 0;
     background: rgba(15, 15, 15, 0.98);
@@ -665,10 +876,10 @@
                 0 0 40px rgba(233, 30, 99, 0.6),
                 var(--shadow-heavy);
     height: auto;
-    max-height: calc(100vh - 80px);
+    max-height: calc(100vh - 90px); /* Ajustado */
     overflow-y: auto;
     overscroll-behavior: contain;
-    gap: 0.5rem;
+    gap: 0.75rem; /* Más espaciado en móvil también */
   }
 
   .navMenu.active {

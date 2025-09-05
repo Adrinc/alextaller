@@ -38,6 +38,9 @@ const NavBar = () => {
 
   const currentSections = ingles ? navSections.en : navSections.es;
 
+  // Separar 'citas' del resto para renderizarla como CTA independiente
+  const menuSections = currentSections.filter(s => s.id !== "citas");
+  
   useEffect(() => {
     // Detectar scroll para efectos de navbar
     const handleScroll = () => {
@@ -109,7 +112,7 @@ const NavBar = () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
-
+  
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -147,6 +150,22 @@ const NavBar = () => {
   // Función para verificar si el enlace está activo
   const isActiveLink = (sectionId) => {
     return activeSection === sectionId;
+  };
+
+  // Función para obtener clases CSS del botón
+  const getNavLinkClasses = (sectionId) => {
+    let classes = styles.navLink;
+    
+    if (isActiveLink(sectionId)) {
+      classes += ` ${styles.activeLink}`;
+    }
+    
+    // Añadir clase especial para el botón CITAS (CTA importante)
+    if (sectionId === 'citas') {
+      classes += ` ${styles.citasButton}`;
+    }
+    
+    return classes;
   };
 
   return (
@@ -197,16 +216,28 @@ const NavBar = () => {
 
       {/* Menú de navegación con indicadores activos */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`} ref={menuRef}>
-        {currentSections.map((section, index) => (
+        {menuSections.map((section) => (
           <li key={section.id} className={styles.navItem}>
             <button 
               onClick={() => navigateToPage(section.href, section.id)}
-              className={`${styles.navLink} ${isActiveLink(section.id) ? styles.activeLink : ""}`}
+              className={getNavLinkClasses(section.id)}
             >
               {section.name}
             </button>
           </li>
         ))}
+        
+        {/* CTA de CITAS para móvil (dentro del menú) */}
+        <li className={`${styles.navItem} ${styles.mobileOnly} ${styles.mobileCitasItem}`}>
+          <button
+            className={`${styles.citasButton} ${styles.mobileCitasButton}`}
+            onClick={() => navigateToPage('/citas', 'citas')}
+          >
+            <span className={styles.buttonText}>
+              {ingles ? "Appointments" : "Citas"}
+            </span>
+          </button>
+        </li>
         
         {/* Botón de login para móvil */}
         <li className={`${styles.navItem} ${styles.mobileContactItem} ${styles.mobileOnly}`}>
@@ -221,7 +252,21 @@ const NavBar = () => {
           </button>
         </li>
       </ul>
-
+  
+      {/* CTA de CITAS separado para escritorio */}
+      <div className={`${styles.citasContainer} ${styles.desktopOnly}`}>
+        <button
+          className={`${styles.citasButton} ${styles.citasDesktopButton}`}
+          onClick={() => navigateToPage('/citas', 'citas')}
+        >
+          <span style={{display:'inline-flex', alignItems:'center', gap:'0.5rem'}}>
+            {/* Icono calendario inline (blanco, lineal) */}
+        
+            <span className={styles.buttonText}>{ingles ? "📅 Appointments" : "📅 Citas"}</span>
+          </span>
+        </button>
+      </div>
+  
       {/* Grupo de íconos sociales del taller */}
       <div className={styles.socialIconsGroup}>
         <a href="https://www.facebook.com/AlexTallerMecanico" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
@@ -237,7 +282,7 @@ const NavBar = () => {
           <div className={styles.iconRipple}></div>
         </a>
       </div>
-
+  
       {/* Botón de login con efectos premium */}
       <div className={styles.desktopOnly}>
         <button 

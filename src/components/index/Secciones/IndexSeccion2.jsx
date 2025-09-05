@@ -1,4 +1,4 @@
-// IndexSeccion2.jsx - Servicios ÉPICOS con efectos 3D para Alex Taller Mecánico
+// IndexSeccion2.jsx - Servicios PREMIUM (Grid Layout)
 import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
@@ -6,113 +6,101 @@ import { translationsIndex } from '../../../data/translationsIndex';
 import styles from '../css/indexSeccion2.module.css';
 
 const IndexSeccion2 = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
   const ingles = useStore(isEnglish);
   const t = ingles ? translationsIndex.en : translationsIndex.es;
-  const [isVisible, setIsVisible] = useState(false);
-  const [hoveredService, setHoveredService] = useState(null);
-  const [particles, setParticles] = useState([]);
-  const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          
-          // Crear partículas de servicios
-          const newParticles = Array.from({ length: 15 }, (_, i) => ({
-            id: i,
-            x: Math.random() * 100,
-            y: Math.random() * 100,
-            size: Math.random() * 6 + 3,
-            speed: Math.random() * 3 + 2,
-            opacity: Math.random() * 0.4 + 0.1
-          }));
-          setParticles(newParticles);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
-  const services = [
+  // Servicios completos (todos los 6 servicios)
+  const featuredServices = [
     {
       id: 'maintenance',
       icon: '🔧',
       title: t.services.maintenance.title,
       description: t.services.maintenance.description,
-      features: t.services.maintenance.features,
-      gradient: 'from-blue-600 via-blue-500 to-cyan-500',
-      price: 'Desde $899',
+      price: ingles ? 'From $899' : 'Desde $899',
+      duration: '2-3 hrs',
       image: '/image/global/mantenimientopre.jfif',
-      popularity: '95%',
-      estimatedTime: '2-3 horas'
+      benefits: t.services.maintenance.features,
+      isPopular: true
     },
     {
       id: 'repairs',
       icon: '⚙️',
       title: t.services.repairs.title,
       description: t.services.repairs.description,
-      features: t.services.repairs.features,
-      gradient: 'from-red-600 via-red-500 to-orange-500',
-      price: 'Desde $1,299',
+      price: ingles ? 'From $1,299' : 'Desde $1,299',
+      duration: '3-5 hrs',
       image: '/image/global/mecanico2.png',
-      popularity: '88%',
-      estimatedTime: '3-5 horas'
+      benefits: t.services.repairs.features,
+      isPopular: false
     },
     {
       id: 'diagnostics',
       icon: '📱',
       title: t.services.diagnostics.title,
       description: t.services.diagnostics.description,
-      features: t.services.diagnostics.features,
-      gradient: 'from-green-600 via-green-500 to-emerald-500',
-      price: 'Desde $299',
+      price: ingles ? 'From $299' : 'Desde $299',
+      duration: '30-60 min',
       image: '/image/global/grupoti.jpg',
-      popularity: '92%',
-      estimatedTime: '30-60 min'
+      benefits: t.services.diagnostics.features,
+      isPopular: false
     },
     {
       id: 'painting',
       icon: '🎨',
       title: t.services.painting.title,
       description: t.services.painting.description,
-      features: t.services.painting.features,
-      gradient: 'from-purple-600 via-purple-500 to-pink-500',
-      price: 'Desde $2,999',
+      price: ingles ? 'From $2,999' : 'Desde $2,999',
+      duration: '1-3 días',
       image: '/image/global/pintando1.png',
-      popularity: '78%',
-      estimatedTime: '1-3 días'
+      benefits: t.services.painting.features,
+      isPopular: false
     },
     {
       id: 'electrical',
       icon: '⚡',
       title: t.services.electrical.title,
       description: t.services.electrical.description,
-      features: t.services.electrical.features,
-      gradient: 'from-yellow-500 via-orange-500 to-red-500',
-      price: 'Desde $599',
+      price: ingles ? 'From $599' : 'Desde $599',
+      duration: '1-4 hrs',
       image: '/image/global/reparacion.png',
-      popularity: '85%',
-      estimatedTime: '1-4 horas'
+      benefits: t.services.electrical.features,
+      isPopular: false
     },
     {
       id: 'airConditioning',
       icon: '❄️',
       title: t.services.airConditioning.title,
       description: t.services.airConditioning.description,
-      features: t.services.airConditioning.features,
-      gradient: 'from-cyan-500 via-blue-500 to-indigo-500',
-      price: 'Desde $799',
+      price: ingles ? 'From $799' : 'Desde $799',
+      duration: '1-2 hrs',
       image: '/image/global/aireacondicionado.png',
-      popularity: '89%',
-      estimatedTime: '1-2 horas'
+      benefits: t.services.airConditioning.features,
+      isPopular: false
     }
   ];
 
@@ -120,226 +108,131 @@ const IndexSeccion2 = () => {
     window.location.href = `/servicios#${serviceId}`;
   };
 
-  const handleServiceHover = (serviceId) => {
-    setHoveredService(serviceId);
-  };
-
-  const handleServiceLeave = () => {
-    setHoveredService(null);
-  };
-
   return (
     <section 
       ref={sectionRef}
-      className={styles.services} 
-      id="servicios"
+      className={`${styles.servicesSection} ${isVisible ? styles.visible : ''}`}
     >
-      {/* Partículas de fondo */}
-      <div className={styles.particlesContainer}>
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className={styles.particle}
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity,
-              animationDuration: `${particle.speed * 4}s`,
-              animationDelay: `${particle.id * 0.2}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Fondo geométrico */}
-      <div className={styles.geometricBg}>
-        <div className={styles.geometricShape} style={{ '--delay': '0s' }}></div>
-        <div className={styles.geometricShape} style={{ '--delay': '2s' }}></div>
-        <div className={styles.geometricShape} style={{ '--delay': '4s' }}></div>
-      </div>
-
       <div className={styles.container}>
-        {/* Header épico */}
-        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
-          {/* Badge de sección */}
+        {/* Header */}
+        <div className={styles.header}>
           <div className={styles.sectionBadge}>
-            <span className={styles.badgeIcon}>🔧</span>
-            <span className={styles.badgeText}>
-              {ingles ? "OUR EXPERTISE" : "NUESTRA EXPERIENCIA"}
-            </span>
+            <span>⭐</span>
+            <span>{ingles ? "EXPERT SERVICES" : "SERVICIOS EXPERTOS"}</span>
           </div>
 
-          <h2 className={styles.title}>{t.services.title}</h2>
-          <p className={styles.subtitle}>{t.services.subtitle}</p>
+          <h2 className={styles.title}>
+            {ingles ? "Premium Car Care Solutions" : "Soluciones Premium para tu Auto"}
+            <span className={styles.titleIcon}>🚗</span>
+          </h2>
 
-          {/* Estadísticas del taller */}
-          <div className={styles.statsRow}>
-            <div className={styles.statItem}>
-              <div className={styles.statIcon}>⭐</div>
-              <div className={styles.statValue}>4.9</div>
-              <div className={styles.statLabel}>
-                {ingles ? "Rating" : "Calificación"}
+          <p className={styles.subtitle}>
+            {ingles 
+              ? "Professional service backed by 8+ years of automotive expertise and customer satisfaction"
+              : "Servicio profesional respaldado por más de 8 años de experiencia automotriz y satisfacción del cliente"
+            }
+          </p>
+
+          {/* Métricas de confianza */}
+          <div className={styles.trustMetrics}>
+            <div className={styles.metric}>
+              <span className={styles.metricIcon}>🚨</span>
+              <div className={styles.metricContent}>
+                <span className={styles.metricNumber}>24/7</span>
+                <span className={styles.metricLabel}>{ingles ? "Emergency" : "Emergencia"}</span>
               </div>
             </div>
-            <div className={styles.statItem}>
-              <div className={styles.statIcon}>🔧</div>
-              <div className={styles.statValue}>5000+</div>
-              <div className={styles.statLabel}>
-                {ingles ? "Services" : "Servicios"}
+            <div className={styles.metric}>
+              <span className={styles.metricIcon}>🏆</span>
+              <div className={styles.metricContent}>
+                <span className={styles.metricNumber}>5000+</span>
+                <span className={styles.metricLabel}>{ingles ? "Cars Serviced" : "Autos Atendidos"}</span>
               </div>
             </div>
-            <div className={styles.statItem}>
-              <div className={styles.statIcon}>⏱️</div>
-              <div className={styles.statValue}>24/7</div>
-              <div className={styles.statLabel}>
-                {ingles ? "Emergency" : "Emergencia"}
+            <div className={styles.metric}>
+              <span className={styles.metricIcon}>✅</span>
+              <div className={styles.metricContent}>
+                <span className={styles.metricNumber}>ASE</span>
+                <span className={styles.metricLabel}>{ingles ? "Certified" : "Certificado"}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Grid de servicios épico */}
+        {/* Services Grid */}
         <div className={styles.servicesGrid}>
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              className={`${styles.serviceCard} ${isVisible ? styles.fadeInUp : ''}`}
-              style={{ '--delay': `${index * 150}ms` }}
+          {featuredServices.map((service, index) => (
+            <div 
+              key={service.id} 
+              className={`${styles.serviceCard} ${service.isPopular ? styles.popular : ''}`}
               onClick={() => handleServiceClick(service.id)}
-              onMouseEnter={() => handleServiceHover(service.id)}
-              onMouseLeave={handleServiceLeave}
+              style={{
+                animationDelay: `${index * 0.1}s`
+              }}
             >
-              {/* Imagen de fondo */}
-              <div className={styles.cardBackground}>
+              {/* Popular Badge */}
+              {service.isPopular && (
+                <div className={styles.popularBadge}>
+                  <span className={styles.popularIcon}>🔥</span>
+                  {ingles ? "Most Popular" : "Más Popular"}
+                </div>
+              )}
+
+              {/* Card Image */}
+              <div className={styles.cardImage}>
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className={styles.cardImage}
+                  loading="lazy"
                 />
-                <div className={styles.cardOverlay}></div>
               </div>
 
-              {/* Badge de popularidad */}
-              <div className={styles.popularityBadge}>
-                <span className={styles.popularityIcon}>👍</span>
-                <span className={styles.popularityText}>{service.popularity}</span>
-              </div>
-
-              {/* Contenido principal */}
+              {/* Card Content */}
               <div className={styles.cardContent}>
-                {/* Header de la card */}
                 <div className={styles.cardHeader}>
-                  <div className={styles.serviceIconContainer}>
+                  <div className={styles.iconContainer}>
                     <span className={styles.serviceIcon}>{service.icon}</span>
-                    <div className={styles.iconGlow}></div>
                   </div>
+                  
                   <div className={styles.serviceInfo}>
                     <h3 className={styles.serviceTitle}>{service.title}</h3>
-                    <div className={styles.serviceTime}>
-                      <span className={styles.timeIcon}>⏱️</span>
-                      <span>{service.estimatedTime}</span>
+                    <div className={styles.serviceDuration}>
+                      <span className={styles.durationIcon}>⏱️</span>
+                      {service.duration}
                     </div>
+                  </div>
+
+                  <div className={styles.servicePrice}>
+                    {service.price}
                   </div>
                 </div>
 
-                {/* Descripción */}
                 <p className={styles.serviceDescription}>
                   {service.description}
                 </p>
 
-                {/* Características */}
-                <div className={styles.serviceFeatures}>
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className={styles.featureItem}>
-                      <span className={styles.featureIcon}>✓</span>
-                      <span className={styles.featureText}>{feature}</span>
-                    </div>
+                <ul className={styles.benefitsList}>
+                  {service.benefits.map((benefit, idx) => (
+                    <li key={idx} className={styles.benefitItem}>
+                      <span className={styles.checkMark}>✓</span>
+                      <span>{benefit}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                {/* Footer de la card */}
-                <div className={styles.cardFooter}>
-                  <div className={styles.servicePrice}>
-                    <span className={styles.priceLabel}>
-                      {ingles ? "Starting at" : "Desde"}
-                    </span>
-                    <span className={styles.priceValue}>{service.price}</span>
-                  </div>
-                  <button className={styles.serviceButton}>
-                    <span>{ingles ? "Learn More" : "Saber Más"}</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                </div>
+                <button className={styles.ctaButton}>
+                  <span>{ingles ? "Learn More" : "Saber Más"}</span>
+                  <span className={styles.buttonIcon}>🔧</span>
+                </button>
               </div>
 
-              {/* Efectos hover */}
-              <div className={styles.cardEffects}>
-                <div className={styles.cardShine}></div>
-                <div className={styles.cardGlow}></div>
-              </div>
+              {/* Card Effects */}
+              <div className={styles.cardGlow}></div>
+              <div className={styles.hoverOverlay}></div>
             </div>
           ))}
         </div>
 
-        {/* CTA Section épica */}
-        <div className={`${styles.ctaSection} ${isVisible ? styles.fadeInUp : ''}`}>
-          <div className={styles.ctaBackground}>
-            <img 
-              src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1200&h=400&fit=crop&crop=center" 
-              alt="Taller Alex" 
-              className={styles.ctaImage}
-            />
-            <div className={styles.ctaOverlay}></div>
-          </div>
-
-          <div className={styles.ctaContent}>
-            <div className={styles.ctaIcon}>
-              <span>🏆</span>
-            </div>
-            <h3 className={styles.ctaTitle}>
-              {ingles ? "Need a custom service?" : "¿Necesitas un servicio personalizado?"}
-            </h3>
-            <p className={styles.ctaDescription}>
-              {ingles 
-                ? "Contact us and we'll create a maintenance plan tailored to your vehicle with special pricing."
-                : "Contáctanos y crearemos un plan de mantenimiento a la medida de tu vehículo con precios especiales."
-              }
-            </p>
-            
-            <div className={styles.ctaButtons}>
-              <button className={styles.ctaPrimary}>
-                <span>{ingles ? "Get Quote" : "Obtener Cotización"}</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-              <button className={styles.ctaSecondary}>
-                <span>{ingles ? "Call Now" : "Llamar Ahora"}</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="2"/>
-                </svg>
-              </button>
-            </div>
-
-            {/* Información de contacto rápido */}
-            <div className={styles.quickContact}>
-              <div className={styles.contactItem}>
-                <span className={styles.contactIcon}>📞</span>
-                <span className={styles.contactText}>664 630 4093</span>
-              </div>
-              <div className={styles.contactItem}>
-                <span className={styles.contactIcon}>⏰</span>
-                <span className={styles.contactText}>
-                  {ingles ? "Mon-Sat 8AM-6PM" : "Lun-Sáb 8AM-6PM"}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
